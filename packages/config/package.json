@@ -1,0 +1,10 @@
+{
+  "name": "@financial-manager/config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "exports": {
+    "./tsconfig.base.json": "./tsconfig.base.json",
+    "./workspace-boundaries.json": "./workspace-boundaries.json"
+  }
+}

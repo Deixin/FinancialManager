@@ -1,0 +1,25 @@
+name: Defeito
+description: Relatar um comportamento incorreto com reprodução.
+title: 'bug: '
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Comportamento observado e esperado
+      description: Não inclua dados financeiros reais ou segredos.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Passos para reproduzir
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Plataforma, versão e commit
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidência anonimizada

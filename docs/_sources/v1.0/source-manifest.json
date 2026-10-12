@@ -1,0 +1,126 @@
+{
+  "description": "Original v1.0 delivery, renamed and reorganized without content changes. Hashes refer to original file bytes before Git newline normalization.",
+  "organized_on": "2026-10-12",
+  "files": [
+    {
+      "original": "Doc/Source_v1.0/PRD_Financial_Manager_v1.0.md",
+      "destination": "docs/product/01-prd.md",
+      "sha256": "3eb44b2fea8f50f717ad971411eba990107599b0bf76ef40e20db3d08ff1e2ba"
+    },
+    {
+      "original": "Doc/Source_v1.0/PRD_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/01-prd.docx",
+      "sha256": "4774cc1b48aafbf0f3f2be8395fc117594975be5234126cb050090849254ecb5"
+    },
+    {
+      "original": "Doc/Source_v1.0/Mapa_Telas_Fluxos_Financial_Manager_v1.0.md",
+      "destination": "docs/product/02-screens-flows.md",
+      "sha256": "0c4aa61b995ebdfcfea1efa6bae080cf3fcbc0e504e6a38139f99951bff867d4"
+    },
+    {
+      "original": "Doc/Source_v1.0/Mapa_Telas_Fluxos_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/02-screens-flows.docx",
+      "sha256": "61db640df759a20f2354a669e1138591e4a542d62a5480a64ace5c85e629f89b"
+    },
+    {
+      "original": "Doc/Source_v1.0/Modelo_Dados_ERD_Financial_Manager_v1.0.md",
+      "destination": "docs/architecture/03-data-model.md",
+      "sha256": "56aaaa3a5c1c4ce1a6232feaca5d2be918304a0be901926e4fd59a563a251cfa"
+    },
+    {
+      "original": "Doc/Source_v1.0/Modelo_Dados_ERD_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/03-data-model.docx",
+      "sha256": "87cb4fa92e5f59f01e643cb4001eb35fc8ec5850e4e1296fa69b7c652e69e584"
+    },
+    {
+      "original": "Doc/Source_v1.0/Arquitetura_Tecnica_Financial_Manager_v1.0.md",
+      "destination": "docs/architecture/04-technical-architecture.md",
+      "sha256": "dcece458388e1d6d017b88e4043ef5e99d0b1b174ce0a9b860e9e040997c3d59"
+    },
+    {
+      "original": "Doc/Source_v1.0/Arquitetura_Tecnica_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/04-technical-architecture.docx",
+      "sha256": "e4c66f1384df722e6506a488a79a4914fde9f8a77796c1a43d43be9ec64e9f3f"
+    },
+    {
+      "original": "Doc/Source_v1.0/Backlog_Tecnico_MVP_Financial_Manager_v1.0.md",
+      "destination": "docs/delivery/05-backlog.md",
+      "sha256": "a25840848090b5d96646a2abcc3d63492faea4f222f7c434cebc858139707524"
+    },
+    {
+      "original": "Doc/Source_v1.0/Backlog_Tecnico_MVP_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/05-backlog.docx",
+      "sha256": "8068dff78e3bda95bf9c164cd5f534178770af5f1b3043d09931a1ca54027c92"
+    },
+    {
+      "original": "Doc/Source_v1.0/Plano_Implementacao_MVP_Financial_Manager_v1.0.md",
+      "destination": "docs/delivery/06-implementation-plan.md",
+      "sha256": "61b64d78d79f6a7d59ac942d20214d498c963f5fcea7f282f0105af8c5e419bc"
+    },
+    {
+      "original": "Doc/Source_v1.0/Plano_Implementacao_MVP_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/06-implementation-plan.docx",
+      "sha256": "3db184931ec8a11fe023daa3ffb03670fb037f79d850ad847a86f83ab590aaf6"
+    },
+    {
+      "original": "Doc/Source_v1.0/Guia_Inicio_Desenvolvimento_Codex_Financial_Manager_v1.0.md",
+      "destination": "docs/development/07-getting-started.md",
+      "sha256": "0d5359f33393458db1e80d5333411c29a9ed614965f2b2f049b2a8d289f8217c"
+    },
+    {
+      "original": "Doc/Source_v1.0/Guia_Inicio_Desenvolvimento_Codex_Financial_Manager_v1.0.docx",
+      "destination": "docs/_exports/v1.0/07-getting-started.docx",
+      "sha256": "6c0db2ad6e0db7710121ae694e370a2194fa26c98960a0148b73c9f54638dc0f"
+    },
+    {
+      "original": "Doc/Source_v1.0/00_INDEX_Financial_Manager.template.md",
+      "destination": "docs/_sources/v1.0/00_INDEX_Financial_Manager.template.md",
+      "sha256": "b81ac485cbd04846d61017a1388b47da1d74fff04e5076da581745b47513184f"
+    },
+    {
+      "original": "Doc/Source_v1.0/AGENTS_Financial_Manager.template.md",
+      "destination": "docs/_sources/v1.0/AGENTS_Financial_Manager.template.md",
+      "sha256": "95c4e2cb5584980c74a2e023fe926275c57470da952b0764cd5adf99f833ac38"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_44-1.png",
+      "destination": "docs/ux/concepts/01-desktop-dashboard.png",
+      "sha256": "725bb80a1ae34404cebb149334f975daaff38b1b06f58b010bcf83b24ac19aef"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_45-2.png",
+      "destination": "docs/ux/concepts/02-desktop-import-review.png",
+      "sha256": "fc2b2d658075ed730ad9a4c2f8107d321c0705f4e23b191f64effae86f4b75e5"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_47-3.png",
+      "destination": "docs/ux/concepts/03-desktop-documents-reconciliation.png",
+      "sha256": "66826a7e2de9121f9cd8f80f5b6acc755b9dbbe0f18fb3b7204f41e68969175a"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_48-4.png",
+      "destination": "docs/ux/concepts/04-mobile-dashboard.png",
+      "sha256": "5eac91f5e18e8b495fef17705c7dfdda3c319efd9fc9f580a41f144800c2c318"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_50-5.png",
+      "destination": "docs/ux/concepts/05-mobile-transactions.png",
+      "sha256": "437d106390b4ed7e28aac4a9de07f9a04c04f07d759bb41dc1f5c2c415ae6713"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_51-6.png",
+      "destination": "docs/ux/concepts/06-mobile-transaction-detail.png",
+      "sha256": "28c93893ce44cd09e62cf0c262de178a81a65eb72eeddfc45c93ac3eea83e7d9"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_52-7.png",
+      "destination": "docs/ux/concepts/07-mobile-document-review.png",
+      "sha256": "95e02f5c6aebebe29e700ad4b7f94ef8418ea2d7c1536d25ae0781a8d4bc75e9"
+    },
+    {
+      "original": "Doc/Mockup_v1.0/Imagem do ChatGPT 5 de out. de 2026, 21_23_54-8.png",
+      "destination": "docs/ux/concepts/08-mobile-workspace-members.png",
+      "sha256": "fc5b7915ddd13daa357ecb00043b8406a5f44aad791fa9a2a1007b86adf911cc"
+    }
+  ]
+}

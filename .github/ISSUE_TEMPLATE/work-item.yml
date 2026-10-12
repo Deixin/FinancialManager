@@ -1,0 +1,23 @@
+name: História ou tarefa
+description: Planejar trabalho ligado à documentação.
+title: 'task: '
+body:
+  - type: input
+    id: story
+    attributes:
+      label: História e documento de referência
+      placeholder: US-001, seção e critérios de aceite
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Problema e escopo
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite e validação
+    validations:
+      required: true

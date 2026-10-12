@@ -1,0 +1,17 @@
+node_modules/
+.tools/
+.pnpm-store/
+.pnpm-cache/
+.turbo/
+dist/
+coverage/
+pnpm-lock.yaml
+docs/_exports/
+docs/_sources/
+docs/product/01-prd.md
+docs/product/02-screens-flows.md
+docs/architecture/03-data-model.md
+docs/architecture/04-technical-architecture.md
+docs/delivery/05-backlog.md
+docs/delivery/06-implementation-plan.md
+docs/development/07-getting-started.md

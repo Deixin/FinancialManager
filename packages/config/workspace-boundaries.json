@@ -1,0 +1,65 @@
+{
+  "@financial-manager/domain": [],
+  "@financial-manager/contracts": ["@financial-manager/domain"],
+  "@financial-manager/sync-core": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts"
+  ],
+  "@financial-manager/importers": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts"
+  ],
+  "@financial-manager/search": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts"
+  ],
+  "@financial-manager/design-tokens": [],
+  "@financial-manager/ui-dom": [
+    "@financial-manager/design-tokens",
+    "@financial-manager/contracts"
+  ],
+  "@financial-manager/test-fixtures": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts"
+  ],
+  "@financial-manager/config": [],
+  "@financial-manager/web": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts",
+    "@financial-manager/importers",
+    "@financial-manager/search",
+    "@financial-manager/design-tokens",
+    "@financial-manager/ui-dom"
+  ],
+  "@financial-manager/desktop": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts",
+    "@financial-manager/sync-core",
+    "@financial-manager/importers",
+    "@financial-manager/search",
+    "@financial-manager/design-tokens",
+    "@financial-manager/ui-dom"
+  ],
+  "@financial-manager/mobile": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts",
+    "@financial-manager/sync-core",
+    "@financial-manager/importers",
+    "@financial-manager/search",
+    "@financial-manager/design-tokens"
+  ],
+  "@financial-manager/api": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts",
+    "@financial-manager/sync-core",
+    "@financial-manager/importers",
+    "@financial-manager/search"
+  ],
+  "@financial-manager/worker": [
+    "@financial-manager/domain",
+    "@financial-manager/contracts",
+    "@financial-manager/sync-core",
+    "@financial-manager/importers",
+    "@financial-manager/search"
+  ]
+}
