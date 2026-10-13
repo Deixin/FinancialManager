@@ -14,3 +14,5 @@ Consulte os limites de confiança da [arquitetura](../architecture/04-technical-
 | Ciclo de vida     | Perda de dados, autoridade duplicada, retenção incorreta | Snapshot validado, staging, arquivamento e purga                    |
 
 Os prazos em disputa estão em [decisions-pending.md](../architecture/decisions-pending.md). Esta tabela não declara controles implementados nem substitui a avaliação de segurança prevista no backlog.
+
+A avaliação específica do experimento US-001 está no [ADR-0017](../architecture/adr/0017-spike-cofre-desktop.md): disco/chave, pacote hostil, staging e queda, WebView/IPC, logs/memória e recuperação independente. Os controles passaram nos testes locais e na homologação host → VM Windows independente, com dados sintéticos. O [ADR-0018](../architecture/adr/0018-homologacao-desktop-vm-docker.md) registra as fronteiras do ambiente de homologação. As decisões de produção continuam pendentes; essa evidência não amplia o escopo dos controles às futuras aplicações Web/Mobile/API.

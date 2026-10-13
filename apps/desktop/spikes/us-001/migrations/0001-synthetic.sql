@@ -1,0 +1,8 @@
+-- US-001 SYNTHETIC schema only. Not the product's physical schema.
+CREATE TABLE workspace (id TEXT PRIMARY KEY NOT NULL, authority TEXT NOT NULL CHECK (authority = 'LOCAL')) STRICT;
+CREATE TABLE account (id INTEGER PRIMARY KEY, reference_minor INTEGER NOT NULL) STRICT;
+CREATE TABLE movement (id INTEGER PRIMARY KEY, amount_minor INTEGER NOT NULL) STRICT;
+CREATE TABLE item (id INTEGER PRIMARY KEY, description TEXT NOT NULL, total_minor INTEGER NOT NULL) STRICT;
+CREATE TABLE rule (id INTEGER PRIMARY KEY, needle TEXT NOT NULL, category TEXT NOT NULL) STRICT;
+CREATE TABLE history (id INTEGER PRIMARY KEY, event TEXT NOT NULL) STRICT;
+PRAGMA user_version = 1;

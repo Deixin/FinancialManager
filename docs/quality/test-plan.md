@@ -6,6 +6,20 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 Essa cobertura não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks.
 
+## Preparação da US-001
+
+O pnpm test também verifica o diagnóstico Desktop: detecção de WebView2 por usuário, rejeição de registros inválidos, target Rust incorreto, inventário indisponível, falha/timeout de compilação, falha de execução e limpeza dos temporários. Esses testes usam respostas sintéticas de ferramentas, sem exigir SDKs nativos, e fazem parte do comando executado pela CI Windows/Linux.
+
+O comando pnpm env:check --desktop faz a verificação real de ferramentas no Windows x64 e compila, vincula e executa um probe Rust temporário. Esse diagnóstico sozinho não comprova integração dos frameworks ou criptografia.
+
+## Integração nativa da US-001
+
+pnpm spike:desktop:check executa fmt, Clippy, testes Rust, build Tauri e smoke real de WebView/IPC. O job desktop-vault da CI Windows possui esse gate separado do pnpm check TypeScript; execução remota ainda pendente. O [protocolo](../development/spikes/us-001-desktop-vault.md) e o [estado](../delivery/status.md) registram evidência local e ambiente.
+
+Os testes usam SQLCipher real, fixtures sintéticas com extremos i64 e Windows Credential Manager. Cobrem cofre sem/chave incorreta, falta/negação de chave, isolamento por instalação, journal, migration atômica, envelope autenticado, limites e schema hostil. Testes entre processos removem a origem, simulam término abrupto antes/depois da persistência da chave e reabrem a instalação para limpar staging/credenciais órfãs. Preservação do cofre existente é verificada byte a byte.
+
+O smoke Tauri chama apenas comandos sintéticos sem parâmetros de SQL, arquivos ou chaves. A [homologação em outra instalação](../development/spikes/us-001-homologation.md) passou entre o host e uma VM Windows 11 independente, incluindo recuperação da chave após reiniciar o Windows e smoke real da WebView. A [evidência](evidence/us-001-windows-vm-2026-10-13.json) registra hashes, versões e timestamps; dois testes de metadados rejeitam relatório anterior ao reboot ou sem confirmação de persistência. Essa cobertura não entrega os fluxos BK-01/02 nem o schema definitivo do produto.
+
 ## Cobertura a implementar
 
 Os critérios de aceite do [PRD](../product/01-prd.md), do [backlog](../delivery/05-backlog.md) e os gates do [plano](../delivery/06-implementation-plan.md) orientam os testes:

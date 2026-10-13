@@ -1,0 +1,31 @@
+{
+  "windows_build": "10.0.26200.0",
+  "preview_without_publication": true,
+  "binary_hashes_verified": true,
+  "existing_vault_preserved": true,
+  "interactive_session": true,
+  "tampering_rejected": true,
+  "wrong_password_rejected": true,
+  "backup_hash_verified": true,
+  "original_key_removed_before_transfer": true,
+  "crash_recovery_both_checkpoints": true,
+  "exact_synthetic_data": true,
+  "new_workspace": true,
+  "different_windows_installation": true,
+  "reboot_key_recovery": true,
+  "webview_ipc": true,
+  "cipher_version": "4.14.0 community",
+  "passed": true,
+  "format_version": 1,
+  "completed_at_utc": "2026-10-13T12:00:53.621Z",
+  "docker_image": "docker.io/dockurr/windows@sha256:16fd7c39a3e48bb946d29c59dc6015942e5b900a1fa5d7e5552053bfc48ee2ea",
+  "artifacts_sha256": {
+    "vault-spike.exe": "3352fdd0aaa9a7f52c5a3702c308bc5d27771b9b17caff749d5b8c9760cdea8e",
+    "vault-spike-ui.exe": "a4f6c930ab5d659c751844051297c9e7d24cdaabeea1b2853d1f366ec269f822"
+  },
+  "host_source_removed": true,
+  "duration_seconds": 2087,
+  "reboot_started_at_utc": "2026-10-13T11:57:47.658404413Z",
+  "guest_result_written_at_utc": "2026-10-13T12:00:52.000Z",
+  "container_stopped_after_test": true
+}

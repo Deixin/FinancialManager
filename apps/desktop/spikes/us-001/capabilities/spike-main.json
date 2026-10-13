@@ -1,0 +1,6 @@
+{
+  "identifier": "spike-main",
+  "description": "Somente comandos tipados da demonstração sintética US-001.",
+  "windows": ["main"],
+  "permissions": ["allow-run-synthetic-demo", "allow-finish-smoke"]
+}

@@ -2,7 +2,7 @@
 
 Gestão financeira pessoal, com evolução prevista para MEI e pequenas empresas. O produto combina Desktop local gratuito, Web em nuvem e Mobile com réplica offline autorizada, mantendo o workspace como fronteira de dados, acesso e cobrança.
 
-Este repositório contém a documentação v1.0 e a estrutura inicial de desenvolvimento. Ainda não existe aplicação executável ou funcionalidade financeira implementada. O trabalho atual cobre a preparação da US-010 e parte da US-011; os spikes W0 continuam pendentes.
+Este repositório contém a documentação v1.0, a estrutura inicial de desenvolvimento e um experimento nativo executável da US-001: Tauri, SQLCipher, chave protegida pelo Windows e backup autenticado. O experimento usa apenas dados sintéticos; a aplicação financeira de produto ainda será implementada. O bootstrap cobre a preparação da US-010 e parte da US-011. A US-001 foi homologada entre o host e uma VM Windows 11 independente, conforme a [evidência registrada](docs/quality/evidence/us-001-windows-vm-2026-10-13.json).
 
 ## Documentação
 
@@ -36,7 +36,7 @@ infra/
 docs/             Especificações, decisões e referências visuais
 ```
 
-Os diretórios acima contêm módulos TypeScript vazios para validar a estrutura e a compilação independente. Frameworks, bancos, autenticação e infraestrutura serão integrados nas histórias previstas, após as decisões W0.
+Os módulos TypeScript ainda validam apenas a estrutura e a compilação independente. O experimento nativo fica em apps/desktop/spikes/us-001, separado desses módulos. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
 
 ## Ambiente e comandos
 
@@ -48,18 +48,24 @@ pnpm env:check
 pnpm check
 ```
 
-| Comando               | Finalidade                                          |
-| --------------------- | --------------------------------------------------- |
-| pnpm check            | Formatação, lint, estrutura, tipos, testes e build  |
-| pnpm check:repo       | Links locais e limites entre workspaces             |
-| pnpm format           | Formatar arquivos mantidos neste bootstrap          |
-| pnpm lint             | ESLint e verificação estrutural                     |
-| pnpm typecheck        | Verificar os módulos TypeScript                     |
-| pnpm test             | Testar as regras de estrutura do repositório        |
-| pnpm build            | Compilar os módulos TypeScript                      |
-| pnpm env:check --full | Conferir também ferramentas das futuras plataformas |
+| Comando                    | Finalidade                                                             |
+| -------------------------- | ---------------------------------------------------------------------- |
+| pnpm check                 | Formatação, lint, estrutura, tipos, testes e build                     |
+| pnpm check:repo            | Links locais e limites entre workspaces                                |
+| pnpm format                | Formatar arquivos mantidos neste bootstrap                             |
+| pnpm lint                  | ESLint e verificação estrutural                                        |
+| pnpm typecheck             | Verificar os módulos TypeScript                                        |
+| pnpm test                  | Testar regras do repositório e o diagnóstico Desktop                   |
+| pnpm build                 | Compilar os módulos TypeScript                                         |
+| pnpm env:check --full      | Conferir também ferramentas das futuras plataformas                    |
+| pnpm env:check --desktop   | Verificar pré-requisitos Windows x64 e compilar/executar um probe Rust |
+| pnpm spike:desktop:check   | Testes Rust, Clippy, build Tauri e smoke real da WebView no Windows    |
+| pnpm spike:desktop:ui      | Abrir a demonstração com dados sintéticos                              |
+| pnpm spike:desktop:package | Preparar kit local de homologação, ignorado pelo Git                   |
 
-A formatação automática não reescreve os sete documentos originais. Não há comando de desenvolvimento, serviço provisionado ou teste de comportamento financeiro nesta etapa.
+A formatação automática não reescreve os sete documentos originais. O experimento Desktop é local; os serviços e fluxos financeiros de produto permanecem pendentes.
+
+O [protocolo da US-001](docs/development/spikes/us-001-desktop-vault.md) separa o preflight, os testes nativos e a homologação em outro perfil/máquina. pnpm check valida o monorepo TypeScript; pnpm spike:desktop:check valida a integração nativa. As escolhas experimentais estão no [ADR-0017](docs/architecture/adr/0017-spike-cofre-desktop.md).
 
 ## Publicar o repositório
 

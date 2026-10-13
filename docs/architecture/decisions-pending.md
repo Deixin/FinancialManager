@@ -11,4 +11,6 @@ Registro inicial de divergências encontradas na documentação v1.0. Nenhuma de
 
 A separação ui-dom/design-tokens segue a arquitetura técnica. A referência genérica a um pacote ui no guia não define um componente DOM compartilhado com React Native.
 
+Evolução parcial de DP-04 em 2026-10-13: US-001 foi validada, incluindo restauração em outra instalação Windows. [ADR-0017](adr/0017-spike-cofre-desktop.md), [ADR-0018](adr/0018-homologacao-desktop-vm-docker.md) e [evidência](../quality/evidence/us-001-windows-vm-2026-10-13.json) subsidiam US-007. Os demais spikes e a adoção final das decisões físicas continuam pendentes; DP-04 não foi encerrada integralmente.
+
 Os [conceitos visuais](../ux/concepts/README.md) incluem elementos que precisam ser reinterpretados conforme o PRD, como IA, originais anexados, probabilidades, aprovações e compromissos futuros. Uma imagem não amplia o escopo do MVP.

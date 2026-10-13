@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
+import { checkDesktopEnvironment } from './desktop-preflight.mjs';
 
 const manifest = JSON.parse(
   readFileSync(new URL('../../package.json', import.meta.url), 'utf8'),
@@ -38,6 +39,16 @@ if (process.argv.includes('--full')) {
   }
   console.log(
     'Native SDKs, signing, databases and framework integrations are not validated here.',
+  );
+}
+
+if (process.argv.includes('--desktop')) {
+  for (const { id, ok, message } of checkDesktopEnvironment()) {
+    console.log('Desktop ' + id + ' ' + (ok ? 'OK: ' : 'FAIL: ') + message);
+    if (!ok) failed = true;
+  }
+  console.log(
+    'This preflight does not validate Tauri integration, SQLCipher, the OS secret store or backup/restore.',
   );
 }
 
