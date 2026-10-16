@@ -58,6 +58,8 @@ A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida repre
 
 ## Ambiente e comandos
 
+A [US-020](docs/development/postgresql-schema.md) entrega a migração SQL inicial do núcleo financeiro PostgreSQL: 12 tabelas com FKs por workspace, BIGINT exato, rateios diferíveis e revisões imutáveis. pnpm schema:test executa 20 gates em banco real descartável; schema:clean limpa somente essa instância sintética. A migração mantém RLS restritiva e não concede acesso de runtime antes da policy engine. Não é aplicada automaticamente aos perfis US-014.
+
 A [fundação US-014](docs/development/environments.md) configura local/CI/integration/staging em Docker local isolado, com PostgreSQL, Keycloak, Mailpit e HTTPS por perfil. Use pnpm env:stack:up --profile local e down para o mesmo perfil; env:stack:test verifica os quatro ambientes e limpa seus recursos. São dependências sintéticas descartáveis; Web/BFF/API/worker/objetos de produto e staging remoto continuam pendentes.
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).

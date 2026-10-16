@@ -1,0 +1,52 @@
+{
+  "format_version": 1,
+  "scope": "us020-postgresql-financial-core",
+  "synthetic_only": true,
+  "started_at_utc": "2026-10-16T17:41:18.145Z",
+  "checks": {
+    "migration_failure_rollback": true,
+    "migration_idempotency_checksum_and_concurrency": true,
+    "roles_and_default_deny": true,
+    "twelve_tables_forced_rls_and_composite_keys": true,
+    "authorized_synthetic_seed": true,
+    "cross_workspace_read_write_and_forged_context": true,
+    "cross_workspace_foreign_keys": true,
+    "required_fields_enums_ids_and_currency": true,
+    "exact_i64_and_overflow": true,
+    "date_and_utc_millisecond_roundtrip": true,
+    "normalized_active_names": true,
+    "subcategory_matches_category": true,
+    "allocation_atomicity_and_extreme_amount": true,
+    "concurrent_allocations_serialize": true,
+    "revision_unique_immutable_and_soft_delete": true,
+    "reference_and_account_card_constraints": true,
+    "keyset_pagination_and_indexes": true,
+    "restricted_roles_cannot_ddl_truncate_or_migrate": true,
+    "operational_logs_sanitized": true,
+    "owned_resources_removed": true
+  },
+  "pending": [
+    "membership-policy-engine-and-account-scope",
+    "typed-query-g07-query",
+    "sqlcipher-and-cross-engine-g07-time",
+    "revision-service-sync-and-tombstones",
+    "product-runtime-integration"
+  ],
+  "passed": true,
+  "versions": {
+    "node": "24.19.0",
+    "pg": "8.23.1",
+    "postgresql": "18.6"
+  },
+  "resources_closed": true,
+  "completed_at_utc": "2026-10-16T17:41:24.984Z",
+  "source_sha256": {
+    "apps/api/persistence/postgres/migrations/0001-financial-core.sql": "6af5a8ffcbd71fe0704dd93c7eb00d24f0549ce71e4e1f03f57848d4a100c196",
+    "apps/api/persistence/postgres/migrate.mjs": "b48c2fe61fa7998f77e69fdb12a3cd8a15734e4d80d40dfc817260945a7a90cd",
+    "infra/schema/compose.yaml": "00814238f86c5ed02185a8b6c89c7f033786f87699367716ce900c4fea00d5e4",
+    "infra/schema/fixtures.mjs": "6e63eec134b3fcfa9bd041464f87b0bc2322f05905a6ea5efb54243c92b4f292",
+    "infra/schema/homologate.mjs": "4e73eaac4abd6ce2c1bea4925d2311ad14d35a0fc96487748846baafba4bfbf4",
+    "infra/schema/run.mjs": "aad94ef7533d4efdbe9a263820c08b85695a0334ea4c5925597b756bfc787fed",
+    "infra/schema/evidence.mjs": "9104de3e2dee1e7d8bef6e90950b4ee8b9812fa37129cad233f47c578cab583b"
+  }
+}

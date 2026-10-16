@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0031 — Schema financeiro inicial PostgreSQL](0031-schema-inicial-postgresql.md): adotado para a US-020, com migração/constraints validadas; policy engine, repositories e cross-engine pendentes.
+
 A [arquitetura técnica](../04-technical-architecture.md) contém o registro original ADR-001 a ADR-015, incluindo propostas ainda sujeitas a validação. Esses números ficam reservados; a existência na tabela não implica que todos tenham sido aprovados.
 
 Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-template.md). Declare status, escopo, histórias, alternativas, consequências e evidência. Um ADR só substitui uma decisão anterior no escopo explicitamente indicado.

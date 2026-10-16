@@ -1,6 +1,16 @@
 # Plano de testes
 
-## Cobertura inicial
+## Schema físico PostgreSQL — US-020
+
+pnpm schema:test passou em 20 gates PostgreSQL reais: migração interrompida/reaplicada/concorrente e checksum; roles/default deny; 12 tabelas/11 FKs compostas; seed autorizado; isolamento/contexto forjado; FKs cruzadas; checks/enums/obrigatoriedade; i64/overflow; DATE/UTC ms; nomes normalizados; subcategoria; rateio atômico/extremo e concorrência com lock observado; revisão/soft delete; referência/cartão; keyset/índices; DDL/TRUNCATE recusados; logs e limpeza. [Evidência](evidence/us-020-postgresql-2026-10-16.json), [guia](../development/postgresql-schema.md), [ADR-0031](../architecture/adr/0031-schema-inicial-postgresql.md).
+
+Quatro testes Node verificam gates/hashes/escopo/limpeza e sanitização de falhas de conexão/rollback. O CRUD financeiro usa logins restritos e RLS ativa; bootstrap serve apenas a provisioning/inspeção. A autorização sintética do ensaio não conclui a policy engine ou escopo de contas de produto. Schema/migrations equivalentes SQLite, cross-engine, gerador UUIDv7, repositories/typed query e revisão automática mantêm suas histórias/gates.
+
+Package/CI alterados motivaram novas execuções dos [quatro perfis Docker](evidence/us-014-environments-2026-10-16-us020.json), [12 gates DOM](evidence/us-016-dom-2026-10-16-us020.json) e [oito gates de flags](evidence/us-017-flags-2026-10-16-us020.json). Os relatórios anteriores permanecem históricos. CI postgres-schema configurada, execução remota deste incremento pendente.
+
+pnpm check aprovado localmente com 208 testes Node, quatro novos, além de formatação, lint/fronteiras, contratos/configuração, tipos e build. Nenhum teste foi ignorado. Os sete documentos originais permanecem intactos.
+
+## Cobertura do bootstrap
 
 O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compilação independente dos módulos e limites de dependência/importação. Os testes automatizados exercitam casos permitidos e proibidos do verificador estrutural.
 

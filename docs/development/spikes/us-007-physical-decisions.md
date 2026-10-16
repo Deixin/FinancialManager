@@ -43,6 +43,8 @@ PDF e fila não precisam ser instalados para registrar essa pendência. Não há
 
 ## Continuidade permitida
 
+A US-020 avançou em 2026-10-16: [schema e protocolo PostgreSQL](../postgresql-schema.md), [ADR-0031](../../architecture/adr/0031-schema-inicial-postgresql.md). O lado PostgreSQL de G07-TIME foi testado com UTC ms/DATE/rejeições; a homologação nos bindings SQLCipher e a comparação entre motores continuam abertas. G07-QUERY não foi encerrado: não há repository ou typed query adotado. As queries do ensaio são ferramentas SQL explícitas. RLS de produto fica restritiva/default deny até a integração de autorização, com addon de acesso somente nas fixtures descartáveis.
+
 As US-010/US-011 já têm bootstrap e gates compartilhados, sem integração completa dos frameworks. O próximo incremento independente é US-013: MoneyMinor e regras puras de domínio com fixtures. Ele pode avançar sem escolher prazos DP-01/DP-02, enum DP-03, IdP de produção, PDF ou fila.
 
 US-020/US-021/US-022/US-027 devem produzir schema/migrations e invariantes financeiros comuns, sem copiar como definitivo o schema de qualquer spike. US-002/iOS e US-003/provedores/runtimes continuam com evidências próprias pendentes. DP-04 permanece aberta até a adoção e homologação restantes.

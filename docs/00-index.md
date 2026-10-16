@@ -32,6 +32,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 - [Observabilidade base US-015](development/observability.md), com correlação, OpenTelemetry manual e scrub por allowlist.
 - [Design tokens e shells US-016](development/design-system.md), com exemplo DOM acessível e adaptação Native.
 - [Flags e configuração US-017](development/runtime-configuration.md), com defaults desativados, atualização em execução e autorização separada.
+- [Schema PostgreSQL US-020](development/postgresql-schema.md), com migração versionada, constraints, RLS restritiva e protocolo real.
 - [Implementação e protocolo do spike Desktop US-001](development/spikes/us-001-desktop-vault.md), com [roteiro de homologação externa](development/spikes/us-001-homologation.md).
 - [Implementação e protocolo do spike Mobile US-002](development/spikes/us-002-mobile-vault.md).
 - [Implementação e protocolo local de identidade US-003](development/spikes/us-003-oidc.md).

@@ -1,5 +1,15 @@
 # Estado do projeto
 
+## Fundação — US-020 schema PostgreSQL validado; integração pendente — 2026-10-16
+
+O schema fm entrega 12 tabelas do núcleo, com IDs fornecidos pela aplicação, FKs compostas por workspace, BIGINT exato, DATE/UTC ms, nomes ativos únicos, rateios com soma diferível/locks e revisões imutáveis. Migração inicial usa transação, advisory lock e checksum; repetição é idempotente e falha após DDL não deixa schema parcial. [Guia](../development/postgresql-schema.md), [ADR-0031](../architecture/adr/0031-schema-inicial-postgresql.md).
+
+O [protocolo PostgreSQL real](../quality/evidence/us-020-postgresql-2026-10-16.json) passou em 20 gates, incluindo isolamento/FKs, extremos i64, precisão temporal, concorrência de migração/rateio, histórico, privilégios, logs e limpeza. Bootstrap não faz CRUD financeiro; as fixtures usam logins distintos, permissões explícitas e RLS ativa. A migração de produto tem apenas policies restritivas e nenhum runtime grant, preservando default deny até a policy engine. Quatro testes Node novos cobrem evidência e falhas seguras do runner.
+
+G07-TIME avançou no lado PostgreSQL; SQLCipher/cross-engine continuam pendentes. Não foi fixado typed query/repository (G07-QUERY), enum de membros (DP-03), revisão automática, feed/tombstone, migração dual-engine ou integração NestJS. Nenhuma biblioteca externa de produção, dado real ou deploy. Os sete originais e DP-01/02/04 permanecem preservados. Próxima história: US-021, schema SQLite equivalente, com os gates dos bindings/cofre e tempo.
+
+pnpm check aprovado localmente com 208 testes Node, quatro novos, além de formatação, lint/fronteiras, contratos/configuração, tipos e build. Os [quatro perfis Docker](../quality/evidence/us-014-environments-2026-10-16-us020.json) e os [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us020.json)/[oito de flags](../quality/evidence/us-017-flags-2026-10-16-us020.json) passaram novamente, com limpeza e histórico preservado. São 16 workspaces e 75 documentos Markdown. CI postgres-schema configurada; execução remota deste incremento pendente.
+
 ## Fundação — US-017 implementada; integração de produto pendente — 2026-10-16
 
 runtime-config 0.1.0 fornece configuração pública imutável por ambiente, cinco flags false por padrão, validação estrita e revisão. Gate atualizado em execução bloqueia novas operações, exige autorização independente e consulta novamente após o await. Falha/rollback desliga opcionais; trabalho já iniciado não é interrompido. Domain permanece puro e local continua sem login/nuvem. [Guia](../development/runtime-configuration.md), [ADR-0030](../architecture/adr/0030-flags-e-configuracao-por-ambiente.md).

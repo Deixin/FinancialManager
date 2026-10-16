@@ -151,7 +151,11 @@ function validateEvidence(report, scope, requiredGates, matchSources) {
   if (
     !exactKeys(
       report.source_sha256,
-      hashes ? Object.keys(hashes) : historicalSources,
+      hashes
+        ? Object.keys(hashes)
+        : exactKeys(report.source_sha256, historicalSources)
+          ? historicalSources
+          : Object.keys(sourceHashes()),
     ) ||
     Object.values(report.source_sha256).some(
       (hash) => typeof hash !== 'string' || !/^[a-f0-9]{64}$/.test(hash),
@@ -172,11 +176,11 @@ export function validateUiEvidence(report, { matchSources = true } = {}) {
     matchSources,
   );
 }
-export function validateFlagEvidence(report) {
+export function validateFlagEvidence(report, { matchSources = true } = {}) {
   return validateEvidence(
     report,
     'us017-runtime-flags-synthetic-example',
     flagGates,
-    true,
+    matchSources,
   );
 }

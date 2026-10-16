@@ -9,6 +9,8 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "schema:test": "node infra/schema/run.mjs test",
+    "schema:clean": "node infra/schema/run.mjs clean",
     "config:check": "turbo run build --filter=@financial-manager/runtime-config && node infra/config/check.mjs",
     "ui:serve": "turbo run build && node infra/ui/serve.mjs",
     "ui:check": "turbo run build && node infra/ui/check.mjs && node infra/ui/check-flags.mjs",
