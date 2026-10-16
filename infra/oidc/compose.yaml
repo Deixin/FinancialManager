@@ -1,0 +1,53 @@
+name: financial-manager-us003
+
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.8.0@sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741
+    command: ['start-dev', '--import-realm']
+    environment:
+      KC_HOSTNAME: http://127.0.0.1:43180
+      KC_HTTP_ACCESS_LOG_ENABLED: 'false'
+      KC_LOG_LEVEL: error
+    volumes:
+      - '${US003_ARTIFACTS:?Run the US-003 runner}/realm.json:/opt/keycloak/data/import/us003-realm.json:ro'
+    tmpfs:
+      - /opt/keycloak/data:mode=1777,size=512m
+    mem_limit: 1536m
+    cpus: 2
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+    networks: [isolated]
+    depends_on: [mailpit]
+
+  mailpit:
+    image: axllent/mailpit:v1.27.4@sha256:df6c2541907e1be6fac21f509927cf6ed771617a1f4b361ef66d97bd05593d2d
+    environment:
+      MP_DATABASE: /data/mailpit.db
+      MP_QUIET: 'true'
+    tmpfs:
+      - /data:mode=1777,size=64m
+    mem_limit: 128m
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+    networks: [isolated]
+
+  loopback:
+    image: caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d
+    ports:
+      - '127.0.0.1:43180:8080'
+      - '127.0.0.1:43185:8025'
+    volumes:
+      - './Caddyfile:/etc/caddy/Caddyfile:ro'
+    read_only: true
+    tmpfs: [/config, /data]
+    mem_limit: 64m
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt: ['no-new-privileges:true']
+    networks: [isolated, entry]
+    depends_on: [keycloak, mailpit]
+
+networks:
+  isolated:
+    internal: true
+  entry:

@@ -16,3 +16,5 @@ Evolução parcial de DP-04 em 2026-10-13: US-001 foi validada, incluindo restau
 Os [conceitos visuais](../ux/concepts/README.md) incluem elementos que precisam ser reinterpretados conforme o PRD, como IA, originais anexados, probabilidades, aprovações e compromissos futuros. Uma imagem não amplia o escopo do MVP.
 
 Evolução parcial de DP-04 em 2026-10-15: a US-002 passou na homologação Android, com [evidência](../quality/evidence/us-002-android-2026-10-15.json) e [ADR-0019](adr/0019-spike-cofre-mobile.md). iOS permanece pendente. O instrumento não resolve concessão/expiração de acesso offline da DP-01 nem adota definitivamente a stack de produção.
+
+US-003 também avançou no recorte local em 2026-10-15: [ADR-0020](adr/0020-spike-identidade-oidc-local.md) e [evidência](../quality/evidence/us-003-local-2026-10-15.json). Keycloak local não é a escolha do provider SaaS; conectores Google/Apple, integração Next.js e runtimes nativos permanecem pendentes. DP-04 continua aberta.

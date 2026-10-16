@@ -38,6 +38,8 @@ docs/             Especificações, decisões e referências visuais
 
 Os módulos TypeScript ainda validam a estrutura e a compilação independente. O experimento Desktop fica em apps/desktop/spikes/us-001. O Mobile possui um instrumento Expo em apps/mobile/spikes/us-002, com [protocolo próprio](docs/development/spikes/us-002-mobile-vault.md) e homologação nativa em andamento. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
 
+O instrumento [US-003](docs/development/spikes/us-003-oidc.md) acrescenta provider OIDC local no Docker e BFF Node HTTPS para testar autenticação com dados sintéticos. Ele não integra Next.js nem conclui a homologação Google/Apple ou dos runtimes nativos.
+
 ## Ambiente e comandos
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).

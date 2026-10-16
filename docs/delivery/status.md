@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-003 em andamento — 2026-10-15
+
+Foi implementado o instrumento local OIDC em apps/web/spikes/us-003, com Keycloak separado em Docker, verificação/recuperação de e-mail no Mailpit, BFF Node HTTPS com sessão opaca e client público PKCE. O [protocolo](../development/spikes/us-003-oidc.md) e o [ADR-0020](../architecture/adr/0020-spike-identidade-oidc-local.md) delimitam os resultados e as ameaças. O usuário confirmou que não há ambiente Google/Apple configurado e autorizou a validação local com identidade sintética.
+
+pnpm check aprovado com 31 testes. A [homologação local de navegador](../quality/evidence/us-003-local-2026-10-15.json) passou em Chromium 156.0.8078.4 com 15 verificações de ambiente/protocolo: isolamento Docker, e-mail, recovery, BFF/cookies/CSRF, renovação/logout, PKCE, falhas negativas, rotação/revogação e vínculo/expiração/replay de callback/sessão. Containers próprios, H2/e-mails temporários e arquivos efêmeros foram removidos; não houve uso de contas reais.
+
+Google/Apple, integração Next.js e runtimes nativos com browser externo/deep link/secret store permanecem pendentes; US-003 não está concluída. A homologação iOS da US-002 também continua pendente. Nenhuma política offline, papel ou prazo de retenção das DP-01 a DP-03 foi alterado.
+
 ## W0 — US-002 em andamento — 2026-10-15
 
 Foi implementado o instrumento Expo em apps/mobile/spikes/us-002, com SQLCipher por config plugin, chaves por workspace no SecureStore e contrato experimental de INT64 como strings decimais canônicas. O [protocolo](../development/spikes/us-002-mobile-vault.md) distingue unitários, typecheck, build e execução nativa; o [ADR-0019](../architecture/adr/0019-spike-cofre-mobile.md) justifica as dependências e registra ameaças.
@@ -41,5 +49,6 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 
 1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
 2. Executar os demais spikes W0 e registrar as escolhas físicas nos ADRs.
+   A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
 3. Integrar os frameworks e fundações conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

@@ -1,0 +1,40 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "scope": "local-oidc-protocol",
+  "passed": true,
+  "completed_at_utc": "2026-10-16T01:54:49.365Z",
+  "checks": {
+    "email_verification": true,
+    "bff_cookie_and_browser_storage": true,
+    "csrf_rejection": true,
+    "bff_refresh": true,
+    "logout_local_and_provider": true,
+    "password_recovery_at_provider": true,
+    "public_client_pkce": true,
+    "code_replay_rejected": true,
+    "wrong_verifier_rejected": true,
+    "nonce_and_state_rejected": true,
+    "signature_tampering_rejected": true,
+    "refresh_rotation_and_revocation": true,
+    "callback_binding_expiry_and_replay": true,
+    "session_expiry": true,
+    "docker_isolation": true
+  },
+  "versions": {
+    "chromium": "156.0.8078.4",
+    "keycloak": "26.8.0",
+    "mailpit": "1.27.4",
+    "openid_client": "6.8.8",
+    "playwright": "1.64.1",
+    "caddy": "2.10.2",
+    "node": "24.19.0"
+  },
+  "pending": [
+    "google",
+    "apple",
+    "native-system-browser-deep-link-and-secret-store",
+    "nextjs-integration"
+  ],
+  "containers_and_synthetic_secrets_removed": true
+}

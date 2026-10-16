@@ -1,0 +1,16 @@
+{
+  auto_https off
+  admin off
+  persist_config off
+  log {
+    output discard
+  }
+}
+
+:8080 {
+  reverse_proxy keycloak:8080
+}
+
+:8025 {
+  reverse_proxy mailpit:8025
+}

@@ -22,6 +22,10 @@ O smoke Tauri chama apenas comandos sintéticos sem parâmetros de SQL, arquivos
 
 ## Cobertura a implementar
 
+A US-003 possui [protocolo OIDC local](../development/spikes/us-003-oidc.md) com Keycloak/Mailpit reais e Chromium. Unitários exercitam consumo/expiração de sessão, cookies e fronteiras do callback/identidade; a homologação exercita o grant real, e-mail, recovery, CSRF, renovação, logout, PKCE, assinatura adulterada e rejeições. Google, Apple e integrações nativas/Next.js permanecem pendentes; esse recorte não encerra a história.
+
+O recorte local passou em 2026-10-15: [evidência sanitizada](evidence/us-003-local-2026-10-15.json), 15 verificações e teardown confirmado. A suíte Node contém 31 testes. A evidência não contém identidade, senha, token, código de autorização ou link de recuperação.
+
 A US-002 possui [protocolo próprio](../development/spikes/us-002-mobile-vault.md), unitários de INT64/relatórios e typecheck Expo. A homologação de SQLCipher/SecureStore depende de build nativo e execução em cada plataforma. Prebuild ou typecheck aprovados não encerram o teste de segurança. O instrumento prepara dados sintéticos, reabre após reinício e limpa seus próprios artefatos.
 
 Android passou no emulador AOSP Android 16/API 36 x86_64: [evidência sanitizada](evidence/us-002-android-2026-10-15.json), com SQLCipher 4.17.0 community, bibliotecas de runtime conferidas no APK, três fases nativas e reinício completo sem rede. iOS segue pendente; nenhum resultado Android é usado para encerrar essa homologação. pnpm test contém 25 testes, incluindo regressão para OpenSSL ausente ou empacotado no ABI errado.
