@@ -1,5 +1,11 @@
 # Plano de testes
 
+## Migrations dual-engine — US-022
+
+O [protocolo](../development/schema-migrations.md) verifica instalação vazia, adoção v1, up/down reversível, idempotência e dois migradores concorrentes. Seis encerramentos forçados por engine cobrem DDL/histórico/pré-commit em ambos os sentidos, com recuperação do histórico/índice e preservação de snapshots. O corpus financeiro de 33 casos passa nos dois bancos após evolução. Verificam-se recusa de checksum/alvo/histórico/inversa inválidos, mudanças destrutivas, runners antigos, RLS/FORCE RLS, privilégios do histórico, logs e limpeza. [Evidência real](evidence/us-022-migrations-2026-10-16.json), [ADR-0033](../architecture/adr/0033-migrations-dual-engine.md).
+
+Oito testes Node novos cobrem plano/catálogo, compatibilidade explícita, migração SQLite real, rollback de vários passos, recusa destrutiva antes de acesso, sanitização e integridade da evidência. CI dual-migrations configurada; integração/homologação do novo runner nos hosts nativos, backup destrutivo e adaptadores de cliente API permanecem pendentes.
+
 ## Schema SQLite e equivalência — US-021
 
 FIN-SCHEMA-001 contém 33 casos persistidos, executados em PostgreSQL/SQLite e nos bindings SQLCipher Windows/Android. Compara saldos/consumo/cartão, i64, datas/UTC, paginação, FKs, categoria/subcategoria, rateio completo/atômico/carry/INT64_MIN, histórico e normalização. Dez gates duais cobrem migração/FK/guard, dois escritores reais, reabertura, local sem identidade, RLS/logs/limpeza. [Dual](evidence/us-021-dual-engine-2026-10-16.json), [Windows](evidence/us-021-desktop-2026-10-16.json), [Android](evidence/us-021-android-2026-10-16.json), [guia](../development/sqlite-schema.md), [ADR-0032](../architecture/adr/0032-schema-sqlite-e-equivalencia.md).

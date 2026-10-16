@@ -1,5 +1,15 @@
 # Estado do projeto
 
+## Fundação — US-022 framework validado; adoção nos hosts pendente — 2026-10-16
+
+O subpath migrations de storage-schema oferece verificação SHA-256, planejamento integral, histórico contíguo e runner SQLite. A ferramenta PostgreSQL usa o mesmo planejador, role dedicada e advisory lock do baseline. O catálogo conserva a versão 1 e acrescenta a versão 2 reversível: histórico técnico ampliado e índice derivado, sem reescrever dados financeiros. Downgrade é explícito; migrations destrutivas são recusadas até integração do snapshot protegido. Nenhuma dependência externa de produção nova. [Guia](../development/schema-migrations.md), [ADR-0033](../architecture/adr/0033-migrations-dual-engine.md).
+
+O [protocolo real](../quality/evidence/us-022-migrations-2026-10-16.json) passou em PostgreSQL 18.6/SQLite 3.53.3, com dez gates. Foram seis encerramentos forçados por engine, em up/down após DDL/histórico e antes de commit, sem estado intermediário persistido ou alteração dos snapshots financeiros. Instalação vazia, adoção v1, concorrência, idempotência, planos inválidos, runners antigos e 33 casos financeiros por engine passaram. RLS/FORCE RLS e privilégios do histórico foram preservados; arquivos, segredo, contêiner e rede próprios removidos.
+
+Oito testes Node novos cobrem comportamento e evidência; job dual-migrations configurado. Integração/homologação do novo runner nos hosts Rust/Expo, backup_manifest/restore, mudanças destrutivas e adaptadores de clientes API continuam nas histórias próprias. A evidência nativa da US-021 conserva seu alcance anterior. G07-VAULT e DP-01 a DP-04 permanecem abertos; nenhum dado real, deploy ou formato de backup alterado. Próxima história: US-023, UUIDv7/política temporal por plataforma.
+
+pnpm check aprovado localmente com 224 testes Node, além de formatação, lint/fronteiras, contratos/geração/configuração, tipos e build. São 17 workspaces e 80 documentos Markdown. Os [quatro perfis Docker](../quality/evidence/us-014-environments-2026-10-16-us022.json), [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us022.json) e [oito de flags](../quality/evidence/us-017-flags-2026-10-16-us022.json) passaram novamente. Evidências anteriores e sete documentos originais preservados. Execução remota da CI deste incremento pendente.
+
 ## Fundação — US-021 equivalente nos casos homologados; cofre de produto/iOS pendentes — 2026-10-16
 
 storage-schema 0.1.0 entrega a migração SQLite das 12 entidades financeiras, com STRICT, FKs por workspace, i64, calendário/UTC ms, índices, revisão imutável e rateio completo no commit. Um guard com FK diferível e soma por componentes inteiros evita float/overflow, inclusive em INT64_MIN. O pacote é interno a Desktop/Mobile; Domain segue independente e não há biblioteca externa de produção nova. [Guia](../development/sqlite-schema.md), [ADR-0032](../architecture/adr/0032-schema-sqlite-e-equivalencia.md).

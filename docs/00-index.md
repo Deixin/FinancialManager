@@ -34,6 +34,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 - [Flags e configuração US-017](development/runtime-configuration.md), com defaults desativados, atualização em execução e autorização separada.
 - [Schema PostgreSQL US-020](development/postgresql-schema.md), com migração versionada, constraints, RLS restritiva e protocolo real.
 - [Schema SQLite e equivalência US-021](development/sqlite-schema.md), com corpus compartilhado e SQLCipher real Windows/Android.
+- [Framework de migrations US-022](development/schema-migrations.md), com up/down e recuperação após término de processos PostgreSQL/SQLite.
 - [Implementação e protocolo do spike Desktop US-001](development/spikes/us-001-desktop-vault.md), com [roteiro de homologação externa](development/spikes/us-001-homologation.md).
 - [Implementação e protocolo do spike Mobile US-002](development/spikes/us-002-mobile-vault.md).
 - [Implementação e protocolo local de identidade US-003](development/spikes/us-003-oidc.md).

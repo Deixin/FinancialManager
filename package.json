@@ -9,6 +9,10 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "schema:migrations:generate": "node infra/schema/generate-migrations.mjs",
+    "schema:migrations:check": "node infra/schema/generate-migrations.mjs --check",
+    "schema:migrations:test": "turbo run build --filter=@financial-manager/storage-schema && node infra/schema/migrations.mjs",
+    "schema:migrations:clean": "node infra/schema/migrations-clean.mjs",
     "schema:sqlite:generate": "node infra/schema/generate-sqlite.mjs",
     "schema:sqlite:check": "node infra/schema/generate-sqlite.mjs --check",
     "schema:dual:test": "turbo run build --filter=@financial-manager/storage-schema && node infra/schema/dual.mjs",
@@ -53,7 +57,7 @@
     "spike:desktop:vm:test": "node infra/homologation/us001-run.mjs",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
-    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check",
+    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check && pnpm schema:migrations:check",
     "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",

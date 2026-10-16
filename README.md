@@ -59,7 +59,9 @@ A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida repre
 
 ## Ambiente e comandos
 
-A [US-021](docs/development/sqlite-schema.md) acrescenta schema SQLite equivalente, rateios diferíveis sem float e migração inicial compartilhada. Os mesmos 33 casos persistidos passaram em PostgreSQL, SQLite e SQLCipher real no Windows/Android. Use pnpm schema:dual:test e os comandos schema:native do guia. iOS, adoção no cofre de produto e framework completo de migrations continuam pendentes.
+A [US-022](docs/development/schema-migrations.md) entrega o framework PostgreSQL/SQLite: catálogo/checksums, plano integral, serialização e up/down explícitos. pnpm schema:migrations:test verifica instalação vazia, concorrência e seis interrupções forçadas por engine com preservação de dados; schema:migrations:clean remove somente recursos próprios. O catálogo inclui um índice reversível; integração aos cofres/hosts nativos e mudanças destrutivas com backup seguem nas histórias próprias.
+
+A [US-021](docs/development/sqlite-schema.md) acrescenta schema SQLite equivalente, rateios diferíveis sem float e migração inicial compartilhada. Os mesmos 33 casos persistidos passaram em PostgreSQL, SQLite e SQLCipher real no Windows/Android. Use pnpm schema:dual:test e os comandos schema:native do guia. iOS e adoção no cofre de produto continuam pendentes; o framework de migrations avançou na US-022.
 
 A [US-020](docs/development/postgresql-schema.md) entrega a migração SQL inicial do núcleo financeiro PostgreSQL: 12 tabelas com FKs por workspace, BIGINT exato, rateios diferíveis e revisões imutáveis. pnpm schema:test executa 20 gates em banco real descartável; schema:clean limpa somente essa instância sintética. A migração mantém RLS restritiva e não concede acesso de runtime antes da policy engine. Não é aplicada automaticamente aos perfis US-014.
 

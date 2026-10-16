@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0033 — Migrations dual-engine](0033-migrations-dual-engine.md): framework validado em PostgreSQL/SQLite com interrupções de processo; adoção nativa/cofre e mudanças destrutivas pendentes.
+
 [0032 — Schema SQLite e equivalência persistida](0032-schema-sqlite-e-equivalencia.md): fundação validada nos casos homologados em PostgreSQL/SQLite e SQLCipher Windows/Android; cofre de produto e iOS pendentes.
 
 [0031 — Schema financeiro inicial PostgreSQL](0031-schema-inicial-postgresql.md): adotado para a US-020, com migração/constraints validadas; policy engine, repositories e cross-engine pendentes.

@@ -1,5 +1,7 @@
 # Política de fixtures
 
+A [US-022](../development/schema-migrations.md) reutiliza FIN-SCHEMA-001 em bancos descartáveis, adicionando somente objetos técnicos sintéticos para testar migrations inválidas/irreversíveis. Doze processos são encerrados nos checkpoints de up/down PostgreSQL/SQLite. Snapshots financeiros são comparados por hash somente em memória; o relatório contém contagens/gates/versões/hashes de fontes, sem linhas ou hashes financeiros. Bancos, journals, segredo, contêiner e rede próprios são removidos ao final.
+
 Use apenas dados sintéticos, identificados como fictícios. Nunca copie bases, extratos, notas fiscais, backups, CPF/CNPJ ou credenciais reais.
 
 O pacote packages/test-fixtures contém o cenário FIN-001 da [US-013](../development/domain-core.md): contas, referências, compra/pagamento/estorno de cartão, transferência e totais mensais esperados, todos fictícios. Testes específicos de um pacote podem manter fixtures próximas ao teste. Arquivos CSV, XLSX, XML e PDF não são bloqueados globalmente pelo Git porque também podem conter exemplos sintéticos legítimos; revise seu conteúdo antes de adicionar.
