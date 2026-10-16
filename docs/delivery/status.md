@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Fundação — US-013 implementada — 2026-10-16
+
+packages/domain agora entrega MoneyMinor como string canônica i64, aritmética BigInt sem float monetário, rateios exatos, saldo por referência com início/fim do dia e cobertura explícita, consolidação de ativos/passivos e planos imutáveis de transferência/pagamento de cartão. O resumo por período separa consumo e caixa; pagamento não duplica despesa e estorno pertence à própria data. [API e cenário](../development/domain-core.md), [ADR-0025](../architecture/adr/0025-nucleo-monetario-puro.md).
+
+Foram acrescentados 35 testes comportamentais e contratos negativos de tipos. FIN-001 em test-fixtures contém apenas dados sintéticos e totais esperados independentes. pnpm check aprovado localmente com 115 testes Node, além de tipos, lint/fronteiras, formatação e build. A única nova dependência é interna, test-fixtures → domain; o núcleo não tem dependências de produção. Nenhum schema ou documento original foi alterado.
+
+O resultado conclui o núcleo puro exigido pela US-013; não entrega persistência transacional, API/OpenAPI, autorização, conciliação de importações ou interfaces. A próxima história independente é US-012, para versionar contratos e gerar clientes tipados usando a representação monetária comum. A adoção de schema/cofres continua sujeita aos gates G07 e US-020 a US-027. DP-01 a DP-04 e homologações pendentes não foram encerradas. A CI remota deste incremento ainda não foi executada.
+
 ## W0 — US-007 consolidada com gates explícitos — 2026-10-16
 
 O [ADR-0024](../architecture/adr/0024-consolidacao-fisica-e-gates.md) registra os seis itens de aceite: UUID SQLite, timestamps, binding SQLCipher, typed query, job queue e PDF parser. Cada item tem proposta concreta, evidência e gate de adoção. O [protocolo](../development/spikes/us-007-physical-decisions.md) define G07-IDS/TIME/VAULT/QUERY/JOBS/PDF, as histórias afetadas, ambientes e critérios de saída. Não há aprovação humana formal de produção registrada; a história está concluída como consolidação conforme o aceite, que permite spikes pendentes explícitos.

@@ -4,7 +4,13 @@
 
 O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compilação independente dos módulos e limites de dependência/importação. Os testes automatizados exercitam casos permitidos e proibidos do verificador estrutural.
 
-Essa cobertura não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks.
+A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
+
+## Núcleo puro da US-013
+
+35 testes comportamentais novos executam a API pública compilada de domain, com FIN-001 compartilhada por test-fixtures: precisão acima de 2^53, extremos i64/overflow, JSON textual canônico, rateios, referência no início/fim do dia, exclusão de staging/deleted, cobertura incompleta, escopo, moeda, consolidação, planos compostos, pagamento parcial/crédito de cartão, períodos e estornos. Totais mensais são golden values escritos independentemente dos cálculos. Testes de tipos rejeitam Number, strings não validadas e mutação de plano. [API, cenário e comandos](../development/domain-core.md); [ADR-0025](../architecture/adr/0025-nucleo-monetario-puro.md).
+
+pnpm test constrói domain/test-fixtures antes de importar seus exports, inclusive sem dist prévio. pnpm check executa formatação, lint/fronteiras, tipos, 115 testes Node e build. Esta prova é do núcleo puro: atomicidade em banco, equivalência financeira PostgreSQL/SQLCipher, autorização, UI e runtimes nativos continuam nas histórias específicas. A CI quality já chama o mesmo comando em Windows/Linux; execução remota deste incremento pendente.
 
 ## Preparação da US-001
 

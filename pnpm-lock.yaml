@@ -136,6 +136,10 @@ importers:
         version: link:../config
 
   packages/test-fixtures:
+    dependencies:
+      '@financial-manager/domain':
+        specifier: workspace:*
+        version: link:../domain
     devDependencies:
       '@financial-manager/config':
         specifier: workspace:*

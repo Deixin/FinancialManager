@@ -36,7 +36,7 @@
     "check:repo": "node infra/scripts/check-repository.mjs",
     "lint": "eslint . --max-warnings 0 && pnpm check:repo",
     "typecheck": "turbo run typecheck",
-    "test": "node --test infra/scripts/*.test.mjs",
+    "test": "turbo run build --filter=@financial-manager/test-fixtures... && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

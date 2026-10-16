@@ -15,3 +15,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0022 — Sincronização entre dois clientes](0022-spike-sincronizacao-dois-clientes.md) | Validado como spike; integração ao produto pendente         | Fila durável, feed, tombstones e conflitos US-005         |
 | [0023 — Parsers OFX/CSV e benchmark](0023-spike-parsers-ofx-csv.md)                   | Validado como spike; integração ao produto pendente         | Staging, normalização e benchmark 10k US-006              |
 | [0024 — Consolidação física e gates](0024-consolidacao-fisica-e-gates.md)             | Propostas consolidadas; aprovação/adoção por gate pendentes | Seis decisões físicas, representações e pendências US-007 |
+| [0025 — Núcleo monetário puro](0025-nucleo-monetario-puro.md)                         | Adotado no núcleo; integrações pendentes                    | MoneyMinor, saldos, transferências e cartões US-013       |

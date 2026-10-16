@@ -11,6 +11,9 @@
   "devDependencies": {
     "@financial-manager/config": "workspace:*"
   },
+  "dependencies": {
+    "@financial-manager/domain": "workspace:*"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
