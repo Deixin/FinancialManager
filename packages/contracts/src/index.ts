@@ -1,4 +1,22 @@
 export {
+  IdentityError,
+  resourceId,
+  uuidV7,
+  encodeUuidV7,
+  uuidV7Milliseconds,
+  createIdentityRuntime,
+  createCryptoIdentity,
+  MAX_UUID_MILLISECONDS,
+} from './identity.js';
+export type {
+  ResourceId,
+  UuidV7,
+  IdentityErrorCode,
+  IdentityPorts,
+  IdentityRuntime,
+  SecureRandomProvider,
+} from './identity.js';
+export {
   createV1Client,
   parseListAccountsInput,
   parseGetAccountBalanceInput,

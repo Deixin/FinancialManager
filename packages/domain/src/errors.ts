@@ -4,6 +4,7 @@ export type DomainErrorCode =
   | 'UNSUPPORTED_CURRENCY'
   | 'INVALID_ID'
   | 'INVALID_DATE'
+  | 'INVALID_INSTANT'
   | 'INVALID_ACCOUNT'
   | 'SCOPE_MISMATCH'
   | 'DUPLICATE_ID'

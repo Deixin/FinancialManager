@@ -2,6 +2,8 @@
 
 Registro inicial de divergências encontradas na documentação v1.0. Nenhuma delas impede organizar o repositório; devem ser resolvidas antes da implementação afetada.
 
+Avanço US-023 em 2026-10-16: [ADR-0034](adr/0034-uuidv7-e-politica-temporal.md) implementa UUIDv7/CSPRNG e codecs temporais nas plataformas disponíveis, com RFC, relógio fixo/regressivo, instâncias independentes e persistência. G07-IDS/TIME mantêm iOS pendente. G07-QUERY precede US-024; comandos de produto/cofre/restore permanecem em G07-VAULT. Nenhuma duração offline, retenção ou papel foi escolhida; DP-01 a DP-04 continuam abertas.
+
 Avanço US-022 em 2026-10-16: [ADR-0033](adr/0033-migrations-dual-engine.md) valida histórico/checksum, up/down não destrutivo e recuperação após término de processos PostgreSQL/SQLite. G07-VAULT exige adoção nos hosts, backup_manifest/restore e snapshot protegido antes de migrations destrutivas. A função de compatibilidade não define a janela de clientes da API. DP-01 a DP-04 e G07-IDS/QUERY/JOBS/PDF seguem abertos nos seus escopos.
 
 Avanço US-021 em 2026-10-16: [ADR-0032](adr/0032-schema-sqlite-e-equivalencia.md) e [protocolo](../development/sqlite-schema.md) validam o corpus persistido em PostgreSQL, SQLite e SQLCipher Windows/Android. G07-TIME avançou nesses recortes; iOS e corpus ampliado continuam pendentes. G07-VAULT exige adoção no validador/migração/backup do cofre de produto. G07-IDS/QUERY/JOBS/PDF e DP-01 a DP-04 não foram encerrados.

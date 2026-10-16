@@ -7,7 +7,7 @@
   "main": "spikes/us-002/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p spikes/us-002/tsconfig.json && tsc -p spikes/us-021/tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p spikes/us-002/tsconfig.json && tsc -p spikes/us-021/tsconfig.json && tsc -p spikes/us-023/tsconfig.json",
     "start": "expo start",
     "native:prebuild": "expo prebuild",
     "android": "expo run:android",

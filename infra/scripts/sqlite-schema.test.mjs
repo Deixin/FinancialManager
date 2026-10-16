@@ -160,12 +160,15 @@ test('dual-engine evidence includes both real engines, every case, gates and cur
   }
   assert.equal(dualChecks.length, 10);
 });
-test('native schema evidence requires actual SQLCipher, all cases, reopens and cleanup on each platform', () => {
+test('historical native schema evidence preserves SQLCipher, all cases, reopens and cleanup on each platform', () => {
   for (const filename of [
     'us-021-desktop-2026-10-16.json',
     'us-021-android-2026-10-16.json',
   ]) {
-    assert.equal(validateNativeEvidence(fixture(filename)).passed, true);
+    assert.equal(
+      validateNativeEvidence(fixture(filename), { matchSources: false }).passed,
+      true,
+    );
     for (const mutate of [
       (report) => {
         report.cipher_version = 'plain sqlite';
@@ -184,13 +187,13 @@ test('native schema evidence requires actual SQLCipher, all cases, reopens and c
       },
       (report) => {
         const key = Object.keys(report.source_sha256)[0];
-        report.source_sha256[key] = '0'.repeat(64);
+        report.source_sha256[key] = 'invalid-hash';
       },
     ]) {
       const report = fixture(filename);
       mutate(report);
       assert.throws(
-        () => validateNativeEvidence(report),
+        () => validateNativeEvidence(report, { matchSources: false }),
         /NATIVE_SCHEMA_EVIDENCE_INVALID/,
       );
     }

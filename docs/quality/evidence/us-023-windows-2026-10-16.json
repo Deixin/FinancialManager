@@ -1,0 +1,42 @@
+{
+  "checks": {
+    "canonical_temporal_vectors": true,
+    "clock_regression_and_independent_generators": true,
+    "increasing_clock_order": true,
+    "legacy_and_invalid_ids": true,
+    "rfc_vector": true,
+    "same_millisecond_csprng": true,
+    "sqlcipher_roundtrip_reopen_and_cleanup": true
+  },
+  "cipher_version": "4.14.0 community",
+  "format_version": 1,
+  "passed": true,
+  "platform": "windows",
+  "same_millisecond_sample_count": 4096,
+  "sqlite_version": "3.51.3",
+  "synthetic_only": true,
+  "scope": "us023-native-identity-time",
+  "source_sha256": {
+    "packages/domain/src/time.ts": "5d42445fc33226c9fa3b9040af3d09855a4017d4d0b0e424525f4e854bb1b82a",
+    "packages/domain/src/model.ts": "32c92ec8d41679aa483baafa5f8ecca205a480d224b4ec29425c51342d168494",
+    "packages/domain/src/errors.ts": "531fc11f6b3c934798108cb6864574f4276b6c3ab21dcb7af23efa152ac8cb78",
+    "packages/domain/src/index.ts": "4ad96ba557a995660747763d817b55f2e1d80bdabbb8b0cc1c2e25c7336dc589",
+    "packages/contracts/src/identity.ts": "c676364ac18bd50fa079229080dd5d57358b94e8b8899688402d305ac0c972bb",
+    "packages/contracts/src/identity-probe.ts": "1590efdb47f46370113c25ba011e880f8acda7efe66cf760c1b22758459fa52d",
+    "packages/contracts/src/generated/identity-vectors.ts": "07eccc4ff9f5b0350f325db230c833d2efa89dcbc489ab97cefd54d77e53fe97",
+    "packages/contracts/src/formats.ts": "bfdf575ba2cbba1838ff1fe52572b807f93e2b14948479928333ef7854b9d4e0",
+    "packages/contracts/src/index.ts": "3b120a8a0dc7aaa6fb80539a8359223636717ad9ef19641984939db114b644cd",
+    "packages/contracts/fixtures/us023.json": "fdafa6eab2f0777a31b0330e9fac2d3ff29cdc1f080f61c7ff7138b2861c18af",
+    "infra/identity/evidence.mjs": "4f2cd3f0aaf5a2ea501628ad069881f1c0f7cc0d83231087af65e37e38c2f1ea",
+    "apps/desktop/spikes/us-001/src/identity.rs": "b0abe8f7bda4d8574573ca35c30797b23b8cc43bec205f71ce5efc9116ec50c1",
+    "apps/desktop/spikes/us-001/src/lib.rs": "4f86390221019379f662eeca3b0284438739ea1d10938154c4202d8acb9cd097",
+    "apps/desktop/spikes/us-001/src/vault.rs": "af2f16fb01340c7092ae0d30dfe43595c1b52993aab80c493f06e42eae464f1d",
+    "apps/desktop/spikes/us-001/Cargo.toml": "68b6d396623018d1d3b89feb49a7a1a8e9a3f0cf7af1ac33cec764eadcf3ca32",
+    "apps/desktop/spikes/us-001/Cargo.lock": "edf9bfdb04d31841832e908fbcc719c2b74d38e016ef92756015dda97c22f37f",
+    "apps/desktop/spikes/us-001/tests/us023_identity.rs": "969b64624818ca6bc33ecb91d0096aec1ebcc7525c472fdeed7a45d1b2698538",
+    "packages/storage-schema/sqlite/migrations/0001-financial-core.sql": "2bda88a05a988952abe11591b02648a097cbc532eced750367d33c0b417f37b8",
+    "infra/identity/native.mjs": "3429d0f05a9b8e11164f4a625942a49050985b8be077cf0604cbcdf6be500ecd"
+  },
+  "completed_at_utc": "2026-10-16T23:31:43.575Z",
+  "pending": ["ios-runtime", "product-command-and-repository-integration"]
+}

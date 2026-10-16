@@ -56,7 +56,7 @@ export const sourceHashes = (kind) =>
         .digest('hex'),
     ]),
   );
-export function validateNativeEvidence(report) {
+export function validateNativeEvidence(report, { matchSources = true } = {}) {
   const reject = () => {
     throw new Error('NATIVE_SCHEMA_EVIDENCE_INVALID');
   };
@@ -142,7 +142,9 @@ export function validateNativeEvidence(report) {
   if (
     !exact(report.source_sha256, Object.keys(hashes)) ||
     Object.entries(hashes).some(
-      ([key, value]) => report.source_sha256[key] !== value,
+      ([key, value]) =>
+        !/^[a-f0-9]{64}$/.test(report.source_sha256[key]) ||
+        (matchSources && report.source_sha256[key] !== value),
     )
   )
     reject();

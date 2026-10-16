@@ -59,6 +59,8 @@ A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida repre
 
 ## Ambiente e comandos
 
+A [US-023](docs/development/identity-and-time.md) acrescenta UUIDv7 por host e codecs UTC/ms/data financeira, preservando IDs antigos. identity:test verifica Node/Chromium/PostgreSQL/SQLite; identity:native:windows e os comandos Android validam CSPRNG e persistência SQLCipher nos runtimes reais. Instantes e IDs não arbitram conflitos ou datas financeiras. Integração dos fluxos de produto e iOS permanecem pendentes.
+
 A [US-022](docs/development/schema-migrations.md) entrega o framework PostgreSQL/SQLite: catálogo/checksums, plano integral, serialização e up/down explícitos. pnpm schema:migrations:test verifica instalação vazia, concorrência e seis interrupções forçadas por engine com preservação de dados; schema:migrations:clean remove somente recursos próprios. O catálogo inclui um índice reversível; integração aos cofres/hosts nativos e mudanças destrutivas com backup seguem nas histórias próprias.
 
 A [US-021](docs/development/sqlite-schema.md) acrescenta schema SQLite equivalente, rateios diferíveis sem float e migração inicial compartilhada. Os mesmos 33 casos persistidos passaram em PostgreSQL, SQLite e SQLCipher real no Windows/Android. Use pnpm schema:dual:test e os comandos schema:native do guia. iOS e adoção no cofre de produto continuam pendentes; o framework de migrations avançou na US-022.

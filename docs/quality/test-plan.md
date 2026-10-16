@@ -1,5 +1,9 @@
 # Plano de testes
 
+## UUIDv7 e tempo — US-023
+
+O [protocolo](../development/identity-and-time.md) compara vetor RFC, versão/variante, 4096 IDs em ms fixo, avanço/regressão de relógio, instâncias independentes, fonte segura obrigatória e legado preservado. Calendário/UTC estritos rejeitam offsets, precisão excessiva e leap seconds. Quatro fusos rodam em processos Node/Chromium reais; PostgreSQL nativo, SQLite e SQLCipher Windows/Android exercitam persistência. Um teste financeiro impede usar ordem de UUID como ordem econômica. [Node](evidence/us-023-node-2026-10-16.json), [Windows](evidence/us-023-windows-2026-10-16.json), [Android](evidence/us-023-android-2026-10-16.json), [ADR-0034](../architecture/adr/0034-uuidv7-e-politica-temporal.md). iOS e integração de produto permanecem pendentes.
+
 ## Migrations dual-engine — US-022
 
 O [protocolo](../development/schema-migrations.md) verifica instalação vazia, adoção v1, up/down reversível, idempotência e dois migradores concorrentes. Seis encerramentos forçados por engine cobrem DDL/histórico/pré-commit em ambos os sentidos, com recuperação do histórico/índice e preservação de snapshots. O corpus financeiro de 33 casos passa nos dois bancos após evolução. Verificam-se recusa de checksum/alvo/histórico/inversa inválidos, mudanças destrutivas, runners antigos, RLS/FORCE RLS, privilégios do histórico, logs e limpeza. [Evidência real](evidence/us-022-migrations-2026-10-16.json), [ADR-0033](../architecture/adr/0033-migrations-dual-engine.md).

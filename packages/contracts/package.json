@@ -19,7 +19,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./openapi/v1.json": "./openapi/v1.json"
+    "./openapi/v1.json": "./openapi/v1.json",
+    "./identity-probe": "./dist/identity-probe.js"
   },
   "files": [
     "dist",

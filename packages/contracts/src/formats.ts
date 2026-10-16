@@ -1,4 +1,9 @@
-import { moneyMinor, financialDate } from '@financial-manager/domain';
+import {
+  moneyMinor,
+  financialDate,
+  utcInstant,
+} from '@financial-manager/domain';
+import { resourceId } from './identity.js';
 
 function isMoney(value: string): boolean {
   try {
@@ -17,12 +22,12 @@ function isDate(value: string): boolean {
   }
 }
 function isInstant(value: string): boolean {
-  return (
-    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value) &&
-    isDate(value.slice(0, 10)) &&
-    Number.isFinite(Date.parse(value)) &&
-    new Date(value).toISOString() === value
-  );
+  try {
+    utcInstant(value);
+    return true;
+  } catch {
+    return false;
+  }
 }
 /** Called by precompiled validators. No evaluation or schema compilation at runtime. */
 export const formatValidators = Object.freeze({
@@ -31,10 +36,14 @@ export const formatValidators = Object.freeze({
     validate: (value: string) => isMoney(value) && BigInt(value) > 0n,
   },
   uuid: {
-    validate: (value: string) =>
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(
-        value,
-      ),
+    validate: (value: string) => {
+      try {
+        resourceId(value);
+        return true;
+      } catch {
+        return false;
+      }
+    },
   },
   date: { validate: isDate },
   'date-time': { validate: isInstant },

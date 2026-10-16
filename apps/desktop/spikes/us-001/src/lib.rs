@@ -3,6 +3,7 @@
 pub mod backup;
 #[cfg(windows)]
 pub mod demo;
+pub mod identity;
 pub mod secrets;
 pub mod vault;
 

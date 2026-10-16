@@ -56,6 +56,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@financial-manager/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@financial-manager/observability':
         specifier: workspace:*
         version: link:../../packages/observability
@@ -78,6 +81,9 @@ importers:
       '@financial-manager/design-tokens':
         specifier: workspace:*
         version: link:../../packages/design-tokens
+      '@financial-manager/domain':
+        specifier: workspace:*
+        version: link:../../packages/domain
       '@financial-manager/runtime-config':
         specifier: workspace:*
         version: link:../../packages/runtime-config
@@ -165,6 +171,9 @@ importers:
 
   apps/worker:
     dependencies:
+      '@financial-manager/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
       '@financial-manager/observability':
         specifier: workspace:*
         version: link:../../packages/observability

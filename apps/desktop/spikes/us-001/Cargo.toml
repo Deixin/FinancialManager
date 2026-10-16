@@ -14,6 +14,7 @@ desktop-ui = ["dep:tauri", "dep:tauri-build"]
 aes-gcm = { version = "=0.11.1", features = ["zeroize"] }
 argon2 = { version = "=0.6.0", features = ["zeroize"] }
 getrandom = "=0.4.3"
+chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
 rusqlite = { version = "=0.40.2", features = ["bundled-sqlcipher-vendored-openssl"] }
 serde = { version = "=1.0.229", features = ["derive"] }
 serde_json = "=1.0.154"

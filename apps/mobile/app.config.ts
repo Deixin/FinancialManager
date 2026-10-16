@@ -17,6 +17,7 @@ const config: ExpoConfig = {
     supportsTablet: true,
   },
   plugins: [
+    './spikes/us-023/with-identity-probe.cjs',
     './spikes/us-021/with-schema-probe.cjs',
     './spikes/us-002/with-android-build.cjs',
     ['expo-sqlite', { useSQLCipher: true, enableFTS: false }],

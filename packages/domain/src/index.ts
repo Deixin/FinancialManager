@@ -1,6 +1,14 @@
 export { DomainError } from './errors.js';
 export type { DomainErrorCode } from './errors.js';
 export {
+  utcInstant,
+  instantFromEpochMilliseconds,
+  instantEpochMilliseconds,
+  MIN_INSTANT_MILLISECONDS,
+  MAX_INSTANT_MILLISECONDS,
+} from './time.js';
+export type { UtcInstant } from './time.js';
+export {
   MAX_MONEY_MINOR,
   MIN_MONEY_MINOR,
   moneyMinor,
