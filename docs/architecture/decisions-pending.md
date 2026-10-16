@@ -2,6 +2,8 @@
 
 Registro inicial de divergências encontradas na documentação v1.0. Nenhuma delas impede organizar o repositório; devem ser resolvidas antes da implementação afetada.
 
+US-007 consolidada em 2026-10-16 no [ADR-0024](adr/0024-consolidacao-fisica-e-gates.md): os seis itens de aceite possuem propostas/evidências ou gates pendentes explícitos no [protocolo](../development/spikes/us-007-physical-decisions.md). O probe SQLite aprovou armazenamento de UUID, datas/instantes e decimais; não homologa bindings nativos, PostgreSQL, geradores ou novas bibliotecas. DP-04 continua aberta para adoção e validações restantes. DP-01, DP-02 e DP-03 não foram resolvidas por essa consolidação.
+
 | ID    | Assunto                             | Evidência                                                                                                                                                        | Decisão necessária                                                                                                 |
 | ----- | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | DP-01 | Validade de acesso offline em nuvem | [PRD](../product/01-prd.md), RF-31: revalidação em até 24 horas. [Arquitetura](04-technical-architecture.md), política offline e ADR-014: proposta de 7 dias.    | Aprovar prazo e alinhar produto, contratos e testes.                                                               |

@@ -46,6 +46,8 @@ O instrumento [US-005](docs/development/spikes/us-005-sync.md) valida sincroniza
 
 O instrumento [US-006](docs/development/spikes/us-006-parsers.md) valida OFX/CSV com mapping, normalização exata e staging sem alterar saldo. Execute pnpm spike:importers:test para o benchmark de 10 mil linhas, cancelamento e corpus hostil; não exige Docker nem extrato real. Interface e confirmação financeira de produto seguem pendentes.
 
+A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida representações e candidatos físicos, com gates antes de adoção. Execute pnpm spike:physical:test para validar UUID TEXT, UTC/DATE e decimal exato em SQLite sintético. A consolidação mantém explícitas as homologações nativas, typed-query, fila e PDF pendentes; não encerra toda a W0.
+
 ## Ambiente e comandos
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).

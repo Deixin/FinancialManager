@@ -32,6 +32,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 - [Implementação e protocolo de isolamento PostgreSQL US-004](development/spikes/us-004-postgresql-rls.md).
 - [Implementação e protocolo de sincronização entre dois clientes US-005](development/spikes/us-005-sync.md).
 - [Implementação e benchmark de parsers OFX/CSV US-006](development/spikes/us-006-parsers.md).
+- [Consolidação física e gates de adoção US-007](development/spikes/us-007-physical-decisions.md).
 - [ADRs](architecture/adr/README.md).
 - [Conceitos visuais](ux/concepts/README.md), usados como referência visual.
 - [Fixtures](quality/fixtures.md), [plano de testes](quality/test-plan.md) e [modelo de ameaças inicial](quality/threat-model.md).

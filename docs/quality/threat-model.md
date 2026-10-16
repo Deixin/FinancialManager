@@ -2,6 +2,8 @@
 
 Status: roteiro inicial; análise completa e validação ainda pendentes.
 
+O [ADR-0024](../architecture/adr/0024-consolidacao-fisica-e-gates.md) delimita a US-007: representação não canônica, perda de precisão/fuso, FK entre espaços e adoção de adaptador sem preservar autorização/transação. O probe prova somente representações SQLite. Os gates de query/fila/PDF exigem validação de RLS, reexecução/lease, arquivos hostis e descarte; nenhuma proposta aprova distribuição ou credenciais de produção.
+
 A avaliação da US-006 está no [ADR-0023](../architecture/adr/0023-spike-parsers-ofx-csv.md): parsing limitado, encodings explícitos, XML sem DTD/XXE, dinheiro exato, staging transacional, cancelamento e erro sem payload. O recorte usa somente fixtures e não fornece port de escrita financeira. Cofre de staging, autorização cloud, integração de UI e novos formatos exigem seus próprios controles e corpus.
 
 A avaliação da US-005 está no [ADR-0022](../architecture/adr/0022-spike-sincronizacao-dois-clientes.md): fila durável, commit/ACK perdido, replay vinculado à proposta/ator, ordenação por commit, tombstone, conflito explícito, revogação e geração. O teste usa PostgreSQL real, processos separados e dados sintéticos. Sessões locais e SQLite sem criptografia são exclusivos do instrumento; autenticação, cofre de réplica, lease e purga de produção continuam pendentes.

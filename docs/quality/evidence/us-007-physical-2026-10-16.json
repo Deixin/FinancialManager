@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "scope": "sqlite-physical-representations",
+  "passed": true,
+  "checks": {
+    "atomic_migration_and_checksum": true,
+    "uuid_text_roundtrip_uniqueness_and_v7_vector_order": true,
+    "uuid_noncanonical_and_nil_rejected": true,
+    "composite_workspace_foreign_key": true,
+    "utc_millisecond_text_roundtrip_and_order": true,
+    "offset_precision_and_invalid_instants_rejected": true,
+    "financial_date_calendar_validation": true,
+    "decimal_exact_text_preserves_precision": true,
+    "rollback_and_persistent_reopen": true
+  },
+  "schema_sha256": "fcba6309ab708e4eb335a0ff5f6cade3b1dc02187233f633f70f01a660abc145",
+  "sqlite_version": "3.53.3",
+  "completed_at_utc": "2026-10-16T09:49:16.933Z",
+  "node_version": "24.19.0",
+  "database_removed": true
+}

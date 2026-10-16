@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-007 consolidada com gates explícitos — 2026-10-16
+
+O [ADR-0024](../architecture/adr/0024-consolidacao-fisica-e-gates.md) registra os seis itens de aceite: UUID SQLite, timestamps, binding SQLCipher, typed query, job queue e PDF parser. Cada item tem proposta concreta, evidência e gate de adoção. O [protocolo](../development/spikes/us-007-physical-decisions.md) define G07-IDS/TIME/VAULT/QUERY/JOBS/PDF, as histórias afetadas, ambientes e critérios de saída. Não há aprovação humana formal de produção registrada; a história está concluída como consolidação conforme o aceite, que permite spikes pendentes explícitos.
+
+Foi acrescentado um probe de representações físicas no SQLite real: UUID TEXT canônico, UTC em milissegundos, DATE, DECIMAL_EXACT textual, FK composta, migração/checksum, rollback e reabertura. Nove verificações passaram; banco/journals sintéticos removidos. [Evidência sanitizada](../quality/evidence/us-007-physical-2026-10-16.json). pnpm check aprovado com 80 testes, incluindo execução do probe SQLite e regressões de codecs/evidência. A CI quality já executa essa suíte em Windows/Linux; execução remota permanece pendente.
+
+O teste não executa SQLCipher ou PostgreSQL nem valida geração UUIDv7 por plataforma. Os bindings e os invariantes financeiros comuns mantêm seus gates. W0/DP-04, US-002/iOS, US-003/provedores/runtimes e DP-01 a DP-03 continuam pendentes. O próximo incremento independente é US-013, de MoneyMinor e regras puras; o schema de produto segue condicionado aos gates de US-020 a US-027.
+
 ## W0 — US-006 concluída como spike — 2026-10-16
 
 Foram implementados leitores OFX 1.02/OFX XML e CSV com mapping explícito em packages/importers/spikes/us-006, com normalização exata, provenance, erros por linha e staging transacional isolado. [Protocolo e catálogo](../development/spikes/us-006-parsers.md), [ADR-0023](../architecture/adr/0023-spike-parsers-ofx-csv.md) e [evidência sanitizada](../quality/evidence/us-006-parsers-2026-10-16.json) registram dependências, ameaças, limites e medições.
@@ -72,7 +80,7 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 ## Próximos passos previstos
 
 1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
-2. Consolidar as escolhas físicas na US-007, com evidências das US-001, US-004, US-005 e US-006 e as pendências explícitas de US-002/US-003.
+2. Implementar US-013, MoneyMinor e regras puras com fixtures; a consolidação US-007 e seus gates estão registrados no ADR-0024.
    A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
-3. Integrar os frameworks e fundações conforme as dependências das histórias.
+3. Executar G07-IDS/TIME/VAULT/QUERY antes das implementações de persistência afetadas; G07-JOBS/PDF antes das respectivas integrações cloud/documentais. Integrar os frameworks conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

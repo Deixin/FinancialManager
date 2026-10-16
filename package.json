@@ -10,6 +10,7 @@
   },
   "scripts": {
     "env:check": "node infra/scripts/doctor.mjs",
+    "spike:physical:test": "node infra/scripts/run-physical-spike.mjs",
     "spike:importers:test": "node infra/scripts/run-importer-spike.mjs test",
     "spike:importers:clean": "node infra/scripts/run-importer-spike.mjs clean",
     "spike:sync:test": "node infra/scripts/run-sync-spike.mjs test",
