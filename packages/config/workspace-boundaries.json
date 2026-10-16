@@ -25,6 +25,7 @@
   "@financial-manager/config": [],
   "@financial-manager/observability": [],
   "@financial-manager/runtime-config": [],
+  "@financial-manager/storage-schema": [],
   "@financial-manager/web": [
     "@financial-manager/runtime-config",
     "@financial-manager/domain",
@@ -35,6 +36,7 @@
     "@financial-manager/ui-dom"
   ],
   "@financial-manager/desktop": [
+    "@financial-manager/storage-schema",
     "@financial-manager/runtime-config",
     "@financial-manager/domain",
     "@financial-manager/contracts",
@@ -45,6 +47,7 @@
     "@financial-manager/ui-dom"
   ],
   "@financial-manager/mobile": [
+    "@financial-manager/storage-schema",
     "@financial-manager/runtime-config",
     "@financial-manager/domain",
     "@financial-manager/contracts",

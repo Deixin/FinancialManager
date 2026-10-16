@@ -43,6 +43,8 @@ PDF e fila não precisam ser instalados para registrar essa pendência. Não há
 
 ## Continuidade permitida
 
+A US-021 avançou em 2026-10-16: [ADR-0032](../../architecture/adr/0032-schema-sqlite-e-equivalencia.md), [corpus/protocolo](../sqlite-schema.md). Os mesmos 33 casos passaram em PostgreSQL, SQLite e SQLCipher Windows/Android, incluindo i64, calendário/UTC e rateios. iOS e homologação ampliada continuam pendentes; G07-TIME não é encerrado para todas as plataformas. A adoção no validador/migrations/backup do cofre de produto mantém G07-VAULT, e repositories/geradores mantêm seus gates.
+
 A US-020 avançou em 2026-10-16: [schema e protocolo PostgreSQL](../postgresql-schema.md), [ADR-0031](../../architecture/adr/0031-schema-inicial-postgresql.md). O lado PostgreSQL de G07-TIME foi testado com UTC ms/DATE/rejeições; a homologação nos bindings SQLCipher e a comparação entre motores continuam abertas. G07-QUERY não foi encerrado: não há repository ou typed query adotado. As queries do ensaio são ferramentas SQL explícitas. RLS de produto fica restritiva/default deny até a integração de autorização, com addon de acesso somente nas fixtures descartáveis.
 
 As US-010/US-011 já têm bootstrap e gates compartilhados, sem integração completa dos frameworks. O próximo incremento independente é US-013: MoneyMinor e regras puras de domínio com fixtures. Ele pode avançar sem escolher prazos DP-01/DP-02, enum DP-03, IdP de produção, PDF ou fila.

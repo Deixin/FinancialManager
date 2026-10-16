@@ -1,5 +1,7 @@
 # Schema PostgreSQL inicial — US-020
 
+Atualização 2026-10-16: a [US-021](sqlite-schema.md) comparou os mesmos 33 casos persistidos com SQLite e SQLCipher Windows/Android. A migração PostgreSQL desta história permaneceu intacta e a autorização do corpus continuou sintética/restrita. A equivalência é do corpus homologado; policy engine, suíte ampla e iOS mantêm seus gates.
+
 O [aceite](../delivery/05-backlog.md) exige constraints e FKs para workspace, contas, transações, categorias, rateios e revisões. O [ADR-0031](../architecture/adr/0031-schema-inicial-postgresql.md) define as decisões e os limites. A migração de produto está em apps/api/persistence/postgres/migrations/0001-financial-core.sql; não substitui schemas experimentais nem é aplicada automaticamente aos quatro ambientes US-014.
 
 ## Executar a homologação

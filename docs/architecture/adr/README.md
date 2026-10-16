@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0032 — Schema SQLite e equivalência persistida](0032-schema-sqlite-e-equivalencia.md): fundação validada nos casos homologados em PostgreSQL/SQLite e SQLCipher Windows/Android; cofre de produto e iOS pendentes.
+
 [0031 — Schema financeiro inicial PostgreSQL](0031-schema-inicial-postgresql.md): adotado para a US-020, com migração/constraints validadas; policy engine, repositories e cross-engine pendentes.
 
 A [arquitetura técnica](../04-technical-architecture.md) contém o registro original ADR-001 a ADR-015, incluindo propostas ainda sujeitas a validação. Esses números ficam reservados; a existência na tabela não implica que todos tenham sido aprovados.

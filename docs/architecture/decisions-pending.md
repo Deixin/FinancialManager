@@ -2,6 +2,8 @@
 
 Registro inicial de divergências encontradas na documentação v1.0. Nenhuma delas impede organizar o repositório; devem ser resolvidas antes da implementação afetada.
 
+Avanço US-021 em 2026-10-16: [ADR-0032](adr/0032-schema-sqlite-e-equivalencia.md) e [protocolo](../development/sqlite-schema.md) validam o corpus persistido em PostgreSQL, SQLite e SQLCipher Windows/Android. G07-TIME avançou nesses recortes; iOS e corpus ampliado continuam pendentes. G07-VAULT exige adoção no validador/migração/backup do cofre de produto. G07-IDS/QUERY/JOBS/PDF e DP-01 a DP-04 não foram encerrados.
+
 Avanço US-020 em 2026-10-16: [ADR-0031](adr/0031-schema-inicial-postgresql.md) especifica o núcleo PostgreSQL com migração/constraints e RLS restritiva sem grants de produto. O protocolo valida o lado PostgreSQL de G07-TIME; bindings SQLCipher e comparação permanecem pendentes. G07-QUERY continua antes de fixar repositories. A migração não inclui enum de membros e não resolve DP-03. Nenhuma pendência de offline/retenção foi alterada.
 
 US-007 consolidada em 2026-10-16 no [ADR-0024](adr/0024-consolidacao-fisica-e-gates.md): os seis itens de aceite possuem propostas/evidências ou gates pendentes explícitos no [protocolo](../development/spikes/us-007-physical-decisions.md). O probe SQLite aprovou armazenamento de UUID, datas/instantes e decimais; não homologa bindings nativos, PostgreSQL, geradores ou novas bibliotecas. DP-04 continua aberta para adoção e validações restantes. DP-01, DP-02 e DP-03 não foram resolvidas por essa consolidação.

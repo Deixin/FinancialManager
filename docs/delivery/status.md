@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Fundação — US-021 equivalente nos casos homologados; cofre de produto/iOS pendentes — 2026-10-16
+
+storage-schema 0.1.0 entrega a migração SQLite das 12 entidades financeiras, com STRICT, FKs por workspace, i64, calendário/UTC ms, índices, revisão imutável e rateio completo no commit. Um guard com FK diferível e soma por componentes inteiros evita float/overflow, inclusive em INT64_MIN. O pacote é interno a Desktop/Mobile; Domain segue independente e não há biblioteca externa de produção nova. [Guia](../development/sqlite-schema.md), [ADR-0032](../architecture/adr/0032-schema-sqlite-e-equivalencia.md).
+
+Os mesmos 33 casos persistidos passaram em [PostgreSQL/SQLite](../quality/evidence/us-021-dual-engine-2026-10-16.json), [SQLCipher Windows](../quality/evidence/us-021-desktop-2026-10-16.json) e [SQLCipher Android](../quality/evidence/us-021-android-2026-10-16.json). O protocolo dual acrescenta dez gates de migração/FK/guard/escritor/reabertura/local/RLS/logs/limpeza. Windows confirmou criptografia/chaves/reabertura/integridade; Android confirmou SecureStore, APK/runtime, reboot completo offline (5 → 6), chave e saldo persistentes, limpeza de bases/chave. O perfil Android tem app ID próprio e preserva main padrão US-002.
+
+Oito testes Node novos cobrem geração reproduzível, normalização, corpus SQLite, migração e evidências. Cargo test/Clippy do novo teste Rust passaram. O job dual-schema repete o ensaio PostgreSQL/SQLite; o teste Rust participa do job Desktop. Execução CI remota deste incremento e iOS continuam pendentes.
+
+A adoção no validador/migração/backup do cofre de produto mantém G07-VAULT. G07-TIME avançou nas plataformas testadas; G07-IDS/QUERY/JOBS/PDF e DP-01 a DP-04 seguem nos seus escopos. Policy engine/escopo por conta, normalização Unicode ampliada, framework completo de migrations e revisão automática continuam nas histórias próprias. Nenhum dado real ou deploy. Próxima história: US-022, migrations dual-engine.
+
+pnpm check aprovado localmente com 216 testes Node, oito novos, além de formatação, lint/fronteiras, contratos/geração/configuração, tipos e build. São 17 workspaces e 78 documentos Markdown. Os [quatro perfis Docker](../quality/evidence/us-014-environments-2026-10-16-us021.json), [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us021.json) e [oito de flags](../quality/evidence/us-017-flags-2026-10-16-us021.json) passaram novamente. Relatórios anteriores preservados; bancos/chaves/contêineres/redes próprios removidos, app US-021 desinstalado e emulador iniciado no turno encerrado. Os sete originais permanecem intactos.
+
 ## Fundação — US-020 schema PostgreSQL validado; integração pendente — 2026-10-16
 
 O schema fm entrega 12 tabelas do núcleo, com IDs fornecidos pela aplicação, FKs compostas por workspace, BIGINT exato, DATE/UTC ms, nomes ativos únicos, rateios com soma diferível/locks e revisões imutáveis. Migração inicial usa transação, advisory lock e checksum; repetição é idempotente e falha após DDL não deixa schema parcial. [Guia](../development/postgresql-schema.md), [ADR-0031](../architecture/adr/0031-schema-inicial-postgresql.md).

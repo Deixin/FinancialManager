@@ -2,6 +2,8 @@
 
 Aplicativo Mobile. Stack prevista: Expo e React Native, com réplica offline autorizada e revogável.
 
+A [US-021](../../docs/development/sqlite-schema.md) adiciona storage-schema e um perfil nativo independente em spikes/us-021. A propriedade Gradle fmSchemaProbe=us021 seleciona entrypoint/app ID próprios; o main padrão continua US-002. O corpus comum passou no Android SQLCipher/SecureStore com reboot offline e limpeza. iOS e integração da réplica de produto permanecem pendentes.
+
 createMobileShellModel da [US-017](../../docs/development/runtime-configuration.md) filtra seções conforme configuração pública. NativeShellExample demonstra alternância em memória com defaults desligados; tipagem não homologa runtime Android/iOS. Flags não concedem lease offline nem alteram autorização do workspace.
 
 NativeShell/NativeShellExample em src fazem parte da [US-016](../../docs/development/design-system.md): tokens compartilhados, componentes Native próprios, seletor cloud, estados e navegação adaptada. São tipados/compilados, sem importação de ui-dom. A entrada US-002 permanece intacta e homologação do novo shell em Android/iOS/TalkBack/VoiceOver está pendente.

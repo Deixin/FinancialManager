@@ -24,6 +24,7 @@ packages/
   contracts/      Contratos compartilhados
   observability/  Correlação e telemetria operacional com scrub no servidor
   runtime-config/ Configuração funcional pública e feature gates por ambiente
+  storage-schema/ Schema SQLite portátil, migração inicial e corpus sintético
   sync-core/      Protocolo e regras de sincronização
   importers/      Parsers e normalização
   search/         Contratos e lógica de busca
@@ -57,6 +58,8 @@ O instrumento [US-006](docs/development/spikes/us-006-parsers.md) valida OFX/CSV
 A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida representações e candidatos físicos, com gates antes de adoção. Execute pnpm spike:physical:test para validar UUID TEXT, UTC/DATE e decimal exato em SQLite sintético. A consolidação mantém explícitas as homologações nativas, typed-query, fila e PDF pendentes; não encerra toda a W0.
 
 ## Ambiente e comandos
+
+A [US-021](docs/development/sqlite-schema.md) acrescenta schema SQLite equivalente, rateios diferíveis sem float e migração inicial compartilhada. Os mesmos 33 casos persistidos passaram em PostgreSQL, SQLite e SQLCipher real no Windows/Android. Use pnpm schema:dual:test e os comandos schema:native do guia. iOS, adoção no cofre de produto e framework completo de migrations continuam pendentes.
 
 A [US-020](docs/development/postgresql-schema.md) entrega a migração SQL inicial do núcleo financeiro PostgreSQL: 12 tabelas com FKs por workspace, BIGINT exato, rateios diferíveis e revisões imutáveis. pnpm schema:test executa 20 gates em banco real descartável; schema:clean limpa somente essa instância sintética. A migração mantém RLS restritiva e não concede acesso de runtime antes da policy engine. Não é aplicada automaticamente aos perfis US-014.
 

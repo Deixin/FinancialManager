@@ -9,6 +9,13 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "schema:sqlite:generate": "node infra/schema/generate-sqlite.mjs",
+    "schema:sqlite:check": "node infra/schema/generate-sqlite.mjs --check",
+    "schema:dual:test": "turbo run build --filter=@financial-manager/storage-schema && node infra/schema/dual.mjs",
+    "schema:dual:clean": "node infra/schema/dual-clean.mjs",
+    "schema:native:desktop": "node infra/schema/native.mjs desktop",
+    "schema:native:android:build": "turbo run build --filter=@financial-manager/storage-schema && node infra/schema/native.mjs android-build",
+    "schema:native:android:test": "node infra/schema/native.mjs android-test",
     "schema:test": "node infra/schema/run.mjs test",
     "schema:clean": "node infra/schema/run.mjs clean",
     "config:check": "turbo run build --filter=@financial-manager/runtime-config && node infra/config/check.mjs",
@@ -46,7 +53,7 @@
     "spike:desktop:vm:test": "node infra/homologation/us001-run.mjs",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
-    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check && pnpm config:check",
+    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check",
     "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",

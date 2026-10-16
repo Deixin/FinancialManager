@@ -7,13 +7,14 @@
   "main": "spikes/us-002/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p spikes/us-002/tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p spikes/us-002/tsconfig.json && tsc -p spikes/us-021/tsconfig.json",
     "start": "expo start",
     "native:prebuild": "expo prebuild",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@financial-manager/storage-schema": "workspace:*",
     "@financial-manager/runtime-config": "workspace:*",
     "@financial-manager/design-tokens": "workspace:*",
     "@financial-manager/contracts": "workspace:*",

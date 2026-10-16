@@ -2,6 +2,8 @@
 
 Aplicativo Desktop. Stack prevista: React, Vite e Tauri 2, com autoridade local e acesso a workspaces cloud.
 
+A [US-021](../../docs/development/sqlite-schema.md) adiciona dependência interna storage-schema. O teste Rust tests/us021_schema.rs reutiliza o binding SQLCipher em arquivo sintético e passa no corpus comum. A integração no cofre/backup de produto exige seu validador/migrations próprios; o instrumento US-001 mantém seu schema experimental.
+
 createDesktopShellModel da [US-017](../../docs/development/runtime-configuration.md) filtra seções opcionais sem exigir login/nuvem para o local. O exemplo permite desligá-las em execução. Handlers/IPC Tauri de produto ainda precisam do gate e autorização correspondentes.
 
 DesktopShell da [US-016](../../docs/development/design-system.md) compartilha AppShell React/tokens, preservando local sem login e distinção cloud. A demonstração usa dados sintéticos em Chromium; não modifica o instrumento US-001 nem integra Vite/Tauri de produto.

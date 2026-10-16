@@ -1,5 +1,15 @@
 # Plano de testes
 
+## Schema SQLite e equivalência — US-021
+
+FIN-SCHEMA-001 contém 33 casos persistidos, executados em PostgreSQL/SQLite e nos bindings SQLCipher Windows/Android. Compara saldos/consumo/cartão, i64, datas/UTC, paginação, FKs, categoria/subcategoria, rateio completo/atômico/carry/INT64_MIN, histórico e normalização. Dez gates duais cobrem migração/FK/guard, dois escritores reais, reabertura, local sem identidade, RLS/logs/limpeza. [Dual](evidence/us-021-dual-engine-2026-10-16.json), [Windows](evidence/us-021-desktop-2026-10-16.json), [Android](evidence/us-021-android-2026-10-16.json), [guia](../development/sqlite-schema.md), [ADR-0032](../architecture/adr/0032-schema-sqlite-e-equivalencia.md).
+
+Windows passou com SQLCipher 4.14.0/SQLite 3.51.3 e teste Cargo/Clippy. Android passou com SQLCipher 4.17.0/SQLite 3.53.3, SecureStore, APK/libs, reboot offline 5 → 6, reabertura e limpeza. Oito testes Node novos verificam geração/checksum, nome, corpus, falha/FK e evidências. iOS, CI remota, adoção no cofre/backup de produto e suíte ampla US-027 permanecem pendentes.
+
+As mudanças de monorepo/CI motivaram novas execuções dos [quatro perfis Docker](evidence/us-014-environments-2026-10-16-us021.json), [12 gates DOM](evidence/us-016-dom-2026-10-16-us021.json) e [oito de flags](evidence/us-017-flags-2026-10-16-us021.json), mantendo os relatórios anteriores como histórico. Nenhuma evidência arquivada contém linha financeira, segredo ou log bruto.
+
+pnpm check aprovado localmente com 216 testes Node, oito novos, sem testes ignorados, além de formatação, lint/fronteiras, contratos/geração/configuração, tipos e build. App sintético US-021 e emulador iniciado no turno foram removido/encerrado após a evidência; os sete documentos originais foram preservados.
+
 ## Schema físico PostgreSQL — US-020
 
 pnpm schema:test passou em 20 gates PostgreSQL reais: migração interrompida/reaplicada/concorrente e checksum; roles/default deny; 12 tabelas/11 FKs compostas; seed autorizado; isolamento/contexto forjado; FKs cruzadas; checks/enums/obrigatoriedade; i64/overflow; DATE/UTC ms; nomes normalizados; subcategoria; rateio atômico/extremo e concorrência com lock observado; revisão/soft delete; referência/cartão; keyset/índices; DDL/TRUNCATE recusados; logs e limpeza. [Evidência](evidence/us-020-postgresql-2026-10-16.json), [guia](../development/postgresql-schema.md), [ADR-0031](../architecture/adr/0031-schema-inicial-postgresql.md).

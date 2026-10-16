@@ -12,6 +12,7 @@
     "@financial-manager/config": "workspace:*"
   },
   "dependencies": {
+    "@financial-manager/storage-schema": "workspace:*",
     "@financial-manager/design-tokens": "workspace:*",
     "@financial-manager/runtime-config": "workspace:*",
     "@financial-manager/ui-dom": "workspace:*",
