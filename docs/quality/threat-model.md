@@ -2,6 +2,8 @@
 
 Status: roteiro inicial; análise completa e validação ainda pendentes.
 
+A avaliação da US-005 está no [ADR-0022](../architecture/adr/0022-spike-sincronizacao-dois-clientes.md): fila durável, commit/ACK perdido, replay vinculado à proposta/ator, ordenação por commit, tombstone, conflito explícito, revogação e geração. O teste usa PostgreSQL real, processos separados e dados sintéticos. Sessões locais e SQLite sem criptografia são exclusivos do instrumento; autenticação, cofre de réplica, lease e purga de produção continuam pendentes.
+
 Consulte os limites de confiança da [arquitetura](../architecture/04-technical-architecture.md). A implementação deve detalhar ativos, atores, entradas, fluxos, controles e evidências por história.
 
 | Fronteira         | Ameaças a analisar                                       | Controles previstos na documentação                                 |

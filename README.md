@@ -42,6 +42,8 @@ O instrumento [US-003](docs/development/spikes/us-003-oidc.md) acrescenta provid
 
 O instrumento [US-004](docs/development/spikes/us-004-postgresql-rls.md) valida RLS e contexto por transação/pool contra PostgreSQL real, com dados sintéticos e ambiente efêmero. A integração NestJS/API e as permissões de produto seguem pendentes.
 
+O instrumento [US-005](docs/development/spikes/us-005-sync.md) valida sincronização entre duas réplicas persistentes independentes: push/pull, idempotência, tombstones, conflitos e recuperação após falhas. Execute pnpm spike:sync:test com Docker Linux; o runner usa somente fixtures e limpa seus serviços, bancos e credenciais próprios. Os adaptadores nativos e a interface de sincronização de produto seguem pendentes.
+
 ## Ambiente e comandos
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).

@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-005 concluída como spike — 2026-10-16
+
+Foi implementado o protocolo experimental em apps/api/spikes/us-005 e infra/sync, com PostgreSQL real, duas réplicas em processos separados e fila persistente SQLite sintética. [Protocolo](../development/spikes/us-005-sync.md), [ADR-0022](../architecture/adr/0022-spike-sincronizacao-dois-clientes.md) e [evidência sanitizada](../quality/evidence/us-005-sync-2026-10-16.json) registram push/pull, confirmação idempotente, histórico, merge, tombstones e conflitos explícitos.
+
+As 22 verificações reais cobrem perda da resposta depois do commit, encerramento abrupto de clientes, rollback de fila/cursor, falha de servidor, precisão i64, isolamento, resolução auditada, revogação de membro/dispositivo/conta e rebootstrap por cursor/geração. Em 12 alterações concorrentes do mesmo campo, uma foi aplicada e 11 preservadas como conflitos; 12 reenvios do vencedor não duplicaram revisão. PostgreSQL, credenciais e bancos locais próprios removidos. pnpm check aprovado com 54 testes. Job two-client-sync configurado; execução remota pendente.
+
+O instrumento usa sessões sintéticas e SQLite sem criptografia exclusivamente para fixtures. Integração OIDC/NestJS e adaptadores SQLCipher nativos, UI, transações financeiras dependentes, lease e purga permanecem nas histórias de produto. DP-01 a DP-03 seguem abertas. US-002/iOS e US-003/provedores/runtimes continuam pendentes. O próximo spike independente é US-006, de parsers e volume de importação; US-007 consolida decisões físicas.
+
 ## W0 — US-004 concluída como spike — 2026-10-15
 
 Foi implementado o experimento de RLS/pool em apps/api/spikes/us-004, com migração sintética versionada, roles separados, runtime sem ownership/BYPASSRLS, ACL por statement e contexto LOCAL na mesma conexão durante a transação. [Protocolo](../development/spikes/us-004-postgresql-rls.md), [ADR-0021](../architecture/adr/0021-spike-isolamento-postgresql-rls.md) e [evidência sanitizada](../quality/evidence/us-004-postgresql-2026-10-15.json) registram implementação, ameaças e resultados.
@@ -56,7 +64,7 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 ## Próximos passos previstos
 
 1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
-2. Executar a US-005 de sincronização mínima e a US-006 de parsers; US-004 validada como spike. Registrar as escolhas físicas na US-007.
+2. Executar a US-006 de parsers; US-004 e US-005 validadas como spikes. Registrar as escolhas físicas na US-007.
    A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
 3. Integrar os frameworks e fundações conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

@@ -1,0 +1,42 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "scope": "two-client-sync-spike",
+  "passed": true,
+  "checks": {
+    "migration_atomic_checksum_and_force_rls": true,
+    "int64_workspace_account_and_session_boundaries": true,
+    "durable_outbox_abrupt_restart_and_atomic_enqueue": true,
+    "disconnection_retains_pending_proposal": true,
+    "lost_response_retry_is_idempotent": true,
+    "idempotency_payload_and_actor_binding": true,
+    "independent_fields_merge_without_clock_priority": true,
+    "same_field_conflict_preserves_base_local_remote": true,
+    "authorized_resolution_creates_audited_revision": true,
+    "changed_then_reverted_field_still_conflicts": true,
+    "concurrent_delete_and_edit_require_resolution": true,
+    "pull_data_and_cursor_rollback_after_process_death": true,
+    "server_failure_rolls_back_revision_feed_and_receipt": true,
+    "concurrent_push_commit_order_and_no_silent_loss": true,
+    "immutable_paginated_feed_and_convergence": true,
+    "revoked_member_cannot_push_pull_or_replay": true,
+    "revoked_device_cannot_replay": true,
+    "revoked_account_scope_cannot_read_or_replay": true,
+    "expired_cursor_requires_snapshot": true,
+    "generation_change_quarantines_old_outbox": true,
+    "docker_loopback_and_ephemeral_storage": true,
+    "operational_logs_sanitized": true
+  },
+  "schema_sha256": "91be79ce77b91bb80919c7fad8be526ef7bd3f2037386a1c196c10b7408032e1",
+  "postgres_version": "18.6",
+  "independent_client_processes": 48,
+  "concurrent_pushes": 12,
+  "completed_at_utc": "2026-10-16T03:07:03.650Z",
+  "containers_and_synthetic_secrets_removed": true,
+  "client_stores_removed": true,
+  "image_sha256": "77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873",
+  "versions": {
+    "node": "24.19.0",
+    "pg": "8.23.1"
+  }
+}
