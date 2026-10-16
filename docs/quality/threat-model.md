@@ -2,6 +2,8 @@
 
 Status: roteiro inicial; análise completa e validação ainda pendentes.
 
+O [ADR-0027](../architecture/adr/0027-ambientes-docker-reproduziveis.md) avalia a fundação US-014: mistura de perfis, Docker remoto, overrides de Compose, exposição de portas/segredos, CA errada e limpeza indevida por path/dono. O protocolo real verifica perfis/roles/TLS e descarte, sem tocar stacks alheias. Bridges de entrada não garantem egress bloqueado, e o PostgreSQL local/internal usa conexão sem TLS, restrita a fixtures. A configuração não é uma política de produção ou a topologia SaaS completa; signing secrets/dados reais permanecem indisponíveis.
+
 O [ADR-0026](../architecture/adr/0026-contratos-openapi-e-clientes.md) avalia a US-012: destino de credenciais, mesma origem/CSRF, cache financeiro, redirecionamento, schemas e i64 inválidos, escopo de respostas, geração local e mensagens sem payload. Os testes do SDK/HTTP Node não comprovam autenticação/autorização no servidor, RLS, sessão BFF ou controles Fetch nativos. Não há persistência de token/payload ou nova integração com serviço de produção. Timeout/cancelamento, streaming e homologação por runtime permanecem explícitos.
 
 O [ADR-0024](../architecture/adr/0024-consolidacao-fisica-e-gates.md) delimita a US-007: representação não canônica, perda de precisão/fuso, FK entre espaços e adoção de adaptador sem preservar autorização/transação. O probe prova somente representações SQLite. Os gates de query/fila/PDF exigem validação de RLS, reexecução/lease, arquivos hostis e descarte; nenhuma proposta aprova distribuição ou credenciais de produção.

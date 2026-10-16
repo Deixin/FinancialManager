@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "deployment": "docker-local",
+  "images": {
+    "postgres": "postgres:18.6-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873",
+    "identity": "quay.io/keycloak/keycloak:26.8.0@sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741",
+    "mail": "axllent/mailpit:v1.27.4@sha256:df6c2541907e1be6fac21f509927cf6ed771617a1f4b361ef66d97bd05593d2d",
+    "edge": "caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d"
+  },
+  "profiles": {
+    "local": {
+      "identity_port": 44320,
+      "mail_port": 44321,
+      "database_port": 44322
+    },
+    "ci": {
+      "identity_port": 44330,
+      "mail_port": 44331,
+      "database_port": 44332
+    },
+    "integration": {
+      "identity_port": 44340,
+      "mail_port": 44341,
+      "database_port": 44342
+    },
+    "staging": {
+      "identity_port": 44350,
+      "mail_port": 44351,
+      "database_port": 44352
+    }
+  }
+}

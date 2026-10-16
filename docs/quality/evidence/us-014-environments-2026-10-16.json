@@ -1,0 +1,125 @@
+{
+  "format_version": 1,
+  "scope": "docker-local-foundation-environments",
+  "synthetic_only": true,
+  "started_at_utc": "2026-10-16T12:20:37.114Z",
+  "passed": true,
+  "profiles": {
+    "local": {
+      "profile": "local",
+      "passed": true,
+      "database_version": "18.6",
+      "checks": {
+        "pinned_images": true,
+        "loopback_ports": true,
+        "isolated_network": true,
+        "ephemeral_storage": true,
+        "private_runtime_credentials": true,
+        "database_marker": true,
+        "runtime_role_restricted": true,
+        "identity_database_isolated": true,
+        "tls_pinned_to_profile": true,
+        "oidc_discovery_and_jwks": true,
+        "mail_sink_ready": true,
+        "logs_without_credentials": true
+      }
+    },
+    "ci": {
+      "profile": "ci",
+      "passed": true,
+      "database_version": "18.6",
+      "checks": {
+        "pinned_images": true,
+        "loopback_ports": true,
+        "isolated_network": true,
+        "ephemeral_storage": true,
+        "private_runtime_credentials": true,
+        "database_marker": true,
+        "runtime_role_restricted": true,
+        "identity_database_isolated": true,
+        "tls_pinned_to_profile": true,
+        "oidc_discovery_and_jwks": true,
+        "mail_sink_ready": true,
+        "logs_without_credentials": true
+      }
+    },
+    "integration": {
+      "profile": "integration",
+      "passed": true,
+      "database_version": "18.6",
+      "checks": {
+        "pinned_images": true,
+        "loopback_ports": true,
+        "isolated_network": true,
+        "ephemeral_storage": true,
+        "private_runtime_credentials": true,
+        "database_marker": true,
+        "runtime_role_restricted": true,
+        "identity_database_isolated": true,
+        "tls_pinned_to_profile": true,
+        "oidc_discovery_and_jwks": true,
+        "mail_sink_ready": true,
+        "logs_without_credentials": true
+      }
+    },
+    "staging": {
+      "profile": "staging",
+      "passed": true,
+      "database_version": "18.6",
+      "checks": {
+        "pinned_images": true,
+        "loopback_ports": true,
+        "isolated_network": true,
+        "ephemeral_storage": true,
+        "private_runtime_credentials": true,
+        "database_marker": true,
+        "runtime_role_restricted": true,
+        "identity_database_isolated": true,
+        "tls_pinned_to_profile": true,
+        "oidc_discovery_and_jwks": true,
+        "mail_sink_ready": true,
+        "logs_without_credentials": true
+      }
+    }
+  },
+  "checks": {
+    "failed_start_preserves_recoverable_cleanup": true,
+    "cross_profile_credentials_rejected": true,
+    "cross_profile_tls_trust_rejected": true,
+    "exclusive_test_refuses_existing_instance": true,
+    "repeated_up_preserves_instance": true,
+    "recreation_rotates_credentials_and_instance": true,
+    "all_owned_containers_networks_and_secrets_removed": true
+  },
+  "versions": {
+    "node": "24.19.0",
+    "docker": "29.8.2",
+    "compose": "5.6.0"
+  },
+  "images": {
+    "postgres": "postgres:18.6-alpine@sha256:77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873",
+    "identity": "quay.io/keycloak/keycloak:26.8.0@sha256:27b3230fbabb8c9ff3c66c864cf09dcd8a41aca82e5100679d109ef0eeb05741",
+    "mail": "axllent/mailpit:v1.27.4@sha256:df6c2541907e1be6fac21f509927cf6ed771617a1f4b361ef66d97bd05593d2d",
+    "edge": "caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d"
+  },
+  "source_sha256": {
+    "profiles.json": "57a6240e6f793e58bf0dd110e9507fbc30e0a687a359c04452b8edebbada11be",
+    "model.mjs": "66b2b792b72cde91f64d36a787bbc32a666a5fa97b72a53ae6652da3b49b8c42",
+    "runtime.mjs": "8d1ed37205ce5b981cbe1fbac24776b0999f854a1666a6b530f23305d3c373cd",
+    "0001-foundation.sql": "33b3279f9d134c5a80ed5697c9a931e569aaef7b3e528321997948971ad1db81",
+    "Caddyfile": "3e214f03b21e28d287700d24cf158afe7981a52f1f6ebc9001a89317ed0fbbe3",
+    "homologate.mjs": "1cbfee702cae3870905eb4380f7f3449497ceb207ab7c0d79841dadb30b95ac9",
+    "../scripts/run-environments.mjs": "0708606373c3ad465c03d737f31da39e49fdd1cf2a2b7cef209b43b45c2888cb",
+    "../scripts/environments-evidence.mjs": "b0477150e0e5d083df699310f837a50f723d6ed8c94a210e337a7059c7968849",
+    "../../package.json": "40425f1ef26ee032868a3694d80e0cd4b2ae03662efa2157a6981dffedd3b8ef",
+    "../../pnpm-lock.yaml": "0850fc580b2f7de7baf5c7fe95b82041768ab4f53b9d20f5372ef1ba2c72ac08",
+    "../../.github/workflows/ci.yml": "43401f81fa67115ccb16521a4738ce8a2dfc4353c23583474eba12c024318f2b"
+  },
+  "pending": [
+    "product-api-bff-worker",
+    "object-storage-adapter",
+    "remote-staging-and-production",
+    "native-client-runtime-integration"
+  ],
+  "completed_at_utc": "2026-10-16T12:25:09.396Z"
+}

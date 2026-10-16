@@ -1,5 +1,15 @@
 # Estado do projeto
 
+## Fundação — US-014 validada em Docker local; integrações pendentes — 2026-10-16
+
+Foram configurados quatro perfis isolados, local/ci/integration/staging, com PostgreSQL, Keycloak em PostgreSQL, Mailpit e Caddy HTTPS. O usuário escolheu staging em Docker local isolado. Manifesto, modelo gerador e comandos up/verify/down/test usam imagens por digest, portas loopback, credenciais/CA por instância e dados somente sintéticos. [Guia](../development/environments.md), [ADR-0027](../architecture/adr/0027-ambientes-docker-reproduziveis.md).
+
+O protocolo real passou nos quatro perfis, com 12 gates por perfil e sete transversais: falha de startup/recuperação, proteção de instância existente, credenciais e CA cruzadas recusadas, subida repetida, recriação e limpeza. [Evidência sanitizada](../quality/evidence/us-014-environments-2026-10-16.json), Docker Linux no Docker Desktop 29.8.2/Compose 5.6.0. Contêineres, redes e segredos próprios removidos. Bootstrap 0001 cria apenas roles/banco de identidade/marcador técnico; não há schema financeiro de produto. pg 8.23.1 foi reutilizado como ferramenta de desenvolvimento, sem dependência nova de produção.
+
+pnpm check aprovado localmente com 155 testes Node, 14 novos, além de tipos, lint/fronteiras, geração de contratos, configuração de ambientes, formatação e build. A CI quality não exige Docker; novo job environment-stack executa o protocolo real e limpeza em Ubuntu. Execução remota deste incremento pendente.
+
+A fundação Docker da US-014 está validada; topologia Web/BFF/API/worker/objetos de produto continua pendente das integrações correspondentes. O staging local não é declarado equivalente ao SaaS completo ou a um staging remoto. Não houve deploy ou dados reais neste incremento; originais e DP-01 a DP-04/G07 preservados. Próximo incremento independente: US-015, observabilidade base com scrub por padrão.
+
 ## Fundação — US-012 implementada — 2026-10-16
 
 packages/contracts contém a fonte OpenAPI 3.1.1/API 1.0.0 para contas, saldo e movimentações manuais, com tipos, SDK, parsers e validadores ESM gerados. Web/Desktop/Mobile compartilham o cliente com transporte/sessão injetados. Contratos incluem strings i64, UUID/data/instante, paginação keyset, requestId, version, erro seguro e Idempotency-Key. [Uso e limites](../development/api-contracts.md), [ADR-0026](../architecture/adr/0026-contratos-openapi-e-clientes.md).

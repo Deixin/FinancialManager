@@ -9,6 +9,11 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "env:stack:check": "node infra/scripts/run-environments.mjs check",
+    "env:stack:up": "node infra/scripts/run-environments.mjs up",
+    "env:stack:verify": "node infra/scripts/run-environments.mjs verify",
+    "env:stack:down": "node infra/scripts/run-environments.mjs down",
+    "env:stack:test": "node infra/scripts/run-environments.mjs test",
     "contracts:generate": "node infra/scripts/generate-contracts.mjs",
     "contracts:check": "node infra/scripts/generate-contracts.mjs --check",
     "env:check": "node infra/scripts/doctor.mjs",
@@ -36,7 +41,7 @@
     "spike:desktop:vm:test": "node infra/homologation/us001-run.mjs",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
-    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check",
+    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check",
     "typecheck": "turbo run typecheck",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",
@@ -47,6 +52,7 @@
     "ajv": "8.20.0",
     "eslint": "10.12.0",
     "openapi-typescript": "7.13.0",
+    "pg": "8.23.1",
     "playwright": "1.64.1",
     "prettier": "3.9.10",
     "turbo": "2.11.7",

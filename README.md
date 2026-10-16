@@ -50,6 +50,8 @@ A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida repre
 
 ## Ambiente e comandos
 
+A [fundação US-014](docs/development/environments.md) configura local/CI/integration/staging em Docker local isolado, com PostgreSQL, Keycloak, Mailpit e HTTPS por perfil. Use pnpm env:stack:up --profile local e down para o mesmo perfil; env:stack:test verifica os quatro ambientes e limpa seus recursos. São dependências sintéticas descartáveis; Web/BFF/API/worker/objetos de produto e staging remoto continuam pendentes.
+
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).
 
 ```sh
@@ -58,22 +60,27 @@ pnpm env:check
 pnpm check
 ```
 
-| Comando                    | Finalidade                                                             |
-| -------------------------- | ---------------------------------------------------------------------- |
-| pnpm check                 | Formatação, lint, estrutura, tipos, testes e build                     |
-| pnpm check:repo            | Links locais e limites entre workspaces                                |
-| pnpm format                | Formatar arquivos mantidos neste bootstrap                             |
-| pnpm lint                  | ESLint e verificação estrutural                                        |
-| pnpm typecheck             | Verificar os módulos TypeScript                                        |
-| pnpm test                  | Compilar módulos e testar domínio, contratos, repositório e spikes     |
-| pnpm build                 | Compilar os módulos TypeScript                                         |
-| pnpm contracts:generate    | Gerar tipos, SDK e validadores da fonte OpenAPI                        |
-| pnpm contracts:check       | Detectar divergência entre OpenAPI e código gerado                     |
-| pnpm env:check --full      | Conferir também ferramentas das futuras plataformas                    |
-| pnpm env:check --desktop   | Verificar pré-requisitos Windows x64 e compilar/executar um probe Rust |
-| pnpm spike:desktop:check   | Testes Rust, Clippy, build Tauri e smoke real da WebView no Windows    |
-| pnpm spike:desktop:ui      | Abrir a demonstração com dados sintéticos                              |
-| pnpm spike:desktop:package | Preparar kit local de homologação, ignorado pelo Git                   |
+| Comando                               | Finalidade                                                             |
+| ------------------------------------- | ---------------------------------------------------------------------- |
+| pnpm check                            | Formatação, lint, estrutura, tipos, testes e build                     |
+| pnpm check:repo                       | Links locais e limites entre workspaces                                |
+| pnpm format                           | Formatar arquivos mantidos neste bootstrap                             |
+| pnpm lint                             | ESLint e verificação estrutural                                        |
+| pnpm typecheck                        | Verificar os módulos TypeScript                                        |
+| pnpm test                             | Compilar módulos e testar domínio, contratos, repositório e spikes     |
+| pnpm build                            | Compilar os módulos TypeScript                                         |
+| pnpm contracts:generate               | Gerar tipos, SDK e validadores da fonte OpenAPI                        |
+| pnpm contracts:check                  | Detectar divergência entre OpenAPI e código gerado                     |
+| pnpm env:check --full                 | Conferir também ferramentas das futuras plataformas                    |
+| pnpm env:stack:check                  | Validar manifesto/modelo dos quatro perfis sem Docker                  |
+| pnpm env:stack:up --profile local     | Subir e verificar a fundação sintética do perfil escolhido             |
+| pnpm env:stack:verify --profile local | Conferir serviços, roles, isolamento e TLS reais                       |
+| pnpm env:stack:down --profile local   | Remover somente recursos e segredos pertencentes ao perfil             |
+| pnpm env:stack:test                   | Executar protocolo real dos quatro perfis Docker e teardown            |
+| pnpm env:check --desktop              | Verificar pré-requisitos Windows x64 e compilar/executar um probe Rust |
+| pnpm spike:desktop:check              | Testes Rust, Clippy, build Tauri e smoke real da WebView no Windows    |
+| pnpm spike:desktop:ui                 | Abrir a demonstração com dados sintéticos                              |
+| pnpm spike:desktop:package            | Preparar kit local de homologação, ignorado pelo Git                   |
 
 A formatação automática não reescreve os sete documentos originais. O experimento Desktop é local; os serviços e fluxos financeiros de produto permanecem pendentes.
 

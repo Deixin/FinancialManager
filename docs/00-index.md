@@ -28,6 +28,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 - [Estado do projeto](delivery/status.md).
 - [Núcleo monetário puro US-013](development/domain-core.md), com MoneyMinor, saldos, transferências e cartões.
 - [Contratos OpenAPI e clientes US-012](development/api-contracts.md), com geração e validação compartilhadas.
+- [Fundação dos ambientes US-014](development/environments.md), com perfis Docker sintéticos e protocolo de isolamento/limpeza.
 - [Implementação e protocolo do spike Desktop US-001](development/spikes/us-001-desktop-vault.md), com [roteiro de homologação externa](development/spikes/us-001-homologation.md).
 - [Implementação e protocolo do spike Mobile US-002](development/spikes/us-002-mobile-vault.md).
 - [Implementação e protocolo local de identidade US-003](development/spikes/us-003-oidc.md).

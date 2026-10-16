@@ -1,0 +1,22 @@
+{
+  admin off
+  persist_config off
+  auto_https disable_redirects
+  default_sni 127.0.0.1
+  skip_install_trust
+  log {
+    output discard
+  }
+}
+
+https://127.0.0.1:8443 {
+  tls internal
+  header Cache-Control no-store
+  reverse_proxy identity:8080
+}
+
+https://127.0.0.1:8444 {
+  tls internal
+  header Cache-Control no-store
+  reverse_proxy mail:8025
+}

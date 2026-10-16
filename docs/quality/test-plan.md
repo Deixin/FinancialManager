@@ -6,6 +6,12 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
 
+## Ambientes sintéticos da US-014
+
+O protocolo pnpm env:stack:test passou em quatro perfis Docker reais, 12 gates por perfil e sete transversais: imagens/dono, rede/portas, tmpfs, credenciais, SQL/marcador/roles, TLS, OIDC/JWKS, Mailpit, logs, senha/CA cruzadas, repetição, recriação e limpeza após startup parcialmente falho por porta ocupada. A stack é gerada e não lê overrides ambientais. O teste exclusivo recusa tomar instância do desenvolvedor. [Guia](../development/environments.md), [ADR-0027](../architecture/adr/0027-ambientes-docker-reproduziveis.md) e [evidência sanitizada](evidence/us-014-environments-2026-10-16.json).
+
+14 testes Node novos verificam configuração inválida, pins, portas, parâmetros/caminhos, junction, isolamento do ambiente de processo, locks e metadados/fonte/limpeza da evidência. pnpm check passou com 155 testes e env:stack:check no lint. Esses unitários não iniciam Docker. Novo job environment-stack em Ubuntu executa o protocolo real, com down em todos os perfis no always; execução remota pendente. Não há prova de API de produto, topologia SaaS completa, armazenamento de objetos ou staging remoto.
+
 ## Contratos e clientes da US-012
 
 26 testes novos exercitam os parsers/SDK compilados e a fonte OpenAPI: i64 textual, UUID/data/instante, headers e Idempotency-Key obrigatórios, campos indevidos, escopo, período, paginação, snapshot antes de await, CSRF/sessão, mensagens seguras, rede sem retry e geração reproduzível. O teste HTTP real usa os clientes Web/Desktop/Mobile exportados, peer loopback sintético e Fetch Node, incluindo recusa de redirect. Listener encerrado e fixtures somente em memória. Contratos negativos de tipos verificam campos obrigatórios, MoneyMinor, readonly e criação unitária sem transferência.
