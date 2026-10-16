@@ -10,6 +10,7 @@ const purePackages = new Set([
   prefix + 'domain',
   prefix + 'contracts',
   prefix + 'design-tokens',
+  prefix + 'runtime-config',
 ]);
 const nativeModules = new Set(
   builtinModules.map((name) => name.replace(/^node:/, '')),

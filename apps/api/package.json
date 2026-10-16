@@ -12,6 +12,7 @@
     "@financial-manager/config": "workspace:*"
   },
   "dependencies": {
+    "@financial-manager/runtime-config": "workspace:*",
     "pg": "8.23.1",
     "@financial-manager/observability": "workspace:*"
   }

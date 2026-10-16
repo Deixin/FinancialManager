@@ -2,6 +2,8 @@
 
 Interface Web em nuvem. Stack prevista: Next.js. Sem cofre financeiro persistente no navegador.
 
+createWebShellModel da [US-017](../../docs/development/runtime-configuration.md) filtra navegação e recusa rota desativada com configuração pública validada. O host limpa rota/busca na atualização e mantém autorização no servidor. O exemplo Chromium valida a troca em execução; roteador Next.js de produto permanece pendente.
+
 WebShell da [US-016](../../docs/development/design-system.md) compartilha AppShell React e tokens, com seletor cloud, estados e foco/teclado. O exemplo loopback passou no protocolo Chromium; integração Next.js/roteamento e dados financeiros permanecem pendentes.
 
 Estado: módulo TypeScript do bootstrap e instrumento Node HTTPS isolado em spikes/us-003. A US-003 experimenta o BFF OIDC com provider separado e tokens apenas no servidor. Next.js e a aplicação Web de produto permanecem pendentes.

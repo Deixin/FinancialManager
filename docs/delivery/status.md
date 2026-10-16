@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Fundação — US-017 implementada; integração de produto pendente — 2026-10-16
+
+runtime-config 0.1.0 fornece configuração pública imutável por ambiente, cinco flags false por padrão, validação estrita e revisão. Gate atualizado em execução bloqueia novas operações, exige autorização independente e consulta novamente após o await. Falha/rollback desliga opcionais; trabalho já iniciado não é interrompido. Domain permanece puro e local continua sem login/nuvem. [Guia](../development/runtime-configuration.md), [ADR-0030](../architecture/adr/0030-flags-e-configuracao-por-ambiente.md).
+
+Factories Web/Desktop/Mobile filtram seções e recusam rota desativada. API/worker fixam superfície/autoridade e recebem configuração explícita. A demonstração sintética atualiza navegação, cartões, busca e rota sem recompilar; sua operação HTTP também respeita o gate. Cinco templates públicos ficam desligados, sem segredos, fornecedor externo ou nova biblioteca externa de produção.
+
+15 testes Node comportamentais e dois de evidência foram adicionados. O [protocolo Chromium de flags](../quality/evidence/us-017-flags-2026-10-16.json) passou em oito gates, incluindo bundle idêntico, reload, bloqueio no servidor, origem externa e falha. Os [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us017.json) foram reexecutados. Os quatro perfis Docker também passaram novamente, com limpeza e [evidência atual](../quality/evidence/us-014-environments-2026-10-16-us017.json); relatórios anteriores preservados.
+
+Integração Next.js/NestJS/Tauri/Expo e handlers reais, propagação/autenticidade remota e persistência da revisão continuam pendentes. Native permanece tipado, com execução Android/iOS/leitores de tela pendente. Nenhuma flag altera telemetria, políticas offline, retenção, autoridade ou os gates G07/DP-01 a DP-04. Não houve deploy ou uso de dados reais. CI remota deste incremento pendente. Próximo incremento: US-020, schema físico PostgreSQL, respeitando os gates e conflitos documentados.
+
+pnpm check aprovado localmente: 204 testes Node, formatação, lint/fronteiras, contratos, cinco perfis de configuração, tipos DOM/Native/host e build. São 16 workspaces e 73 documentos Markdown. Os sete documentos originais permanecem intactos.
+
 ## Fundação — US-016 DOM validado; Native tipado, homologação pendente — 2026-10-16
 
 design-tokens/ui-dom 0.1.0 entregam tokens imutáveis e modelo puro de apresentação, AppShell/ContentNotice React e wrappers WebShell/DesktopShell. Mobile tem NativeShell/NativeShellExample próprios, com os mesmos tokens e sem dependência DOM. Sete seções P0, local sem login, cloud explícito, estados distintos, foco/teclado e texto escalável. [Guia](../development/design-system.md), [ADR-0029](../architecture/adr/0029-design-tokens-e-shells.md).

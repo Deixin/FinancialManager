@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { View, Text, Pressable, StyleSheet } from 'react-native';
-import {
-  createShellModel,
-  contentStates,
-  tokens,
-} from '@financial-manager/design-tokens';
+import { contentStates, tokens } from '@financial-manager/design-tokens';
 import type {
   ContentState,
   ShellRoute,
   WorkspaceSummary,
 } from '@financial-manager/design-tokens';
 import { NativeShell } from './native-shell.js';
+import { createMobileShellModel } from './configuration.js';
+import {
+  disabledConfiguration,
+  parseConfiguration,
+} from '@financial-manager/runtime-config';
 
 const spaces: readonly WorkspaceSummary[] = [
   { id: 'synthetic-mobile-one', name: 'Equipe de exemplo', mode: 'cloud' },
@@ -22,16 +23,21 @@ const spaces: readonly WorkspaceSummary[] = [
 ];
 // Mount inside the app's safe-area host. This does not replace the US-002 entry.
 export function NativeShellExample() {
+  const [configuration, setConfiguration] = useState(
+    disabledConfiguration('local'),
+  );
   const [workspace, setWorkspace] = useState(spaces[0]!);
   const [route, setRoute] = useState<ShellRoute>('overview');
   const [state, setState] = useState<ContentState>('empty');
-  const model = createShellModel({
-    surface: 'mobile',
-    workspace,
-    route,
-    state,
-    sync: 'current',
-  });
+  const model = createMobileShellModel(
+    {
+      workspace,
+      route,
+      state,
+      sync: 'current',
+    },
+    configuration,
+  );
   return (
     <View style={styles.root}>
       <NativeShell
@@ -54,6 +60,36 @@ export function NativeShellExample() {
         </Text>
       </NativeShell>
       <View style={styles.controls} accessibilityLabel="Estado do exemplo">
+        <Pressable
+          accessibilityRole="button"
+          style={styles.button}
+          onPress={() => {
+            const enabled = !configuration.features.importReview;
+            setConfiguration(
+              parseConfiguration(
+                {
+                  format_version: 1,
+                  environment: 'local',
+                  revision: configuration.revision + 1,
+                  features: {
+                    importReview: enabled,
+                    documentReview: enabled,
+                    reports: enabled,
+                  },
+                },
+                'local',
+              ),
+            );
+            setRoute('overview');
+            setState('empty');
+          }}
+        >
+          <Text allowFontScaling style={styles.text}>
+            {configuration.features.importReview
+              ? 'Mostrar somente recursos básicos'
+              : 'Mostrar todas as seções de exemplo'}
+          </Text>
+        </Pressable>
         {(Object.keys(contentStates) as ContentState[]).map((id) => (
           <Pressable
             key={id}

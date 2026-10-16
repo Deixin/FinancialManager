@@ -6,6 +6,18 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
 
+## Flags e configuração da US-017
+
+15 testes Node verificam cinco perfis desativados, parsing estrito, imutabilidade, allowlist ambiental, superfícies/autoridades, revisão/idempotência/rollback, falha com fechamento, autorização estrita e desligamento durante await. Modelos Web/Desktop/Mobile recusam rotas desativadas. Jobs são consultados ao executar; trabalho iniciado preserva seu resultado/erro. Um listener HTTP real recusa habilitação forjada pelo cliente e mantém a autorização separada.
+
+O protocolo Chromium passou em oito gates: habilitar/desligar seção/operação; limpar rota/busca/cartões; manter o mesmo bundle; configuração pública/no-store; reload e recuperação por revisão superior; rejeitar origem externa; fechar opcionais após falha; Axe/ausência de storage, tráfego externo e erros. Browser/listener encerrados. [Evidência](evidence/us-017-flags-2026-10-16.json), [guia](../development/runtime-configuration.md), [ADR-0030](../architecture/adr/0030-flags-e-configuracao-por-ambiente.md).
+
+Os 12 gates DOM foram reexecutados com [relatório atual](evidence/us-016-dom-2026-10-16-us017.json). Dois testes adicionais validam o histórico UI e a nova evidência de flags, com hashes atuais e escopo fechado. A reexecução dos quatro perfis Docker também possui [relatório atual](evidence/us-014-environments-2026-10-16-us017.json), preservando os três anteriores.
+
+Integrações de handlers/roteadores/frameworks, distribuição remota e persistência de revisão permanecem pendentes. Native continua tipado; não há alegação de homologação em dispositivo. A CI ui-shell passa a executar ambos os protocolos; a execução remota deste incremento permanece pendente.
+
+pnpm check passou localmente com 204 testes Node, 17 novos, além de formatação, lint/fronteiras, geração de contratos, configuração de ambientes/flags, tipos e build. Nenhum teste foi ignorado e os sete documentos originais foram preservados.
+
 ## Tokens e shells da US-016
 
 12 testes Node novos verificam versionamento/imutabilidade, contraste, escala/alvos, contexto local/cloud, estados, snapshot, SSR sem conteúdo antigo e escape de texto. Três testes verificam a evidência contra hashes atuais, gates obrigatórios, limpeza, datas e limites. A tipagem inclui NativeShell/NativeShellExample e o host DOM de demonstração.

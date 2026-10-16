@@ -20,6 +20,37 @@ export const pending = Object.freeze([
   'screen-reader-manual-review',
   'nextjs-vite-tauri-integration',
 ]);
+export const flagGates = Object.freeze([
+  'enabled_section_and_server_operation',
+  'disable_resets_route_search_navigation_and_cards',
+  'server_rejects_disabled_operation_and_client_override',
+  'public_configuration_no_store_and_same_bundle',
+  'reload_and_higher_revision_restore',
+  'cross_origin_change_rejected',
+  'configuration_failure_closes_optional_sections',
+  'limited_accessibility_and_no_storage_external_requests_or_errors',
+]);
+const historicalSources = [
+  'package.json',
+  'pnpm-lock.yaml',
+  'pnpm-workspace.yaml',
+  '.github/workflows/ci.yml',
+  'packages/design-tokens/src/index.ts',
+  'packages/design-tokens/src/tokens.ts',
+  'packages/design-tokens/src/css.ts',
+  'packages/design-tokens/src/shell.ts',
+  'packages/ui-dom/src/shell.tsx',
+  'packages/ui-dom/src/index.ts',
+  'packages/ui-dom/styles.css',
+  'apps/web/src/shell.ts',
+  'apps/desktop/src/shell.ts',
+  'apps/mobile/src/native-shell.tsx',
+  'apps/mobile/src/native-shell-example.tsx',
+  'infra/ui/example.tsx',
+  'infra/ui/host.mjs',
+  'infra/ui/check.mjs',
+  'infra/ui/evidence.mjs',
+];
 export const sourceHashes = () =>
   Object.fromEntries(
     [
@@ -42,6 +73,18 @@ export const sourceHashes = () =>
       'infra/ui/host.mjs',
       'infra/ui/check.mjs',
       'infra/ui/evidence.mjs',
+      'packages/runtime-config/src/index.ts',
+      'apps/web/src/configuration.ts',
+      'apps/desktop/src/configuration.ts',
+      'apps/mobile/src/configuration.ts',
+      'apps/api/src/features.ts',
+      'apps/worker/src/features.ts',
+      'infra/ui/availability.mjs',
+      'infra/ui/check-flags.mjs',
+      'infra/config/check.mjs',
+      ...['local', 'ci', 'integration', 'staging', 'production'].map(
+        (environment) => `infra/config/profiles/${environment}.json`,
+      ),
     ].map((name) => [
       name,
       createHash('sha256')
@@ -57,7 +100,7 @@ const exactKeys = (value, keys) =>
 const invalid = () => {
   throw new Error('UI_EVIDENCE_INVALID');
 };
-export function validateUiEvidence(report) {
+function validateEvidence(report, scope, requiredGates, matchSources) {
   if (
     !exactKeys(report, [
       'format_version',
@@ -73,15 +116,15 @@ export function validateUiEvidence(report) {
       'resources_closed',
     ]) ||
     report.format_version !== 1 ||
-    report.scope !== 'us016-dom-synthetic-example' ||
+    report.scope !== scope ||
     report.synthetic_only !== true ||
     report.passed !== true ||
     report.resources_closed !== true
   )
     invalid();
   if (
-    !exactKeys(report.checks, gates) ||
-    gates.some((gate) => report.checks[gate] !== true)
+    !exactKeys(report.checks, requiredGates) ||
+    requiredGates.some((gate) => report.checks[gate] !== true)
   )
     invalid();
   if (
@@ -104,13 +147,36 @@ export function validateUiEvidence(report) {
     )
       invalid();
   if (report.completed_at_utc < report.started_at_utc) invalid();
-  const hashes = sourceHashes();
+  const hashes = matchSources ? sourceHashes() : null;
   if (
-    !exactKeys(report.source_sha256, Object.keys(hashes)) ||
-    Object.entries(hashes).some(
-      ([name, hash]) => report.source_sha256[name] !== hash,
-    )
+    !exactKeys(
+      report.source_sha256,
+      hashes ? Object.keys(hashes) : historicalSources,
+    ) ||
+    Object.values(report.source_sha256).some(
+      (hash) => typeof hash !== 'string' || !/^[a-f0-9]{64}$/.test(hash),
+    ) ||
+    (hashes &&
+      Object.entries(hashes).some(
+        ([name, hash]) => report.source_sha256[name] !== hash,
+      ))
   )
     invalid();
   return report;
+}
+export function validateUiEvidence(report, { matchSources = true } = {}) {
+  return validateEvidence(
+    report,
+    'us016-dom-synthetic-example',
+    gates,
+    matchSources,
+  );
+}
+export function validateFlagEvidence(report) {
+  return validateEvidence(
+    report,
+    'us017-runtime-flags-synthetic-example',
+    flagGates,
+    true,
+  );
 }

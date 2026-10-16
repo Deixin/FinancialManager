@@ -2,6 +2,8 @@
 
 API cloud. Stack prevista: NestJS e Fastify, como monólito modular, com autorização e isolamento por workspace.
 
+createApiFeatures da [US-017](../../docs/development/runtime-configuration.md) recebe ambiente/configuração explícitos e fornece snapshot, replace e execute com contexto API/cloud. Cada handler precisa passar autorização independente e consultar o gate servidor; flags recebidas do cliente não habilitam operações. Não instala middleware NestJS.
+
 Estado: módulo TypeScript do bootstrap e instrumento Node/PostgreSQL isolado em spikes/us-004. O spike prova RLS com contexto por transação e pool real; NestJS/Fastify e a API de produto permanecem pendentes.
 
 Referência: [arquitetura](../../docs/architecture/04-technical-architecture.md). Execute pnpm --filter @financial-manager/api typecheck ou build para verificar o módulo isoladamente.

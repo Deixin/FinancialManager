@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  createShellModel,
   contentStates,
   routes,
 } from '../../packages/design-tokens/dist/index.js';
@@ -13,6 +12,13 @@ import type {
 } from '../../packages/design-tokens/dist/index.js';
 import { DesktopShell } from '../../apps/desktop/src/shell.js';
 import { WebShell } from '../../apps/web/src/shell.js';
+import { createDesktopShellModel } from '../../apps/desktop/src/configuration.js';
+import { createWebShellModel } from '../../apps/web/src/configuration.js';
+import {
+  createFeatureGate,
+  decodeConfiguration,
+  enabledSections,
+} from '../../packages/runtime-config/dist/index.js';
 import '../../packages/ui-dom/styles.css';
 
 // Synthetic contexts only. No API, storage, login or financial source.
@@ -26,6 +32,25 @@ const workspaces: readonly WorkspaceSummary[] = [
   },
 ];
 function Example() {
+  const [gate] = useState(() => {
+    try {
+      return createFeatureGate(
+        'local',
+        decodeConfiguration(
+          document.getElementById('runtime-configuration')?.textContent,
+          'local',
+        ),
+      );
+    } catch {
+      return createFeatureGate('local');
+    }
+  });
+  const [configuration, setConfiguration] = useState(gate.snapshot());
+  const [availability, setAvailability] = useState(
+    configuration.features.importReview ? 'full' : 'limited',
+  );
+  const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [availabilityPending, setAvailabilityPending] = useState(false);
   const [surface, setSurface] = useState<Surface>('desktop');
   const [workspaceId, setWorkspaceId] = useState(workspaces[0]!.id);
   const [route, setRoute] = useState<ShellRoute>('overview');
@@ -34,12 +59,23 @@ function Example() {
   const [query, setQuery] = useState('');
   const input = useRef<HTMLInputElement>(null);
   const workspace = workspaces.find((item) => item.id === workspaceId)!;
-  const model = createShellModel({ surface, workspace, route, state });
+  const model = (
+    surface === 'web' ? createWebShellModel : createDesktopShellModel
+  )({ workspace, route, state }, configuration);
   const Shell = surface === 'web' ? WebShell : DesktopShell;
   useEffect(() => {
     if (search) input.current?.focus();
   }, [search]);
   const navigate = (next: ShellRoute) => {
+    if (
+      !enabledSections(gate.snapshot(), {
+        surface,
+        authority: workspace.mode,
+      }).includes(next)
+    ) {
+      setAvailabilityMessage('Este recurso está indisponível no momento.');
+      return;
+    }
     setRoute(next);
     setSearch(false);
     setState(next === 'overview' ? 'ready' : 'empty');
@@ -48,6 +84,40 @@ function Example() {
   const changeWorkspace = (next: string) => {
     setWorkspaceId(next);
     navigate('overview');
+  };
+  const changeAvailability = async (profile: string) => {
+    if (availabilityPending) return;
+    setAvailabilityPending(true);
+    let next;
+    try {
+      const response = await fetch('/demo-availability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ profile }),
+        cache: 'no-store',
+        redirect: 'error',
+      });
+      if (!response.ok) throw new Error('CONFIGURATION_UNAVAILABLE');
+      next = gate.replace(await response.json());
+      setAvailabilityMessage('Disponibilidade atualizada.');
+    } catch {
+      try {
+        gate.replace(null);
+      } catch {
+        /* Fail closed; no raw error message reaches UI. */
+      }
+      next = gate.snapshot();
+      setAvailabilityMessage(
+        'Não foi possível atualizar. Os recursos opcionais foram desativados.',
+      );
+    }
+    setRoute('overview');
+    setSearch(false);
+    setQuery('');
+    setState('ready');
+    setConfiguration(next);
+    setAvailability(next.features.importReview ? 'full' : 'limited');
+    setAvailabilityPending(false);
   };
   const footer = (
     <section
@@ -82,6 +152,21 @@ function Example() {
           </option>
         ))}
       </select>
+      <label htmlFor="example-availability">Disponibilidade do exemplo</label>
+      <select
+        id="example-availability"
+        value={availability}
+        disabled={availabilityPending}
+        onChange={(event) => {
+          void changeAvailability(event.currentTarget.value);
+        }}
+      >
+        <option value="full">Todas as seções de exemplo</option>
+        <option value="limited">Somente recursos básicos</option>
+      </select>
+      <p aria-live="polite" aria-atomic="true">
+        {availabilityMessage}
+      </p>
     </section>
   );
   return (
@@ -110,13 +195,13 @@ function Example() {
             onChange={(event) => setQuery(event.currentTarget.value)}
             type="search"
           />
-          {Object.entries(routes)
-            .filter(([, label]) =>
+          {model.navigation
+            .filter(({ label }) =>
               label
                 .toLocaleLowerCase('pt-BR')
                 .includes(query.toLocaleLowerCase('pt-BR')),
             )
-            .map(([id, label]) => (
+            .map(({ id, label }) => (
               <button
                 key={id}
                 type="button"
@@ -158,13 +243,17 @@ function Example() {
             </button>
           </section>
           <div className="fm-example-grid">
-            {(['accounts', 'imports', 'reports'] as const).map((id) => (
-              <button key={id} type="button" onClick={() => navigate(id)}>
-                {routes[id]}
-                <br />
-                <span className="fm-example-intro">Explorar esta seção →</span>
-              </button>
-            ))}
+            {(['accounts', 'imports', 'reports'] as const)
+              .filter((id) => model.navigation.some((item) => item.id === id))
+              .map((id) => (
+                <button key={id} type="button" onClick={() => navigate(id)}>
+                  {routes[id]}
+                  <br />
+                  <span className="fm-example-intro">
+                    Explorar esta seção →
+                  </span>
+                </button>
+              ))}
           </div>
           <section className="fm-example-panel">
             <h2>Local ou nuvem, sempre claro</h2>

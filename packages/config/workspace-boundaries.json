@@ -24,7 +24,9 @@
   ],
   "@financial-manager/config": [],
   "@financial-manager/observability": [],
+  "@financial-manager/runtime-config": [],
   "@financial-manager/web": [
+    "@financial-manager/runtime-config",
     "@financial-manager/domain",
     "@financial-manager/contracts",
     "@financial-manager/importers",
@@ -33,6 +35,7 @@
     "@financial-manager/ui-dom"
   ],
   "@financial-manager/desktop": [
+    "@financial-manager/runtime-config",
     "@financial-manager/domain",
     "@financial-manager/contracts",
     "@financial-manager/sync-core",
@@ -42,6 +45,7 @@
     "@financial-manager/ui-dom"
   ],
   "@financial-manager/mobile": [
+    "@financial-manager/runtime-config",
     "@financial-manager/domain",
     "@financial-manager/contracts",
     "@financial-manager/sync-core",
@@ -50,6 +54,7 @@
     "@financial-manager/design-tokens"
   ],
   "@financial-manager/api": [
+    "@financial-manager/runtime-config",
     "@financial-manager/observability",
     "@financial-manager/domain",
     "@financial-manager/contracts",
@@ -58,6 +63,7 @@
     "@financial-manager/search"
   ],
   "@financial-manager/worker": [
+    "@financial-manager/runtime-config",
     "@financial-manager/observability",
     "@financial-manager/domain",
     "@financial-manager/contracts",

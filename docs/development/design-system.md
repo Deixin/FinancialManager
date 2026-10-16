@@ -9,13 +9,15 @@ pnpm install --frozen-lockfile
 pnpm ui:serve
 ```
 
-Abra http://127.0.0.1:44360. O exemplo React oferece Desktop local/cloud, Web cloud, sete seções P0, troca de espaço, busca de seções e seis estados. O seletor “Estado do exemplo” é uma ferramenta de demonstração. Todos os contextos são sintéticos; não há API, banco, login, armazenamento do navegador ou envio de dados. Ctrl+C encerra o host. Ele compila o bundle em memória, serve somente três recursos conhecidos, valida Host e usa CSP/no-store. Não é servidor de produto ou deploy.
+Abra http://127.0.0.1:44360. O exemplo React oferece Desktop local/cloud, Web cloud, sete seções P0, troca de espaço, busca de seções e seis estados. Os seletores de estado e disponibilidade são ferramentas de demonstração. Todos os contextos são sintéticos; não há banco, login, armazenamento do navegador ou dados financeiros. Ctrl+C encerra o host. Ele compila o bundle em memória, serve recursos conhecidos e endpoints same-origin sintéticos da [US-017](runtime-configuration.md), valida Host/Origin e usa CSP/no-store. Não é servidor de produto ou deploy.
 
 ## Contrato compartilhado
 
 packages/design-tokens versão 0.1.0 contém tokens imutáveis de cor/estado, tipografia, espaçamento, raio, alvo, foco, layout e movimento. Não importa React, DOM, Node ou React Native. A fonte numérica é comum; cssVariables converte tamanhos para rem e o Native usa unidades lógicas com escala de fonte habilitada. Fontes são do sistema, sem download externo. Tema claro inicial; tema escuro permanece fora deste incremento.
 
 O pacote também exporta o modelo puro de apresentação createShellModel, tipos e catálogos. Ele valida combinações de plataforma, autoridade e estado, copia apenas campos declarados e congela o resultado. Não consulta dados, calcula dinheiro, autentica ou autoriza. IDs de espaço são opacos para a camada visual. O código não cria identificadores de recursos financeiros.
+
+A US-017 acrescenta sections ao modelo e factories por aplicativo que filtram seções conforme configuração pública validada. A rota selecionada deve estar disponível; os consumidores devem limpar rota/busca na atualização. Nenhuma regra de feature flag foi inserida no domínio ou no pacote visual. A demonstração aplica esse fluxo ao desligar seções opcionais; o servidor sintético também aplica o gate à operação.
 
 | Estado    | Comportamento                                                     |
 | --------- | ----------------------------------------------------------------- |

@@ -9,8 +9,9 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "config:check": "turbo run build --filter=@financial-manager/runtime-config && node infra/config/check.mjs",
     "ui:serve": "turbo run build && node infra/ui/serve.mjs",
-    "ui:check": "turbo run build && node infra/ui/check.mjs",
+    "ui:check": "turbo run build && node infra/ui/check.mjs && node infra/ui/check-flags.mjs",
     "env:stack:check": "node infra/scripts/run-environments.mjs check",
     "env:stack:up": "node infra/scripts/run-environments.mjs up",
     "env:stack:verify": "node infra/scripts/run-environments.mjs verify",
@@ -43,7 +44,7 @@
     "spike:desktop:vm:test": "node infra/homologation/us001-run.mjs",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
-    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check",
+    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm contracts:check && pnpm env:stack:check && pnpm config:check",
     "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",

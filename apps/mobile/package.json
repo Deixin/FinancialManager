@@ -14,6 +14,7 @@
     "ios": "expo run:ios"
   },
   "dependencies": {
+    "@financial-manager/runtime-config": "workspace:*",
     "@financial-manager/design-tokens": "workspace:*",
     "@financial-manager/contracts": "workspace:*",
     "expo": "58.0.11",

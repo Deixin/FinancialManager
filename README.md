@@ -23,6 +23,7 @@ packages/
   domain/         Regras de negócio puras
   contracts/      Contratos compartilhados
   observability/  Correlação e telemetria operacional com scrub no servidor
+  runtime-config/ Configuração funcional pública e feature gates por ambiente
   sync-core/      Protocolo e regras de sincronização
   importers/      Parsers e normalização
   search/         Contratos e lógica de busca
@@ -46,6 +47,8 @@ A [US-015](docs/development/observability.md) acrescenta OpenTelemetry manual, l
 A [US-016](docs/development/design-system.md) acrescenta tokens versionados, shell React Web/Desktop e shell React Native próprio. pnpm ui:serve abre a demonstração sintética em http://127.0.0.1:44360; pnpm ui:check executa o protocolo Chromium de acessibilidade/layout após instalar o navegador Playwright. Native está tipado, com homologação em dispositivo/leitor de tela pendente. Não há integração das telas financeiras ou dos frameworks de produto neste exemplo.
 
 O instrumento [US-004](docs/development/spikes/us-004-postgresql-rls.md) valida RLS e contexto por transação/pool contra PostgreSQL real, com dados sintéticos e ambiente efêmero. A integração NestJS/API e as permissões de produto seguem pendentes.
+
+A [US-017](docs/development/runtime-configuration.md) acrescenta configuração pública por ambiente e flags com defaults desativados, revisão e bloqueio de operações independente da autorização. O seletor de disponibilidade no exemplo altera navegação/busca/cartões em execução, usando o mesmo bundle; o servidor sintético também bloqueia o recurso desativado. pnpm config:check valida os cinco templates, e pnpm ui:check inclui o protocolo real de flags. Integração dos handlers e frameworks de produto permanece pendente.
 
 O instrumento [US-005](docs/development/spikes/us-005-sync.md) valida sincronização entre duas réplicas persistentes independentes: push/pull, idempotência, tombstones, conflitos e recuperação após falhas. Execute pnpm spike:sync:test com Docker Linux; o runner usa somente fixtures e limpa seus serviços, bancos e credenciais próprios. Os adaptadores nativos e a interface de sincronização de produto seguem pendentes.
 

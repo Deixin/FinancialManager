@@ -64,6 +64,7 @@ export type ShellInput = Readonly<{
   state: ContentState;
   sync?: SyncState;
   partial?: boolean;
+  sections?: readonly ShellRoute[];
 }>;
 export type ShellModel = Readonly<{
   surface: Surface;
@@ -108,6 +109,20 @@ export function createShellModel(input: ShellInput): ShellModel {
   if (input.sync !== undefined && !Object.hasOwn(syncStates, input.sync))
     invalid();
   const local = input.workspace.mode === 'local';
+  const sections = input.sections ?? (Object.keys(routes) as ShellRoute[]);
+  if (
+    !Array.isArray(sections) ||
+    sections.length > 7 ||
+    !sections.includes('overview') ||
+    !sections.includes('settings') ||
+    new Set(sections).size !== sections.length ||
+    sections.some(
+      (section) =>
+        typeof section !== 'string' || !Object.hasOwn(routes, section),
+    ) ||
+    !sections.includes(input.route)
+  )
+    invalid();
   return Object.freeze({
     surface: input.surface,
     workspace: Object.freeze({
@@ -126,13 +141,15 @@ export function createShellModel(input: ShellInput): ShellModel {
         ? syncStates[input.sync]
         : 'Espaço em nuvem',
     navigation: Object.freeze(
-      Object.entries(routes).map(([id, label]) =>
-        Object.freeze({
-          id: id as ShellRoute,
-          label,
-          selected: id === input.route,
-        }),
-      ),
+      Object.entries(routes)
+        .filter(([id]) => sections.includes(id as ShellRoute))
+        .map(([id, label]) =>
+          Object.freeze({
+            id: id as ShellRoute,
+            label,
+            selected: id === input.route,
+          }),
+        ),
     ),
   });
 }

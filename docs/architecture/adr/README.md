@@ -20,3 +20,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0027 — Ambientes Docker reproduzíveis](0027-ambientes-docker-reproduziveis.md)       | Fundação Docker local validada; topologia de produto pendente | Local/CI/integration/staging sintéticos US-014            |
 | [0028 — Observabilidade com scrub](0028-observabilidade-com-scrub.md)                 | Fundação Node validada; frameworks/coleta remota pendentes    | Correlação, spans manuais e JSON com allowlist US-015     |
 | [0029 — Tokens e shells DOM/Native](0029-design-tokens-e-shells.md)                   | DOM validado; Native tipado com homologação pendente          | Tokens versionados, estados e exemplos acessíveis US-016  |
+| [0030 — Flags e configuração](0030-flags-e-configuracao-por-ambiente.md)              | Fundação validada; integração de produto pendente             | Configuração pública, revisão e gates em execução US-017  |

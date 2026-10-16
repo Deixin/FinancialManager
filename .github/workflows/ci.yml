@@ -40,7 +40,7 @@ jobs:
       - run: pnpm check
 
   ui-shell:
-    name: US-016 DOM shell and accessibility
+    name: US-016/017 DOM shell, accessibility and flags
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

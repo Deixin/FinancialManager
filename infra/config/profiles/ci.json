@@ -1,0 +1,12 @@
+{
+  "format_version": 1,
+  "environment": "ci",
+  "revision": 1,
+  "features": {
+    "importReview": false,
+    "documentReview": false,
+    "reports": false,
+    "cloudSync": false,
+    "workspaceMigration": false
+  }
+}

@@ -1,4 +1,5 @@
 import { createObservability } from '@financial-manager/observability';
+export { createWorkerFeatures } from './features.js';
 import type { ObservabilityOptions } from '@financial-manager/observability';
 
 export const createWorkerObservability = (
