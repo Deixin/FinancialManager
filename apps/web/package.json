@@ -12,6 +12,7 @@
     "@financial-manager/config": "workspace:*"
   },
   "dependencies": {
+    "@financial-manager/contracts": "workspace:*",
     "openid-client": "6.8.8"
   }
 }

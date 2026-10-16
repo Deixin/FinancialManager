@@ -1,0 +1,498 @@
+{
+  "openapi": "3.1.1",
+  "info": {
+    "title": "Financial Manager — foundation API",
+    "version": "1.0.0",
+    "description": "US-012 contract foundation. Routes are specified, not deployed. Authentication, authorization, persistence and idempotency storage are application responsibilities."
+  },
+  "security": [{ "bearerAuth": [] }],
+  "paths": {
+    "/v1/workspaces/{workspaceId}/accounts": {
+      "get": {
+        "operationId": "listAccounts",
+        "summary": "List authorized accounts using an opaque keyset cursor",
+        "parameters": [
+          { "$ref": "#/components/parameters/WorkspaceId" },
+          { "$ref": "#/components/parameters/After" },
+          { "$ref": "#/components/parameters/Limit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized account page",
+            "headers": {
+              "Cache-Control": { "$ref": "#/components/headers/NoStore" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/AccountPage" }
+              }
+            }
+          },
+          "default": { "$ref": "#/components/responses/Failure" }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/accounts/{accountId}/balance": {
+      "get": {
+        "operationId": "getAccountBalance",
+        "summary": "Read the account balance and explicit history completeness",
+        "parameters": [
+          { "$ref": "#/components/parameters/WorkspaceId" },
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "schema": { "$ref": "#/components/schemas/Uuid" }
+          },
+          {
+            "name": "asOf",
+            "in": "query",
+            "required": true,
+            "schema": { "$ref": "#/components/schemas/FinancialDate" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balance at the requested date",
+            "headers": {
+              "Cache-Control": { "$ref": "#/components/headers/NoStore" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BalanceEnvelope" }
+              }
+            }
+          },
+          "default": { "$ref": "#/components/responses/Failure" }
+        }
+      }
+    },
+    "/v1/workspaces/{workspaceId}/transactions": {
+      "get": {
+        "operationId": "listTransactions",
+        "summary": "List authorized transactions using an opaque keyset cursor",
+        "parameters": [
+          { "$ref": "#/components/parameters/WorkspaceId" },
+          { "$ref": "#/components/parameters/After" },
+          { "$ref": "#/components/parameters/Limit" },
+          {
+            "name": "accountId",
+            "in": "query",
+            "schema": { "$ref": "#/components/schemas/Uuid" }
+          },
+          {
+            "name": "from",
+            "in": "query",
+            "schema": { "$ref": "#/components/schemas/FinancialDate" }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": { "$ref": "#/components/schemas/FinancialDate" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized transaction page",
+            "headers": {
+              "Cache-Control": { "$ref": "#/components/headers/NoStore" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TransactionPage" }
+              }
+            }
+          },
+          "default": { "$ref": "#/components/responses/Failure" }
+        }
+      },
+      "post": {
+        "operationId": "createTransaction",
+        "summary": "Create one manual non-composite movement idempotently",
+        "description": "TRANSFER and DEBT_SETTLEMENT require composite operations and are deliberately excluded. The service must atomically persist data, history, idempotency outcome and outbox. Reusing a key with another request returns IDEMPOTENCY_CONFLICT.",
+        "parameters": [
+          { "$ref": "#/components/parameters/WorkspaceId" },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": { "$ref": "#/components/schemas/Uuid" }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CreateTransaction" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created transaction or replay of its recorded result",
+            "headers": {
+              "Cache-Control": { "$ref": "#/components/headers/NoStore" }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/TransactionEnvelope" }
+              }
+            }
+          },
+          "default": { "$ref": "#/components/responses/Failure" }
+        }
+      }
+    }
+  },
+  "components": {
+    "headers": {
+      "NoStore": {
+        "required": true,
+        "description": "Financial responses and errors must disable caching.",
+        "schema": { "type": "string", "pattern": "(^|,\\s*)no-store(\\s*,|$)" }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Cloud API only. Web uses its same-origin BFF, which obtains the API credential server-side. Local Desktop does not instantiate this cloud client."
+      }
+    },
+    "parameters": {
+      "WorkspaceId": {
+        "name": "workspaceId",
+        "in": "path",
+        "required": true,
+        "schema": { "$ref": "#/components/schemas/Uuid" }
+      },
+      "After": {
+        "name": "after",
+        "in": "query",
+        "schema": { "$ref": "#/components/schemas/Cursor" },
+        "description": "Opaque server-issued cursor, bound to workspace, filters and ordering. Never an offset."
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 50
+        }
+      }
+    },
+    "responses": {
+      "Failure": {
+        "headers": {
+          "Cache-Control": { "$ref": "#/components/headers/NoStore" }
+        },
+        "description": "Safe structured failure. Expected statuses: 400, 401, 403, 404, 409, 429 and 500. No SQL, stack trace, token or document content.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ApiError" }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Uuid": {
+        "type": "string",
+        "format": "uuid",
+        "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+      },
+      "MoneyMinor": {
+        "type": "string",
+        "format": "money-minor",
+        "pattern": "^(0|-?[1-9][0-9]{0,18})$",
+        "description": "Signed i64 smallest units, canonical text. Inclusive bounds -9223372036854775808..9223372036854775807; money-minor format enforces both bounds without Number conversion."
+      },
+      "Version": {
+        "type": "string",
+        "format": "positive-i64",
+        "pattern": "^[1-9][0-9]{0,18}$",
+        "description": "Positive i64 as canonical text; never a JSON number."
+      },
+      "FinancialDate": {
+        "type": "string",
+        "format": "date",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+      },
+      "UtcInstant": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z$"
+      },
+      "Cursor": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,512}$" },
+      "Currency": { "type": "string", "enum": ["BRL"] },
+      "EconomicKind": {
+        "type": "string",
+        "enum": [
+          "INCOME",
+          "EXPENSE",
+          "EXPENSE_REVERSAL",
+          "TRANSFER",
+          "DEBT_SETTLEMENT",
+          "ADJUSTMENT",
+          "OTHER"
+        ]
+      },
+      "DisplayName": { "type": "string", "pattern": "^[\\s\\S]{1,200}$" },
+      "Account": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "id",
+          "workspaceId",
+          "name",
+          "accountKind",
+          "balanceNature",
+          "currencyCode",
+          "status",
+          "version",
+          "updatedAt"
+        ],
+        "properties": {
+          "id": { "$ref": "#/components/schemas/Uuid" },
+          "workspaceId": { "$ref": "#/components/schemas/Uuid" },
+          "name": { "$ref": "#/components/schemas/DisplayName" },
+          "accountKind": {
+            "type": "string",
+            "enum": [
+              "CHECKING",
+              "SAVINGS",
+              "DIGITAL",
+              "CASH",
+              "CREDIT_CARD",
+              "INVESTMENT_SIMPLE",
+              "LOAN_SIMPLE",
+              "OTHER"
+            ]
+          },
+          "balanceNature": { "type": "string", "enum": ["ASSET", "LIABILITY"] },
+          "currencyCode": { "$ref": "#/components/schemas/Currency" },
+          "status": { "type": "string", "enum": ["ACTIVE", "ARCHIVED"] },
+          "version": { "$ref": "#/components/schemas/Version" },
+          "updatedAt": { "$ref": "#/components/schemas/UtcInstant" }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "id",
+          "workspaceId",
+          "accountId",
+          "groupId",
+          "financialDate",
+          "amountMinor",
+          "currencyCode",
+          "economicKind",
+          "displayName",
+          "version",
+          "updatedAt",
+          "deletedAt"
+        ],
+        "properties": {
+          "id": { "$ref": "#/components/schemas/Uuid" },
+          "workspaceId": { "$ref": "#/components/schemas/Uuid" },
+          "accountId": { "$ref": "#/components/schemas/Uuid" },
+          "groupId": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/Uuid" },
+              { "type": "null" }
+            ]
+          },
+          "financialDate": { "$ref": "#/components/schemas/FinancialDate" },
+          "amountMinor": { "$ref": "#/components/schemas/MoneyMinor" },
+          "currencyCode": { "$ref": "#/components/schemas/Currency" },
+          "economicKind": { "$ref": "#/components/schemas/EconomicKind" },
+          "displayName": { "$ref": "#/components/schemas/DisplayName" },
+          "version": { "$ref": "#/components/schemas/Version" },
+          "updatedAt": { "$ref": "#/components/schemas/UtcInstant" },
+          "deletedAt": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/UtcInstant" },
+              { "type": "null" }
+            ]
+          }
+        }
+      },
+      "CreateTransaction": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "accountId",
+          "financialDate",
+          "amountMinor",
+          "currencyCode",
+          "economicKind",
+          "displayName"
+        ],
+        "properties": {
+          "id": { "$ref": "#/components/schemas/Uuid" },
+          "accountId": { "$ref": "#/components/schemas/Uuid" },
+          "financialDate": { "$ref": "#/components/schemas/FinancialDate" },
+          "amountMinor": { "$ref": "#/components/schemas/MoneyMinor" },
+          "currencyCode": { "$ref": "#/components/schemas/Currency" },
+          "economicKind": {
+            "type": "string",
+            "enum": [
+              "INCOME",
+              "EXPENSE",
+              "EXPENSE_REVERSAL",
+              "ADJUSTMENT",
+              "OTHER"
+            ]
+          },
+          "displayName": { "$ref": "#/components/schemas/DisplayName" }
+        }
+      },
+      "Balance": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "workspaceId",
+          "accountId",
+          "currencyCode",
+          "balanceNature",
+          "asOf",
+          "amountMinor",
+          "completeness",
+          "warnings"
+        ],
+        "properties": {
+          "workspaceId": { "$ref": "#/components/schemas/Uuid" },
+          "accountId": { "$ref": "#/components/schemas/Uuid" },
+          "currencyCode": { "$ref": "#/components/schemas/Currency" },
+          "balanceNature": { "type": "string", "enum": ["ASSET", "LIABILITY"] },
+          "asOf": { "$ref": "#/components/schemas/FinancialDate" },
+          "amountMinor": { "$ref": "#/components/schemas/MoneyMinor" },
+          "completeness": {
+            "type": "string",
+            "enum": ["COMPLETE", "INCOMPLETE"]
+          },
+          "warnings": {
+            "type": "array",
+            "maxItems": 3,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "MISSING_REFERENCE",
+                "INCOMPLETE_HISTORY",
+                "UNKNOWN_HISTORY"
+              ]
+            }
+          }
+        }
+      },
+      "AccountPage": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["requestId", "items", "nextCursor"],
+        "properties": {
+          "requestId": { "$ref": "#/components/schemas/Uuid" },
+          "items": {
+            "type": "array",
+            "maxItems": 100,
+            "items": { "$ref": "#/components/schemas/Account" }
+          },
+          "nextCursor": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/Cursor" },
+              { "type": "null" }
+            ]
+          }
+        }
+      },
+      "TransactionPage": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["requestId", "items", "nextCursor"],
+        "properties": {
+          "requestId": { "$ref": "#/components/schemas/Uuid" },
+          "items": {
+            "type": "array",
+            "maxItems": 100,
+            "items": { "$ref": "#/components/schemas/Transaction" }
+          },
+          "nextCursor": {
+            "anyOf": [
+              { "$ref": "#/components/schemas/Cursor" },
+              { "type": "null" }
+            ]
+          }
+        }
+      },
+      "BalanceEnvelope": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["requestId", "data"],
+        "properties": {
+          "requestId": { "$ref": "#/components/schemas/Uuid" },
+          "data": { "$ref": "#/components/schemas/Balance" }
+        }
+      },
+      "TransactionEnvelope": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["requestId", "data"],
+        "properties": {
+          "requestId": { "$ref": "#/components/schemas/Uuid" },
+          "data": { "$ref": "#/components/schemas/Transaction" }
+        }
+      },
+      "ApiError": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "message", "requestId"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "VALIDATION_ERROR",
+              "UNAUTHENTICATED",
+              "FORBIDDEN",
+              "NOT_FOUND",
+              "REVISION_CONFLICT",
+              "IDEMPOTENCY_CONFLICT",
+              "RATE_LIMITED",
+              "INTERNAL_ERROR"
+            ]
+          },
+          "message": { "type": "string", "pattern": "^[\\s\\S]{1,200}$" },
+          "requestId": { "$ref": "#/components/schemas/Uuid" },
+          "details": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "conflictId": { "$ref": "#/components/schemas/Uuid" },
+              "fields": {
+                "type": "array",
+                "maxItems": 10,
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "accountId",
+                    "financialDate",
+                    "amountMinor",
+                    "currencyCode",
+                    "economicKind",
+                    "displayName",
+                    "after",
+                    "limit",
+                    "asOf"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

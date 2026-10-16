@@ -6,18 +6,23 @@
   "type": "module",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.type-tests.json"
   },
   "devDependencies": {
     "@financial-manager/config": "workspace:*"
+  },
+  "dependencies": {
+    "@financial-manager/domain": "workspace:*"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./openapi/v1.json": "./openapi/v1.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "openapi"
   ]
 }

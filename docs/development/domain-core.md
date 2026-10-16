@@ -73,6 +73,6 @@ pnpm test
 pnpm check
 ```
 
-pnpm test constrói domain e test-fixtures antes de executar a API pública compilada, inclusive em checkout sem dist. Os 35 testes em infra/scripts/domain-money.test.mjs e domain-finance.test.mjs usam cenários e totais esperados sintéticos. O typecheck inclui contratos negativos de tipos sem distribuir seus arquivos no build. A CI quality existente executa pnpm check em Windows/Linux; execução remota deste incremento ainda pendente.
+pnpm test constrói os módulos TypeScript, incluindo domain e test-fixtures, antes de executar a API pública compilada, inclusive em checkout sem dist. Os 35 testes em infra/scripts/domain-money.test.mjs e domain-finance.test.mjs usam cenários e totais esperados sintéticos. O typecheck inclui contratos negativos de tipos sem distribuir seus arquivos no build. A CI quality existente executa pnpm check em Windows/Linux; execução remota deste incremento ainda pendente.
 
 O resultado entrega o núcleo puro da US-013. Schema/migrações, atomicidade real de banco, outbox, API/OpenAPI, autorização, integração dos cofres e interfaces ficam nas histórias correspondentes. Os gates G07 e as decisões de prazo/papéis DP-01 a DP-03 permanecem explícitos; nenhum deles foi escolhido implicitamente por essas funções.

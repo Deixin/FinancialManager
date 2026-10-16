@@ -16,3 +16,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0023 — Parsers OFX/CSV e benchmark](0023-spike-parsers-ofx-csv.md)                   | Validado como spike; integração ao produto pendente         | Staging, normalização e benchmark 10k US-006              |
 | [0024 — Consolidação física e gates](0024-consolidacao-fisica-e-gates.md)             | Propostas consolidadas; aprovação/adoção por gate pendentes | Seis decisões físicas, representações e pendências US-007 |
 | [0025 — Núcleo monetário puro](0025-nucleo-monetario-puro.md)                         | Adotado no núcleo; integrações pendentes                    | MoneyMinor, saldos, transferências e cartões US-013       |
+| [0026 — Contratos OpenAPI e clientes](0026-contratos-openapi-e-clientes.md)           | Adotado na fundação; servidor/runtimes pendentes            | OpenAPI, tipos, validação e SDK US-012                    |

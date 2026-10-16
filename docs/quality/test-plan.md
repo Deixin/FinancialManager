@@ -6,11 +6,17 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
 
+## Contratos e clientes da US-012
+
+26 testes novos exercitam os parsers/SDK compilados e a fonte OpenAPI: i64 textual, UUID/data/instante, headers e Idempotency-Key obrigatórios, campos indevidos, escopo, período, paginação, snapshot antes de await, CSRF/sessão, mensagens seguras, rede sem retry e geração reproduzível. O teste HTTP real usa os clientes Web/Desktop/Mobile exportados, peer loopback sintético e Fetch Node, incluindo recusa de redirect. Listener encerrado e fixtures somente em memória. Contratos negativos de tipos verificam campos obrigatórios, MoneyMinor, readonly e criação unitária sem transferência.
+
+pnpm check passou localmente com 141 testes, além de tipos, lint/fronteiras, formatação, build e contracts:check. A CI quality existente inclui o gate de geração em Windows/Linux; execução remota pendente. [Protocolo e limites](../development/api-contracts.md), [ADR-0026](../architecture/adr/0026-contratos-openapi-e-clientes.md). Não há prova de autorização/RLS, idempotência persistente, API de produto ou execução do SDK em navegador/Tauri/Expo.
+
 ## Núcleo puro da US-013
 
 35 testes comportamentais novos executam a API pública compilada de domain, com FIN-001 compartilhada por test-fixtures: precisão acima de 2^53, extremos i64/overflow, JSON textual canônico, rateios, referência no início/fim do dia, exclusão de staging/deleted, cobertura incompleta, escopo, moeda, consolidação, planos compostos, pagamento parcial/crédito de cartão, períodos e estornos. Totais mensais são golden values escritos independentemente dos cálculos. Testes de tipos rejeitam Number, strings não validadas e mutação de plano. [API, cenário e comandos](../development/domain-core.md); [ADR-0025](../architecture/adr/0025-nucleo-monetario-puro.md).
 
-pnpm test constrói domain/test-fixtures antes de importar seus exports, inclusive sem dist prévio. pnpm check executa formatação, lint/fronteiras, tipos, 115 testes Node e build. Esta prova é do núcleo puro: atomicidade em banco, equivalência financeira PostgreSQL/SQLCipher, autorização, UI e runtimes nativos continuam nas histórias específicas. A CI quality já chama o mesmo comando em Windows/Linux; execução remota deste incremento pendente.
+pnpm test constrói os módulos antes de importar seus exports, inclusive sem dist prévio. Na entrega da US-013, pnpm check passou com 115 testes Node, formatação, lint/fronteiras, tipos e build. Esta prova é do núcleo puro: atomicidade em banco, equivalência financeira PostgreSQL/SQLCipher, autorização, UI e runtimes nativos continuam nas histórias específicas. A CI quality já chama o mesmo comando em Windows/Linux; execução remota desse incremento pendente.
 
 ## Preparação da US-001
 

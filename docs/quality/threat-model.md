@@ -2,6 +2,8 @@
 
 Status: roteiro inicial; análise completa e validação ainda pendentes.
 
+O [ADR-0026](../architecture/adr/0026-contratos-openapi-e-clientes.md) avalia a US-012: destino de credenciais, mesma origem/CSRF, cache financeiro, redirecionamento, schemas e i64 inválidos, escopo de respostas, geração local e mensagens sem payload. Os testes do SDK/HTTP Node não comprovam autenticação/autorização no servidor, RLS, sessão BFF ou controles Fetch nativos. Não há persistência de token/payload ou nova integração com serviço de produção. Timeout/cancelamento, streaming e homologação por runtime permanecem explícitos.
+
 O [ADR-0024](../architecture/adr/0024-consolidacao-fisica-e-gates.md) delimita a US-007: representação não canônica, perda de precisão/fuso, FK entre espaços e adoção de adaptador sem preservar autorização/transação. O probe prova somente representações SQLite. Os gates de query/fila/PDF exigem validação de RLS, reexecução/lease, arquivos hostis e descarte; nenhuma proposta aprova distribuição ou credenciais de produção.
 
 A avaliação da US-006 está no [ADR-0023](../architecture/adr/0023-spike-parsers-ofx-csv.md): parsing limitado, encodings explícitos, XML sem DTD/XXE, dinheiro exato, staging transacional, cancelamento e erro sem payload. O recorte usa somente fixtures e não fornece port de escrita financeira. Cofre de staging, autorização cloud, integração de UI e novos formatos exigem seus próprios controles e corpus.

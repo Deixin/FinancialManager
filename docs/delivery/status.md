@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Fundação — US-012 implementada — 2026-10-16
+
+packages/contracts contém a fonte OpenAPI 3.1.1/API 1.0.0 para contas, saldo e movimentações manuais, com tipos, SDK, parsers e validadores ESM gerados. Web/Desktop/Mobile compartilham o cliente com transporte/sessão injetados. Contratos incluem strings i64, UUID/data/instante, paginação keyset, requestId, version, erro seguro e Idempotency-Key. [Uso e limites](../development/api-contracts.md), [ADR-0026](../architecture/adr/0026-contratos-openapi-e-clientes.md).
+
+pnpm check aprovado localmente com 141 testes, 26 novos. Peer HTTP loopback real exercitou os três módulos compilados, extremos monetários, cursor, headers e redirect recusado. Tipos negativos, validação e reprodução dos artefatos passaram; contracts:check integra lint/CI. Fixtures são sintéticas e o listener próprio foi encerrado. As únicas novas bibliotecas externas são ferramentas de desenvolvimento openapi-typescript/Ajv; runtime depende apenas dos módulos internos.
+
+O aceite da fundação US-012 foi atendido; servidor NestJS/BFF, persistência/autorização, idempotência durável, cursor persistente e homologação Next.js/Tauri/Expo continuam nas histórias próprias. Não houve migração, publicação ou deploy neste incremento. DP-01 a DP-04 e G07 permanecem nos respectivos escopos; originais preservados. Próximo incremento independente: US-014, ambientes reproduzíveis com dados sintéticos. A CI remota deste incremento não foi executada.
+
 ## Fundação — US-013 implementada — 2026-10-16
 
 packages/domain agora entrega MoneyMinor como string canônica i64, aritmética BigInt sem float monetário, rateios exatos, saldo por referência com início/fim do dia e cobertura explícita, consolidação de ativos/passivos e planos imutáveis de transferência/pagamento de cartão. O resumo por período separa consumo e caixa; pagamento não duplica despesa e estorno pertence à própria data. [API e cenário](../development/domain-core.md), [ADR-0025](../architecture/adr/0025-nucleo-monetario-puro.md).

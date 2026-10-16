@@ -36,7 +36,7 @@ infra/
 docs/             Especificações, decisões e referências visuais
 ```
 
-O pacote domain implementa o [núcleo puro da US-013](docs/development/domain-core.md): MoneyMinor exato, saldos, transferências, cartões e separação entre consumo e caixa. test-fixtures compartilha cenários financeiros sintéticos. Os demais módulos TypeScript ainda validam a estrutura e a compilação independente. O experimento Desktop fica em apps/desktop/spikes/us-001. O Mobile possui um instrumento Expo em apps/mobile/spikes/us-002, com [protocolo próprio](docs/development/spikes/us-002-mobile-vault.md) e homologação nativa em andamento. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
+O pacote domain implementa o [núcleo puro da US-013](docs/development/domain-core.md): MoneyMinor exato, saldos, transferências, cartões e separação entre consumo e caixa. test-fixtures compartilha cenários financeiros sintéticos. contracts fornece a [fundação OpenAPI da US-012](docs/development/api-contracts.md), com tipos, validação e SDK gerados consumidos por Web/Desktop/Mobile. Os demais módulos TypeScript ainda validam estrutura e compilação independente. O experimento Desktop fica em apps/desktop/spikes/us-001. O Mobile possui instrumento Expo em apps/mobile/spikes/us-002, com [protocolo próprio](docs/development/spikes/us-002-mobile-vault.md) e homologação nativa em andamento. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
 
 O instrumento [US-003](docs/development/spikes/us-003-oidc.md) acrescenta provider OIDC local no Docker e BFF Node HTTPS para testar autenticação com dados sintéticos. Ele não integra Next.js nem conclui a homologação Google/Apple ou dos runtimes nativos.
 
@@ -65,8 +65,10 @@ pnpm check
 | pnpm format                | Formatar arquivos mantidos neste bootstrap                             |
 | pnpm lint                  | ESLint e verificação estrutural                                        |
 | pnpm typecheck             | Verificar os módulos TypeScript                                        |
-| pnpm test                  | Construir o núcleo/fixtures e testar domínio, repositório e spikes     |
+| pnpm test                  | Compilar módulos e testar domínio, contratos, repositório e spikes     |
 | pnpm build                 | Compilar os módulos TypeScript                                         |
+| pnpm contracts:generate    | Gerar tipos, SDK e validadores da fonte OpenAPI                        |
+| pnpm contracts:check       | Detectar divergência entre OpenAPI e código gerado                     |
 | pnpm env:check --full      | Conferir também ferramentas das futuras plataformas                    |
 | pnpm env:check --desktop   | Verificar pré-requisitos Windows x64 e compilar/executar um probe Rust |
 | pnpm spike:desktop:check   | Testes Rust, Clippy, build Tauri e smoke real da WebView no Windows    |
