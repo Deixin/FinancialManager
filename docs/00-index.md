@@ -29,6 +29,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 - [Implementação e protocolo do spike Desktop US-001](development/spikes/us-001-desktop-vault.md), com [roteiro de homologação externa](development/spikes/us-001-homologation.md).
 - [Implementação e protocolo do spike Mobile US-002](development/spikes/us-002-mobile-vault.md).
 - [Implementação e protocolo local de identidade US-003](development/spikes/us-003-oidc.md).
+- [Implementação e protocolo de isolamento PostgreSQL US-004](development/spikes/us-004-postgresql-rls.md).
 - [ADRs](architecture/adr/README.md).
 - [Conceitos visuais](ux/concepts/README.md), usados como referência visual.
 - [Fixtures](quality/fixtures.md), [plano de testes](quality/test-plan.md) e [modelo de ameaças inicial](quality/threat-model.md).

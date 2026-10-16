@@ -10,6 +10,8 @@
   },
   "scripts": {
     "env:check": "node infra/scripts/doctor.mjs",
+    "spike:rls:test": "node infra/scripts/run-rls-spike.mjs test",
+    "spike:rls:down": "node infra/scripts/run-rls-spike.mjs down",
     "spike:oidc:setup": "node infra/scripts/run-oidc-spike.mjs setup",
     "spike:oidc:serve": "node infra/scripts/run-oidc-spike.mjs serve",
     "spike:oidc:test": "node infra/scripts/run-oidc-spike.mjs test",

@@ -40,6 +40,8 @@ Os módulos TypeScript ainda validam a estrutura e a compilação independente. 
 
 O instrumento [US-003](docs/development/spikes/us-003-oidc.md) acrescenta provider OIDC local no Docker e BFF Node HTTPS para testar autenticação com dados sintéticos. Ele não integra Next.js nem conclui a homologação Google/Apple ou dos runtimes nativos.
 
+O instrumento [US-004](docs/development/spikes/us-004-postgresql-rls.md) valida RLS e contexto por transação/pool contra PostgreSQL real, com dados sintéticos e ambiente efêmero. A integração NestJS/API e as permissões de produto seguem pendentes.
+
 ## Ambiente e comandos
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).

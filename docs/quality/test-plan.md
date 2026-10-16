@@ -22,6 +22,8 @@ O smoke Tauri chama apenas comandos sintéticos sem parâmetros de SQL, arquivos
 
 ## Cobertura a implementar
 
+A US-004 foi validada como spike com [protocolo](../development/spikes/us-004-postgresql-rls.md) e [evidência PostgreSQL](evidence/us-004-postgresql-2026-10-15.json). As 20 verificações reais cobrem RLS forçada, grants, contexto ausente/inválido, CRUD/INT64, queries sem filtros, escopo por conta, exportação, FK composta, revogação, prepared statement, reutilização/rollback, 48 requests concorrentes, savepoint e conexão interrompida. Nenhuma prova de isolamento usa mock de banco. A suíte Node passa a conter 39 testes; os oito novos exercitam lifecycle do adapter e validação da evidência. CI postgres-rls configurada, execução remota pendente.
+
 A US-003 possui [protocolo OIDC local](../development/spikes/us-003-oidc.md) com Keycloak/Mailpit reais e Chromium. Unitários exercitam consumo/expiração de sessão, cookies e fronteiras do callback/identidade; a homologação exercita o grant real, e-mail, recovery, CSRF, renovação, logout, PKCE, assinatura adulterada e rejeições. Google, Apple e integrações nativas/Next.js permanecem pendentes; esse recorte não encerra a história.
 
 O recorte local passou em 2026-10-15: [evidência sanitizada](evidence/us-003-local-2026-10-15.json), 15 verificações e teardown confirmado. A suíte Node contém 31 testes. A evidência não contém identidade, senha, token, código de autorização ou link de recuperação.

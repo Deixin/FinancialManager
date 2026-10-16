@@ -1,0 +1,38 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "scope": "postgresql-rls-pool-spike",
+  "passed": true,
+  "checks": {
+    "schema_migration_and_force_rls": true,
+    "migration_rollback_and_checksum": true,
+    "runtime_least_privilege": true,
+    "missing_partial_and_invalid_context": true,
+    "authorized_crud": true,
+    "int64_exact_roundtrip": true,
+    "unfiltered_select_update_delete_isolation": true,
+    "cross_workspace_insert_update_upsert_rejected": true,
+    "account_scope_join_total_export": true,
+    "read_only_and_export_capability": true,
+    "composite_foreign_key": true,
+    "revocation_rechecked_per_statement": true,
+    "pool_reuse_commit_rollback_and_session_reset": true,
+    "prepared_statement_context_reuse": true,
+    "concurrent_pool_isolation": true,
+    "savepoint_rollback_preserves_context": true,
+    "connection_loss_rolls_back_and_replaces_socket": true,
+    "owner_force_and_escalation_rejected": true,
+    "docker_loopback_and_ephemeral_storage": true,
+    "operational_logs_sanitized": true
+  },
+  "schema_sha256": "8b983a5c356322b2e2d43a49df7cb8a0dc5d9b4b6d9f1702afea6f35b2e7f3a6",
+  "postgres_version": "18.6",
+  "concurrent_requests": 48,
+  "completed_at_utc": "2026-10-16T02:26:30.725Z",
+  "containers_and_synthetic_secrets_removed": true,
+  "image_sha256": "77f585114c32fbca283dc835b0596f4e52b51b4c6662d7810b2f4084f60a1873",
+  "versions": {
+    "node": "24.19.0",
+    "pg": "8.23.1"
+  }
+}

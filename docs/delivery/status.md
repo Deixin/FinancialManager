@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-004 concluída como spike — 2026-10-15
+
+Foi implementado o experimento de RLS/pool em apps/api/spikes/us-004, com migração sintética versionada, roles separados, runtime sem ownership/BYPASSRLS, ACL por statement e contexto LOCAL na mesma conexão durante a transação. [Protocolo](../development/spikes/us-004-postgresql-rls.md), [ADR-0021](../architecture/adr/0021-spike-isolamento-postgresql-rls.md) e [evidência sanitizada](../quality/evidence/us-004-postgresql-2026-10-15.json) registram implementação, ameaças e resultados.
+
+PostgreSQL 18.6 real em container Linux no Docker Desktop/Windows: 20 verificações aprovadas, incluindo queries sem WHERE, escrita cruzada, conta restrita, exportação, revogação, FK composta, prepared statement, rollback/savepoint, conexão interrompida e 48 requests concorrentes. stdout/stderr não contiveram os valores/identificadores/senhas sintéticos usados como sentinelas. Container, tmpfs e arquivos de credenciais próprios foram removidos. pnpm check aprovado com 39 testes. Job postgres-rls da CI configurado, execução remota pendente.
+
+A conclusão é experimental: não entrega NestJS, policy engine completa, vínculo OIDC→cloud_user ou permissões definitivas de produto. GUC depende da identidade fornecida pelo servidor confiável. DP-01 a DP-03 seguem abertas; US-002/iOS e US-003/provedores sociais/runtimes continuam pendentes. O próximo spike independente é a US-005, de sincronização mínima entre dois clientes.
+
 ## W0 — US-003 em andamento — 2026-10-15
 
 Foi implementado o instrumento local OIDC em apps/web/spikes/us-003, com Keycloak separado em Docker, verificação/recuperação de e-mail no Mailpit, BFF Node HTTPS com sessão opaca e client público PKCE. O [protocolo](../development/spikes/us-003-oidc.md) e o [ADR-0020](../architecture/adr/0020-spike-identidade-oidc-local.md) delimitam os resultados e as ameaças. O usuário confirmou que não há ambiente Google/Apple configurado e autorizou a validação local com identidade sintética.
@@ -48,7 +56,7 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 ## Próximos passos previstos
 
 1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
-2. Executar os demais spikes W0 e registrar as escolhas físicas nos ADRs.
+2. Executar a US-005 de sincronização mínima e a US-006 de parsers; US-004 validada como spike. Registrar as escolhas físicas na US-007.
    A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
 3. Integrar os frameworks e fundações conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

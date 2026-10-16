@@ -18,3 +18,5 @@ Os [conceitos visuais](../ux/concepts/README.md) incluem elementos que precisam 
 Evolução parcial de DP-04 em 2026-10-15: a US-002 passou na homologação Android, com [evidência](../quality/evidence/us-002-android-2026-10-15.json) e [ADR-0019](adr/0019-spike-cofre-mobile.md). iOS permanece pendente. O instrumento não resolve concessão/expiração de acesso offline da DP-01 nem adota definitivamente a stack de produção.
 
 US-003 também avançou no recorte local em 2026-10-15: [ADR-0020](adr/0020-spike-identidade-oidc-local.md) e [evidência](../quality/evidence/us-003-local-2026-10-15.json). Keycloak local não é a escolha do provider SaaS; conectores Google/Apple, integração Next.js e runtimes nativos permanecem pendentes. DP-04 continua aberta.
+
+US-004 foi concluída como spike em 2026-10-15: [ADR-0021](adr/0021-spike-isolamento-postgresql-rls.md) e [evidência](../quality/evidence/us-004-postgresql-2026-10-15.json) validam RLS, pool e contexto transacional contra PostgreSQL real. Permissões booleanas são exclusivas da fixture; DP-03 não foi resolvida. Typed-query, schema e autorização definitivos continuam pendentes; DP-04 permanece aberta.
