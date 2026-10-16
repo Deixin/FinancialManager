@@ -14,3 +14,5 @@ A separação ui-dom/design-tokens segue a arquitetura técnica. A referência g
 Evolução parcial de DP-04 em 2026-10-13: US-001 foi validada, incluindo restauração em outra instalação Windows. [ADR-0017](adr/0017-spike-cofre-desktop.md), [ADR-0018](adr/0018-homologacao-desktop-vm-docker.md) e [evidência](../quality/evidence/us-001-windows-vm-2026-10-13.json) subsidiam US-007. Os demais spikes e a adoção final das decisões físicas continuam pendentes; DP-04 não foi encerrada integralmente.
 
 Os [conceitos visuais](../ux/concepts/README.md) incluem elementos que precisam ser reinterpretados conforme o PRD, como IA, originais anexados, probabilidades, aprovações e compromissos futuros. Uma imagem não amplia o escopo do MVP.
+
+Evolução parcial de DP-04 em 2026-10-15: a US-002 passou na homologação Android, com [evidência](../quality/evidence/us-002-android-2026-10-15.json) e [ADR-0019](adr/0019-spike-cofre-mobile.md). iOS permanece pendente. O instrumento não resolve concessão/expiração de acesso offline da DP-01 nem adota definitivamente a stack de produção.

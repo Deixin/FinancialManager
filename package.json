@@ -10,6 +10,10 @@
   },
   "scripts": {
     "env:check": "node infra/scripts/doctor.mjs",
+    "spike:mobile:prebuild": "node infra/scripts/run-mobile-spike.mjs prebuild",
+    "spike:mobile:setup:android": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File infra/homologation/us002-android-setup.ps1",
+    "spike:mobile:build:android": "node infra/scripts/run-mobile-spike.mjs build-android",
+    "spike:mobile:test:android": "node infra/scripts/run-mobile-spike.mjs test-android",
     "spike:desktop:test": "node infra/scripts/run-desktop-spike.mjs test",
     "spike:desktop:check": "node infra/scripts/run-desktop-spike.mjs check",
     "spike:desktop:ui": "node infra/scripts/run-desktop-spike.mjs ui",

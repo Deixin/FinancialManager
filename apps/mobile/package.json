@@ -4,11 +4,26 @@
   "private": true,
   "license": "UNLICENSED",
   "type": "module",
+  "main": "spikes/us-002/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p spikes/us-002/tsconfig.json",
+    "start": "expo start",
+    "native:prebuild": "expo prebuild",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "dependencies": {
+    "expo": "58.0.11",
+    "expo-crypto": "58.0.6",
+    "expo-file-system": "58.0.9",
+    "expo-secure-store": "58.0.2",
+    "expo-sqlite": "58.0.13",
+    "react": "19.3.0",
+    "react-native": "0.88.0"
   },
   "devDependencies": {
-    "@financial-manager/config": "workspace:*"
+    "@financial-manager/config": "workspace:*",
+    "@types/react": "19.3.0"
   }
 }

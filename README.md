@@ -36,7 +36,7 @@ infra/
 docs/             Especificações, decisões e referências visuais
 ```
 
-Os módulos TypeScript ainda validam apenas a estrutura e a compilação independente. O experimento nativo fica em apps/desktop/spikes/us-001, separado desses módulos. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
+Os módulos TypeScript ainda validam a estrutura e a compilação independente. O experimento Desktop fica em apps/desktop/spikes/us-001. O Mobile possui um instrumento Expo em apps/mobile/spikes/us-002, com [protocolo próprio](docs/development/spikes/us-002-mobile-vault.md) e homologação nativa em andamento. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
 
 ## Ambiente e comandos
 

@@ -22,6 +22,10 @@ O smoke Tauri chama apenas comandos sintéticos sem parâmetros de SQL, arquivos
 
 ## Cobertura a implementar
 
+A US-002 possui [protocolo próprio](../development/spikes/us-002-mobile-vault.md), unitários de INT64/relatórios e typecheck Expo. A homologação de SQLCipher/SecureStore depende de build nativo e execução em cada plataforma. Prebuild ou typecheck aprovados não encerram o teste de segurança. O instrumento prepara dados sintéticos, reabre após reinício e limpa seus próprios artefatos.
+
+Android passou no emulador AOSP Android 16/API 36 x86_64: [evidência sanitizada](evidence/us-002-android-2026-10-15.json), com SQLCipher 4.17.0 community, bibliotecas de runtime conferidas no APK, três fases nativas e reinício completo sem rede. iOS segue pendente; nenhum resultado Android é usado para encerrar essa homologação. pnpm test contém 25 testes, incluindo regressão para OpenSSL ausente ou empacotado no ABI errado.
+
 Os critérios de aceite do [PRD](../product/01-prd.md), do [backlog](../delivery/05-backlog.md) e os gates do [plano](../delivery/06-implementation-plan.md) orientam os testes:
 
 - Precisão monetária e decimal, saldo de contas e cartões, transferências e relatórios.

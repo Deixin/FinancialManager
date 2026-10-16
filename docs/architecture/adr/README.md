@@ -9,3 +9,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0016 — Bootstrap do repositório](0016-bootstrap-do-repositorio.md)      | Adotado para o bootstrap                                | Organização e ferramentas iniciais            |
 | [0017 — Cofre Desktop experimental](0017-spike-cofre-desktop.md)         | Validado como spike, incluindo outra instalação Windows | SQLCipher, Credential Manager e backup US-001 |
 | [0018 — Homologação em VM Docker](0018-homologacao-desktop-vm-docker.md) | Homologação executada e aprovada                        | Windows 11 independente para US-001           |
+| [0019 — Cofre Mobile experimental](0019-spike-cofre-mobile.md)           | Android validado como spike; iOS pendente               | Expo, SQLCipher, SecureStore e INT64 US-002   |

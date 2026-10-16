@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-002 em andamento — 2026-10-15
+
+Foi implementado o instrumento Expo em apps/mobile/spikes/us-002, com SQLCipher por config plugin, chaves por workspace no SecureStore e contrato experimental de INT64 como strings decimais canônicas. O [protocolo](../development/spikes/us-002-mobile-vault.md) distingue unitários, typecheck, build e execução nativa; o [ADR-0019](../architecture/adr/0019-spike-cofre-mobile.md) justifica as dependências e registra ameaças.
+
+pnpm check aprovado com 25 testes; typecheck Expo e build Android nativo aprovados. A [homologação Android](../quality/evidence/us-002-android-2026-10-15.json) passou em emulador AOSP Android 16/API 36 x86_64, com SQLCipher 4.17.0 community. Foram verificadas três fases: preparação, reabertura após reinício completo (boot_count 2 → 3) e limpeza das bases/chaves próprias. Modo avião, Wi-Fi e dados móveis foram conferidos antes/depois do reboot. O emulador foi encerrado após a execução.
+
+O ambiente atual é Windows; o roteiro iOS está preparado para Mac, sem presumir acesso a Xcode ou credenciais. A homologação iOS permanece pendente e a história não está concluída. O instrumento não implementa login, autorização cloud, sincronização ou concessão de acesso offline. DP-01 a DP-03 continuam abertas. As adaptações necessárias de build/empacotamento e a divergência do verificador de compatibilidade Expo estão registradas no ADR-0019; o resultado Android não aprova a stack de produção.
+
 ## W0 — US-001 concluída como spike — 2026-10-13
 
 Foi implementado o primeiro spike em apps/desktop/spikes/us-001: Tauri, SQLCipher, Windows Credential Manager, envelope Argon2id/AES-256-GCM, prévia e restauração em staging com nova chave e novo workspace LOCAL. O [ADR-0017](../architecture/adr/0017-spike-cofre-desktop.md) registra as escolhas experimentais e ameaças. O [protocolo da US-001](../development/spikes/us-001-desktop-vault.md) preserva os critérios de saída.
@@ -31,7 +39,7 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 
 ## Próximos passos previstos
 
-1. Executar o próximo spike W0, US-002, conforme autorização e dependências.
+1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
 2. Executar os demais spikes W0 e registrar as escolhas físicas nos ADRs.
 3. Integrar os frameworks e fundações conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

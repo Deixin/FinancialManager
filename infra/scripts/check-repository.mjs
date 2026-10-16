@@ -37,12 +37,15 @@ function readJson(filename) {
   return JSON.parse(readFileSync(filename, 'utf8'));
 }
 
-function walk(directory) {
+function walk(directory, excludedDirectories = new Set()) {
   return readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
     if (entry.isSymbolicLink()) return [];
     const filename = path.join(directory, entry.name);
     if (entry.isDirectory()) {
-      return ignoredDirectories.has(entry.name) ? [] : walk(filename);
+      return ignoredDirectories.has(entry.name) ||
+        excludedDirectories.has(filename)
+        ? []
+        : walk(filename, excludedDirectories);
     }
     return entry.isFile() ? [filename] : [];
   });
@@ -233,6 +236,11 @@ export function localMarkdownLinks(source) {
 }
 
 export function checkRepository(root) {
+  // Expo CNG output is regenerated from the reviewed app config and config plugins.
+  const generatedNativeDirectories = new Set([
+    path.join(root, 'apps/mobile/android'),
+    path.join(root, 'apps/mobile/ios'),
+  ]);
   const matrix = readJson(
     path.join(root, 'packages/config/workspace-boundaries.json'),
   );
@@ -253,7 +261,10 @@ export function checkRepository(root) {
     errors.push('Root package must be private.');
   }
   for (const workspace of workspaces) {
-    for (const filename of walk(workspace.directory)) {
+    for (const filename of walk(
+      workspace.directory,
+      generatedNativeDirectories,
+    )) {
       if (!/\.(?:[cm]?[jt]s|[jt]sx)$/.test(filename)) continue;
       const specifiers = collectImports(
         readFileSync(filename, 'utf8'),
@@ -264,8 +275,8 @@ export function checkRepository(root) {
       );
     }
   }
-  const markdownFiles = walk(root).filter((filename) =>
-    filename.endsWith('.md'),
+  const markdownFiles = walk(root, generatedNativeDirectories).filter(
+    (filename) => filename.endsWith('.md'),
   );
   for (const filename of markdownFiles) {
     for (const link of localMarkdownLinks(readFileSync(filename, 'utf8'))) {
