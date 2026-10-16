@@ -5,6 +5,7 @@
 - oidc: ambiente sintético Keycloak/Mailpit/Caddy para US-003.
 - rls: PostgreSQL efêmero, fixtures e homologação de isolamento/pool para US-004.
 - sync: PostgreSQL efêmero, transporte loopback e processos de réplica persistentes sintéticos para US-005.
+- importers: fixtures, coordenador/processo e homologação de parsers OFX/CSV com staging sintético para US-006.
 - aws: reservado para a infraestrutura de referência descrita na arquitetura.
 
 Os instrumentos locais criam e removem seus próprios serviços/dados de teste. Nenhum recurso cloud foi provisionado. Mantenha adaptadores e configuração de infraestrutura fora do domínio.

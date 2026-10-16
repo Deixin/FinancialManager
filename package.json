@@ -10,6 +10,8 @@
   },
   "scripts": {
     "env:check": "node infra/scripts/doctor.mjs",
+    "spike:importers:test": "node infra/scripts/run-importer-spike.mjs test",
+    "spike:importers:clean": "node infra/scripts/run-importer-spike.mjs clean",
     "spike:sync:test": "node infra/scripts/run-sync-spike.mjs test",
     "spike:sync:down": "node infra/scripts/run-sync-spike.mjs down",
     "spike:rls:test": "node infra/scripts/run-rls-spike.mjs test",

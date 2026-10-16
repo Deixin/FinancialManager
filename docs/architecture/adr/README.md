@@ -13,3 +13,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0020 — Identidade OIDC local](0020-spike-identidade-oidc-local.md)                   | Recorte local validado; sociais e runtimes pendentes    | IdP separado, BFF HTTPS e protocolo PKCE US-003   |
 | [0021 — Isolamento PostgreSQL RLS](0021-spike-isolamento-postgresql-rls.md)           | Validado como spike; integração ao produto pendente     | RLS, contexto transacional e pool US-004          |
 | [0022 — Sincronização entre dois clientes](0022-spike-sincronizacao-dois-clientes.md) | Validado como spike; integração ao produto pendente     | Fila durável, feed, tombstones e conflitos US-005 |
+| [0023 — Parsers OFX/CSV e benchmark](0023-spike-parsers-ofx-csv.md)                   | Validado como spike; integração ao produto pendente     | Staging, normalização e benchmark 10k US-006      |

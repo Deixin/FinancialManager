@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "scope": "ofx-csv-10k-parser-spike",
+  "passed": true,
+  "checks": {
+    "atomic_migration_checksum_and_reopen": true,
+    "csv_10k_preview_benchmark": true,
+    "ofx_sgml_10k_preview_benchmark": true,
+    "ofx_xml_10k_preview_benchmark": true,
+    "exact_normalization_signs_dates_and_provenance": true,
+    "explicit_csv_mapping_debit_credit_and_literal_formulas": true,
+    "utf8_bom_and_explicit_windows1252": true,
+    "invalid_rows_are_visible_and_preserved": true,
+    "duplicates_divergence_and_legitimate_equal_purchases": true,
+    "type_structure_and_encoding_rejections": true,
+    "xxe_entities_and_unknown_ofx_layout_rejected": true,
+    "size_row_record_column_and_time_limits": true,
+    "progress_and_mid_parse_cancellation_roll_back": true,
+    "abrupt_worker_death_recovers_empty_staging": true,
+    "cancel_completed_500_row_preview_leaves_ledger_unchanged": true,
+    "operational_logs_have_no_source_payload": true,
+    "staging_only_and_financial_ledger_byte_identical": true
+  },
+  "benchmarks": [
+    {
+      "layout": "csv-explicit-mapping-v1",
+      "rows": 10000,
+      "input_bytes": 819078,
+      "samples_ms": [583, 512, 526],
+      "peak_rss_kib": 73584,
+      "source_sha256": "d651b70b298e282692267bfd4d65660cbc3b85e15d6aba819ffe15495beb4b00",
+      "normalized_sha256": "1fec446cb06e2fc772ef00f4fa1f1d9dc8af093eeb43ca236bae2d94b6263e3d"
+    },
+    {
+      "layout": "ofx-102-bank-card-v1",
+      "rows": 10000,
+      "input_bytes": 1555563,
+      "samples_ms": [706, 684, 738],
+      "peak_rss_kib": 68196,
+      "source_sha256": "7f58ed04abed610c138842b08c78d6f6b21ce8ffc572fdf8317ab28d37ff6066",
+      "normalized_sha256": "027a75a45c3fd8e6bc4f34ca217d4717574cfcecbac380f55d5e7b6e6b5b35f7"
+    },
+    {
+      "layout": "ofx-2xml-bank-card-v1",
+      "rows": 10000,
+      "input_bytes": 2005659,
+      "samples_ms": [733, 695, 683],
+      "peak_rss_kib": 69056,
+      "source_sha256": "a336ab2720f410fce57046ba738b8dfbe10287e2ae198db5313f6c511855363a",
+      "normalized_sha256": "027a75a45c3fd8e6bc4f34ca217d4717574cfcecbac380f55d5e7b6e6b5b35f7"
+    }
+  ],
+  "migration_sha256": "2669b46756ef9839103f46d6f9151f7b90cbb1b3aa188307b4175cd221efa423",
+  "completed_at_utc": "2026-10-16T04:50:44.364Z",
+  "artifacts_removed": true,
+  "source_sha256": "0abb21baf093e5f831f5e5ee5cb3b755f5d41952a1ff32d675f52010e294e01c",
+  "versions": {
+    "node": "24.19.0",
+    "sqlite": "3.53.3",
+    "csv_parse": "7.0.3",
+    "sax": "1.6.1"
+  },
+  "reference_machine": {
+    "platform": "win32",
+    "arch": "x64",
+    "cpu_model": "Intel(R) Core(TM) i5-10400F CPU @ 2.90GHz",
+    "logical_cpus": 12,
+    "memory_gib": 15
+  }
+}

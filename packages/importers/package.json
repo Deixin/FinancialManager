@@ -19,5 +19,9 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "csv-parse": "7.0.3",
+    "sax": "1.6.1"
+  }
 }

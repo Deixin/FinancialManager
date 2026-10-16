@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## W0 — US-006 concluída como spike — 2026-10-16
+
+Foram implementados leitores OFX 1.02/OFX XML e CSV com mapping explícito em packages/importers/spikes/us-006, com normalização exata, provenance, erros por linha e staging transacional isolado. [Protocolo e catálogo](../development/spikes/us-006-parsers.md), [ADR-0023](../architecture/adr/0023-spike-parsers-ofx-csv.md) e [evidência sanitizada](../quality/evidence/us-006-parsers-2026-10-16.json) registram dependências, ameaças, limites e medições.
+
+As 17 verificações reais passaram, incluindo nove ensaios de prévia de 10 mil linhas, três por layout, em processos Node novos. Todos ficaram abaixo da meta de 30 segundos; o relatório contém tempos completos, RSS e máquina de referência. Cada campo e INTEGER i64 persistido foi conferido. Cancelamento, morte do processo, fonte hostil e descarte de revisão de 500 linhas não alteraram a base financeira sintética. Entradas, bancos e journals próprios removidos. pnpm check aprovado com 76 testes. CI parser-spike configurada para Windows/Linux; execução remota pendente.
+
+A conclusão é experimental: não há integração de interface/cofre nativo, confirmação/reversão financeira, deduplicação contra registros integrados ou suporte universal a bancos. XLSX/PDF/XML fiscal e corpus autorizado continuam nas histórias posteriores. DP-01 a DP-04, US-002/iOS e US-003/provedores/runtimes continuam pendentes. O próximo passo é a US-007, para consolidar decisões físicas e registrar os bloqueios restantes sem presumir que toda a W0 terminou.
+
 ## W0 — US-005 concluída como spike — 2026-10-16
 
 Foi implementado o protocolo experimental em apps/api/spikes/us-005 e infra/sync, com PostgreSQL real, duas réplicas em processos separados e fila persistente SQLite sintética. [Protocolo](../development/spikes/us-005-sync.md), [ADR-0022](../architecture/adr/0022-spike-sincronizacao-dois-clientes.md) e [evidência sanitizada](../quality/evidence/us-005-sync-2026-10-16.json) registram push/pull, confirmação idempotente, histórico, merge, tombstones e conflitos explícitos.
@@ -64,7 +72,7 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
 ## Próximos passos previstos
 
 1. Executar a homologação iOS da US-002 em Mac/Xcode; Android aprovado em 2026-10-15. Manter a história em andamento até a evidência iOS.
-2. Executar a US-006 de parsers; US-004 e US-005 validadas como spikes. Registrar as escolhas físicas na US-007.
+2. Consolidar as escolhas físicas na US-007, com evidências das US-001, US-004, US-005 e US-006 e as pendências explícitas de US-002/US-003.
    A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
 3. Integrar os frameworks e fundações conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.

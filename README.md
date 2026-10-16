@@ -44,6 +44,8 @@ O instrumento [US-004](docs/development/spikes/us-004-postgresql-rls.md) valida 
 
 O instrumento [US-005](docs/development/spikes/us-005-sync.md) valida sincronização entre duas réplicas persistentes independentes: push/pull, idempotência, tombstones, conflitos e recuperação após falhas. Execute pnpm spike:sync:test com Docker Linux; o runner usa somente fixtures e limpa seus serviços, bancos e credenciais próprios. Os adaptadores nativos e a interface de sincronização de produto seguem pendentes.
 
+O instrumento [US-006](docs/development/spikes/us-006-parsers.md) valida OFX/CSV com mapping, normalização exata e staging sem alterar saldo. Execute pnpm spike:importers:test para o benchmark de 10 mil linhas, cancelamento e corpus hostil; não exige Docker nem extrato real. Interface e confirmação financeira de produto seguem pendentes.
+
 ## Ambiente e comandos
 
 Use Node.js 24.19.0, indicado em .node-version e .nvmrc, e pnpm 11.25.0, fixado em package.json. Instale essa versão do pnpm seguindo a [documentação oficial](https://pnpm.io/installation).
