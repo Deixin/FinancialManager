@@ -6,11 +6,21 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
 
+## Observabilidade base da US-015
+
+17 testes novos executam a API pública compilada: emissão desativada por padrão, allowlist e tipos de metadados, snapshot, erros/stack/causas, getters/Proxy, códigos e nomes fechados, sink falho, encerramento, 32 operações concorrentes, propagação interna explícita e reinício em entrada pública/headers inválidos. HTTP loopback real e worker Node em processo independente demonstram um trace/request comum entre request/job/sync/db, com spans e parentesco distintos. As saídas das duas partes são verificadas contra canários sintéticos; nenhuma saída bruta é salva. Listener e processo são encerrados.
+
+O gate pnpm check inclui a suíte na CI quality existente para Windows/Linux. O teste db.query não executa SQL e o worker não usa fila persistente. O resultado não homologa middleware NestJS/Next.js, runtimes nativos, collector, fornecedor externo ou política operacional de retenção/acesso. [Guia](../development/observability.md), [ADR-0028](../architecture/adr/0028-observabilidade-com-scrub.md). US-166 continua aberta para as integrações futuras.
+
+pnpm check aprovado localmente com 172 testes Node, 17 novos, além de formatação, lint/fronteiras, contratos, configuração, tipos e build. Execução remota deste incremento pendente.
+
 ## Ambientes sintéticos da US-014
 
 O protocolo pnpm env:stack:test passou em quatro perfis Docker reais, 12 gates por perfil e sete transversais: imagens/dono, rede/portas, tmpfs, credenciais, SQL/marcador/roles, TLS, OIDC/JWKS, Mailpit, logs, senha/CA cruzadas, repetição, recriação e limpeza após startup parcialmente falho por porta ocupada. A stack é gerada e não lê overrides ambientais. O teste exclusivo recusa tomar instância do desenvolvedor. [Guia](../development/environments.md), [ADR-0027](../architecture/adr/0027-ambientes-docker-reproduziveis.md) e [evidência sanitizada](evidence/us-014-environments-2026-10-16.json).
 
 14 testes Node novos verificam configuração inválida, pins, portas, parâmetros/caminhos, junction, isolamento do ambiente de processo, locks e metadados/fonte/limpeza da evidência. pnpm check passou com 155 testes e env:stack:check no lint. Esses unitários não iniciam Docker. Novo job environment-stack em Ubuntu executa o protocolo real, com down em todos os perfis no always; execução remota pendente. Não há prova de API de produto, topologia SaaS completa, armazenamento de objetos ou staging remoto.
+
+Após a US-015 alterar o lockfile, o protocolo completo passou novamente: [evidência atual](evidence/us-014-environments-2026-10-16-us015.json). O relatório anterior permanece como histórico. O gate exige hashes atuais na nova execução e valida formato, gates e metadados do relatório histórico sem compará-lo a fontes posteriores.
 
 ## Contratos e clientes da US-012
 

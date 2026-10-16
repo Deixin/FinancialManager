@@ -18,3 +18,4 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 | [0025 — Núcleo monetário puro](0025-nucleo-monetario-puro.md)                         | Adotado no núcleo; integrações pendentes                      | MoneyMinor, saldos, transferências e cartões US-013       |
 | [0026 — Contratos OpenAPI e clientes](0026-contratos-openapi-e-clientes.md)           | Adotado na fundação; servidor/runtimes pendentes              | OpenAPI, tipos, validação e SDK US-012                    |
 | [0027 — Ambientes Docker reproduzíveis](0027-ambientes-docker-reproduziveis.md)       | Fundação Docker local validada; topologia de produto pendente | Local/CI/integration/staging sintéticos US-014            |
+| [0028 — Observabilidade com scrub](0028-observabilidade-com-scrub.md)                 | Fundação Node validada; frameworks/coleta remota pendentes    | Correlação, spans manuais e JSON com allowlist US-015     |

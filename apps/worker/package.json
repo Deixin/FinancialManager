@@ -8,6 +8,9 @@
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
+  "dependencies": {
+    "@financial-manager/observability": "workspace:*"
+  },
   "devDependencies": {
     "@financial-manager/config": "workspace:*"
   }

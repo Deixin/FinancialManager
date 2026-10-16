@@ -1,0 +1,29 @@
+{
+  "name": "@financial-manager/observability",
+  "version": "0.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/resources": "2.12.0",
+    "@opentelemetry/sdk-trace-base": "2.12.0"
+  },
+  "devDependencies": {
+    "@financial-manager/config": "workspace:*",
+    "@types/node": "26.6.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}

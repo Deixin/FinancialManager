@@ -111,16 +111,25 @@ test('environment evidence refuses payloads, remote deployment claims, invalid t
   }
 });
 
-test('archived environment evidence matches the current source and all synthetic cleanup gates', () => {
-  const filename = new URL(
-    '../../docs/quality/evidence/us-014-environments-2026-10-16.json',
-    import.meta.url,
-  );
-  assert.equal(
-    existsSync(filename),
-    true,
-    'Run and archive the full four-profile protocol first',
-  );
-  const report = JSON.parse(readFileSync(filename, 'utf8'));
-  assert.equal(validateEnvironmentEvidence(report).passed, true);
+test('latest environment evidence matches current sources and historical evidence retains its gates', () => {
+  for (const [name, matchSources] of [
+    ['us-014-environments-2026-10-16.json', false],
+    ['us-014-environments-2026-10-16-us015.json', true],
+  ]) {
+    const filename = new URL(
+      '../../docs/quality/evidence/' + name,
+      import.meta.url,
+    );
+    assert.equal(
+      existsSync(filename),
+      true,
+      'Run and archive the full four-profile protocol first',
+    );
+    const report = JSON.parse(readFileSync(filename, 'utf8'));
+    // Historical hashes describe that run; the new real run must match HEAD's files.
+    assert.equal(
+      validateEnvironmentEvidence(report, { matchSources }).passed,
+      true,
+    );
+  }
 });

@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Fundação — US-015 implementada — 2026-10-16
+
+packages/observability fornece correlação request_id/trace_id/span_id, OpenTelemetry manual privado e logs/spans JSON com allowlist tipada. API/worker exportam factories com service fixo. Emissão é desativada por padrão e exige destino explícito; nenhum collector, backend externo ou provider global é configurado. Erros não expõem mensagem/stack/cause e operações usam catálogos fechados. [Guia](../development/observability.md), [ADR-0028](../architecture/adr/0028-observabilidade-com-scrub.md).
+
+17 testes novos passaram localmente: canários sensíveis nas duas saídas, erros/objetos hostis, concorrência de 32 operações, snapshot, defaults, trust/headers, escopo encerrado e sink falho. HTTP loopback real e worker Node em processo separado comprovam correlação entre request/job/sync/db com spans distintos. db.query é operação sintética sem SQL; não há fila persistente. Listener/processo são encerrados e não se salvam payloads ou logs brutos.
+
+A alteração do lockfile motivou nova execução real completa da US-014 nos quatro perfis Docker. Todos os gates e limpeza passaram; [nova evidência](../quality/evidence/us-014-environments-2026-10-16-us015.json) corresponde às fontes atuais e o relatório anterior foi preservado. O teste da evidência exige correspondência de hashes no relatório novo e mantém a validação estrutural/gates do histórico.
+
+pnpm check aprovado localmente com 172 testes Node, 17 novos, além de formatação, lint/fronteiras, contratos, configuração de ambientes, tipos e build. Repositório com 15 workspaces e 68 documentos Markdown; a CI quality existente inclui a suíte em Windows/Linux, com execução remota deste incremento pendente.
+
+Novas dependências de produção são @opentelemetry/api 1.9.1, sdk-trace-base/resources 2.12.0, justificadas no ADR. A matriz permite o pacote somente em API/worker. O critério da fundação US-015 foi atendido; integrações NestJS/Next.js/Tauri/Expo, spans reais de banco/fila, collector/OTLP e fornecedor de error tracking/analytics permanecem pendentes. A US-166 não está encerrada. Nenhum deploy ou dado real neste incremento; originais e DP-01 a DP-04/G07 preservados. Próximo incremento independente: US-016, design tokens e shell acessível.
+
 ## Fundação — US-014 validada em Docker local; integrações pendentes — 2026-10-16
 
 Foram configurados quatro perfis isolados, local/ci/integration/staging, com PostgreSQL, Keycloak em PostgreSQL, Mailpit e Caddy HTTPS. O usuário escolheu staging em Docker local isolado. Manifesto, modelo gerador e comandos up/verify/down/test usam imagens por digest, portas loopback, credenciais/CA por instância e dados somente sintéticos. [Guia](../development/environments.md), [ADR-0027](../architecture/adr/0027-ambientes-docker-reproduziveis.md).

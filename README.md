@@ -22,6 +22,7 @@ apps/
 packages/
   domain/         Regras de negócio puras
   contracts/      Contratos compartilhados
+  observability/  Correlação e telemetria operacional com scrub no servidor
   sync-core/      Protocolo e regras de sincronização
   importers/      Parsers e normalização
   search/         Contratos e lógica de busca
@@ -39,6 +40,8 @@ docs/             Especificações, decisões e referências visuais
 O pacote domain implementa o [núcleo puro da US-013](docs/development/domain-core.md): MoneyMinor exato, saldos, transferências, cartões e separação entre consumo e caixa. test-fixtures compartilha cenários financeiros sintéticos. contracts fornece a [fundação OpenAPI da US-012](docs/development/api-contracts.md), com tipos, validação e SDK gerados consumidos por Web/Desktop/Mobile. Os demais módulos TypeScript ainda validam estrutura e compilação independente. O experimento Desktop fica em apps/desktop/spikes/us-001. O Mobile possui instrumento Expo em apps/mobile/spikes/us-002, com [protocolo próprio](docs/development/spikes/us-002-mobile-vault.md) e homologação nativa em andamento. As integrações da aplicação de produto seguem as histórias previstas, após as decisões W0.
 
 O instrumento [US-003](docs/development/spikes/us-003-oidc.md) acrescenta provider OIDC local no Docker e BFF Node HTTPS para testar autenticação com dados sintéticos. Ele não integra Next.js nem conclui a homologação Google/Apple ou dos runtimes nativos.
+
+A [US-015](docs/development/observability.md) acrescenta OpenTelemetry manual, logs JSON com campos restritos e correlação para API/worker. A emissão é silenciosa por padrão, sem destino externo configurado. O teste usa HTTP loopback e processo Node independente; integração dos frameworks e coleta remota permanecem pendentes.
 
 O instrumento [US-004](docs/development/spikes/us-004-postgresql-rls.md) valida RLS e contexto por transação/pool contra PostgreSQL real, com dados sintéticos e ambiente efêmero. A integração NestJS/API e as permissões de produto seguem pendentes.
 
