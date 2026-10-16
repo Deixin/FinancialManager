@@ -6,6 +6,16 @@ O bootstrap verifica sintaxe e tipos, formatação, links Markdown locais, compi
 
 A cobertura inicial isoladamente não valida comportamento financeiro, interfaces, banco de dados, criptografia, autenticação ou integração dos frameworks. Os incrementos abaixo registram as provas adicionais e seus limites.
 
+## Tokens e shells da US-016
+
+12 testes Node novos verificam versionamento/imutabilidade, contraste, escala/alvos, contexto local/cloud, estados, snapshot, SSR sem conteúdo antigo e escape de texto. Três testes verificam a evidência contra hashes atuais, gates obrigatórios, limpeza, datas e limites. A tipagem inclui NativeShell/NativeShellExample e o host DOM de demonstração.
+
+O protocolo pnpm ui:check passou em 12 gates Chromium reais: navegação/foco por teclado, skip link, seis estados e status, Axe sem violações nos seis estados avaliados, retry, limpeza de busca/rota na troca de espaço, Web cloud, reflow 320/375/768 com nome longo, fonte raiz a 200%, forced-colors e ausência de storage/egress/erro de script. Browser/listener encerrados, capturas sintéticas ignoradas. [Evidência](evidence/us-016-dom-2026-10-16.json), [guia](../development/design-system.md), [ADR-0029](../architecture/adr/0029-design-tokens-e-shells.md).
+
+O resultado não declara conformidade WCAG completa: testes humanos com leitor de tela, zoom em outros modos, runtimes Native e integrações Next.js/Vite/Tauri continuam pendentes. O novo job ui-shell executa o protocolo DOM no Ubuntu; quality mantém unitários/tipos no Windows/Linux. Execução remota deste incremento pendente.
+
+pnpm check aprovado localmente com 187 testes, 15 novos, além de tipos DOM/Native/host, lint/fronteiras, formatação, contratos/configuração e build. Mudanças de package/lockfile/CI motivaram a reexecução completa dos quatro ambientes Docker, que passou com limpeza e [evidência atual](evidence/us-014-environments-2026-10-16-us016.json), preservando o histórico.
+
 ## Observabilidade base da US-015
 
 17 testes novos executam a API pública compilada: emissão desativada por padrão, allowlist e tipos de metadados, snapshot, erros/stack/causas, getters/Proxy, códigos e nomes fechados, sink falho, encerramento, 32 operações concorrentes, propagação interna explícita e reinício em entrada pública/headers inválidos. HTTP loopback real e worker Node em processo independente demonstram um trace/request comum entre request/job/sync/db, com spans e parentesco distintos. As saídas das duas partes são verificadas contra canários sintéticos; nenhuma saída bruta é salva. Listener e processo são encerrados.

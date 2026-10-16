@@ -1,0 +1,54 @@
+{
+  "format_version": 1,
+  "scope": "us016-dom-synthetic-example",
+  "synthetic_only": true,
+  "started_at_utc": "2026-10-16T16:13:08.351Z",
+  "checks": {
+    "local_without_login_and_semantic_landmarks": true,
+    "keyboard_skip_link_and_visible_focus": true,
+    "keyboard_navigation_and_heading_focus": true,
+    "distinct_states_hide_stale_content_and_announce_status": true,
+    "axe_wcag_22_aa_all_six_states": true,
+    "retry_returns_to_ready": true,
+    "workspace_change_resets_route_and_search": true,
+    "web_offers_cloud_workspaces_only": true,
+    "reflow_320_375_768_and_long_workspace_name": true,
+    "text_at_200_percent_without_horizontal_overflow": true,
+    "forced_colors_preserves_focus": true,
+    "no_browser_storage_external_requests_or_runtime_errors": true
+  },
+  "pending": [
+    "native-android-ios-runtime",
+    "screen-reader-manual-review",
+    "nextjs-vite-tauri-integration"
+  ],
+  "versions": {
+    "node": "24.19.0",
+    "chromium": "156.0.8078.4",
+    "axe": "4.14.0"
+  },
+  "passed": true,
+  "completed_at_utc": "2026-10-16T16:13:14.988Z",
+  "resources_closed": true,
+  "source_sha256": {
+    "package.json": "f265ff1c938700ff6cd232284065ca9a9b13452537427f902df7941d40683cc1",
+    "pnpm-lock.yaml": "9d96ba9d6ff51d0ca5aa8aeed48e043d2293f07c2c69ca6d40f0d1f19c1d2a20",
+    "pnpm-workspace.yaml": "9d902976f1db6ffd7bc09a5900370860f957f96b6f5e28252f80b43a017399fc",
+    ".github/workflows/ci.yml": "a457938e75be10201811a596d9dbe788503c1198206eb30ed49554c16c64e834",
+    "packages/design-tokens/src/index.ts": "5bfbe490feeccedeba1ba0b269d6936d68bfbf1e98a869ae5e2527c396761bc0",
+    "packages/design-tokens/src/tokens.ts": "918f1001a828409d1fbe257b515db711fd0b036a31a276d0aede6cff2cdbd467",
+    "packages/design-tokens/src/css.ts": "eaa02c87bd4eb5968575333f2575fc11074bb80cf647623a425349c8e33794c3",
+    "packages/design-tokens/src/shell.ts": "4e8059460accd72855975dfacc690f8a3f9b040d4b739b82aa1612980a6ab668",
+    "packages/ui-dom/src/shell.tsx": "e00395ecd6b80bb39399e89264bd84de2e0f83bd3cca020e317252030990dc05",
+    "packages/ui-dom/src/index.ts": "66fe43c1ef06d918542a01c425e80f5b5ba87e6dee67533a61a587d199d99e2e",
+    "packages/ui-dom/styles.css": "d56f082ac3dfd4a53370926dd0028cdbac89e658a6ab131c176053fbe6858155",
+    "apps/web/src/shell.ts": "7c8ebfb4a44445249aa4b14f5fa6fac29f0eb8c32f5eb92246de1c0e89b4bc10",
+    "apps/desktop/src/shell.ts": "b66548a513460217d22d3e53dfbc5742b94f84611addf2921535ef29b3c4a669",
+    "apps/mobile/src/native-shell.tsx": "d5e0dfb14b553801c764a045341fce1d9f66535584d9de7849d5f7b3fac4aa82",
+    "apps/mobile/src/native-shell-example.tsx": "a08cd433c27e9a3e78559902f9bb0fd4011585241c03353ee7851329b8c8c81c",
+    "infra/ui/example.tsx": "fe9c554fe7120a1fde301970396a5c9c96b9df75851d6c3e32e38399f0d94acc",
+    "infra/ui/host.mjs": "64159a60d897ddfbcc2fd2d4f8ac663031172dcca47dfa051f50cfd78e36383e",
+    "infra/ui/check.mjs": "92a2a14332be3e6a571f77675859f23a013500ae08f28530d8f9b35aba6af50f",
+    "infra/ui/evidence.mjs": "41b40a3f0f6d4295b8d8e7d3cac6afe025f6fc54b872dd7d1bc09f1c8f29009b"
+  }
+}

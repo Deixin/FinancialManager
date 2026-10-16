@@ -2,6 +2,8 @@
 
 Aplicativo Mobile. Stack prevista: Expo e React Native, com réplica offline autorizada e revogável.
 
+NativeShell/NativeShellExample em src fazem parte da [US-016](../../docs/development/design-system.md): tokens compartilhados, componentes Native próprios, seletor cloud, estados e navegação adaptada. São tipados/compilados, sem importação de ui-dom. A entrada US-002 permanece intacta e homologação do novo shell em Android/iOS/TalkBack/VoiceOver está pendente.
+
 Estado: módulo TypeScript do bootstrap e instrumento Expo isolado em spikes/us-002. A US-002 implementa a prova de SQLCipher, SecureStore e INT64; compilação e homologação nativas são registradas separadamente no protocolo. A aplicação Mobile cloud de produto permanece pendente.
 
 A [US-012](../../docs/development/api-contracts.md) acrescenta createMobileApiClient em src, com SDK gerado, transporte e credencial de sessão injetados. O teste HTTP em Node não homologa Fetch, TLS ou sessão no React Native. O cliente não persiste tokens nem concede acesso offline.

@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Fundação — US-016 DOM validado; Native tipado, homologação pendente — 2026-10-16
+
+design-tokens/ui-dom 0.1.0 entregam tokens imutáveis e modelo puro de apresentação, AppShell/ContentNotice React e wrappers WebShell/DesktopShell. Mobile tem NativeShell/NativeShellExample próprios, com os mesmos tokens e sem dependência DOM. Sete seções P0, local sem login, cloud explícito, estados distintos, foco/teclado e texto escalável. [Guia](../development/design-system.md), [ADR-0029](../architecture/adr/0029-design-tokens-e-shells.md).
+
+O protocolo real Chromium passou em 12 gates, com Axe nos seis estados, navegação, foco, status, retry, troca de espaço/busca, Web cloud, reflow em 320/375/768, fonte raiz a 200%, forced-colors e ausência de storage/tráfego externo/erros. [Evidência sanitizada](../quality/evidence/us-016-dom-2026-10-16.json). Browser/listener de teste encerrados e capturas somente sintéticas/ignoradas. 12 testes Node de comportamento e três de evidência acompanham o incremento.
+
+Como package.json, lockfile e CI mudaram, a US-014 foi reexecutada nos quatro perfis Docker reais: todos os gates e limpeza passaram. [Relatório atual](../quality/evidence/us-014-environments-2026-10-16-us016.json) com hashes atuais; os dois anteriores permanecem como histórico validado.
+
+pnpm check aprovado localmente com 187 testes Node, 15 novos, além de formatação, lint/fronteiras, contratos/configuração, tipos DOM/Native/host e build. Repositório com 15 workspaces e 70 documentos Markdown. O novo job ui-shell executa o protocolo Chromium no Ubuntu; execução remota deste incremento pendente.
+
+React 19.3.0 existente é reutilizado no DOM; React DOM/esbuild/Axe são ferramentas de desenvolvimento do exemplo. Nenhum dado real, API, banco, fonte externa ou deploy neste incremento. A entrada nativa US-002 e as especificações originais foram preservadas. Ainda faltam homologação Native Android/iOS, TalkBack/VoiceOver, avaliação humana WCAG e integração Next.js/Vite/Tauri/rotas/dados de produto. DP-01 a DP-04/G07 seguem nos seus escopos. Próximo incremento independente: US-017, flags/configuração por ambiente.
+
 ## Fundação — US-015 implementada — 2026-10-16
 
 packages/observability fornece correlação request_id/trace_id/span_id, OpenTelemetry manual privado e logs/spans JSON com allowlist tipada. API/worker exportam factories com service fixo. Emissão é desativada por padrão e exige destino explícito; nenhum collector, backend externo ou provider global é configurado. Erros não expõem mensagem/stack/cause e operações usam catálogos fechados. [Guia](../development/observability.md), [ADR-0028](../architecture/adr/0028-observabilidade-com-scrub.md).

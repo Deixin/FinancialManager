@@ -5,6 +5,10 @@ packages:
 # Keep Android CMake/prefab paths below the Windows Ninja path limit.
 virtualStoreDirMaxLength: 40
 
+# Use the pinned platform binary from optionalDependencies; no install-time script.
+allowBuilds:
+  esbuild@0.28.2: false
+
 minimumReleaseAgeExclude:
   - '@typescript-eslint/eslint-plugin@8.71.2'
   - '@typescript-eslint/parser@8.71.2'

@@ -2,6 +2,8 @@
 
 Aplicativo Desktop. Stack prevista: React, Vite e Tauri 2, com autoridade local e acesso a workspaces cloud.
 
+DesktopShell da [US-016](../../docs/development/design-system.md) compartilha AppShell React/tokens, preservando local sem login e distinção cloud. A demonstração usa dados sintéticos em Chromium; não modifica o instrumento US-001 nem integra Vite/Tauri de produto.
+
 Estado: módulo TypeScript com createDesktopCloudClient da [US-012](../../docs/development/api-contracts.md) e experimento nativo isolado em spikes/us-001. O cliente usa SDK gerado e credencial fornecida pela sessão; modo local não depende dele. O experimento integra Tauri, SQLCipher, Windows Credential Manager e backup autenticado; aplicação React/Vite de produto e homologação do cliente HTTP no Tauri permanecem pendentes.
 
 Referência: [arquitetura](../../docs/architecture/04-technical-architecture.md). Execute pnpm --filter @financial-manager/desktop typecheck ou build para verificar o módulo isoladamente.

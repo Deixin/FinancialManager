@@ -2,6 +2,8 @@
 
 Interface Web em nuvem. Stack prevista: Next.js. Sem cofre financeiro persistente no navegador.
 
+WebShell da [US-016](../../docs/development/design-system.md) compartilha AppShell React e tokens, com seletor cloud, estados e foco/teclado. O exemplo loopback passou no protocolo Chromium; integração Next.js/roteamento e dados financeiros permanecem pendentes.
+
 Estado: módulo TypeScript do bootstrap e instrumento Node HTTPS isolado em spikes/us-003. A US-003 experimenta o BFF OIDC com provider separado e tokens apenas no servidor. Next.js e a aplicação Web de produto permanecem pendentes.
 
 A [US-012](../../docs/development/api-contracts.md) acrescenta createWebApiClient em src: SDK gerado, transporte injetado, cookie same-origin e CSRF. O teste HTTP executa o módulo compilado em Node; não entrega BFF, sessão ou integração Next.js.

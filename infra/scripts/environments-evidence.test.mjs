@@ -114,7 +114,8 @@ test('environment evidence refuses payloads, remote deployment claims, invalid t
 test('latest environment evidence matches current sources and historical evidence retains its gates', () => {
   for (const [name, matchSources] of [
     ['us-014-environments-2026-10-16.json', false],
-    ['us-014-environments-2026-10-16-us015.json', true],
+    ['us-014-environments-2026-10-16-us015.json', false],
+    ['us-014-environments-2026-10-16-us016.json', true],
   ]) {
     const filename = new URL(
       '../../docs/quality/evidence/' + name,
