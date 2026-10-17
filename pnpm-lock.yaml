@@ -102,6 +102,9 @@ importers:
       '@financial-manager/ui-dom':
         specifier: workspace:*
         version: link:../../packages/ui-dom
+      '@tauri-apps/api':
+        specifier: 2.12.4
+        version: 2.12.4
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -1415,6 +1418,9 @@ packages:
 
   '@sinclair/typebox@0.27.12':
     resolution: {integrity: sha512-hhyNJ+nbR6ZR7pToHvllEFun9TL0sbL+tk/ON75lo+Xas054uez98qRbsuNt7MBCyZKK4+8Yli/OAGZhmfBZ/g==}
+
+  '@tauri-apps/api@2.12.4':
+    resolution: {integrity: sha512-pVmfis+4zT8H0Qhp3xPZx9Ju7kpzvA6rr/PSJPyuwfvucTQ8sVt61NYU9KMkK703UFlYadFmjKA4HhybOtN0gg==}
 
   '@turbo/darwin-64@2.11.7':
     resolution: {integrity: sha512-Z2LFOxwbiJueD1miByXJS/BrW21vv6YaQXZustty5jEX4vQYw6zyh101Sz1QO7WG0mqBzKagZ/DoAeeujI0/Sw==}
@@ -4536,6 +4542,8 @@ snapshots:
   '@rolldown/pluginutils@1.0.1': {}
 
   '@sinclair/typebox@0.27.12': {}
+
+  '@tauri-apps/api@2.12.4': {}
 
   '@turbo/darwin-64@2.11.7':
     optional: true

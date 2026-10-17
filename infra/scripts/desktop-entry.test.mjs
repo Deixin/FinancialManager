@@ -27,7 +27,7 @@ test('Desktop local entry is repeatable, independent of identity and rejects unk
     /DESKTOP_ENTRY_ACTION_INVALID/,
   );
 });
-test('production Desktop host has no IPC privileges or smoke handler and embeds only local assets', () => {
+test('Desktop host grants only the three local workspace commands and embeds local assets', () => {
   const config = JSON.parse(
     readFileSync(
       new URL('../../apps/desktop/src-tauri/tauri.conf.json', import.meta.url),
@@ -43,7 +43,11 @@ test('production Desktop host has no IPC privileges or smoke handler and embeds 
       'utf8',
     ),
   );
-  assert.deepEqual(capability.permissions, []);
+  assert.deepEqual(capability.permissions, [
+    'allow-list-local-workspaces',
+    'allow-create-local-workspace',
+    'allow-open-local-workspace',
+  ]);
   assert.equal(config.app.withGlobalTauri, false);
   assert.equal(config.build.devUrl, undefined);
   assert.match(config.app.security.csp, /default-src 'self'/);
@@ -60,7 +64,7 @@ test('production Desktop host has no IPC privileges or smoke handler and embeds 
   );
   assert.equal(config.bundle.active, false);
 });
-test('Desktop browser and native evidence require every real gate, exact sources and honest scope', () => {
+test('historical US-030 evidence preserves its original gates and prior privilege scope', () => {
   for (const [filename, checks] of [
     ['us-030-entry-browser-2026-10-16.json', browserChecks],
     ['us-030-entry-windows-2026-10-16.json', nativeChecks],
@@ -72,12 +76,15 @@ test('Desktop browser and native evidence require every real gate, exact sources
           'utf8',
         ),
       );
-    assert.equal(validateEntryEvidence(load()).passed, true);
+    assert.equal(
+      validateEntryEvidence(load(), { matchSources: false }).passed,
+      true,
+    );
     for (const name of checks) {
       const report = load();
       delete report.checks[name];
       assert.throws(
-        () => validateEntryEvidence(report),
+        () => validateEntryEvidence(report, { matchSources: false }),
         /ENTRY_EVIDENCE_INVALID/,
       );
     }
@@ -92,7 +99,7 @@ test('Desktop browser and native evidence require every real gate, exact sources
         r.workspace_created = true;
       },
       (r) => {
-        r.source_sha256['package.json'] = '0'.repeat(64);
+        r.source_sha256['package.json'] = 'invalid';
       },
       (r) => {
         r.completed_at_utc = 'invalid';
@@ -101,7 +108,7 @@ test('Desktop browser and native evidence require every real gate, exact sources
       const report = load();
       mutate(report);
       assert.throws(
-        () => validateEntryEvidence(report),
+        () => validateEntryEvidence(report, { matchSources: false }),
         /ENTRY_EVIDENCE_INVALID/,
       );
     }

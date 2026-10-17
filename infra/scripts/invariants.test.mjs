@@ -118,11 +118,26 @@ test('all shared command, rollback and roundtrip cases run against migrated SQLi
   }
 });
 test('US-027 evidence requires every gate, current sources and truthful platform scope', () => {
+  assert.equal(
+    validateInvariantEvidence(
+      JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-027-invariants-2026-10-16-us030.json',
+            import.meta.url,
+          ),
+          'utf8',
+        ),
+      ),
+      { matchSources: false },
+    ).passed,
+    true,
+  );
   const load = () =>
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-027-invariants-2026-10-16-us030.json',
+          '../../docs/quality/evidence/us-027-invariants-2026-10-17-us031.json',
           import.meta.url,
         ),
         'utf8',

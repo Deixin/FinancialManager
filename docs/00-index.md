@@ -26,6 +26,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 ## Material de apoio
 
 - [Estado do projeto](delivery/status.md).
+- [Espaço local anônimo US-031](development/local-workspaces.md), com criação idempotente, persistência SQLCipher mínima, chave Windows e reabertura sem identidade cloud.
 - [Entrada Desktop US-030](development/desktop-entry.md), com modo local sem identidade, frontend Vite e homologação Tauri/WebView2.
 - [Suíte de invariantes US-027](development/cross-engine-invariants.md), com roteiro comum, oráculo independente e comparação de estado/auditoria PostgreSQL/SQLite.
 - [Revisões financeiras US-026](development/financial-revisions.md), com versão-base, snapshots atômicos, reversão segura e adapters PostgreSQL/SQLite.

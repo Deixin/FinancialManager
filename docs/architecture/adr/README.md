@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0040 — Workspace local anônimo](0040-workspace-local-anonimo.md): criação/reabertura no schema de produto com staging, três comandos e proteção mínima SQLCipher/Windows; G07-VAULT ampliado segue aberto.
+
 [0039 — Entrada Desktop anônima](0039-entrada-desktop-anonima.md): React/Vite + Tauri sem privilégios, EN-01 até modo local e testes Chromium/WebView2; criação/cofre/cloud seguem pendentes.
 
 [0038 — Suíte de invariantes cross-engine](0038-suite-invariantes-cross-engine.md): seis famílias financeiras testadas com estado/auditoria comparados, oráculo independente e propriedades reproduzíveis PostgreSQL/SQLite.

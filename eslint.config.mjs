@@ -7,6 +7,7 @@ export default [
       '**/dist/**',
       '**/frontend-dist/**',
       'apps/desktop/src-tauri/smoke.js',
+      'apps/desktop/src-tauri/workspace-smoke.js',
       '**/target/**',
       '**/.turbo/**',
       '**/.tools/**',

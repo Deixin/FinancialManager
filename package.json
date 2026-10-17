@@ -9,8 +9,8 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
-    "desktop:entry:check": "turbo run build --filter=@financial-manager/desktop && node infra/entry/check.mjs",
-    "desktop:entry:native": "turbo run build --filter=@financial-manager/desktop && node infra/entry/native.mjs",
+    "desktop:entry:check": "pnpm desktop:workspaces:check",
+    "desktop:entry:native": "pnpm desktop:workspaces:native",
     "invariants:test": "turbo run build && node infra/invariants/run.mjs",
     "invariants:clean": "node infra/invariants/clean.mjs",
     "revisions:test": "turbo run build && node infra/revisions/run.mjs",
@@ -78,13 +78,16 @@
     "spike:desktop:vm:test": "node infra/homologation/us001-run.mjs",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
-    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm check:data-access && pnpm fixtures:check && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check && pnpm schema:migrations:check && pnpm identity:check",
+    "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm check:data-access && pnpm fixtures:check && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check && pnpm schema:migrations:check && pnpm identity:check && node infra/local-workspaces/generate.mjs --check",
     "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json && tsc -p infra/identity/tsconfig.json && tsc -p infra/query/tsconfig.gate.json && tsc -p infra/revisions/tsconfig.json",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "desktop:preview": "turbo run build --filter=@financial-manager/desktop && pnpm --filter @financial-manager/desktop preview"
+    "desktop:preview": "turbo run build --filter=@financial-manager/desktop && pnpm --filter @financial-manager/desktop preview",
+    "desktop:workspaces:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-workspaces/browser.mjs",
+    "desktop:workspaces:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-workspaces/native.mjs",
+    "desktop:workspaces:generate": "node infra/local-workspaces/generate.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

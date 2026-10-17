@@ -1,7 +1,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    if tauri::Builder::default()
+    if financial_manager_desktop::commands::production_builder()
         .run(tauri::generate_context!())
         .is_err()
     {

@@ -552,11 +552,26 @@ test('current revision evidence requires all real engine gates, exact sources an
     ).passed,
     true,
   );
+  assert.equal(
+    validateRevisionEvidence(
+      JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-026-revisions-2026-10-16-us030.json',
+            import.meta.url,
+          ),
+          'utf8',
+        ),
+      ),
+      { matchSources: false },
+    ).passed,
+    true,
+  );
   const load = () =>
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-026-revisions-2026-10-16-us030.json',
+          '../../docs/quality/evidence/us-026-revisions-2026-10-17-us031.json',
           import.meta.url,
         ),
         'utf8',

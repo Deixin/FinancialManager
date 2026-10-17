@@ -1,6 +1,10 @@
 {
   "identifier": "entry-main",
-  "description": "Entrada Desktop sem comandos nativos, plugins ou permissões financeiras.",
+  "description": "Somente criação, listagem e abertura de espaços locais; sem SQL, caminhos ou segredos.",
   "windows": ["main"],
-  "permissions": []
+  "permissions": [
+    "allow-list-local-workspaces",
+    "allow-create-local-workspace",
+    "allow-open-local-workspace"
+  ]
 }

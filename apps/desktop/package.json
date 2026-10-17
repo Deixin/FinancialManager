@@ -22,6 +22,7 @@
     "@financial-manager/runtime-config": "workspace:*",
     "@financial-manager/storage-schema": "workspace:*",
     "@financial-manager/ui-dom": "workspace:*",
+    "@tauri-apps/api": "2.12.4",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   }

@@ -8,12 +8,27 @@ license = "LicenseRef-Proprietary"
 default-run = "financial-manager"
 
 [features]
-entry-smoke = ["dep:serde", "dep:serde_json", "tauri/dynamic-acl"]
+entry-smoke = ["tauri/dynamic-acl"]
+workspace-smoke = ["tauri/dynamic-acl"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
-serde = { version = "=1.0.229", features = ["derive"], optional = true }
-serde_json = { version = "=1.0.154", optional = true }
+serde = { version = "=1.0.229", features = ["derive"], optional = false }
+serde_json = "=1.0.154"
+
+rusqlite = { version = "=0.40.2", features = ["bundled-sqlcipher-vendored-openssl"] }
+getrandom = "=0.4.3"
+uuid = { version = "=1.28.0", features = ["v7", "serde"] }
+chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
+zeroize = { version = "=1.9.1", features = ["derive"] }
+sha2 = "=0.10.9"
+
+[target.'cfg(windows)'.dependencies]
+keyring-core = "=1.0.1"
+windows-native-keyring-store = { version = "=1.1.0", default-features = false }
+
+[dev-dependencies]
+tempfile = "=3.27.0"
 
 [build-dependencies]
 tauri-build = "=2.7.2"
@@ -26,3 +41,13 @@ path = "src/main.rs"
 name = "entry-smoke"
 path = "src/bin/entry-smoke.rs"
 required-features = ["entry-smoke"]
+
+[[bin]]
+name = "workspace-probe"
+path = "src/bin/workspace-probe.rs"
+required-features = ["workspace-smoke"]
+
+[[bin]]
+name = "workspace-smoke"
+path = "src/bin/workspace-smoke.rs"
+required-features = ["workspace-smoke"]

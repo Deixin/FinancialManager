@@ -243,3 +243,54 @@ main:focus {
     outline-color: Highlight;
   }
 }
+.fm-entry .local-main {
+  display: block;
+  max-width: 720px;
+}
+.local-card h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.local-card form {
+  display: grid;
+  gap: 12px;
+}
+.local-card :where(input, select) {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--fm-color-border);
+  border-radius: 8px;
+  padding: 12px;
+  font: inherit;
+  background: var(--fm-color-surface);
+  color: var(--fm-color-text);
+}
+.local-card label {
+  font-weight: 600;
+}
+.local-card .entry-secondary {
+  margin-top: 20px;
+}
+.local-list {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+.local-list button {
+  width: 100%;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.local-list span {
+  display: block;
+  font-size: 0.875rem;
+  margin-top: 6px;
+}
+.local-empty {
+  max-width: 740px;
+}
+.local-empty p {
+  line-height: 1.65;
+}

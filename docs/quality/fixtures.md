@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-031 usa nomes/UUIDs sintéticos e nenhuma identidade cloud. O [protocolo](../development/local-workspaces.md) mantém instalação e perfis próprios em .tools/us031-workspaces; credenciais Windows são escopadas a essa instalação e removidas antes dos arquivos. A fixture DOM vive apenas no Playwright e não integra o bundle. Relatórios guardam booleanos/metadados técnicos/hashes, sem nomes, IDs de credencial, bancos ou segredos.
+
 US-030 não precisa de dados financeiros ou identidade. O [protocolo de entrada](../development/desktop-entry.md) usa somente estados de tela/rede; a WebView recebe um perfil temporário em .tools/us030-entry e fault injection de rede/storage exclusiva do binário de smoke. O relatório contém apenas gates, versões, data, pendências e hashes. Nenhum workspace fictício é apresentado como criado.
 
 FIN-INVARIANTS-001 v1, da [US-027](../development/cross-engine-invariants.md), usa FIN-002 v1 preservado e acrescenta categoria/dois rateios sintéticos no workspace B. São 19 cenários de fluxo/rejeição e 24 vetores limitados de ida/volta. IDs/relógio são determinísticos apenas no instrumento para comparar revisões completas. Redutor BigInt independente e goldens literais verificam resultados; FIN-SCHEMA-001 continua em workspaces separados e roda novamente nas duas engines. Não há seed de produto ou dado pessoal.

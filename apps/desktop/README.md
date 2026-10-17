@@ -1,5 +1,7 @@
 # desktop
 
+A [US-031](../../docs/development/local-workspaces.md) cria e reabre espaços de produto sem identidade cloud. O core Rust agora mantém SQLCipher/schema v2 e chave Windows no mínimo necessário à persistência, com três comandos estreitos. desktop:workspaces:check/native verificam DOM e persistência real; os aliases entry apontam para esses protocolos atuais. Preview continua sem gravar dados. US-032/G07-VAULT ampliado, backup/restore e release permanecem pendentes; os registros anteriores abaixo são históricos.
+
 A [US-030](../../docs/development/desktop-entry.md) integra a primeira entrada de produto React/Vite + Tauri, com Continuar sem conta até início de WS-01 local. Os parágrafos abaixo registram a fundação anterior e seus limites; o cofre experimental continua isolado. Criação persistente do workspace (US-031), cofre (US-032), autenticação cloud e release assinado permanecem pendentes.
 
 Na raiz, pnpm desktop:preview abre o servidor visual em loopback 44361; desktop:entry:check testa o build real em Chromium e desktop:entry:native testa Clippy/build locked/WebView2 em Windows x64. O binário padrão é financial-manager; entry-smoke requer feature explícita e não registra seus comandos no produto. Consulte o guia para paths, evidências e pré-requisitos.

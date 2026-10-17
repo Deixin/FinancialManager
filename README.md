@@ -6,6 +6,8 @@ Este repositório contém a documentação v1.0, a estrutura inicial de desenvol
 
 ## Documentação
 
+A [US-031](docs/development/local-workspaces.md) permite criar/reabrir espaços locais no Desktop sem conta cloud. Nome/finalidade ficam no SQLCipher de produto com chave Windows e staging; a prévia DOM não persiste dados. desktop:workspaces:check/native executam o protocolo atual. Próximo incremento: US-032, ampliando a homologação do cofre e G07-VAULT.
+
 A [US-030](docs/development/desktop-entry.md) entrega a entrada Desktop React/Vite + Tauri até o modo local, sem identidade cloud. Use pnpm desktop:preview para visualizar; os protocolos desktop:entry:check e desktop:entry:native verificam Chromium e Windows/WebView2. Criar o primeiro espaço persistente é o próximo passo, US-031; cofre/login cloud e release assinado continuam nos seus gates.
 
 Comece pelo [índice](docs/00-index.md). Os principais documentos são o [PRD](docs/product/01-prd.md), a [arquitetura](docs/architecture/04-technical-architecture.md), o [modelo de dados](docs/architecture/03-data-model.md) e o [plano de implementação](docs/delivery/06-implementation-plan.md).
