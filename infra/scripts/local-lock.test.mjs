@@ -19,7 +19,7 @@ const load = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-033-lock-' +
           kind +
-          '-2026-10-17-hello.json',
+          '-2026-10-17-us034.json',
         import.meta.url,
       ),
       'utf8',
@@ -68,32 +68,36 @@ test('local privacy status decoder rejects unknown secrets, unsupported biometri
   for (const code of ['HELLO_CANCELED', 'HELLO_FAILED', 'HELLO_UNAVAILABLE'])
     assert.match(privacyMessage(new LocalPrivacyError(code)), /Windows Hello/);
 });
-test('historical PIN-only reports cannot claim current Windows Hello integration', () => {
+test('historical PIN and Hello reports cannot claim the current backup permission scope', () => {
   for (const kind of ['browser', 'windows']) {
-    const report = JSON.parse(
-      readFileSync(
-        new URL(
-          '../../docs/quality/evidence/us-033-lock-' +
-            kind +
-            '-2026-10-17.json',
-          import.meta.url,
+    for (const suffix of ['', '-hello']) {
+      const report = JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-033-lock-' +
+              kind +
+              '-2026-10-17' +
+              suffix +
+              '.json',
+            import.meta.url,
+          ),
+          'utf8',
         ),
-        'utf8',
-      ),
-    );
-    assert.equal(
-      validateLockEvidence(report, { matchSources: false }).passed,
-      true,
-    );
-    assert.throws(
-      () => validateLockEvidence(report),
-      /LOCAL_LOCK_EVIDENCE_INVALID/,
-    );
-    report.checks.windows_hello_availability_from_native_api = true;
-    assert.throws(
-      () => validateLockEvidence(report, { matchSources: false }),
-      /LOCAL_LOCK_EVIDENCE_INVALID/,
-    );
+      );
+      assert.equal(
+        validateLockEvidence(report, { matchSources: false }).passed,
+        true,
+      );
+      assert.throws(
+        () => validateLockEvidence(report),
+        /LOCAL_LOCK_EVIDENCE_INVALID/,
+      );
+      report.checks.undeclared_current_backup_gate = true;
+      assert.throws(
+        () => validateLockEvidence(report, { matchSources: false }),
+        /LOCAL_LOCK_EVIDENCE_INVALID/,
+      );
+    }
   }
 });
 test('privacy errors never disclose native payloads or treat failed authentication as loss of the vault', () => {

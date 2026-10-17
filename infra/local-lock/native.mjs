@@ -31,7 +31,7 @@ const env = { ...process.env, CARGO_TARGET_DIR: target },
   perl = path.join(root, '.tools/strawberry-perl-5.42.3.1/perl/bin');
 if (existsSync(perl)) env[pathKey] = perl + path.delimiter + env[pathKey];
 const report = {
-  format_version: 2,
+  format_version: 3,
   scope: 'us033-local-lock-windows',
   passed: false,
   synthetic_only: true,
@@ -152,7 +152,7 @@ try {
         ['lock-smoke'],
       );
   });
-  step('only_ten_narrow_permissions', () => {
+  step('only_narrow_privacy_and_backup_permissions', () => {
     assert.deepEqual(
       JSON.parse(
         readFileSync(path.join(crate, 'capabilities/entry-main.json'), 'utf8'),

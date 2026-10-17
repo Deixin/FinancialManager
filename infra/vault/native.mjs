@@ -199,6 +199,7 @@ try {
         'allow-disable-local-pin',
         'allow-configure-local-hello',
         'allow-unlock-local-hello',
+        'allow-create-local-backup',
       ],
     );
   });

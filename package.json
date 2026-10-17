@@ -90,7 +90,9 @@
     "desktop:workspaces:generate": "node infra/local-workspaces/generate.mjs",
     "desktop:vault:check": "turbo run build --filter=@financial-manager/desktop && node infra/vault/native.mjs",
     "desktop:lock:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-lock/browser.mjs",
-    "desktop:lock:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-lock/native.mjs"
+    "desktop:lock:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-lock/native.mjs",
+    "desktop:backup:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-backup/browser.mjs",
+    "desktop:backup:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-backup/native.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

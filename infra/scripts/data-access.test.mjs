@@ -371,7 +371,7 @@ test('current repository evidence requires every real gate, source hash, cleanup
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-024-repositories-2026-10-17-us033.json',
+          '../../docs/quality/evidence/us-024-repositories-2026-10-17-us034.json',
           import.meta.url,
         ),
         'utf8',

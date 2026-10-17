@@ -11,6 +11,29 @@ pub struct Migration {
 }
 include!("migration_catalog.rs");
 
+pub(crate) fn current_version() -> i64 {
+    CATALOG[CATALOG.len() - 1].version
+}
+pub(crate) fn verify_current(db: &Connection) -> Result<()> {
+    if schema(db)? != expected(CATALOG.len())? {
+        return Err(LocalError::UnsupportedSchema);
+    }
+    let mut query =
+        db.prepare("SELECT version,checksum FROM _schema_migration ORDER BY version")?;
+    let history = query
+        .query_map([], |r| Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?)))?
+        .collect::<std::result::Result<Vec<_>, _>>()?;
+    if history.len() != CATALOG.len()
+        || history
+            .iter()
+            .zip(CATALOG.iter())
+            .any(|(row, item)| row.0 != item.version || row.1 != item.checksum)
+    {
+        return Err(LocalError::UnsupportedSchema);
+    }
+    verify_integrity(db)
+}
+
 fn schema(db: &Connection) -> Result<Vec<(String, String, String)>> {
     let mut query = db.prepare(
         "SELECT name,type,sql FROM sqlite_schema WHERE name NOT LIKE 'sqlite_%' ORDER BY name",

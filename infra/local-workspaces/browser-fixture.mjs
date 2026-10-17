@@ -21,6 +21,11 @@ export function installSyntheticWorkspaceBridge(options = {}) {
     holdHello: false,
     releaseHello: null,
     generation: 0,
+    backupOutcome: 'CREATED',
+    backupError: null,
+    holdBackup: false,
+    releaseBackup: null,
+    savedBackups: 0,
   };
   globalThis.isTauri = true;
   globalThis.__syntheticWorkspace = state;
@@ -108,6 +113,26 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         return status();
       }
       if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+      if (command === 'create_local_backup') {
+        if (!state.rows.some((row) => row.id === args.input.workspace_id))
+          throw 'NOT_FOUND';
+        const generation = ++state.generation;
+        state.locked = Boolean(state.pin);
+        if (state.holdBackup)
+          await new Promise((resolve) => {
+            state.releaseBackup = resolve;
+          });
+        if (generation !== state.generation) throw 'LOCAL_LOCKED';
+        if (state.backupError) throw state.backupError;
+        if (state.backupOutcome === 'CREATED') state.savedBackups++;
+        return {
+          outcome: state.backupOutcome,
+          created_at:
+            state.backupOutcome === 'CREATED'
+              ? '2026-10-17T12:34:56.000Z'
+              : null,
+        };
+      }
       if (command === 'list_local_workspaces')
         return structuredClone(state.rows);
       if (command === 'open_local_workspace') {

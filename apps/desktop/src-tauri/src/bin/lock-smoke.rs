@@ -69,6 +69,7 @@ fn main() {
             financial_manager_desktop::commands::disable_local_pin,
             financial_manager_desktop::commands::configure_local_hello,
             financial_manager_desktop::commands::unlock_local_hello,
+            financial_manager_desktop::commands::create_local_backup,
             finish_lock_smoke
         ])
         .on_window_event(|window, event| {

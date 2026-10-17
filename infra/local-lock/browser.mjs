@@ -12,7 +12,7 @@ const directory = new URL('../../.tools/us033-lock/', import.meta.url),
   SECOND = '682035741921',
   NAME = 'SYNTHETIC US033 PRIVATE SPACE';
 const report = {
-  format_version: 2,
+  format_version: 3,
   scope: 'us033-local-lock-browser',
   passed: false,
   synthetic_only: true,

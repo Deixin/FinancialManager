@@ -1,5 +1,9 @@
 # Decisões pendentes
 
+Em 2026-10-17, o usuário determinou que homologações humanas serão feitas após integrar todo o sistema. [ADR-0044](adr/0044-homologacao-humana-apos-integracao.md) registra o avanço sem exigir essas confirmações por incremento. Windows Hello/US-033 continua com homologação interativa diferida, sem aprovação humana registrada; isso não bloqueia US-034 ou as histórias seguintes. Automação e gates de segurança continuam obrigatórios.
+
+US-034: [ADR-0045](adr/0045-backup-criptografado-de-produto.md) implementa pacote de produto v1 autenticado, manifesto/schema/checksum, snapshot SQLCipher e senha independente, com seletor nativo estreito e publicação sem sobrescrita. Restauração em novo workspace pertence à US-035. Interação humana do seletor é diferida; G07-VAULT global, outras plataformas, distribuição, outbox e DP-01 a DP-04 mantêm seus escopos. Registros abaixo descrevem as decisões anteriores.
+
 Complemento US-033 em 2026-10-17: [ADR-0043](adr/0043-windows-hello-local.md) implementa Windows Hello com consulta real de disponibilidade, interop desktop, opt-in/PIN e migração da política v1/v2. O host informa Available, que pode incluir PIN Windows; isso não comprova sensor ou autenticação biométrica. Testes automáticos não encerram a homologação interativa; pacote sintético preparado para confirmação pelo usuário. US-033 permanece com esse gate aberto. Próximo trabalho independente: US-034. Demais gates e DP-01 a DP-04 preservados. O registro abaixo descreve o incremento PIN anterior.
 
 Avanço US-033 em 2026-10-17: [ADR-0042](adr/0042-bloqueio-local-por-pin.md) implementa o caminho PIN opcional em Windows x64, com liberação de chaves no Rust, bloqueio por foco/saída/reinício e espera persistida. Biometria é informada indisponível nesta versão e requer adapter/hardware homologados. PIN não substitui chave SQLCipher ou senha de backup. Backup/restore, outbox, distribuição e DP-01 a DP-04 permanecem nos seus gates.

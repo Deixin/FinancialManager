@@ -10,7 +10,13 @@ import {
 import type { LocalWorkspace, Purpose } from './local-workspaces.js';
 import '@financial-manager/ui-dom/styles.css';
 
-export function LocalWorkspaceFlow({ onExit }: { onExit: () => void }) {
+export function LocalWorkspaceFlow({
+  onExit,
+  onBackup,
+}: {
+  onExit: () => void;
+  onBackup?: (workspace: LocalWorkspace) => void;
+}) {
   const [gateway] = useState(createLocalWorkspaceGateway);
   const [workspaces, setWorkspaces] = useState<readonly LocalWorkspace[]>([]);
   const [current, setCurrent] = useState<LocalWorkspace | null>(null);
@@ -146,6 +152,11 @@ export function LocalWorkspaceFlow({ onExit }: { onExit: () => void }) {
               Armazenamento: Local, neste computador. Nenhuma identidade na
               nuvem está vinculada a este espaço.
             </p>
+            {onBackup && (
+              <button type="button" onClick={() => onBackup(current)}>
+                Backup local
+              </button>
+            )}
           </section>
         ) : (
           <section className="local-empty">
@@ -165,6 +176,11 @@ export function LocalWorkspaceFlow({ onExit }: { onExit: () => void }) {
             <button type="button" onClick={() => void load()}>
               Ver espaços locais
             </button>
+            {onBackup && (
+              <button type="button" onClick={() => onBackup(current)}>
+                Backup local
+              </button>
+            )}
           </section>
         )}
       </DesktopShell>

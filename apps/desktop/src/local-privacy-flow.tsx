@@ -7,8 +7,15 @@ import {
   helloAvailabilityMessage,
 } from './local-privacy.js';
 import type { LockStatus } from './local-privacy.js';
+import type { LocalWorkspace } from './local-workspaces.js';
+import { LocalBackupFlow, LocalBackupPending } from './local-backup-flow.js';
+import { createBackupGateway, backupMessage } from './local-backup.js';
 export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   const [gateway] = useState(createPrivacyGateway);
+  const [backups] = useState(createBackupGateway);
+  const [backupWorkspace, setBackupWorkspace] = useState<LocalWorkspace | null>(
+    null,
+  );
   const [status, setStatus] = useState<LockStatus | null>(null);
   const [settings, setSettings] = useState(false),
     [busy, setBusy] = useState(Boolean(gateway));
@@ -22,6 +29,7 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     alive = useRef(true),
     pending = useRef(false),
     helloPending = useRef(false),
+    backupPending = useRef(false),
     current = useRef<LockStatus | null>(null),
     heading = useRef<HTMLHeadingElement>(null);
   function clearPins() {
@@ -54,12 +62,19 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     }
   }
   function lockNow() {
-    if (!gateway || !current.current?.enabled) return;
+    if (
+      !gateway ||
+      !current.current ||
+      (!current.current.enabled && !backupPending.current)
+    )
+      return;
     const token = ++epoch.current;
     pending.current = false;
     helloPending.current = false;
+    backupPending.current = false;
+    setBackupWorkspace(null);
     // Remove the financial tree immediately; late replies belong to the old epoch.
-    accept({ ...current.current, locked: true });
+    accept({ ...current.current, locked: current.current.enabled });
     clearPins();
     setSettings(false);
     setError('');
@@ -92,7 +107,7 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     // Native consent starts with the financial tree removed. Its owned prompt
     // blurs this window; Rust requires OS success and restored foreground focus.
     const blur = () => {
-      if (!helloPending.current) lockNow();
+      if (!helloPending.current && !backupPending.current) lockNow();
     };
     window.addEventListener('blur', blur);
     return () => window.removeEventListener('blur', blur);
@@ -128,6 +143,54 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
       /* Native lock is requested before leaving the local route. */
     }
     if (alive.current) onExit();
+  }
+  async function createBackup(password: string, confirmation: string) {
+    if (
+      !gateway ||
+      !backups ||
+      !backupWorkspace ||
+      pending.current ||
+      !current.current
+    )
+      return;
+    const workspaceId = backupWorkspace.id,
+      token = ++epoch.current;
+    pending.current = true;
+    backupPending.current = true;
+    setBackupWorkspace(null);
+    clearPins();
+    accept({ ...current.current, locked: current.current.enabled });
+    setBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      const result = await backups.create(workspaceId, password, confirmation);
+      if (alive.current && epoch.current === token)
+        setNotice(
+          result.outcome === 'CANCELED'
+            ? 'Criação de backup cancelada. Nenhum arquivo de backup foi gravado.'
+            : 'Backup criptografado criado e verificado em ' +
+                new Date(result.created_at!).toLocaleString('pt-BR') +
+                '. Guarde a senha separadamente do arquivo.',
+        );
+    } catch (reason) {
+      if (alive.current && epoch.current === token)
+        setError(backupMessage(reason));
+    } finally {
+      if (alive.current && epoch.current === token) {
+        try {
+          const next = await gateway.status();
+          if (alive.current && epoch.current === token) accept(next);
+        } catch {
+          if (alive.current && epoch.current === token) setStatus(null);
+        }
+      }
+      if (epoch.current === token) {
+        pending.current = false;
+        backupPending.current = false;
+        if (alive.current) setBusy(false);
+      }
+    }
   }
   async function helloOperation(enabled?: boolean) {
     if (!gateway || pending.current || !current.current?.enabled) return;
@@ -225,6 +288,7 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     }
   }
   if (!gateway) return <LocalWorkspaceFlow onExit={onExit} />;
+  if (backupPending.current) return <LocalBackupPending onCancel={lockNow} />;
   if (status && !status.locked && !settings)
     return (
       <>
@@ -246,7 +310,34 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
             </button>
           )}
         </nav>
-        <LocalWorkspaceFlow onExit={() => void leave()} />
+        {notice && (
+          <p className="backup-feedback" role="status">
+            {notice}
+          </p>
+        )}
+        {error && (
+          <p className="backup-feedback" role="alert">
+            {error}
+          </p>
+        )}
+        {backupWorkspace ? (
+          <LocalBackupFlow
+            name={backupWorkspace.display_name}
+            onCreate={(password, confirmation) =>
+              void createBackup(password, confirmation)
+            }
+            onBack={() => setBackupWorkspace(null)}
+          />
+        ) : (
+          <LocalWorkspaceFlow
+            onExit={() => void leave()}
+            onBackup={(workspace) => {
+              setError('');
+              setNotice('');
+              setBackupWorkspace(workspace);
+            }}
+          />
+        )}
       </>
     );
   const field = (

@@ -174,6 +174,73 @@ impl Installation {
     pub fn create(&self, input: CreateWorkspace) -> Result<Workspace> {
         self.create_inner(input, |_| Ok(()))
     }
+    pub(crate) fn prepare_backup(
+        &self,
+        input: &crate::local_backup::CreateBackup,
+    ) -> Result<crate::local_backup::SealedBackup> {
+        use crate::local_backup;
+        let id = input.validate()?;
+        self.read(id)?;
+        let key = self.keys.get(self.id, id)?;
+        let source = open_database(&self.path(id), &key)?;
+        let stage_id = identity::new_id().map_err(|_| LocalError::StorageUnavailable)?;
+        if self.path(stage_id).parent().is_some_and(Path::exists) {
+            return Err(LocalError::RequestConflict);
+        }
+        let stage = self.root.join("staging").join(stage_id.to_string());
+        fs::create_dir(&stage)?;
+        struct Stage(PathBuf);
+        impl Drop for Stage {
+            fn drop(&mut self) {
+                let _ = fs::remove_dir_all(&self.0);
+            }
+        }
+        let owned = Stage(stage);
+        let result = (|| {
+            let snapshot_key = random_key()?;
+            let snapshot_path = owned.0.join("snapshot.db");
+            File::create_new(&snapshot_path)?;
+            let empty = open_database(&snapshot_path, &snapshot_key)?;
+            empty.pragma_update(None, "user_version", migrations::current_version())?;
+            drop(empty);
+            let mut literal = Zeroizing::new(String::with_capacity(67));
+            use std::fmt::Write;
+            literal.push_str("x'");
+            for byte in snapshot_key.iter() {
+                write!(literal, "{byte:02x}").map_err(|_| LocalError::StorageUnavailable)?;
+            }
+            literal.push('\'');
+            source.execute(
+                "ATTACH DATABASE ? AS snapshot KEY ?",
+                params![
+                    snapshot_path
+                        .to_str()
+                        .ok_or(LocalError::StorageUnavailable)?,
+                    literal.as_str()
+                ],
+            )?;
+            source.execute_batch("BEGIN IMMEDIATE; SELECT sqlcipher_export('snapshot');")?;
+            source.pragma_update(
+                Some("snapshot"),
+                "user_version",
+                migrations::current_version(),
+            )?;
+            source.execute_batch("COMMIT; DETACH DATABASE snapshot;")?;
+            let snapshot = open_database(&snapshot_path, &snapshot_key)?;
+            let bytes = local_backup::read_limited(&snapshot_path, local_backup::MAX_SNAPSHOT)?;
+            let manifest = local_backup::manifest(&snapshot, &id.to_string(), &bytes)?;
+            local_backup::validate_snapshot(&snapshot, &manifest)?;
+            drop(snapshot);
+            #[cfg(feature = "backup-smoke")]
+            crate::backup_probe::checkpoint("snapshot_ready");
+            local_backup::seal(&manifest, &snapshot_key, &bytes, &input.password)
+        })();
+        drop(source);
+        drop(key);
+        // Normal success is reported only after the protected snapshot has been removed.
+        fs::remove_dir_all(&owned.0)?;
+        result
+    }
     fn create_inner(
         &self,
         input: CreateWorkspace,

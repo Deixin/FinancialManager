@@ -26,6 +26,8 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 ## Material de apoio
 
 - [Estado do projeto](delivery/status.md).
+- [Backup criptografado US-034](development/local-backup.md), com manifesto autenticado, senha independente, snapshot consistente e publicação sem sobrescrita.
+- [Homologação humana pós-integração](architecture/adr/0044-homologacao-humana-apos-integracao.md), conforme instrução do usuário; pendências não são aprovações antecipadas.
 - [Bloqueio local US-033](development/local-privacy.md), com PIN opcional, Windows Hello, liberação de chaves no Rust e homologação interativa pendente.
 - [Cofre Desktop US-032](development/desktop-vault.md), com chave Windows, falhas de migrations e recuperação de journal criptografado.
 - [Espaço local anônimo US-031](development/local-workspaces.md), com criação idempotente, persistência SQLCipher mínima, chave Windows e reabertura sem identidade cloud.

@@ -1,6 +1,8 @@
+pub mod backup_destination;
 pub mod commands;
 pub mod identity;
 pub mod keys;
+pub mod local_backup;
 pub mod local_lock;
 pub mod local_workspaces;
 pub mod lock_store;
@@ -28,6 +30,13 @@ pub enum LocalError {
     HelloUnavailable,
     HelloCanceled,
     HelloFailed,
+    InvalidBackupPassword,
+    BackupLimit,
+    BackupAuthenticationFailed,
+    UnsupportedBackup,
+    BackupDestinationUnavailable,
+    BackupAlreadyExists,
+    BackupVerificationFailed,
 }
 impl From<std::io::Error> for LocalError {
     fn from(_: std::io::Error) -> Self {
@@ -48,3 +57,6 @@ pub mod workspace_model;
 // Test instrumentation only; the production host never enables this feature.
 #[cfg(feature = "vault-smoke")]
 pub mod vault_probe;
+
+#[cfg(feature = "backup-smoke")]
+pub mod backup_probe;

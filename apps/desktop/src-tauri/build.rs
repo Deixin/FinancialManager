@@ -51,9 +51,16 @@ fn main() {
         ]
     };
     let mut commands = COMMANDS.to_vec();
-    commands.extend(["configure_local_hello", "unlock_local_hello"]);
+    commands.extend([
+        "configure_local_hello",
+        "unlock_local_hello",
+        "create_local_backup",
+    ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
+    }
+    if cfg!(feature = "backup-smoke") {
+        commands.push("finish_backup_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

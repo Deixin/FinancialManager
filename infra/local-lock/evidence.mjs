@@ -29,7 +29,7 @@ export const nativeChecks = Object.freeze([
   'webview_manual_and_blur_remove_financial_tree',
   'webview_policy_and_disable_with_current_pin',
   'webview_no_storage_or_egress',
-  'only_ten_narrow_permissions',
+  'only_narrow_privacy_and_backup_permissions',
   'windows_hello_availability_from_native_api',
   'owned_credentials_profiles_and_files_removed',
 ]);
@@ -44,12 +44,18 @@ export const permissions = Object.freeze([
   'allow-disable-local-pin',
   'allow-configure-local-hello',
   'allow-unlock-local-hello',
+  'allow-create-local-backup',
 ]);
 export const pending = Object.freeze([
-  'native-windows-hello-interactive-hardware-validation',
-  'product-backup-restore-us034-us035',
+  'human-homologations-after-complete-system-integration',
+  'product-restore-as-new-workspace-us035',
   'durable-outbox-sync-product-integration',
   'signed-desktop-release-and-other-platforms',
+]);
+const priorPending = Object.freeze([
+  'native-windows-hello-interactive-hardware-validation',
+  'product-backup-restore-us034-us035',
+  ...pending.slice(2),
 ]);
 export const lockHashes = () => ({
   ...vaultHashes(),
@@ -90,6 +96,7 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
   };
   const native = report?.scope === 'us033-local-lock-windows',
     legacy = report?.format_version === 1,
+    priorHello = report?.format_version === 2,
     checks = native
       ? legacy
         ? nativeChecks
@@ -97,13 +104,19 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
               (name) => name !== 'windows_hello_availability_from_native_api',
             )
             .map((name) =>
-              name === 'only_ten_narrow_permissions'
+              name === 'only_narrow_privacy_and_backup_permissions'
                 ? 'only_eight_narrow_permissions'
                 : name === 'rustfmt_clippy_seventeen_privacy_tests'
                   ? 'rustfmt_clippy_ten_lock_tests'
                   : name,
             )
-        : nativeChecks
+        : priorHello
+          ? nativeChecks.map((name) =>
+              name === 'only_narrow_privacy_and_backup_permissions'
+                ? 'only_ten_narrow_permissions'
+                : name,
+            )
+          : nativeChecks
       : legacy
         ? browserChecks.slice(0, 8)
         : browserChecks;
@@ -120,7 +133,8 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (report.format_version !== 2 && !(legacy && !matchSources)) ||
+    (report.format_version !== 3 &&
+      !((legacy || priorHello) && !matchSources)) ||
     !['us033-local-lock-windows', 'us033-local-lock-browser'].includes(
       report.scope,
     ) ||
@@ -134,9 +148,11 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
         legacy
           ? [
               'native-biometrics-adapter-and-hardware-validation',
-              ...pending.slice(1),
+              ...priorPending.slice(1),
             ]
-          : pending,
+          : priorHello
+            ? priorPending
+            : pending,
       ) ||
     !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(report.completed_at_utc) ||
     !Number.isFinite(Date.parse(report.completed_at_utc)) ||

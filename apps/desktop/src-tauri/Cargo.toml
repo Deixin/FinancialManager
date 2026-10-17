@@ -12,6 +12,7 @@ entry-smoke = ["tauri/dynamic-acl"]
 workspace-smoke = ["tauri/dynamic-acl"]
 vault-smoke = ["rusqlite/trace"]
 lock-smoke = ["tauri/dynamic-acl", "vault-smoke"]
+backup-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
@@ -26,15 +27,14 @@ zeroize = { version = "=1.9.1", features = ["derive"] }
 sha2 = "=0.10.9"
 argon2 = { version = "=0.6.0", features = ["zeroize"] }
 ctutils = "=0.4.3"
+aes-gcm = { version = "=0.11.1", features = ["zeroize"] }
+tempfile = "=3.27.0"
 
 [target.'cfg(windows)'.dependencies]
-windows = { version = "=0.62.2", features = ["Security_Credentials_UI", "Win32_System_WinRT"] }
+windows = { version = "=0.62.2", features = ["Security_Credentials_UI", "Win32_System_WinRT", "Win32_UI_Shell", "Win32_UI_Shell_Common", "Win32_System_Com"] }
 windows-future = "=0.3.2"
 keyring-core = "=1.0.1"
 windows-native-keyring-store = { version = "=1.1.0", default-features = false }
-
-[dev-dependencies]
-tempfile = "=3.27.0"
 
 [build-dependencies]
 tauri-build = "=2.7.2"
@@ -77,3 +77,13 @@ required-features = ["lock-smoke"]
 name = "hello-manual"
 path = "src/bin/hello-manual.rs"
 required-features = ["lock-smoke"]
+
+[[bin]]
+name = "backup-probe"
+path = "src/bin/backup-probe.rs"
+required-features = ["backup-smoke"]
+
+[[bin]]
+name = "backup-smoke"
+path = "src/bin/backup-smoke.rs"
+required-features = ["backup-smoke"]

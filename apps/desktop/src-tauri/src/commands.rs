@@ -1,6 +1,8 @@
 use crate::{
     LocalError, Result,
+    backup_destination::{BackupDestination, WindowsBackupDestination},
     keys::KeyStore,
+    local_backup::{BackupResult, CreateBackup, SealedBackup},
     local_lock::{ConfigurePin, LocalLock, LockStatus, PinInput},
     local_workspaces::{CreateWorkspace, Installation, Workspace},
     lock_store::PolicyStore,
@@ -24,6 +26,29 @@ pub struct LocalState {
     generation: AtomicU64,
     hello_pending: AtomicBool,
     hello: Arc<dyn HelloVerifier>,
+    backup_active: Arc<AtomicBool>,
+    backup_destination: Arc<dyn BackupDestination>,
+}
+pub struct BackupJob {
+    sealed: SealedBackup,
+    lease: BackupLease,
+    _permit: BackupPermit,
+}
+#[derive(Clone, Copy)]
+pub struct BackupLease {
+    installation: uuid::Uuid,
+    generation: u64,
+}
+struct BackupPermit(Arc<AtomicBool>);
+impl Drop for BackupPermit {
+    fn drop(&mut self) {
+        self.0.store(false, Ordering::SeqCst);
+    }
+}
+impl BackupJob {
+    pub fn lease(&self) -> BackupLease {
+        self.lease
+    }
 }
 struct Session {
     installation: Installation,
@@ -47,6 +72,21 @@ impl LocalState {
         policies: Arc<dyn PolicyStore>,
         hello: Arc<dyn HelloVerifier>,
     ) -> Self {
+        Self::with_backup_destination(
+            root,
+            keys,
+            policies,
+            hello,
+            Arc::new(WindowsBackupDestination),
+        )
+    }
+    pub fn with_backup_destination(
+        root: PathBuf,
+        keys: Arc<dyn KeyStore>,
+        policies: Arc<dyn PolicyStore>,
+        hello: Arc<dyn HelloVerifier>,
+        backup_destination: Arc<dyn BackupDestination>,
+    ) -> Self {
         Self {
             root,
             keys,
@@ -56,6 +96,8 @@ impl LocalState {
             generation: AtomicU64::new(0),
             hello_pending: AtomicBool::new(false),
             hello,
+            backup_active: Arc::new(AtomicBool::new(false)),
+            backup_destination,
         }
     }
     pub fn force_lock(&self) {
@@ -111,6 +153,78 @@ impl LocalState {
     }
     pub fn open(&self, id: &str) -> Result<Workspace> {
         self.with(|i| i.open_workspace(id))
+    }
+    pub fn prepare_backup(&self, input: CreateBackup) -> Result<BackupJob> {
+        input.validate()?;
+        self.backup_active
+            .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
+            .map_err(|_| LocalError::RequestConflict)?;
+        let permit = BackupPermit(self.backup_active.clone());
+        let generation = self
+            .generation
+            .fetch_add(1, Ordering::SeqCst)
+            .wrapping_add(1);
+        let (sealed, installation) = self.access(true, |s| {
+            Ok((s.installation.prepare_backup(&input)?, s.installation.id()))
+        })?;
+        // Drop and zeroize the recovery password before any OS picker can wait for input.
+        drop(input);
+        if self.generation.load(Ordering::SeqCst) != generation {
+            return Err(LocalError::LocalLocked);
+        }
+        Ok(BackupJob {
+            sealed,
+            lease: BackupLease {
+                installation,
+                generation,
+            },
+            _permit: permit,
+        })
+    }
+    fn valid_backup_lease(&self, lease: BackupLease) -> bool {
+        self.backup_active.load(Ordering::SeqCst)
+            && self.generation.load(Ordering::SeqCst) == lease.generation
+    }
+    pub fn choose_backup_destination(
+        &self,
+        lease: BackupLease,
+        window: isize,
+    ) -> Result<Option<PathBuf>> {
+        self.access(true, |s| {
+            if !self.valid_backup_lease(lease) || s.installation.id() != lease.installation {
+                return Err(LocalError::LocalLocked);
+            }
+            Ok(())
+        })?;
+        // Ownership transfer to the OS dialog always closes PIN-protected access,
+        // even if the window manager does not deliver a focus notification.
+        self.on_focus_lost();
+        self.backup_destination.choose(window)
+    }
+    pub fn finish_backup(
+        &self,
+        job: BackupJob,
+        destination: Option<PathBuf>,
+    ) -> Result<BackupResult> {
+        self.access(false, |s| {
+            if !self.valid_backup_lease(job.lease) || s.installation.id() != job.lease.installation
+            {
+                return Err(LocalError::LocalLocked);
+            }
+            let result = match destination {
+                None => Ok(BackupResult {
+                    outcome: "CANCELED",
+                    created_at: None,
+                }),
+                Some(destination) => job.sealed.publish(&destination, &self.root, || {
+                    self.valid_backup_lease(job.lease)
+                }),
+            }?;
+            if !self.valid_backup_lease(job.lease) {
+                return Err(LocalError::LocalLocked);
+            }
+            Ok(result)
+        })
     }
     pub fn status(&self) -> Result<LockStatus> {
         let mut status = self.access(false, |s| {
@@ -338,6 +452,41 @@ pub async fn unlock_local_hello(
     .await
     .map_err(|_| LocalError::HelloUnavailable)?
 }
+#[tauri::command]
+pub async fn create_local_backup(
+    state: State<'_, Arc<LocalState>>,
+    window: tauri::WebviewWindow,
+    input: CreateBackup,
+) -> Result<BackupResult> {
+    input.validate()?;
+    let state = state.inner().clone();
+    let worker = state.clone();
+    let job = tauri::async_runtime::spawn_blocking(move || worker.prepare_backup(input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)??;
+    let lease = job.lease();
+    #[cfg(windows)]
+    let handle = window
+        .hwnd()
+        .map_err(|_| LocalError::BackupDestinationUnavailable)?
+        .0 as isize;
+    #[cfg(not(windows))]
+    let handle = 0;
+    let (sender, receiver) = std::sync::mpsc::channel();
+    let chooser = state.clone();
+    window
+        .run_on_main_thread(move || {
+            let _ = sender.send(chooser.choose_backup_destination(lease, handle));
+        })
+        .map_err(|_| LocalError::BackupDestinationUnavailable)?;
+    let destination = tauri::async_runtime::spawn_blocking(move || receiver.recv())
+        .await
+        .map_err(|_| LocalError::BackupDestinationUnavailable)?
+        .map_err(|_| LocalError::BackupDestinationUnavailable)??;
+    tauri::async_runtime::spawn_blocking(move || state.finish_backup(job, destination))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
 pub fn production_builder() -> tauri::Builder<tauri::Wry> {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -350,7 +499,8 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             configure_local_pin,
             disable_local_pin,
             configure_local_hello,
-            unlock_local_hello
+            unlock_local_hello,
+            create_local_backup
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
