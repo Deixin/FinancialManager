@@ -1,0 +1,6 @@
+{
+  "identifier": "entry-main",
+  "description": "Entrada Desktop sem comandos nativos, plugins ou permissões financeiras.",
+  "windows": ["main"],
+  "permissions": []
+}

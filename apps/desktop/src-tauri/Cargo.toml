@@ -1,0 +1,28 @@
+[package]
+name = "financial-manager-desktop"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+publish = false
+license = "LicenseRef-Proprietary"
+default-run = "financial-manager"
+
+[features]
+entry-smoke = ["dep:serde", "dep:serde_json", "tauri/dynamic-acl"]
+
+[dependencies]
+tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
+serde = { version = "=1.0.229", features = ["derive"], optional = true }
+serde_json = { version = "=1.0.154", optional = true }
+
+[build-dependencies]
+tauri-build = "=2.7.2"
+
+[[bin]]
+name = "financial-manager"
+path = "src/main.rs"
+
+[[bin]]
+name = "entry-smoke"
+path = "src/bin/entry-smoke.rs"
+required-features = ["entry-smoke"]

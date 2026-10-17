@@ -28,6 +28,7 @@ const ignoredDirectories = new Set([
   '.expo',
   '.cache',
   'dist',
+  'frontend-dist',
   'build',
   'out',
   'coverage',

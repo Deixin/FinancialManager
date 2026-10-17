@@ -26,6 +26,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 ## Material de apoio
 
 - [Estado do projeto](delivery/status.md).
+- [Entrada Desktop US-030](development/desktop-entry.md), com modo local sem identidade, frontend Vite e homologação Tauri/WebView2.
 - [Suíte de invariantes US-027](development/cross-engine-invariants.md), com roteiro comum, oráculo independente e comparação de estado/auditoria PostgreSQL/SQLite.
 - [Revisões financeiras US-026](development/financial-revisions.md), com versão-base, snapshots atômicos, reversão segura e adapters PostgreSQL/SQLite.
 - [Fixtures financeiras canônicas US-025](development/canonical-fixtures.md), com dataset portátil, carga atômica e goldens PostgreSQL/SQLite.

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0039 — Entrada Desktop anônima](0039-entrada-desktop-anonima.md): React/Vite + Tauri sem privilégios, EN-01 até modo local e testes Chromium/WebView2; criação/cofre/cloud seguem pendentes.
+
 [0038 — Suíte de invariantes cross-engine](0038-suite-invariantes-cross-engine.md): seis famílias financeiras testadas com estado/auditoria comparados, oráculo independente e propriedades reproduzíveis PostgreSQL/SQLite.
 
 [0037 — Revisões financeiras atômicas](0037-revisoes-financeiras-atomicas.md): agregado versionado nas duas engines, conflitos explícitos e reversão por nova revisão; fluxos de produto/sync/Native pendentes.

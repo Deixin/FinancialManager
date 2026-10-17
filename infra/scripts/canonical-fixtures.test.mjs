@@ -254,11 +254,26 @@ test('current fixture evidence requires real dual-engine gates, source hashes, c
     ).passed,
     true,
   );
+  assert.equal(
+    validateFixtureEvidence(
+      JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-025-fixtures-2026-10-16-us027.json',
+            import.meta.url,
+          ),
+          'utf8',
+        ),
+      ),
+      { matchSources: false },
+    ).passed,
+    true,
+  );
   const load = () =>
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-025-fixtures-2026-10-16-us027.json',
+          '../../docs/quality/evidence/us-025-fixtures-2026-10-16-us030.json',
           import.meta.url,
         ),
         'utf8',

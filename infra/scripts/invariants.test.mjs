@@ -122,12 +122,27 @@ test('US-027 evidence requires every gate, current sources and truthful platform
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-027-invariants-2026-10-16.json',
+          '../../docs/quality/evidence/us-027-invariants-2026-10-16-us030.json',
           import.meta.url,
         ),
         'utf8',
       ),
     );
+  assert.equal(
+    validateInvariantEvidence(
+      JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-027-invariants-2026-10-16.json',
+            import.meta.url,
+          ),
+          'utf8',
+        ),
+      ),
+      { matchSources: false },
+    ).passed,
+    true,
+  );
   assert.equal(validateInvariantEvidence(load()).passed, true);
   for (const name of invariantChecks) {
     const report = load();

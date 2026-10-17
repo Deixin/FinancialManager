@@ -5,19 +5,24 @@
   "license": "UNLICENSED",
   "type": "module",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "build": "tsc -p tsconfig.json && vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "preview": "vite preview --host 127.0.0.1 --port 44361 --strictPort"
   },
   "devDependencies": {
-    "@financial-manager/config": "workspace:*"
+    "@financial-manager/config": "workspace:*",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vite": "8.3.4"
   },
   "dependencies": {
-    "@financial-manager/domain": "workspace:*",
-    "@financial-manager/storage-schema": "workspace:*",
+    "@financial-manager/contracts": "workspace:*",
     "@financial-manager/design-tokens": "workspace:*",
+    "@financial-manager/domain": "workspace:*",
     "@financial-manager/runtime-config": "workspace:*",
+    "@financial-manager/storage-schema": "workspace:*",
     "@financial-manager/ui-dom": "workspace:*",
     "react": "19.3.0",
-    "@financial-manager/contracts": "workspace:*"
+    "react-dom": "19.3.0"
   }
 }

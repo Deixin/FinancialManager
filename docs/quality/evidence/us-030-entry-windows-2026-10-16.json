@@ -1,0 +1,62 @@
+{
+  "format_version": 1,
+  "scope": "us030-desktop-entry-windows",
+  "passed": true,
+  "checks": {
+    "locked_build_and_clippy": true,
+    "production_capability_has_no_permissions": true,
+    "cloud_disabled_offline": true,
+    "embedded_entry": true,
+    "local_heading_focus": true,
+    "local_without_identity": true,
+    "no_network_or_storage": true,
+    "return_to_entry": true,
+    "owned_profile_removed": true
+  },
+  "versions": {
+    "rust": "rustc 1.99.0 (b940084d7 2026-09-28)",
+    "tauri": "2.12.3",
+    "platform": "win32-x64"
+  },
+  "pending": [
+    "workspace-persistence-us031",
+    "vault-product-integration-us032",
+    "cloud-auth-product-integration",
+    "signed-desktop-release"
+  ],
+  "resources_closed": true,
+  "source_sha256": {
+    "package.json": "9c3f5f8b5dbddb8361fa62b689c1430f3077a4d1611e9275bbb4b4934d31e6ed",
+    "pnpm-lock.yaml": "8a172a7ef2e3548f369e8cbc842324d3a36d16f2a3a08f26d2ff46a6866168a0",
+    "turbo.json": "158f5fb187e4c9cf9d236d355cd5679a0eb63c7691a6f29000ed0ad17f33af5d",
+    "eslint.config.mjs": "3939d260a080af62f4f733c5291169710adbcc480dcc6ef34a1f00578b61edfe",
+    ".github/workflows/ci.yml": "2593b881910211a633a317cc71d5b363ff48790cd6435be0ed28e7a83f1357d4",
+    "packages/config/workspace-boundaries.json": "cf58fdf24c3b391d050283d72e5d1a3c1a99ae3d75604c3cf71a952cc646b25b",
+    "packages/design-tokens/src/tokens.ts": "918f1001a828409d1fbe257b515db711fd0b036a31a276d0aede6cff2cdbd467",
+    "packages/design-tokens/src/css.ts": "eaa02c87bd4eb5968575333f2575fc11074bb80cf647623a425349c8e33794c3",
+    "apps/desktop/package.json": "6d7eb8b1bf6fc4068fae08bc1b6ae12b5fe8babf2ca50eaecc184deffd75828a",
+    "apps/desktop/tsconfig.json": "7e2d0a6b2ea69be88f53691cc07bb7cc4f5754eccd8a3a873577aa364b092765",
+    "apps/desktop/index.html": "85f35dd404bdadbeed890ed40f4e2c1c81b328a88bff0a6640f17f39d5ed1614",
+    "apps/desktop/vite.config.mjs": "cf50cd4ca5e482c8d0830bbc71cc047a5901e1a1ba1c3856a529bbc49651e01c",
+    "apps/desktop/src/entry-model.ts": "1343c4d38029df1386d2c0c88c4429e403c9cc40a0ff6405f50061dffd21a0e6",
+    "apps/desktop/src/entry.tsx": "a5d3c956f20794da3d30890a21fa630470e3526a48aea30efcc012dadad11065",
+    "apps/desktop/src/entry.css": "e8078e7480d4b00995ecc8a290ad02c41db2d4b118a6e17687b76c39462c97d1",
+    "apps/desktop/src/main.tsx": "19a636a953cd07cf895ec903758f95ffa44708d96e1aa8fd577630d305e65a53",
+    "apps/desktop/src-tauri/Cargo.toml": "ca952be02f329befe6560b628f90078fc9f15245d7d4722de67796376d8e50f2",
+    "apps/desktop/src-tauri/Cargo.lock": "3e8ad0f3354d8229e2cded7d73034f2cbb9fe868cc0361a908c387d9399b113a",
+    "apps/desktop/src-tauri/rust-toolchain.toml": "0bd634760fd13e018916c61ca2fe580e472c152be4ee15cda1daf3be12654f39",
+    "apps/desktop/src-tauri/build.rs": "d5a75ad5042460973211ee63348b04b941dd1b7b960a5ee56b03d736ef6343e2",
+    "apps/desktop/src-tauri/tauri.conf.json": "c11b8309de4f329db50772ae5b595c8b3f2bba52c137865f77149b7aa55b7d50",
+    "apps/desktop/src-tauri/capabilities/entry-main.json": "e640b856e6add25f4cad7f9e3db7e0273a73bca91dc878b9be9ce8e48182b630",
+    "apps/desktop/src-tauri/src/main.rs": "70f43ed80c894210fee075397cb0bcb534b783bc0cb362f65acbb6cbb6f3908e",
+    "apps/desktop/src-tauri/src/bin/entry-smoke.rs": "23a985a185261c403137ca389125f50c1d89d560f963a26b03fe036d0d037843",
+    "apps/desktop/src-tauri/smoke.js": "9077f68687200979254d18c11e5fce2ced9f59a818206a30e6303a8fc7d87b18",
+    "apps/desktop/src-tauri/icons/icon.ico": "04fe252364ddb18c5a06eaffc8b71814af9a0a1da01f360e64bd67063ef11900",
+    "infra/entry/host.mjs": "e057101165a641d83787c9010681f0281175c1a2a158a246299f068baabc9592",
+    "infra/entry/check.mjs": "a8fcdc7462b9bb016c78d6e15b67731e744571d6cf637af0ed113ca68be6e88a",
+    "infra/entry/native.mjs": "4f3992f4e686505033b235fca211f82f6323b564ad765453fbf552048b7de1c2",
+    "infra/entry/evidence.mjs": "d278826fd58ab47967b1a2a715fe5a761ba10c31dff6f12752bcd4ce90dd0b9b",
+    "infra/scripts/desktop-entry.test.mjs": "57c9894e68b78750310167e82e0c33c1d313f9603942b44275b051f8ba6fe554"
+  },
+  "completed_at_utc": "2026-10-17T02:29:18.589Z"
+}

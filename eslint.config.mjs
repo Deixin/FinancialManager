@@ -5,6 +5,8 @@ export default [
     ignores: [
       '**/node_modules/**',
       '**/dist/**',
+      '**/frontend-dist/**',
+      'apps/desktop/src-tauri/smoke.js',
       '**/target/**',
       '**/.turbo/**',
       '**/.tools/**',

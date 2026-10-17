@@ -537,11 +537,26 @@ test('SQLite executes every persisted revision scenario with strict conflicts, c
   }
 });
 test('current revision evidence requires all real engine gates, exact sources and declared integration limits', () => {
+  assert.equal(
+    validateRevisionEvidence(
+      JSON.parse(
+        readFileSync(
+          new URL(
+            '../../docs/quality/evidence/us-026-revisions-2026-10-16-us027.json',
+            import.meta.url,
+          ),
+          'utf8',
+        ),
+      ),
+      { matchSources: false },
+    ).passed,
+    true,
+  );
   const load = () =>
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-026-revisions-2026-10-16-us027.json',
+          '../../docs/quality/evidence/us-026-revisions-2026-10-16-us030.json',
           import.meta.url,
         ),
         'utf8',

@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+Avanço US-030 em 2026-10-16: [ADR-0039](adr/0039-entrada-desktop-anonima.md) valida a entrada React/Vite + Tauri até início de WS-01 local, sem cadastro/identidade cloud. Não adota o schema do spike, não cria workspace persistente nem encerra cofre, login cloud, release assinado ou RF-01/FL-01 completos até painel. DP-01 a DP-04 permanecem abertas; a entrada não escolhe prazos offline ou papéis.
+
 Avanço US-027 em 2026-10-16: [ADR-0038](adr/0038-suite-invariantes-cross-engine.md) valida as seis famílias em PostgreSQL/SQLite com roteiro comum, constraints e oráculos independentes. Não encerra todas as invariantes ERD, Native/cofre/iOS, autorização de produto, sync ou documentos. DP-01 a DP-04 seguem abertas; nenhuma duração ou enum conflitante foi escolhida.
 
 Avanço US-026 em 2026-10-16: [ADR-0037](adr/0037-revisoes-financeiras-atomicas.md) valida revisão/versionamento atômico de movimentações e relações atuais em PostgreSQL/SQLite. Não encerra undo de import_batch, merge, feed/outbox/tombstone ou adoção Native/cofre. DP-01 a DP-04 permanecem abertas; grants de teste não definem prazo offline ou enum de papel.

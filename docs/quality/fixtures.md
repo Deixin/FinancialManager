@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-030 não precisa de dados financeiros ou identidade. O [protocolo de entrada](../development/desktop-entry.md) usa somente estados de tela/rede; a WebView recebe um perfil temporário em .tools/us030-entry e fault injection de rede/storage exclusiva do binário de smoke. O relatório contém apenas gates, versões, data, pendências e hashes. Nenhum workspace fictício é apresentado como criado.
+
 FIN-INVARIANTS-001 v1, da [US-027](../development/cross-engine-invariants.md), usa FIN-002 v1 preservado e acrescenta categoria/dois rateios sintéticos no workspace B. São 19 cenários de fluxo/rejeição e 24 vetores limitados de ida/volta. IDs/relógio são determinísticos apenas no instrumento para comparar revisões completas. Redutor BigInt independente e goldens literais verificam resultados; FIN-SCHEMA-001 continua em workspaces separados e roda novamente nas duas engines. Não há seed de produto ou dado pessoal.
 
 A [US-026](../development/financial-revisions.md) usa FIN-002 preservado e acrescenta somente registros/grants/atores explícitos de teste. Simula baselines de versão altos e falhas de driver em adapters do harness, sem hooks de falha no produto. Uma conexão PostgreSQL própria é encerrada para verificar rollback. O workspace LOCAL adicional não cria usuário cloud. Snapshots são comparados somente em memória; a evidência contém gates/versões/hashes de código, sem payload, valores, IDs aleatórios ou hashes financeiros.

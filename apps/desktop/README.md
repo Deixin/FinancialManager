@@ -1,5 +1,9 @@
 # desktop
 
+A [US-030](../../docs/development/desktop-entry.md) integra a primeira entrada de produto React/Vite + Tauri, com Continuar sem conta até início de WS-01 local. Os parágrafos abaixo registram a fundação anterior e seus limites; o cofre experimental continua isolado. Criação persistente do workspace (US-031), cofre (US-032), autenticação cloud e release assinado permanecem pendentes.
+
+Na raiz, pnpm desktop:preview abre o servidor visual em loopback 44361; desktop:entry:check testa o build real em Chromium e desktop:entry:native testa Clippy/build locked/WebView2 em Windows x64. O binário padrão é financial-manager; entry-smoke requer feature explícita e não registra seus comandos no produto. Consulte o guia para paths, evidências e pré-requisitos.
+
 Aplicativo Desktop. Stack prevista: React, Vite e Tauri 2, com autoridade local e acesso a workspaces cloud.
 
 A [US-021](../../docs/development/sqlite-schema.md) adiciona dependência interna storage-schema. O teste Rust tests/us021_schema.rs reutiliza o binding SQLCipher em arquivo sintético e passa no corpus comum. A integração no cofre/backup de produto exige seu validador/migrations próprios; o instrumento US-001 mantém seu schema experimental.
