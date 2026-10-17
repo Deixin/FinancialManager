@@ -1,5 +1,11 @@
 # Plano de testes
 
+## Revisões — US-026
+
+O [protocolo](../development/financial-revisions.md) aplica migrations v2 e testa nove cenários persistidos por engine: edição/snapshot/no-op, base obsoleta/reversão, criar/excluir/restaurar, classificação/grupos atômicos, i64, autorização/contas, falha no append, concorrência e histórico/relógio. As falhas incluem a segunda revisão da transferência e conexão PostgreSQL perdida após UPDATE, conservando ambos os registros e seu histórico. Dez gates transversais completam 28, incluindo local anônimo, API/worker/revogação/nesting, tipos/fronteiras, goldens, reabertura e limpeza/logs.
+
+Quatorze testes Node cobrem plano/codecs, captura de request/grant/configuração, conta de destino/restauração, local sem cloud user, rollback envenenado, ownership AST, os nove cenários SQLite e evidência estrita. Um lote de 65 comandos verifica uma única transação; 10001 comandos são recusados antes de storage. Isso não é benchmark de importação. Os testes reais de fixtures/repositories, quatro perfis Docker e DOM/flags são repetidos com evidências us026; relatórios anteriores permanecem históricos e os produtores novos exigem hashes atuais. Não há execução Native ou claim de RF-14/30/31 completos.
+
 ## Fixtures canônicas — US-025
 
 O [protocolo](../development/canonical-fixtures.md) aplica migrations v2 e exige 12 gates para FIN-002: geração determinística, migrations, rollback parcial, persistência dos mesmos registros, goldens de saldo/resumo/patrimônio/rateio, precisão/referências, carga repetida, RLS por workspace, vetor preparatório de documentos, reabertura SQLite e logs/limpeza. O domínio calcula sobre os dados relidos das duas engines contra valores literais independentes. Nove testes Node cobrem o contrato/export, freeze/IDs, goldens, grupos, dinheiro, parâmetros/seletores, SQLite atômico, vetor CT-08 e evidência. Não se declara execução da busca/documentos, UI Native ou suíte completa de invariantes US-027.

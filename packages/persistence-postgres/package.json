@@ -5,6 +5,7 @@
   "license": "UNLICENSED",
   "type": "module",
   "exports": {
+    "./revisions": "./dist/revisions.js",
     ".": "./dist/index.js"
   },
   "scripts": {

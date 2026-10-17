@@ -304,6 +304,13 @@ importers:
         version: link:../config
 
   packages/storage-schema:
+    dependencies:
+      '@financial-manager/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@financial-manager/finance-ports':
+        specifier: workspace:*
+        version: link:../finance-ports
     devDependencies:
       '@financial-manager/config':
         specifier: workspace:*

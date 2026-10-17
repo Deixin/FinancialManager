@@ -61,6 +61,8 @@ A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida repre
 
 ## Ambiente e comandos
 
+A [US-026](docs/development/financial-revisions.md) entrega revisão transacional de movimentações: base i64 explícita, snapshot antes/depois, histórico imutável, grupos atômicos e reversão sem apagar edições posteriores. pnpm revisions:test verifica 28 gates PostgreSQL/SQLite; revisions:clean remove o ambiente próprio. Handlers, sincronização, undo de importação e adoção Native seguem nas histórias consumidoras.
+
 A [US-025](docs/development/canonical-fixtures.md) fornece FIN-002 v1: dataset sintético portátil, totais esperados independentes e carga atômica PostgreSQL/SQLite. pnpm fixtures:check detecta divergências de geração; fixtures:test verifica 12 gates reais e limpa seus recursos. O vetor de documentos prepara testes futuros; não representa busca implementada ou homologação Native.
 
 A [US-024](docs/development/data-access.md) entrega ports de leitura/backend e repositories PostgreSQL de Accounts/Transactions, com workspace/conta autorizados e verificação de fronteiras. Kysely 0.29.6 foi adotado após G07-QUERY real. pnpm repositories:test repete 22 gates e pnpm check:data-access detecta atalhos entre módulos. Escritas, policy engine/rotas e adapters nativos continuam nas histórias próprias.

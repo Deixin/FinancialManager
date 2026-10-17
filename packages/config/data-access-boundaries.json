@@ -17,7 +17,37 @@
     "transaction_tag",
     "transaction_revision"
   ],
+  "adapters": {
+    "packages/persistence-postgres/src/modules/transaction-writes.ts": {
+      "owner": "transactions",
+      "write": true,
+      "syntax": "kysely"
+    },
+    "packages/storage-schema/src/revision-adapters/accounts.ts": {
+      "owner": "accounts",
+      "write": false,
+      "syntax": "sqlite"
+    },
+    "packages/storage-schema/src/revision-adapters/workspaces.ts": {
+      "owner": "workspaces",
+      "write": false,
+      "syntax": "sqlite"
+    },
+    "packages/storage-schema/src/revision-adapters/transactions.ts": {
+      "owner": "transactions",
+      "write": true,
+      "syntax": "sqlite"
+    }
+  },
+  "composition_imports": {
+    "apps/api/src/read-model.ts": "@financial-manager/persistence-postgres",
+    "apps/worker/src/read-model.ts": "@financial-manager/persistence-postgres",
+    "apps/api/src/revision-model.ts": "@financial-manager/persistence-postgres/revisions",
+    "apps/worker/src/revision-model.ts": "@financial-manager/persistence-postgres/revisions"
+  },
   "composition_files": [
+    "apps/api/src/revision-model.ts",
+    "apps/worker/src/revision-model.ts",
     "apps/api/src/read-model.ts",
     "apps/worker/src/read-model.ts"
   ]

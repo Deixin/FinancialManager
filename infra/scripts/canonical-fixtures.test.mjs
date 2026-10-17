@@ -243,12 +243,30 @@ test('current fixture evidence requires real dual-engine gates, source hashes, c
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-025-fixtures-2026-10-16.json',
+          '../../docs/quality/evidence/us-025-fixtures-2026-10-16-us026.json',
           import.meta.url,
         ),
         'utf8',
       ),
     );
+  const historical = JSON.parse(
+    readFileSync(
+      new URL(
+        '../../docs/quality/evidence/us-025-fixtures-2026-10-16.json',
+        import.meta.url,
+      ),
+      'utf8',
+    ),
+  );
+  assert.equal(
+    validateFixtureEvidence(historical, { matchSources: false }).passed,
+    true,
+  );
+  historical.source_sha256['package.json'] = 'invalid-hash';
+  assert.throws(
+    () => validateFixtureEvidence(historical, { matchSources: false }),
+    /FIXTURE_EVIDENCE_INVALID/,
+  );
   assert.equal(validateFixtureEvidence(load()).passed, true);
   for (const gate of fixtureChecks) {
     const r = load();

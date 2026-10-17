@@ -9,6 +9,8 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "revisions:test": "turbo run build && node infra/revisions/run.mjs",
+    "revisions:clean": "node infra/revisions/clean.mjs",
     "fixtures:generate": "node infra/fixtures/generate.mjs",
     "fixtures:check": "node infra/fixtures/generate.mjs --check",
     "fixtures:test": "turbo run build && node infra/fixtures/run.mjs",
@@ -73,7 +75,7 @@
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build",
     "check:repo": "node infra/scripts/check-repository.mjs",
     "lint": "eslint . --max-warnings 0 && pnpm check:repo && pnpm check:data-access && pnpm fixtures:check && pnpm contracts:check && pnpm env:stack:check && pnpm config:check && pnpm schema:sqlite:check && pnpm schema:migrations:check && pnpm identity:check",
-    "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json && tsc -p infra/identity/tsconfig.json && tsc -p infra/query/tsconfig.gate.json",
+    "typecheck": "turbo run typecheck && tsc -p infra/ui/tsconfig.json && tsc -p infra/identity/tsconfig.json && tsc -p infra/query/tsconfig.gate.json && tsc -p infra/revisions/tsconfig.json",
     "test": "turbo run build && node --test infra/scripts/*.test.mjs",
     "build": "turbo run build",
     "format": "prettier --write .",

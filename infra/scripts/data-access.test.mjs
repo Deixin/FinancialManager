@@ -304,6 +304,19 @@ test('current repository evidence requires every real gate, source hash, cleanup
     validateRepositoryEvidence(historical, { matchSources: false }).passed,
     true,
   );
+  const previous = JSON.parse(
+    readFileSync(
+      new URL(
+        '../../docs/quality/evidence/us-024-repositories-2026-10-16-us025.json',
+        import.meta.url,
+      ),
+      'utf8',
+    ),
+  );
+  assert.equal(
+    validateRepositoryEvidence(previous, { matchSources: false }).passed,
+    true,
+  );
   historical.source_sha256['package.json'] = 'invalid-hash';
   assert.throws(
     () => validateRepositoryEvidence(historical, { matchSources: false }),
@@ -313,7 +326,7 @@ test('current repository evidence requires every real gate, source hash, cleanup
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-024-repositories-2026-10-16-us025.json',
+          '../../docs/quality/evidence/us-024-repositories-2026-10-16-us026.json',
           import.meta.url,
         ),
         'utf8',

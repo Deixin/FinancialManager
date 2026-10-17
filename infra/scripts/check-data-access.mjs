@@ -91,11 +91,20 @@ export function validateDataAccessSource(filename, source) {
   const relative = (
     path.isAbsolute(filename) ? path.relative(root, filename) : filename
   ).replaceAll('\\', '/');
-  const module = relative.match(
-    /^packages\/persistence-postgres\/src\/modules\/([a-z-]+)\.ts$/,
-  )?.[1];
+  const adapter = dataAccessPolicy.adapters?.[relative];
+  const module =
+    adapter?.owner ??
+    relative.match(
+      /^packages\/persistence-postgres\/src\/modules\/([a-z-]+)\.ts$/,
+    )?.[1];
   const app = /^apps\/(api|worker)\/src\/.+\.ts$/.test(relative),
     pure = relative.startsWith('packages/finance-ports/src/');
+  if (
+    !module &&
+    (relative.startsWith('packages/storage-schema/src/revision-adapters/') ||
+      relative.startsWith('packages/persistence-postgres/src/modules/'))
+  )
+    return [relative + ': unregistered data adapter'];
   if (!module && !app && !pure) return [];
   const errors = [];
   const report = (reason) => errors.push(relative + ': ' + reason);
@@ -122,13 +131,18 @@ export function validateDataAccessSource(filename, source) {
         } else if (
           ![
             '@financial-manager/domain',
+            '@financial-manager/domain/revisions',
             '@financial-manager/contracts',
             '@financial-manager/finance-ports',
+            '@financial-manager/finance-ports/revisions',
           ].includes(specifier) &&
           ![
             '../internal/database.js',
             '../internal/scope.js',
             '../internal/projection.js',
+            ...(adapter?.syntax === 'sqlite' && onlyTypes(node)
+              ? ['../index.js']
+              : []),
           ].includes(specifier)
         )
           report(
@@ -148,11 +162,7 @@ export function validateDataAccessSource(filename, source) {
       if (
         (app || pure) &&
         specifier.startsWith('@financial-manager/persistence-postgres') &&
-        !(
-          app &&
-          dataAccessPolicy.composition_files.includes(relative) &&
-          specifier === '@financial-manager/persistence-postgres'
-        )
+        !(app && dataAccessPolicy.composition_imports?.[relative] === specifier)
       )
         report(
           'PostgreSQL adapter can be installed only at the composition root',
@@ -161,13 +171,21 @@ export function validateDataAccessSource(filename, source) {
     if (module) {
       if (ts.isTaggedTemplateExpression(node))
         report('raw SQL tags are forbidden in read modules');
-      if (ts.isAsExpression(node) && node.type.getText(ast) !== 'const')
+      if (
+        ts.isAsExpression(node) &&
+        node.type.getText(ast) !== 'const' &&
+        adapter?.syntax !== 'sqlite'
+      )
         report('module cannot widen its table/type capability');
       if (node.kind === ts.SyntaxKind.AnyKeyword)
         report('any defeats the table capability');
       if (
         ts.isPropertyAccessExpression(node) &&
-        forbiddenMethods.has(node.name.text)
+        forbiddenMethods.has(node.name.text) &&
+        !(
+          adapter?.write === true &&
+          ['insertInto', 'updateTable', 'deleteFrom'].includes(node.name.text)
+        )
       )
         report('unapproved read-module operation: ' + node.name.text);
     }
@@ -181,6 +199,39 @@ export function validateDataAccessSource(filename, source) {
         report('dynamic execution/import is forbidden in read modules');
       if (ts.isPropertyAccessExpression(node.expression)) {
         const method = node.expression.name.text;
+        if (
+          adapter?.syntax === 'sqlite' &&
+          ['rows', 'run', 'exec', 'query'].includes(method)
+        ) {
+          const argument = node.arguments[0];
+          if (!argument || !ts.isStringLiteralLike(argument))
+            report('SQLite statements must be static SQL with bound values');
+          else {
+            const sql = argument.text;
+            if (sql.replace(/;\s*$/, '').includes(';'))
+              report('SQLite data modules accept one statement per call');
+            if (!/^\s*(SELECT|INSERT|UPDATE|DELETE)\b/i.test(sql))
+              report('unapproved SQLite statement');
+            if (!adapter.write && !/^\s*SELECT\b/i.test(sql))
+              report('write in a read-only SQLite module');
+            for (const match of sql.matchAll(
+              /\b(?:FROM|JOIN|INTO|UPDATE)\s+([a-z_][a-z0-9_]*(?:\.[a-z_][a-z0-9_]*)?)/gi,
+            )) {
+              const table = match[1].toLowerCase();
+              if (table === 'json_each') continue;
+              if (ownTables.get(table) !== module)
+                report('SQLite table belongs to another module: ' + table);
+              if (
+                /^\s*SELECT\b/i.test(sql) &&
+                dataAccessPolicy.parent_scoped_tables.includes(table) &&
+                !/INNER\s+JOIN\s+financial_transaction\b/i.test(sql)
+              )
+                report(
+                  'child read requires its parent in the same SQL statement',
+                );
+            }
+          }
+        }
         if (tableCalls.has(method)) {
           if (!module) {
             report('SQL query builder outside a data module');
@@ -212,10 +263,10 @@ export function validateDataAccessSource(filename, source) {
           report('raw SQL execution outside an adapter');
         if (
           (app || pure) &&
-          method === 'query' &&
+          ['query', 'rows', 'run', 'exec'].includes(method) &&
           node.arguments[0] &&
           ts.isStringLiteralLike(node.arguments[0]) &&
-          /^\s*(select|insert|update|delete|with|begin|commit|rollback)\b/i.test(
+          /^\s*(select|insert|update|delete|with|begin|commit|rollback|pragma|create|alter|drop)\b/i.test(
             node.arguments[0].text,
           )
         )
@@ -251,6 +302,7 @@ export function checkDataAccess() {
     throw new Error('DUPLICATE_TABLE_OWNER');
   const files = [
     'packages/persistence-postgres/src/modules',
+    'packages/storage-schema/src/revision-adapters',
     'packages/finance-ports/src',
     'apps/api/src',
     'apps/worker/src',

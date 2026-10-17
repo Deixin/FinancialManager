@@ -26,6 +26,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 ## Material de apoio
 
 - [Estado do projeto](delivery/status.md).
+- [Revisões financeiras US-026](development/financial-revisions.md), com versão-base, snapshots atômicos, reversão segura e adapters PostgreSQL/SQLite.
 - [Fixtures financeiras canônicas US-025](development/canonical-fixtures.md), com dataset portátil, carga atômica e goldens PostgreSQL/SQLite.
 - [Ports e repositories US-024](development/data-access.md), com G07-QUERY, contexto autorizado e fronteiras de tabelas por módulo.
 - [Núcleo monetário puro US-013](development/domain-core.md), com MoneyMinor, saldos, transferências e cartões.

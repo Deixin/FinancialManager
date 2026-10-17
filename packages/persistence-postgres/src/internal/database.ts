@@ -1,4 +1,4 @@
-import type { ColumnType } from 'kysely';
+import type { ColumnType, SelectType } from 'kysely';
 import type {
   AccountKind,
   BalanceNature,
@@ -49,10 +49,15 @@ interface Allocation extends Identity {
   category_id: Read<string>;
   subcategory_id: Read<string | null>;
   amount_minor: Read<string>;
+  note: Read<string | null>;
 }
 interface Revision extends Identity {
   transaction_id: Id;
   version: Read<string>;
+  snapshot: Read<unknown>;
+  actor_type: Read<'LOCAL_USER' | 'MEMBER' | 'SYSTEM' | 'SUPPORT'>;
+  actor_id: Read<string | null>;
+  device_id: Read<string | null>;
   change_source: Read<
     | 'MANUAL'
     | 'IMPORT'
@@ -69,9 +74,26 @@ export interface AccountsTables {
 }
 export interface TransactionsTables {
   financial_transaction: FinancialTransaction;
-  transaction_group: Identity;
+  transaction_group: Identity & {
+    group_type: Read<'TRANSFER' | 'CARD_PAYMENT' | 'OTHER_COMPOSITE'>;
+    state: Read<'ACTIVE' | 'BROKEN' | 'VOIDED'>;
+  };
   transaction_allocation: Allocation;
   transaction_tag: { workspace_id: Id; transaction_id: Id; tag_id: Id };
   transaction_revision: Revision;
 }
 export type Database = AccountsTables & TransactionsTables;
+export interface WorkspaceTables {
+  workspace: { id: Id; storage_mode: Read<'LOCAL' | 'CLOUD'> };
+}
+type DriverInput<T> = T extends Date ? string : T;
+type Writable<T> = {
+  [K in keyof T]: ColumnType<
+    SelectType<T[K]>,
+    DriverInput<SelectType<T[K]>>,
+    DriverInput<SelectType<T[K]>>
+  >;
+};
+export type WriteTransactionsTables = {
+  [K in keyof TransactionsTables]: Writable<TransactionsTables[K]>;
+};

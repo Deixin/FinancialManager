@@ -25,7 +25,10 @@
   "@financial-manager/config": [],
   "@financial-manager/observability": [],
   "@financial-manager/runtime-config": [],
-  "@financial-manager/storage-schema": [],
+  "@financial-manager/storage-schema": [
+    "@financial-manager/domain",
+    "@financial-manager/finance-ports"
+  ],
   "@financial-manager/finance-ports": [
     "@financial-manager/domain",
     "@financial-manager/contracts"

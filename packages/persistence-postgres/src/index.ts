@@ -1,4 +1,4 @@
-import { AsyncLocalStorage } from 'node:async_hooks';
+import { activeDataUnit } from './internal/unit-scope.js';
 import { Kysely, PostgresDialect, sql } from 'kysely';
 import { DataAccessError } from '@financial-manager/finance-ports';
 import type {
@@ -34,7 +34,7 @@ export interface PostgresReadOptions {
 export interface PostgresReadUnit extends WorkspaceReadUnit {
   close(): Promise<void>;
 }
-const activeScope = new AsyncLocalStorage<true>();
+const activeScope = activeDataUnit;
 export function createPostgresReadUnit(
   options: PostgresReadOptions,
 ): PostgresReadUnit {

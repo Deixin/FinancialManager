@@ -12,6 +12,10 @@
     "@financial-manager/config": "workspace:*"
   },
   "exports": {
+    "./revisions": {
+      "types": "./dist/revisions.d.ts",
+      "import": "./dist/revisions.js"
+    },
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"

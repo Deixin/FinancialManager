@@ -59,7 +59,7 @@ export const fixtureHashes = () =>
         .digest('hex'),
     ]),
   );
-export function validateFixtureEvidence(report) {
+export function validateFixtureEvidence(report, { matchSources = true } = {}) {
   const exact = (value, names) =>
     value &&
     JSON.stringify(Object.keys(value).sort()) ===
@@ -107,7 +107,11 @@ export function validateFixtureEvidence(report) {
   const hashes = fixtureHashes();
   if (
     !exact(report.source_sha256, files) ||
-    files.some((name) => report.source_sha256[name] !== hashes[name])
+    files.some((name) =>
+      matchSources
+        ? report.source_sha256[name] !== hashes[name]
+        : !/^[a-f0-9]{64}$/.test(report.source_sha256[name]),
+    )
   )
     fail();
   return report;
