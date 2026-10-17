@@ -865,6 +865,8 @@ dependencies = [
  "tauri-build",
  "tempfile",
  "uuid",
+ "windows",
+ "windows-future",
  "windows-native-keyring-store",
  "zeroize",
 ]

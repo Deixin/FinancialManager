@@ -51,6 +51,7 @@ fn main() {
         ]
     };
     let mut commands = COMMANDS.to_vec();
+    commands.extend(["configure_local_hello", "unlock_local_hello"]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
     }

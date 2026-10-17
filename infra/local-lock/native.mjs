@@ -31,7 +31,7 @@ const env = { ...process.env, CARGO_TARGET_DIR: target },
   perl = path.join(root, '.tools/strawberry-perl-5.42.3.1/perl/bin');
 if (existsSync(perl)) env[pathKey] = perl + path.delimiter + env[pathKey];
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us033-local-lock-windows',
   passed: false,
   synthetic_only: true,
@@ -92,7 +92,7 @@ try {
     platform: 'win32-x64',
     argon2: '0.6.0',
   };
-  step('rustfmt_clippy_ten_lock_tests', () => {
+  step('rustfmt_clippy_seventeen_privacy_tests', () => {
     run('cargo', ['fmt', '--all', '--', '--check']);
     run('cargo', [
       'clippy',
@@ -106,6 +106,10 @@ try {
     assert.match(
       run('cargo', ['test', '--locked', '--test', 'local_lock']).stdout,
       /10 passed; 0 failed; 0 ignored/,
+    );
+    assert.match(
+      run('cargo', ['test', '--locked', '--test', 'local_hello']).stdout,
+      /7 passed; 0 failed; 0 ignored/,
     );
   });
   step('locked_build_without_default_probe', () => {
@@ -129,6 +133,8 @@ try {
       'lock-probe',
       '--bin',
       'lock-smoke',
+      '--bin',
+      'hello-manual',
     ]);
     const metadata = JSON.parse(
       run('cargo', [
@@ -140,19 +146,34 @@ try {
       ]).stdout,
     ).packages.find((p) => p.name === 'financial-manager-desktop');
     assert.deepEqual(metadata.features.default ?? [], []);
-    for (const name of ['lock-probe', 'lock-smoke'])
+    for (const name of ['lock-probe', 'lock-smoke', 'hello-manual'])
       assert.deepEqual(
         metadata.targets.find((t) => t.name === name)['required-features'],
         ['lock-smoke'],
       );
   });
-  step('only_eight_narrow_permissions', () => {
+  step('only_ten_narrow_permissions', () => {
     assert.deepEqual(
       JSON.parse(
         readFileSync(path.join(crate, 'capabilities/entry-main.json'), 'utf8'),
       ).permissions,
       permissions,
     );
+  });
+  step('windows_hello_availability_from_native_api', () => {
+    const output = path.join(own, 'availability.json');
+    run(probe, ['hello-availability', own, output]);
+    const availability = JSON.parse(readFileSync(output, 'utf8'));
+    assert.ok(
+      [
+        'AVAILABLE',
+        'NOT_CONFIGURED',
+        'DISABLED_BY_POLICY',
+        'DEVICE_BUSY',
+        'UNAVAILABLE',
+      ].includes(availability),
+    );
+    report.versions.windows_hello = availability;
   });
   const store = prepare('main');
   invoke('enable', store);

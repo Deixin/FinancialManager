@@ -197,6 +197,8 @@ try {
         'allow-unlock-local-session',
         'allow-configure-local-pin',
         'allow-disable-local-pin',
+        'allow-configure-local-hello',
+        'allow-unlock-local-hello',
       ],
     );
   });

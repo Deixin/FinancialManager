@@ -97,7 +97,7 @@
         if (
           !text().includes('reiniciar') ||
           !text().includes('30 segundos') ||
-          !text().includes('Biometria indisponível')
+          !text().includes('Windows Hello')
         )
           throw Error('POLICY_MISSING');
         await fill('disable-pin', PIN);

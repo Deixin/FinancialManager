@@ -18,7 +18,8 @@ pub struct LockStatus {
     pub enabled: bool,
     pub locked: bool,
     pub retry_after_seconds: u32,
-    pub biometrics: &'static str,
+    pub hello_enabled: bool,
+    pub hello_availability: crate::windows_hello::HelloAvailability,
 }
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -64,6 +65,8 @@ struct Record {
     version: u8,
     installation: Uuid,
     pin: Option<PinVerifier>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    hello: Option<bool>,
 }
 
 pub fn valid_pin(pin: &str) -> bool {
@@ -105,7 +108,8 @@ impl LocalLock {
                 }
                 let value: Record =
                     serde_json::from_slice(&bytes).map_err(|_| LocalError::IntegrityFailure)?;
-                if value.version != 1
+                if !matches!((value.version, value.hello), (1, None) | (2, Some(_)))
+                    || (value.hello == Some(true) && value.pin.is_none())
                     || value.installation != id
                     || value.pin.as_ref().is_some_and(|p| {
                         p.failures > 5
@@ -124,6 +128,7 @@ impl LocalLock {
                 version: 1,
                 installation: id,
                 pin: None,
+                hello: None,
             },
         };
         Ok(Self {
@@ -154,7 +159,8 @@ impl LocalLock {
             enabled: self.record.pin.is_some(),
             locked: self.record.pin.is_some() && !self.unlocked,
             retry_after_seconds: remaining.div_ceil(1000) as u32,
-            biometrics: "UNAVAILABLE",
+            hello_enabled: self.record.hello == Some(true),
+            hello_availability: crate::windows_hello::HelloAvailability::Unavailable,
         })
     }
     pub fn require_open(&self) -> Result<()> {
@@ -271,8 +277,10 @@ impl LocalLock {
         getrandom::fill(&mut salt).map_err(|_| LocalError::StorageUnavailable)?;
         let tag = derive(&input.new_pin, &salt)?;
         let next = Record {
-            version: 1,
+            version: self.record.version,
             installation: self.id,
+            // Changing the fallback PIN revokes Hello opt-in too.
+            hello: self.record.hello.map(|_| false),
             pin: Some(PinVerifier {
                 salt,
                 tag: *tag,
@@ -288,9 +296,44 @@ impl LocalLock {
     pub fn disable(&mut self, input: &PinInput, now: u64) -> Result<()> {
         self.authenticate(&input.pin, now)?;
         self.save(Record {
-            version: 1,
+            version: self.record.version,
             installation: self.id,
             pin: None,
+            hello: self.record.hello.map(|_| false),
         })
+    }
+    pub(crate) fn authorize_hello_change(&mut self, input: &PinInput, now: u64) -> Result<()> {
+        self.lock();
+        self.authenticate(&input.pin, now)
+    }
+    pub(crate) fn set_hello(&mut self, enabled: bool) -> Result<()> {
+        if self.unavailable || self.record.pin.is_none() {
+            return Err(LocalError::LocalLocked);
+        }
+        let mut next = self.record.clone();
+        next.version = 2;
+        next.hello = Some(enabled);
+        self.save(next)
+    }
+    pub(crate) fn require_hello(&self, now: u64) -> Result<()> {
+        let status = self.status(now)?;
+        if !status.enabled || !status.hello_enabled {
+            return Err(LocalError::HelloUnavailable);
+        }
+        if status.retry_after_seconds > 0 {
+            return Err(LocalError::RetryLater);
+        }
+        Ok(())
+    }
+    pub(crate) fn unlock_hello(&mut self, now: u64) -> Result<()> {
+        self.require_hello(now)?;
+        let mut next = self.record.clone();
+        let pin = next.pin.as_mut().ok_or(LocalError::IntegrityFailure)?;
+        pin.failures = 0;
+        pin.retry_until_ms = 0;
+        pin.last_attempt_ms = now;
+        self.save(next)?;
+        self.unlocked = true;
+        Ok(())
     }
 }

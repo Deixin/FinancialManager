@@ -6,6 +6,8 @@ Este repositório contém a documentação v1.0, a estrutura inicial de desenvol
 
 ## Documentação
 
+O complemento da [US-033](docs/development/local-privacy.md) implementa Windows Hello opcional com rosto, digital ou PIN Windows, mantendo PIN do aplicativo como alternativa. Consulta nativa confirmou disponibilidade neste host; autenticação interativa ainda não foi homologada. Há protocolo/pacote sintético para o usuário validar consentimento e cancelamento, sem compartilhar credenciais. [ADR-0043](docs/architecture/adr/0043-windows-hello-local.md). O registro abaixo descreve a entrega PIN anterior.
+
 A [US-033](docs/development/local-privacy.md) adiciona PIN opcional no Desktop Windows, com bloqueio no Rust, reinício/foco/saída e espera após erros. pnpm desktop:lock:check/native executam os protocolos Chromium/WebView2 e dez testes Rust novos. Biometria aparece indisponível nesta versão. Próximo incremento: US-034, backup de produto autenticado/versionado. Registros abaixo preservam os incrementos anteriores.
 
 A [US-032](docs/development/desktop-vault.md) valida o cofre SQLCipher de produto e chave Windows, com falhas do secret store, migrations interrompidas e recuperação de journal quente. pnpm desktop:vault:check executa os 11 gates nativos e oito testes Rust novos. Aceite Windows atendido; backup/restore, outbox e distribuição seguem nos seus gates. Próxima história: US-033, PIN/biometria opcionais. Registros abaixo preservam os incrementos anteriores.

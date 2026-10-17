@@ -5,6 +5,7 @@ pub mod local_lock;
 pub mod local_workspaces;
 pub mod lock_store;
 mod migrations;
+pub mod windows_hello;
 
 pub type Result<T> = std::result::Result<T, LocalError>;
 pub type SecretKey = zeroize::Zeroizing<[u8; 32]>;
@@ -24,6 +25,9 @@ pub enum LocalError {
     InvalidPin,
     AuthenticationFailed,
     RetryLater,
+    HelloUnavailable,
+    HelloCanceled,
+    HelloFailed,
 }
 impl From<std::io::Error> for LocalError {
     fn from(_: std::io::Error) -> Self {

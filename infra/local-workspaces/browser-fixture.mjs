@@ -15,6 +15,12 @@ export function installSyntheticWorkspaceBridge(options = {}) {
     holdUnlock: false,
     releaseUnlock: null,
     failLockNext: false,
+    helloAvailable: options.helloAvailable ?? 'UNAVAILABLE',
+    helloEnabled: false,
+    helloOutcome: 'VERIFIED',
+    holdHello: false,
+    releaseHello: null,
+    generation: 0,
   };
   globalThis.isTauri = true;
   globalThis.__syntheticWorkspace = state;
@@ -25,7 +31,8 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         enabled: Boolean(state.pin),
         locked: Boolean(state.pin) && state.locked,
         retry_after_seconds: state.retry,
-        biometrics: 'UNAVAILABLE',
+        hello_availability: state.helloAvailable,
+        hello_enabled: state.helloEnabled,
       });
       const authenticate = (pin) => {
         if (state.retry) throw 'RETRY_LATER';
@@ -39,6 +46,7 @@ export function installSyntheticWorkspaceBridge(options = {}) {
       };
       if (command === 'local_lock_status') return status();
       if (command === 'lock_local_session') {
+        state.generation++;
         if (state.failLockNext) {
           state.failLockNext = false;
           throw 'SYNTHETIC_LOST_LOCK_REQUEST';
@@ -47,6 +55,7 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         return status();
       }
       if (command === 'configure_local_pin') {
+        state.generation++;
         const input = args.input;
         if (
           !/^[0-9]{6,12}$/.test(input.new_pin) ||
@@ -55,10 +64,12 @@ export function installSyntheticWorkspaceBridge(options = {}) {
           throw 'INVALID_PIN';
         if (state.pin) authenticate(input.current_pin);
         state.pin = input.new_pin;
+        state.helloEnabled = false;
         state.locked = false;
         return status();
       }
       if (command === 'unlock_local_session') {
+        state.generation++;
         if (state.holdUnlock)
           await new Promise((resolve) => {
             state.releaseUnlock = resolve;
@@ -68,9 +79,32 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         return status();
       }
       if (command === 'disable_local_pin') {
+        state.generation++;
         authenticate(args.input.pin);
         state.pin = null;
+        state.helloEnabled = false;
         state.locked = false;
+        return status();
+      }
+      if (['configure_local_hello', 'unlock_local_hello'].includes(command)) {
+        state.locked = true;
+        const generation = ++state.generation;
+        if (command === 'configure_local_hello') {
+          authenticate(args.input.pin);
+          if (!args.enabled) {
+            state.helloEnabled = false;
+            return status();
+          }
+        } else if (!state.helloEnabled) throw 'HELLO_UNAVAILABLE';
+        if (state.helloAvailable !== 'AVAILABLE') throw 'HELLO_UNAVAILABLE';
+        if (state.holdHello)
+          await new Promise((resolve) => {
+            state.releaseHello = resolve;
+          });
+        if (state.generation !== generation) throw 'LOCAL_LOCKED';
+        if (state.helloOutcome !== 'VERIFIED') throw state.helloOutcome;
+        if (command === 'configure_local_hello') state.helloEnabled = true;
+        else state.locked = false;
         return status();
       }
       if (state.pin && state.locked) throw 'LOCAL_LOCKED';

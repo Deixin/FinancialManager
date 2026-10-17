@@ -94,6 +94,11 @@ fn run() -> std::result::Result<(), Box<dyn std::error::Error>> {
     let mode = args[0].as_str();
     let root = PathBuf::from(&args[1]);
     let output = PathBuf::from(&args[2]);
+    if mode == "hello-availability" {
+        use financial_manager_desktop::windows_hello::{HelloVerifier, WindowsHello};
+        fs::write(output, serde_json::to_vec(&WindowsHello.availability())?)?;
+        return Ok(());
+    }
     if mode == "prepare" {
         if root.exists() {
             return Err("FRESH_SYNTHETIC_ROOT_REQUIRED".into());

@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { LocalWorkspaceFlow } from './local-workspace-flow.js';
-import { createPrivacyGateway, privacyMessage } from './local-privacy.js';
+import {
+  createPrivacyGateway,
+  privacyMessage,
+  helloAvailabilityMessage,
+} from './local-privacy.js';
 import type { LockStatus } from './local-privacy.js';
 export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   const [gateway] = useState(createPrivacyGateway);
@@ -17,6 +21,7 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   const epoch = useRef(0),
     alive = useRef(true),
     pending = useRef(false),
+    helloPending = useRef(false),
     current = useRef<LockStatus | null>(null),
     heading = useRef<HTMLHeadingElement>(null);
   function clearPins() {
@@ -52,6 +57,7 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     if (!gateway || !current.current?.enabled) return;
     const token = ++epoch.current;
     pending.current = false;
+    helloPending.current = false;
     // Remove the financial tree immediately; late replies belong to the old epoch.
     accept({ ...current.current, locked: true });
     clearPins();
@@ -83,7 +89,11 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     };
   }, [gateway]);
   useEffect(() => {
-    const blur = () => lockNow();
+    // Native consent starts with the financial tree removed. Its owned prompt
+    // blurs this window; Rust requires OS success and restored foreground focus.
+    const blur = () => {
+      if (!helloPending.current) lockNow();
+    };
     window.addEventListener('blur', blur);
     return () => window.removeEventListener('blur', blur);
   }, [gateway]);
@@ -118,6 +128,53 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
       /* Native lock is requested before leaving the local route. */
     }
     if (alive.current) onExit();
+  }
+  async function helloOperation(enabled?: boolean) {
+    if (!gateway || pending.current || !current.current?.enabled) return;
+    const token = ++epoch.current,
+      old = pin;
+    pending.current = true;
+    helloPending.current = true;
+    accept({ ...current.current, locked: true });
+    clearPins();
+    setSettings(false);
+    setBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      const next = await (enabled === undefined
+        ? gateway.unlockHello()
+        : gateway.configureHello(old, enabled));
+      if (alive.current && epoch.current === token) {
+        if (!next.locked && !document.hasFocus()) {
+          lockNow();
+          return;
+        }
+        accept(next);
+        if (enabled !== undefined)
+          setNotice(
+            enabled
+              ? 'Windows Hello ativado. O PIN do aplicativo continua disponível.'
+              : 'Windows Hello desativado. Use o PIN do aplicativo.',
+          );
+      }
+    } catch (reason) {
+      if (alive.current && epoch.current === token) {
+        setError(privacyMessage(reason));
+        try {
+          const next = await gateway.status();
+          if (alive.current && epoch.current === token) accept(next);
+        } catch {
+          if (alive.current && epoch.current === token) setStatus(null);
+        }
+      }
+    } finally {
+      if (epoch.current === token) {
+        pending.current = false;
+        helloPending.current = false;
+        if (alive.current) setBusy(false);
+      }
+    }
   }
   async function operation(
     action: 'unlock' | 'configure' | 'disable',
@@ -231,6 +288,11 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
                 : 'Privacidade local'}
           </h1>
           {busy && <p role="status">Verificando proteção local…</p>}
+          {helloPending.current && (
+            <button type="button" onClick={lockNow}>
+              Cancelar verificação
+            </button>
+          )}
           {error && <p role="alert">{error}</p>}
           {notice && <p role="status">{notice}</p>}
           {!status && !busy && (
@@ -262,6 +324,26 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
                   Desbloquear
                 </button>
               </form>
+              {status.hello_enabled && (
+                <>
+                  <p>{helloAvailabilityMessage(status.hello_availability)}</p>
+                  <button
+                    type="button"
+                    disabled={
+                      busy ||
+                      retryLeft > 0 ||
+                      status.hello_availability !== 'AVAILABLE'
+                    }
+                    onClick={() => void helloOperation()}
+                  >
+                    Desbloquear com Windows Hello
+                  </button>
+                  <p>
+                    O Windows pode solicitar rosto, digital ou PIN do Windows.
+                    Você também pode usar o PIN do aplicativo.
+                  </p>
+                </>
+              )}
               <p>
                 Esqueceu o PIN? Não há redefinição nesta etapa. Seus dados não
                 serão apagados. O PIN não recupera backups.
@@ -287,7 +369,53 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
                   Bloquear agora. Após cinco erros, aguarde 30 segundos;
                   reiniciar não zera a espera.
                 </p>
-                <p>Biometria indisponível nesta versão.</p>
+                <p>{helloAvailabilityMessage(status.hello_availability)}</p>
+                <p>
+                  Windows Hello é uma alternativa opcional com rosto, digital ou
+                  PIN do Windows. A verificação acontece no Windows. Nenhum dado
+                  biométrico ou PIN do Windows é recebido pelo aplicativo. Não
+                  recupera backups nem permite alterar o PIN do aplicativo.
+                </p>
+                {!status.enabled && (
+                  <p>
+                    Ative primeiro o PIN do aplicativo para habilitar a
+                    alternativa Windows Hello.
+                  </p>
+                )}
+                {status.enabled && (
+                  <form
+                    onSubmit={(event) => {
+                      event.preventDefault();
+                      void helloOperation(!status.hello_enabled);
+                    }}
+                    aria-busy={busy}
+                  >
+                    {field(
+                      'hello-pin',
+                      'PIN atual para Windows Hello',
+                      pin,
+                      setPin,
+                    )}
+                    <button
+                      type="submit"
+                      disabled={
+                        busy ||
+                        pin.length < 6 ||
+                        (!status.hello_enabled &&
+                          status.hello_availability !== 'AVAILABLE')
+                      }
+                    >
+                      {status.hello_enabled
+                        ? 'Desativar Windows Hello'
+                        : 'Ativar Windows Hello'}
+                    </button>
+                    <p>
+                      Ativar exige o PIN atual e uma confirmação do Windows.
+                      Alterar ou desativar o PIN do aplicativo desativa também
+                      esta alternativa.
+                    </p>
+                  </form>
+                )}
                 <form
                   onSubmit={(e) => void operation('configure', e)}
                   aria-busy={busy}

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0043 — Windows Hello local](0043-windows-hello-local.md): adapter desktop real, opt-in com PIN, migração da política e descarte de consentimento atrasado; autenticação interativa pendente.
+
 [0042 — Bloqueio local por PIN](0042-bloqueio-local-por-pin.md): sessão opcional protegida no Rust/Windows, falhas sem rekey, bloqueio por foco e espera persistida; biometria pendente.
 
 [0041 — Homologação do cofre de produto](0041-homologacao-cofre-produto.md): aceite US-032 Windows, falhas de secret store, migrations interrompidas e journal quente; backup/restore e G07-VAULT global pendentes.

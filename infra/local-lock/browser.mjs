@@ -12,7 +12,7 @@ const directory = new URL('../../.tools/us033-lock/', import.meta.url),
   SECOND = '682035741921',
   NAME = 'SYNTHETIC US033 PRIVATE SPACE';
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us033-local-lock-browser',
   passed: false,
   synthetic_only: true,
@@ -96,7 +96,7 @@ try {
       /não há redefinição/,
       /reiniciar, voltar à entrada ou perder o foco/,
       /cinco erros/,
-      /Biometria indisponível/,
+      /Windows Hello indisponível neste dispositivo/,
     ])
       await page.getByText(text).waitFor();
     await page.getByLabel('Novo PIN', { exact: true }).fill(PIN);
@@ -186,6 +186,129 @@ try {
       window.__syntheticWorkspace.holdUnlock = false;
       window.__syntheticWorkspace.locked = true;
     });
+  });
+  await step('hello_opt_in_and_os_pin_policy', async () => {
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.helloAvailable = 'AVAILABLE';
+    });
+    await unlock(PIN);
+    await spaces();
+    await click('Privacidade local');
+    await page.getByText(/Windows Hello disponível neste perfil/).waitFor();
+    await page.getByText(/rosto, digital ou PIN do Windows/).waitFor();
+    await page.getByText(/Nenhum dado biométrico ou PIN do Windows/).waitFor();
+    await page
+      .getByLabel('PIN atual para Windows Hello', { exact: true })
+      .fill(PIN);
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.holdHello = true;
+    });
+    await click('Ativar Windows Hello');
+    await page.waitForFunction(() =>
+      Boolean(window.__syntheticWorkspace.releaseHello),
+    );
+    await locked();
+    await page.evaluate(() => window.dispatchEvent(new Event('blur')));
+    await locked();
+    assert.equal(
+      await page.getByLabel('PIN do aplicativo', { exact: true }).inputValue(),
+      '',
+    );
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.releaseHello();
+      window.__syntheticWorkspace.holdHello = false;
+    });
+    await page.getByText(/Windows Hello ativado/).waitFor();
+    await locked();
+    await click('Desbloquear com Windows Hello');
+    await spaces();
+  });
+  await step('hello_cancellation_and_pin_fallback', async () => {
+    for (const outcome of ['HELLO_CANCELED', 'HELLO_FAILED']) {
+      await click('Bloquear agora');
+      await locked();
+      await page.evaluate((value) => {
+        window.__syntheticWorkspace.helloOutcome = value;
+      }, outcome);
+      await click('Desbloquear com Windows Hello');
+      await page
+        .getByRole('alert')
+        .filter({ hasText: /continua bloqueado/ })
+        .waitFor();
+      await locked();
+      await unlock(PIN);
+      await spaces();
+    }
+  });
+  await step('hello_late_success_after_explicit_cancel_discarded', async () => {
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.helloAvailable = 'NOT_CONFIGURED';
+    });
+    await click('Bloquear agora');
+    await locked();
+    await page
+      .getByText(/Configure o Windows Hello nas opções de entrada/)
+      .waitFor();
+    assert.equal(
+      await page
+        .getByRole('button', {
+          name: 'Desbloquear com Windows Hello',
+          exact: true,
+        })
+        .isDisabled(),
+      true,
+    );
+    await unlock(PIN);
+    await spaces();
+    await click('Privacidade local');
+    await page
+      .getByLabel('PIN atual para Windows Hello', { exact: true })
+      .fill(PIN);
+    await click('Desativar Windows Hello');
+    await locked();
+    assert.equal(
+      await page
+        .getByRole('button', {
+          name: 'Desbloquear com Windows Hello',
+          exact: true,
+        })
+        .count(),
+      0,
+    );
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.helloAvailable = 'AVAILABLE';
+      window.__syntheticWorkspace.helloOutcome = 'VERIFIED';
+    });
+    await unlock(PIN);
+    await spaces();
+    await click('Privacidade local');
+    await page
+      .getByLabel('PIN atual para Windows Hello', { exact: true })
+      .fill(PIN);
+    await click('Ativar Windows Hello');
+    await page.getByText(/Windows Hello ativado/).waitFor();
+    await locked();
+    await click('Desbloquear com Windows Hello');
+    await spaces();
+    await click('Bloquear agora');
+    await locked();
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.helloOutcome = 'VERIFIED';
+      window.__syntheticWorkspace.holdHello = true;
+      window.__syntheticWorkspace.releaseHello = null;
+    });
+    await click('Desbloquear com Windows Hello');
+    await page.waitForFunction(() =>
+      Boolean(window.__syntheticWorkspace.releaseHello),
+    );
+    await click('Cancelar verificação');
+    await locked();
+    await page.evaluate(() => {
+      window.__syntheticWorkspace.releaseHello();
+      window.__syntheticWorkspace.holdHello = false;
+    });
+    await page.waitForTimeout(150);
+    await locked();
   });
   await step('enable_change_disable_clear_pins', async () => {
     await unlock(PIN);

@@ -4,12 +4,13 @@ use crate::{
     local_lock::{ConfigurePin, LocalLock, LockStatus, PinInput},
     local_workspaces::{CreateWorkspace, Installation, Workspace},
     lock_store::PolicyStore,
+    windows_hello::{HelloAvailability, HelloVerifier, WindowsHello},
 };
 use std::{
     path::PathBuf,
     sync::{
         Arc, Mutex,
-        atomic::{AtomicBool, Ordering},
+        atomic::{AtomicBool, AtomicU64, Ordering},
     },
 };
 use tauri::{Manager, State};
@@ -20,6 +21,9 @@ pub struct LocalState {
     policies: Arc<dyn PolicyStore>,
     installation: Mutex<Option<Session>>,
     force_locked: AtomicBool,
+    generation: AtomicU64,
+    hello_pending: AtomicBool,
+    hello: Arc<dyn HelloVerifier>,
 }
 struct Session {
     installation: Installation,
@@ -35,15 +39,32 @@ impl LocalState {
         keys: Arc<dyn KeyStore>,
         policies: Arc<dyn PolicyStore>,
     ) -> Self {
+        Self::with_hello(root, keys, policies, Arc::new(WindowsHello))
+    }
+    pub fn with_hello(
+        root: PathBuf,
+        keys: Arc<dyn KeyStore>,
+        policies: Arc<dyn PolicyStore>,
+        hello: Arc<dyn HelloVerifier>,
+    ) -> Self {
         Self {
             root,
             keys,
             policies,
             installation: Mutex::new(None),
             force_locked: AtomicBool::new(false),
+            generation: AtomicU64::new(0),
+            hello_pending: AtomicBool::new(false),
+            hello,
         }
     }
     pub fn force_lock(&self) {
+        self.generation.fetch_add(1, Ordering::SeqCst);
+        self.on_focus_lost();
+    }
+    pub fn on_focus_lost(&self) {
+        // An owned OS consent prompt also blurs the main window. It starts locked;
+        // only fresh OS verification plus foreground ownership may reopen it.
         self.force_locked.store(true, Ordering::SeqCst);
     }
     fn access<T>(
@@ -92,29 +113,115 @@ impl LocalState {
         self.with(|i| i.open_workspace(id))
     }
     pub fn status(&self) -> Result<LockStatus> {
-        self.access(false, |s| {
+        let mut status = self.access(false, |s| {
             if s.privacy.is_unavailable() {
                 s.privacy =
                     LocalLock::load(s.installation.id(), &self.root, self.policies.clone())?;
             }
             s.privacy.status(LocalLock::now()?)
-        })
+        })?;
+        status.hello_availability = self.hello.availability();
+        Ok(status)
     }
     pub fn lock(&self) -> Result<LockStatus> {
         self.force_lock();
         self.status()
     }
     pub fn unlock(&self, input: PinInput) -> Result<LockStatus> {
+        self.force_lock();
         self.access(false, |s| s.privacy.unlock(&input, LocalLock::now()?))?;
         self.status()
     }
     pub fn configure(&self, input: ConfigurePin) -> Result<LockStatus> {
+        self.force_lock();
         self.access(false, |s| s.privacy.configure(&input, LocalLock::now()?))?;
         self.status()
     }
     pub fn disable(&self, input: PinInput) -> Result<LockStatus> {
+        self.force_lock();
         self.access(false, |s| s.privacy.disable(&input, LocalLock::now()?))?;
         self.status()
+    }
+    pub fn configure_hello(
+        &self,
+        input: PinInput,
+        enabled: bool,
+        window: isize,
+        focused: impl Fn() -> bool,
+    ) -> Result<LockStatus> {
+        if !enabled {
+            self.force_lock();
+            self.access(false, |s| {
+                s.privacy
+                    .authorize_hello_change(&input, LocalLock::now()?)?;
+                s.privacy.set_hello(false)
+            })?;
+            return self.status();
+        }
+        self.verify_hello(Some(input), window, focused)
+    }
+    pub fn unlock_with_hello(
+        &self,
+        window: isize,
+        focused: impl Fn() -> bool,
+    ) -> Result<LockStatus> {
+        self.verify_hello(None, window, focused)
+    }
+    fn verify_hello(
+        &self,
+        enabling: Option<PinInput>,
+        window: isize,
+        focused: impl Fn() -> bool,
+    ) -> Result<LockStatus> {
+        self.hello_pending
+            .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
+            .map_err(|_| LocalError::RequestConflict)?;
+        struct Pending<'a>(&'a AtomicBool);
+        impl Drop for Pending<'_> {
+            fn drop(&mut self) {
+                self.0.store(false, Ordering::SeqCst);
+            }
+        }
+        let _pending = Pending(&self.hello_pending);
+        self.force_lock();
+        let generation = self.generation.load(Ordering::SeqCst);
+        let is_enabling = enabling.is_some();
+        self.access(false, |s| {
+            if let Some(input) = enabling.as_ref() {
+                s.privacy.authorize_hello_change(input, LocalLock::now()?)
+            } else {
+                s.privacy.require_hello(LocalLock::now()?)
+            }
+        })?;
+        // The current app PIN is no longer needed during a potentially long OS prompt.
+        drop(enabling);
+        if self.hello.availability() != HelloAvailability::Available {
+            return Err(LocalError::HelloUnavailable);
+        }
+        if !focused() || self.generation.load(Ordering::SeqCst) != generation {
+            return Err(LocalError::LocalLocked);
+        }
+        // No installation mutex, financial key or open DB is held during OS consent.
+        self.hello.verify(window)?;
+        if !focused() {
+            return Err(LocalError::LocalLocked);
+        }
+        self.access(false, |s| {
+            if self.generation.load(Ordering::SeqCst) != generation {
+                return Err(LocalError::LocalLocked);
+            }
+            if is_enabling {
+                s.privacy.set_hello(true)
+            } else {
+                s.privacy.unlock_hello(LocalLock::now()?)
+            }
+        })?;
+        let status = self.status()?;
+        if !focused() || self.generation.load(Ordering::SeqCst) != generation {
+            self.force_lock();
+            return Err(LocalError::LocalLocked);
+        }
+        Ok(status)
     }
 }
 #[tauri::command]
@@ -195,6 +302,42 @@ pub async fn disable_local_pin(
         .await
         .map_err(|_| LocalError::StorageUnavailable)?
 }
+#[tauri::command]
+pub async fn configure_local_hello(
+    state: State<'_, Arc<LocalState>>,
+    window: tauri::WebviewWindow,
+    input: PinInput,
+    enabled: bool,
+) -> Result<LockStatus> {
+    let state = state.inner().clone();
+    #[cfg(windows)]
+    let handle = window.hwnd().map_err(|_| LocalError::HelloUnavailable)?.0 as isize;
+    #[cfg(not(windows))]
+    let handle = 0;
+    tauri::async_runtime::spawn_blocking(move || {
+        state.configure_hello(input, enabled, handle, || {
+            window.is_focused().unwrap_or(false)
+        })
+    })
+    .await
+    .map_err(|_| LocalError::HelloUnavailable)?
+}
+#[tauri::command]
+pub async fn unlock_local_hello(
+    state: State<'_, Arc<LocalState>>,
+    window: tauri::WebviewWindow,
+) -> Result<LockStatus> {
+    let state = state.inner().clone();
+    #[cfg(windows)]
+    let handle = window.hwnd().map_err(|_| LocalError::HelloUnavailable)?.0 as isize;
+    #[cfg(not(windows))]
+    let handle = 0;
+    tauri::async_runtime::spawn_blocking(move || {
+        state.unlock_with_hello(handle, || window.is_focused().unwrap_or(false))
+    })
+    .await
+    .map_err(|_| LocalError::HelloUnavailable)?
+}
 pub fn production_builder() -> tauri::Builder<tauri::Wry> {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -205,13 +348,15 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             lock_local_session,
             unlock_local_session,
             configure_local_pin,
-            disable_local_pin
+            disable_local_pin,
+            configure_local_hello,
+            unlock_local_hello
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
                 && let Some(state) = window.try_state::<Arc<LocalState>>()
             {
-                state.force_lock();
+                state.on_focus_lost();
             }
         })
         .setup(|app| {

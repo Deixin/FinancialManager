@@ -10,6 +10,8 @@
     "allow-lock-local-session",
     "allow-unlock-local-session",
     "allow-configure-local-pin",
-    "allow-disable-local-pin"
+    "allow-disable-local-pin",
+    "allow-configure-local-hello",
+    "allow-unlock-local-hello"
   ]
 }

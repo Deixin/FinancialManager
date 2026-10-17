@@ -67,13 +67,15 @@ fn main() {
             financial_manager_desktop::commands::unlock_local_session,
             financial_manager_desktop::commands::configure_local_pin,
             financial_manager_desktop::commands::disable_local_pin,
+            financial_manager_desktop::commands::configure_local_hello,
+            financial_manager_desktop::commands::unlock_local_hello,
             finish_lock_smoke
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
                 && let Some(state) = window.try_state::<Arc<LocalState>>()
             {
-                state.force_lock();
+                state.on_focus_lost();
             }
         })
         .setup(move |app| {

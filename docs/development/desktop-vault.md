@@ -1,6 +1,6 @@
 # Cofre Desktop — US-032
 
-A [US-033](local-privacy.md) adiciona PIN opcional antes da liberação de chaves pelo host, sem rekey ou alteração do schema financeiro. O conjunto de produto agora tem oito comandos específicos; as três permissões mencionadas abaixo descrevem o incremento US-032. Seu protocolo foi reexecutado nas fontes US-033, em relatório de sufixo us033.
+A [US-033](local-privacy.md) adiciona PIN e Windows Hello opcionais antes da liberação de chaves pelo host, sem rekey ou alteração do schema financeiro. O conjunto de produto agora tem dez comandos específicos; as três permissões mencionadas abaixo descrevem o incremento US-032. Seu protocolo foi reexecutado nas fontes atuais, em relatório de sufixo hello. Autenticação Hello interativa permanece pendente.
 
 O cofre de produto iniciado na US-031 usa SQLCipher no Rust, chave aleatória de 32 bytes por workspace e Windows Credential Manager escopado à instalação/espaço. O aceite da US-032 exige abertura somente com chave correta e ausência do segredo em texto persistido. Esta etapa amplia a prova de falhas e recuperação do core existente, preservando sua política de abertura, compatibilidade, journal e publicação de identidade. [ADR-0041](../architecture/adr/0041-homologacao-cofre-produto.md).
 

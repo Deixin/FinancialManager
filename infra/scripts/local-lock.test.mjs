@@ -6,6 +6,7 @@ import {
   createPrivacyGateway,
   LocalPrivacyError,
   privacyMessage,
+  helloAvailabilityMessage,
 } from '../../apps/desktop/dist/local-privacy.js';
 import {
   browserChecks,
@@ -16,7 +17,9 @@ const load = (kind) =>
   JSON.parse(
     readFileSync(
       new URL(
-        '../../docs/quality/evidence/us-033-lock-' + kind + '-2026-10-17.json',
+        '../../docs/quality/evidence/us-033-lock-' +
+          kind +
+          '-2026-10-17-hello.json',
         import.meta.url,
       ),
       'utf8',
@@ -27,7 +30,8 @@ test('local privacy status decoder rejects unknown secrets, unsupported biometri
     enabled: true,
     locked: true,
     retry_after_seconds: 0,
-    biometrics: 'UNAVAILABLE',
+    hello_enabled: false,
+    hello_availability: 'UNAVAILABLE',
   };
   assert.ok(Object.isFrozen(decodeLockStatus(valid)));
   for (const change of [
@@ -38,13 +42,59 @@ test('local privacy status decoder rejects unknown secrets, unsupported biometri
     { retry_after_seconds: -1 },
     { retry_after_seconds: 31 },
     { retry_after_seconds: 0.5 },
-    { biometrics: 'VERIFIED' },
+    { hello_availability: 'VERIFIED' },
+    { hello_enabled: 'true' },
+    { enabled: false, locked: false, hello_enabled: true },
   ])
     assert.throws(
       () => decodeLockStatus({ ...valid, ...change }),
       /LOCAL_PRIVACY_OPERATION_FAILED/,
     );
   assert.equal(createPrivacyGateway(), null);
+  for (const availability of [
+    'AVAILABLE',
+    'UNAVAILABLE',
+    'NOT_CONFIGURED',
+    'DISABLED_BY_POLICY',
+    'DEVICE_BUSY',
+  ]) {
+    assert.equal(
+      decodeLockStatus({ ...valid, hello_availability: availability })
+        .hello_availability,
+      availability,
+    );
+    assert.match(helloAvailabilityMessage(availability), /Windows Hello/);
+  }
+  for (const code of ['HELLO_CANCELED', 'HELLO_FAILED', 'HELLO_UNAVAILABLE'])
+    assert.match(privacyMessage(new LocalPrivacyError(code)), /Windows Hello/);
+});
+test('historical PIN-only reports cannot claim current Windows Hello integration', () => {
+  for (const kind of ['browser', 'windows']) {
+    const report = JSON.parse(
+      readFileSync(
+        new URL(
+          '../../docs/quality/evidence/us-033-lock-' +
+            kind +
+            '-2026-10-17.json',
+          import.meta.url,
+        ),
+        'utf8',
+      ),
+    );
+    assert.equal(
+      validateLockEvidence(report, { matchSources: false }).passed,
+      true,
+    );
+    assert.throws(
+      () => validateLockEvidence(report),
+      /LOCAL_LOCK_EVIDENCE_INVALID/,
+    );
+    report.checks.windows_hello_availability_from_native_api = true;
+    assert.throws(
+      () => validateLockEvidence(report, { matchSources: false }),
+      /LOCAL_LOCK_EVIDENCE_INVALID/,
+    );
+  }
 });
 test('privacy errors never disclose native payloads or treat failed authentication as loss of the vault', () => {
   assert.equal(

@@ -1,6 +1,6 @@
 # Espaço local anônimo — US-031
 
-A [US-033](local-privacy.md) acrescenta PIN opcional e cinco comandos específicos, mantendo os três de workspaces atrás da barreira nativa. Os relatórios atuais de workspaces têm formato 2 e sufixo us033; os de formato 1 abaixo preservam a concessão histórica de três permissões. O usuário continua sem identidade cloud.
+A [US-033](local-privacy.md) acrescenta PIN/Windows Hello opcionais e sete comandos específicos, mantendo os três de workspaces atrás da barreira nativa. Os relatórios atuais de workspaces têm formato 2 e sufixo hello; os de formato 1 abaixo preservam a concessão histórica de três permissões. O usuário continua sem identidade cloud. Autenticação Hello interativa permanece pendente.
 
 Validação atual reexecutada na [US-032](desktop-vault.md), com [oito gates Chromium](../quality/evidence/us-031-workspaces-browser-2026-10-17-us032.json) e [15 Windows](../quality/evidence/us-031-workspaces-windows-2026-10-17-us032.json). Essa história ampliou migrations/journal e falhas do secret store; o G07-VAULT global mantém backup/restore, outbox e distribuição pendentes. O registro abaixo preserva o recorte entregue na US-031.
 

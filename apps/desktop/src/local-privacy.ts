@@ -3,7 +3,13 @@ export type LockStatus = Readonly<{
   enabled: boolean;
   locked: boolean;
   retry_after_seconds: number;
-  biometrics: 'UNAVAILABLE';
+  hello_enabled: boolean;
+  hello_availability:
+    | 'AVAILABLE'
+    | 'UNAVAILABLE'
+    | 'NOT_CONFIGURED'
+    | 'DISABLED_BY_POLICY'
+    | 'DEVICE_BUSY';
 }>;
 export class LocalPrivacyError extends Error {
   constructor(readonly code: string) {
@@ -16,13 +22,21 @@ export function decodeLockStatus(value: unknown): LockStatus {
   const r = value as Record<string, unknown>;
   if (
     Object.keys(r).sort().join(',') !==
-      'biometrics,enabled,locked,retry_after_seconds' ||
+      'enabled,hello_availability,hello_enabled,locked,retry_after_seconds' ||
     typeof r.enabled !== 'boolean' ||
     typeof r.locked !== 'boolean' ||
     !Number.isInteger(r.retry_after_seconds) ||
     (r.retry_after_seconds as number) < 0 ||
     (r.retry_after_seconds as number) > 30 ||
-    r.biometrics !== 'UNAVAILABLE' ||
+    typeof r.hello_enabled !== 'boolean' ||
+    ![
+      'AVAILABLE',
+      'UNAVAILABLE',
+      'NOT_CONFIGURED',
+      'DISABLED_BY_POLICY',
+      'DEVICE_BUSY',
+    ].includes(r.hello_availability as string) ||
+    (!r.enabled && r.hello_enabled) ||
     (!r.enabled && (r.locked || r.retry_after_seconds !== 0))
   )
     throw new LocalPrivacyError('INVALID_RESPONSE');
@@ -30,7 +44,9 @@ export function decodeLockStatus(value: unknown): LockStatus {
     enabled: r.enabled,
     locked: r.locked,
     retry_after_seconds: r.retry_after_seconds as number,
-    biometrics: 'UNAVAILABLE',
+    hello_enabled: r.hello_enabled,
+    hello_availability:
+      r.hello_availability as LockStatus['hello_availability'],
   });
 }
 export function privacyMessage(error: unknown): string {
@@ -41,7 +57,31 @@ export function privacyMessage(error: unknown): string {
     return 'PIN incorreto. Os dados do cofre foram preservados.';
   if (code === 'RETRY_LATER')
     return 'Aguarde 30 segundos antes de tentar novamente. Se o relógio do computador mudou, confira a data e a hora.';
+  if (code === 'HELLO_CANCELED')
+    return 'Verificação do Windows Hello cancelada. O aplicativo continua bloqueado.';
+  if (code === 'HELLO_FAILED')
+    return 'O Windows Hello não confirmou sua identidade. O aplicativo continua bloqueado.';
+  if (code === 'HELLO_UNAVAILABLE')
+    return 'Windows Hello indisponível. Use o PIN do aplicativo para desbloquear.';
+  if (code === 'LOCAL_LOCKED')
+    return 'O aplicativo continua bloqueado. Volte à janela e tente novamente.';
   return 'Não foi possível concluir a verificação da proteção local. Seus dados foram preservados. Confira o estado antes de continuar.';
+}
+export function helloAvailabilityMessage(
+  value: LockStatus['hello_availability'],
+): string {
+  switch (value) {
+    case 'AVAILABLE':
+      return 'Windows Hello disponível neste perfil Windows.';
+    case 'NOT_CONFIGURED':
+      return 'Configure o Windows Hello nas opções de entrada do Windows para usar esta alternativa.';
+    case 'DISABLED_BY_POLICY':
+      return 'Windows Hello desativado pela política do Windows.';
+    case 'DEVICE_BUSY':
+      return 'Windows Hello ocupado. Use o PIN do aplicativo ou tente novamente mais tarde.';
+    default:
+      return 'Windows Hello indisponível neste dispositivo. Use o PIN do aplicativo.';
+  }
 }
 export interface PrivacyGateway {
   status(): Promise<LockStatus>;
@@ -53,6 +93,8 @@ export interface PrivacyGateway {
     confirmation: string,
   ): Promise<LockStatus>;
   disable(pin: string): Promise<LockStatus>;
+  configureHello(pin: string, enabled: boolean): Promise<LockStatus>;
+  unlockHello(): Promise<LockStatus>;
 }
 export function createPrivacyGateway(): PrivacyGateway | null {
   if (!isTauri()) return null;
@@ -61,6 +103,9 @@ export function createPrivacyGateway(): PrivacyGateway | null {
     'AUTHENTICATION_FAILED',
     'RETRY_LATER',
     'LOCAL_LOCKED',
+    'HELLO_CANCELED',
+    'HELLO_FAILED',
+    'HELLO_UNAVAILABLE',
   ];
   const call = async (command: string, args?: Record<string, unknown>) => {
     try {
@@ -69,8 +114,14 @@ export function createPrivacyGateway(): PrivacyGateway | null {
         (command === 'lock_local_session' &&
           result.enabled &&
           !result.locked) ||
-        (['configure_local_pin', 'unlock_local_session'].includes(command) &&
+        ([
+          'configure_local_pin',
+          'unlock_local_session',
+          'configure_local_hello',
+          'unlock_local_hello',
+        ].includes(command) &&
           !result.enabled) ||
+        (command === 'unlock_local_hello' && !result.hello_enabled) ||
         (command === 'disable_local_pin' && result.enabled)
       )
         throw new LocalPrivacyError('INVALID_RESPONSE');
@@ -101,5 +152,8 @@ export function createPrivacyGateway(): PrivacyGateway | null {
         },
       }),
     disable: (pin: string) => call('disable_local_pin', { input: { pin } }),
+    configureHello: (pin: string, enabled: boolean) =>
+      call('configure_local_hello', { input: { pin }, enabled }),
+    unlockHello: () => call('unlock_local_hello'),
   });
 }
