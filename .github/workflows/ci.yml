@@ -353,7 +353,7 @@ jobs:
       - run: pnpm identity:native:windows
 
   desktop-entry:
-    name: US-031 local workspaces and native vault (Windows)
+    name: US-031/032 local workspaces and native vault (Windows)
     runs-on: windows-2025
     timeout-minutes: 40
     steps:
@@ -375,3 +375,4 @@ jobs:
           if (Test-Path 'C:\Strawberry\perl\bin\perl.exe') { Add-Content -LiteralPath $env:GITHUB_PATH -Value 'C:\Strawberry\perl\bin' }
       - run: pnpm desktop:workspaces:check
       - run: pnpm desktop:workspaces:native
+      - run: pnpm desktop:vault:check

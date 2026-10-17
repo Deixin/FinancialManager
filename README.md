@@ -6,6 +6,8 @@ Este repositório contém a documentação v1.0, a estrutura inicial de desenvol
 
 ## Documentação
 
+A [US-032](docs/development/desktop-vault.md) valida o cofre SQLCipher de produto e chave Windows, com falhas do secret store, migrations interrompidas e recuperação de journal quente. pnpm desktop:vault:check executa os 11 gates nativos e oito testes Rust novos. Aceite Windows atendido; backup/restore, outbox e distribuição seguem nos seus gates. Próxima história: US-033, PIN/biometria opcionais. Registros abaixo preservam os incrementos anteriores.
+
 A [US-031](docs/development/local-workspaces.md) permite criar/reabrir espaços locais no Desktop sem conta cloud. Nome/finalidade ficam no SQLCipher de produto com chave Windows e staging; a prévia DOM não persiste dados. desktop:workspaces:check/native executam o protocolo atual. Próximo incremento: US-032, ampliando a homologação do cofre e G07-VAULT.
 
 A [US-030](docs/development/desktop-entry.md) entrega a entrada Desktop React/Vite + Tauri até o modo local, sem identidade cloud. Use pnpm desktop:preview para visualizar; os protocolos desktop:entry:check e desktop:entry:native verificam Chromium e Windows/WebView2. Criar o primeiro espaço persistente é o próximo passo, US-031; cofre/login cloud e release assinado continuam nos seus gates.

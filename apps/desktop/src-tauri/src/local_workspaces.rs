@@ -222,7 +222,7 @@ impl Installation {
         }
         result
     }
-    #[cfg(any(test, feature = "workspace-smoke"))]
+    #[cfg(any(test, feature = "workspace-smoke", feature = "vault-smoke"))]
     pub fn create_with_hook(
         &self,
         input: CreateWorkspace,
@@ -230,7 +230,7 @@ impl Installation {
     ) -> Result<Workspace> {
         self.create_inner(input, hook)
     }
-    #[cfg(any(test, feature = "workspace-smoke"))]
+    #[cfg(any(test, feature = "workspace-smoke", feature = "vault-smoke"))]
     pub fn probe_details(&self) -> (Uuid, PathBuf) {
         (self.id, self.root.clone())
     }

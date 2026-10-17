@@ -1,5 +1,7 @@
 # desktop
 
+A [US-032](../../docs/development/desktop-vault.md) amplia a prova do cofre de produto com oito testes Rust e 11 gates Windows, incluindo migrations/journal interrompidos e secret store. pnpm desktop:vault:check roda o protocolo real com instalações sintéticas e limpeza verificada. Instrumentação fica somente em vault-smoke/vault-probe; a política de abertura e os três comandos de produto são preservados. Próximo passo: US-033. Backup/restore, outbox e release permanecem nos seus gates; os registros abaixo são históricos.
+
 A [US-031](../../docs/development/local-workspaces.md) cria e reabre espaços de produto sem identidade cloud. O core Rust agora mantém SQLCipher/schema v2 e chave Windows no mínimo necessário à persistência, com três comandos estreitos. desktop:workspaces:check/native verificam DOM e persistência real; os aliases entry apontam para esses protocolos atuais. Preview continua sem gravar dados. US-032/G07-VAULT ampliado, backup/restore e release permanecem pendentes; os registros anteriores abaixo são históricos.
 
 A [US-030](../../docs/development/desktop-entry.md) integra a primeira entrada de produto React/Vite + Tauri, com Continuar sem conta até início de WS-01 local. Os parágrafos abaixo registram a fundação anterior e seus limites; o cofre experimental continua isolado. Criação persistente do workspace (US-031), cofre (US-032), autenticação cloud e release assinado permanecem pendentes.

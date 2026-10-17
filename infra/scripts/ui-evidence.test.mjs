@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { validateUiEvidence, validateFlagEvidence } from '../ui/evidence.mjs';
 
-const fixture = (filename = 'us-016-dom-2026-10-17-us031.json') =>
+const fixture = (filename = 'us-016-dom-2026-10-17-us032.json') =>
   JSON.parse(
     readFileSync(
       new URL('../../docs/quality/evidence/' + filename, import.meta.url),
@@ -145,7 +145,7 @@ test('historical UI evidence preserves its original scope and source manifest', 
   );
 });
 test('runtime flag evidence requires every real browser gate and current sources', () => {
-  const filename = 'us-017-flags-2026-10-17-us031.json';
+  const filename = 'us-017-flags-2026-10-17-us032.json';
   assert.equal(validateFlagEvidence(fixture(filename)).passed, true);
   for (const mutate of [
     (report) => {

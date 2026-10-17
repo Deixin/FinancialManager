@@ -1,5 +1,7 @@
 # Espaço local anônimo — US-031
 
+Validação atual reexecutada na [US-032](desktop-vault.md), com [oito gates Chromium](../quality/evidence/us-031-workspaces-browser-2026-10-17-us032.json) e [15 Windows](../quality/evidence/us-031-workspaces-windows-2026-10-17-us032.json). Essa história ampliou migrations/journal e falhas do secret store; o G07-VAULT global mantém backup/restore, outbox e distribuição pendentes. O registro abaixo preserva o recorte entregue na US-031.
+
 O Desktop cria um espaço com nome e finalidade Pessoal/Empresa/Outro, mantém armazenamento Local e moeda BRL, e abre uma visão geral vazia. Não cria cloud_user, auth_identity, workspace_member, token ou usuário remoto anônimo. O nome é exibido como texto; dados pessoais/fiscais não são obrigatórios nem coletados nesta etapa. Cadastro de contas e lançamentos continua nas histórias financeiras; não há saldo fictício no painel.
 
 Continuar sem conta carrega os espaços locais. Sem espaços, apresenta WS-01; com espaços existentes, permite abrir o escolhido. Depois da criação, o usuário pode retornar à entrada, listar e reabrir. Nome/finalidade persistem após sair do processo. A implementação permite mais de um arquivo, sem limite comercial, mas gestão completa/seletor e edição ficam nos seus escopos, incluindo US-036/CF-05.

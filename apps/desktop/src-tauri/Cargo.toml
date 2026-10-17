@@ -10,6 +10,7 @@ default-run = "financial-manager"
 [features]
 entry-smoke = ["tauri/dynamic-acl"]
 workspace-smoke = ["tauri/dynamic-acl"]
+vault-smoke = ["rusqlite/trace"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
@@ -46,6 +47,11 @@ required-features = ["entry-smoke"]
 name = "workspace-probe"
 path = "src/bin/workspace-probe.rs"
 required-features = ["workspace-smoke"]
+
+[[bin]]
+name = "vault-probe"
+path = "src/bin/vault-probe.rs"
+required-features = ["vault-smoke"]
 
 [[bin]]
 name = "workspace-smoke"

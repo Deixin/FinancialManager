@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0041 — Homologação do cofre de produto](0041-homologacao-cofre-produto.md): aceite US-032 Windows, falhas de secret store, migrations interrompidas e journal quente; backup/restore e G07-VAULT global pendentes.
+
 [0040 — Workspace local anônimo](0040-workspace-local-anonimo.md): criação/reabertura no schema de produto com staging, três comandos e proteção mínima SQLCipher/Windows; G07-VAULT ampliado segue aberto.
 
 [0039 — Entrada Desktop anônima](0039-entrada-desktop-anonima.md): React/Vite + Tauri sem privilégios, EN-01 até modo local e testes Chromium/WebView2; criação/cofre/cloud seguem pendentes.

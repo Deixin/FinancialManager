@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-032 usa o workspace A do FIN-002 v1, somente no instrumento opcional, com storage_mode LOCAL e nomes ASCII normalizados. Compara todas as colunas das 12 tabelas por digest temporário, preservando i64 como strings. [Protocolo](../development/desktop-vault.md) prepara instalações novas em .tools/us032-vault e credenciais Windows próprias. Examina main/journal quente por chave bruta/hex e trechos sintéticos; remove credenciais antes dos arquivos e verifica ausência. Relatório não contém digest financeiro, IDs, paths privados, valores, nomes, bancos ou segredos.
+
 US-031 usa nomes/UUIDs sintéticos e nenhuma identidade cloud. O [protocolo](../development/local-workspaces.md) mantém instalação e perfis próprios em .tools/us031-workspaces; credenciais Windows são escopadas a essa instalação e removidas antes dos arquivos. A fixture DOM vive apenas no Playwright e não integra o bundle. Relatórios guardam booleanos/metadados técnicos/hashes, sem nomes, IDs de credencial, bancos ou segredos.
 
 US-030 não precisa de dados financeiros ou identidade. O [protocolo de entrada](../development/desktop-entry.md) usa somente estados de tela/rede; a WebView recebe um perfil temporário em .tools/us030-entry e fault injection de rede/storage exclusiva do binário de smoke. O relatório contém apenas gates, versões, data, pendências e hashes. Nenhum workspace fictício é apresentado como criado.

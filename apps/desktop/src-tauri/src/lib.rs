@@ -34,3 +34,7 @@ impl From<rusqlite::Error> for LocalError {
 mod local_workspace_tests;
 
 pub mod workspace_model;
+
+// Test instrumentation only; the production host never enables this feature.
+#[cfg(feature = "vault-smoke")]
+pub mod vault_probe;

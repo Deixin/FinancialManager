@@ -87,7 +87,8 @@
     "desktop:preview": "turbo run build --filter=@financial-manager/desktop && pnpm --filter @financial-manager/desktop preview",
     "desktop:workspaces:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-workspaces/browser.mjs",
     "desktop:workspaces:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-workspaces/native.mjs",
-    "desktop:workspaces:generate": "node infra/local-workspaces/generate.mjs"
+    "desktop:workspaces:generate": "node infra/local-workspaces/generate.mjs",
+    "desktop:vault:check": "turbo run build --filter=@financial-manager/desktop && node infra/vault/native.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
