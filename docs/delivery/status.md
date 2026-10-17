@@ -1,5 +1,15 @@
 # Estado do projeto
 
+## Fundação — US-025: dataset canônico validado nas duas engines — 2026-10-16
+
+FIN-002 v1 entrega 41 registros sintéticos nas 12 tabelas, dois workspaces e goldens literais de sete saldos, dois resumos, dois patrimônios e duas somas de rateio. A fonte determinística gera JSON portátil e export TS profundamente imutável no pacote test-fixtures, sem dependência nova de produção. FIN-001/FIN-SCHEMA-001 e os sete documentos originais permanecem preservados. [Guia](../development/canonical-fixtures.md), [ADR-0036](../architecture/adr/0036-fixtures-financeiras-canonicas.md).
+
+O [protocolo real](../quality/evidence/us-025-fixtures-2026-10-16.json) passou nos 12 gates com PostgreSQL 18.6/SQLite 3.53.3 e migrations v2: mesmos snapshots por workspace, goldens sobre dados relidos, precisão i64, referências de início/fim do dia, rollback parcial, recusa de duplicata sem overwrite, RLS sem WHERE/contexto forjado, reabertura, logs e limpeza. Nove testes Node novos cobrem dados, geração, freeze, grupos, parâmetros, SQLite, vetor preparatório e evidência. O job canonical-fixtures está configurado; execução remota deste incremento pendente.
+
+pnpm check passou com 253 testes Node, sem skips, além de formatação, lint/fronteiras/geração, tipos e build. São 19 workspaces e 88 Markdown. Os [quatro perfis Docker](../quality/evidence/us-014-environments-2026-10-16-us025.json), [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us025.json), [oito de flags](../quality/evidence/us-017-flags-2026-10-16-us025.json) e [22 de repositories](../quality/evidence/us-024-repositories-2026-10-16-us025.json) passaram novamente com hashes atuais. Evidências anteriores preservadas; bancos/journals, senhas, contêineres e redes próprios removidos. Não houve reexecução Native.
+
+O aceite da US-025, dataset carregável nas duas engines com totais versionados, foi atendido. O vetor CT-08 de itens/dois pagamentos permanece marcado como preparatório para schema/busca/conciliação de documentos; CT-08/CT-16 completos, Native/iOS e a suíte US-027 continuam nas suas histórias/gates. Não houve alteração de schema, seed de produção, dados reais ou deploy. DP-01 a DP-04 permanecem abertas. Próxima história: US-026, revisão/versionamento financeiro.
+
 ## Fundação — US-024: ports de leitura e fronteiras implementados — 2026-10-16
 
 G07-QUERY passou em PostgreSQL 18.6 real antes da adoção de Kysely 0.29.6 no adapter Node. finance-ports permanece puro; persistence-postgres implementa Accounts/Transactions sem cliente SQL público, com composição explícita em API/worker. Cada unidade autoriza workspace/contas, usa o mesmo client em READ ONLY/SET LOCAL/RLS e expira seus ports ao terminar. Associações de rateio/tag/revisão filtram a conta do pai no mesmo SQL. Dinheiro/versão são strings exatas, calendário e UTC/ms preservados. [Guia](../development/data-access.md), [ADR-0035](../architecture/adr/0035-ports-e-repositories-por-modulo.md).

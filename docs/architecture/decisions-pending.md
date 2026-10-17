@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+Avanço US-025 em 2026-10-16: [ADR-0036](adr/0036-fixtures-financeiras-canonicas.md) valida FIN-002 v1 no PostgreSQL/SQLite, com totais esperados independentes. Não amplia o gate para Native/iOS nem encerra CT-08/CT-16 de produto ou US-027. DP-01 a DP-04 e as demais homologações permanecem abertas nos seus escopos.
+
 Avanço US-024 em 2026-10-16: [ADR-0035](adr/0035-ports-e-repositories-por-modulo.md) adota Kysely 0.29.6 no adapter PostgreSQL após G07-QUERY real. Ports de leitura/backend aplicam workspace/conta; não autorizam engine/driver nativo, escrita financeira, policy engine ou handlers. DP-01 a DP-04 e os demais gates mantêm seus escopos. Não foi escolhido enum de papel.
 
 Registro inicial de divergências encontradas na documentação v1.0. Nenhuma delas impede organizar o repositório; devem ser resolvidas antes da implementação afetada.

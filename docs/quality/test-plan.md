@@ -1,5 +1,11 @@
 # Plano de testes
 
+## Fixtures canônicas — US-025
+
+O [protocolo](../development/canonical-fixtures.md) aplica migrations v2 e exige 12 gates para FIN-002: geração determinística, migrations, rollback parcial, persistência dos mesmos registros, goldens de saldo/resumo/patrimônio/rateio, precisão/referências, carga repetida, RLS por workspace, vetor preparatório de documentos, reabertura SQLite e logs/limpeza. O domínio calcula sobre os dados relidos das duas engines contra valores literais independentes. Nove testes Node cobrem o contrato/export, freeze/IDs, goldens, grupos, dinheiro, parâmetros/seletores, SQLite atômico, vetor CT-08 e evidência. Não se declara execução da busca/documentos, UI Native ou suíte completa de invariantes US-027.
+
+As fontes de composição/CI mudaram: os quatro perfis Docker, DOM/flags e os 22 gates de repositories são reexecutados e arquivados com sufixo us025. A evidência US-024 anterior é preservada como histórica, com manifesto/gates validados sem exigir hashes atuais; produtores e relatórios novos continuam estritos por padrão.
+
 ## Ports e repositories — US-024
 
 O [protocolo](../development/data-access.md) repete nove gates G07-QUERY antes das leituras reais: tipos negativos, BIGINT/string, mesmo client/SET LOCAL, RLS sem WHERE e WITH CHECK, rollback, conexão perdida/recuperada, concorrência, locks e keyset. Onze gates adicionais cobrem fronteiras, autorização antes do pool, escopo por conta/workspace, precisão/imutabilidade, cursors vinculados, joins do pai, orquestração API/worker, expiração/nesting/await, erros sanitizados, role e ownership/concorrência. Logs e limpeza completam 22 gates, com migração v2 aplicada antes do teste de repositories.

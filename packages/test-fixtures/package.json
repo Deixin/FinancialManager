@@ -15,6 +15,10 @@
     "@financial-manager/domain": "workspace:*"
   },
   "exports": {
+    "./canonical": {
+      "types": "./dist/canonical.d.ts",
+      "import": "./dist/canonical.js"
+    },
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"

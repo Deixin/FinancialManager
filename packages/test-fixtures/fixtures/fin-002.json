@@ -1,0 +1,788 @@
+{
+  "format_version": 1,
+  "dataset_id": "FIN-002",
+  "dataset_version": 1,
+  "synthetic_only": true,
+  "workspace_a": "0199d025-0000-7000-8000-000000000001",
+  "workspace_b": "0199d025-0000-7000-8000-000000000002",
+  "seed": [
+    {
+      "table": "workspace",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000001",
+        "display_name": "SYNTHETIC FIN-002",
+        "purpose": "PERSONAL",
+        "storage_mode": "CLOUD",
+        "default_currency": "BRL",
+        "sync_generation": "0199d025-0000-7000-8000-00000000005b",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "workspace",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000002",
+        "display_name": "SYNTHETIC FIN-002",
+        "purpose": "PERSONAL",
+        "storage_mode": "CLOUD",
+        "default_currency": "BRL",
+        "sync_generation": "0199d025-0000-7000-8000-00000000005c",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_account",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000000b",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC ACCOUNT 11",
+        "account_kind": "CHECKING",
+        "balance_nature": "ASSET",
+        "currency_code": "BRL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_account",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000000c",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC ACCOUNT 12",
+        "account_kind": "SAVINGS",
+        "balance_nature": "ASSET",
+        "currency_code": "BRL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_account",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000000d",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC ACCOUNT 13",
+        "account_kind": "CREDIT_CARD",
+        "balance_nature": "LIABILITY",
+        "currency_code": "BRL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_account",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000000e",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "name": "SYNTHETIC ACCOUNT 14",
+        "account_kind": "OTHER",
+        "balance_nature": "ASSET",
+        "currency_code": "BRL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "balance_reference",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000015",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "amount_minor": "100000",
+        "reference_date": "2026-09-01",
+        "day_position": "START_OF_DAY",
+        "source": "MANUAL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "balance_reference",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000016",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000c",
+        "amount_minor": "20000",
+        "reference_date": "2026-09-01",
+        "day_position": "END_OF_DAY",
+        "source": "MANUAL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "balance_reference",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000017",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "amount_minor": "0",
+        "reference_date": "2026-09-01",
+        "day_position": "START_OF_DAY",
+        "source": "MANUAL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "balance_reference",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000018",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "amount_minor": "0",
+        "reference_date": "2026-09-01",
+        "day_position": "START_OF_DAY",
+        "source": "MANUAL",
+        "status": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "category",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000001f",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC ENERGY",
+        "category_scope": "BOTH",
+        "sort_order": "0",
+        "status": "ACTIVE",
+        "is_seeded": "0"
+      }
+    },
+    {
+      "table": "category",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000020",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC OTHER",
+        "category_scope": "BOTH",
+        "sort_order": "0",
+        "status": "ACTIVE",
+        "is_seeded": "0"
+      }
+    },
+    {
+      "table": "subcategory",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000021",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "category_id": "0199d025-0000-7000-8000-00000000001f",
+        "name": "SYNTHETIC CHILD",
+        "sort_order": "0",
+        "status": "ACTIVE"
+      }
+    },
+    {
+      "table": "tag",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000022",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "name": "SYNTHETIC TAG",
+        "status": "ACTIVE"
+      }
+    },
+    {
+      "table": "counterparty",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000023",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "display_name": "SYNTHETIC MERCHANT",
+        "status": "ACTIVE"
+      }
+    },
+    {
+      "table": "transaction_group",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000029",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "group_type": "TRANSFER",
+        "state": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "transaction_group",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000002a",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "group_type": "CARD_PAYMENT",
+        "state": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "transaction_group",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000002b",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "group_type": "CARD_PAYMENT",
+        "state": "ACTIVE",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000064",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-08-31",
+        "account_amount_minor": "-999",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000065",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-01",
+        "account_amount_minor": "50000",
+        "economic_kind": "INCOME",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000066",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-03",
+        "account_amount_minor": "-20000",
+        "economic_kind": "EXPENSE",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000067",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "group_id": null,
+        "counterparty_id": "0199d025-0000-7000-8000-000000000023",
+        "financial_date": "2026-09-10",
+        "account_amount_minor": "12000",
+        "economic_kind": "EXPENSE",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000068",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": "0199d025-0000-7000-8000-000000000029",
+        "counterparty_id": null,
+        "financial_date": "2026-09-15",
+        "account_amount_minor": "-10000",
+        "economic_kind": "TRANSFER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000069",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000c",
+        "group_id": "0199d025-0000-7000-8000-000000000029",
+        "counterparty_id": null,
+        "financial_date": "2026-09-15",
+        "account_amount_minor": "10000",
+        "economic_kind": "TRANSFER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006a",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": "0199d025-0000-7000-8000-00000000002a",
+        "counterparty_id": null,
+        "financial_date": "2026-10-05",
+        "account_amount_minor": "-7000",
+        "economic_kind": "DEBT_SETTLEMENT",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006b",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "group_id": "0199d025-0000-7000-8000-00000000002a",
+        "counterparty_id": null,
+        "financial_date": "2026-10-05",
+        "account_amount_minor": "-7000",
+        "economic_kind": "DEBT_SETTLEMENT",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006c",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-10-07",
+        "account_amount_minor": "-2000",
+        "economic_kind": "EXPENSE_REVERSAL",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006d",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": "0199d025-0000-7000-8000-00000000002b",
+        "counterparty_id": null,
+        "financial_date": "2026-10-06",
+        "account_amount_minor": "-5000",
+        "economic_kind": "DEBT_SETTLEMENT",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006e",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "group_id": "0199d025-0000-7000-8000-00000000002b",
+        "counterparty_id": null,
+        "financial_date": "2026-10-06",
+        "account_amount_minor": "-5000",
+        "economic_kind": "DEBT_SETTLEMENT",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000006f",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-30",
+        "account_amount_minor": "500",
+        "economic_kind": "ADJUSTMENT",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000070",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000c",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-01",
+        "account_amount_minor": "-5000",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000071",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-05",
+        "account_amount_minor": "-88888",
+        "economic_kind": "EXPENSE",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": "2026-10-16T00:00:00.000Z",
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-0000000000c9",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-02",
+        "account_amount_minor": "9223372036854775807",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-0000000000ca",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-02",
+        "account_amount_minor": "-9223372036854775808",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-0000000000cb",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-02",
+        "account_amount_minor": "9007199254740993",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "financial_transaction",
+      "values": {
+        "id": "0199d025-0000-7000-8000-0000000000cc",
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "group_id": null,
+        "counterparty_id": null,
+        "financial_date": "2026-09-02",
+        "account_amount_minor": "-9007199254740993",
+        "economic_kind": "OTHER",
+        "display_name": "SYNTHETIC FIN-002 MOVEMENT",
+        "original_description": null,
+        "origin_kind": "MANUAL",
+        "version": "1",
+        "deleted_at": null,
+        "created_at": "2026-10-16T00:00:00.000Z",
+        "updated_at": "2026-10-16T00:00:00.000Z"
+      }
+    },
+    {
+      "table": "transaction_allocation",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000012d",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "transaction_id": "0199d025-0000-7000-8000-000000000066",
+        "category_id": "0199d025-0000-7000-8000-000000000020",
+        "subcategory_id": null,
+        "amount_minor": "20000",
+        "note": null
+      }
+    },
+    {
+      "table": "transaction_allocation",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000012e",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "transaction_id": "0199d025-0000-7000-8000-000000000067",
+        "category_id": "0199d025-0000-7000-8000-00000000001f",
+        "subcategory_id": "0199d025-0000-7000-8000-000000000021",
+        "amount_minor": "2000",
+        "note": null
+      }
+    },
+    {
+      "table": "transaction_allocation",
+      "values": {
+        "id": "0199d025-0000-7000-8000-00000000012f",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "transaction_id": "0199d025-0000-7000-8000-000000000067",
+        "category_id": "0199d025-0000-7000-8000-000000000020",
+        "subcategory_id": null,
+        "amount_minor": "10000",
+        "note": null
+      }
+    },
+    {
+      "table": "transaction_tag",
+      "values": {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "transaction_id": "0199d025-0000-7000-8000-000000000067",
+        "tag_id": "0199d025-0000-7000-8000-000000000022"
+      }
+    },
+    {
+      "table": "transaction_revision",
+      "values": {
+        "id": "0199d025-0000-7000-8000-000000000191",
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "transaction_id": "0199d025-0000-7000-8000-000000000071",
+        "version": "1",
+        "snapshot": "{}",
+        "actor_type": "SYSTEM",
+        "actor_id": null,
+        "device_id": null,
+        "change_source": "SYSTEM",
+        "created_at": "2026-10-16T00:00:00.000Z"
+      }
+    }
+  ],
+  "expected": {
+    "balances": [
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "as_of": "2026-09-30",
+        "amount_minor": "120500"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000c",
+        "as_of": "2026-09-30",
+        "amount_minor": "30000"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "as_of": "2026-09-30",
+        "amount_minor": "12000"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000b",
+        "as_of": "2026-10-31",
+        "amount_minor": "108500"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000c",
+        "as_of": "2026-10-31",
+        "amount_minor": "30000"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "account_id": "0199d025-0000-7000-8000-00000000000d",
+        "as_of": "2026-10-31",
+        "amount_minor": "-2000"
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000002",
+        "account_id": "0199d025-0000-7000-8000-00000000000e",
+        "as_of": "2026-10-31",
+        "amount_minor": "-1"
+      }
+    ],
+    "reports": [
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "from": "2026-09-01",
+        "to": "2026-09-30",
+        "totals": {
+          "currency_code": "BRL",
+          "income_minor": "50000",
+          "expense_minor": "32000",
+          "expense_reversal_minor": "0",
+          "net_expense_minor": "32000",
+          "economic_result_minor": "18000",
+          "cash_in_minor": "60500",
+          "cash_out_minor": "35000",
+          "cash_net_minor": "25500"
+        }
+      },
+      {
+        "workspace_id": "0199d025-0000-7000-8000-000000000001",
+        "from": "2026-10-01",
+        "to": "2026-10-31",
+        "totals": {
+          "currency_code": "BRL",
+          "income_minor": "0",
+          "expense_minor": "0",
+          "expense_reversal_minor": "2000",
+          "net_expense_minor": "-2000",
+          "economic_result_minor": "2000",
+          "cash_in_minor": "0",
+          "cash_out_minor": "12000",
+          "cash_net_minor": "-12000"
+        }
+      }
+    ],
+    "wealth": [
+      {
+        "as_of": "2026-09-30",
+        "asset_balance_minor": "150500",
+        "liability_balance_minor": "12000",
+        "net_worth_minor": "138500"
+      },
+      {
+        "as_of": "2026-10-31",
+        "asset_balance_minor": "138500",
+        "liability_balance_minor": "-2000",
+        "net_worth_minor": "140500"
+      }
+    ],
+    "allocations": [
+      {
+        "transaction_id": "0199d025-0000-7000-8000-000000000066",
+        "amount_minor": "20000"
+      },
+      {
+        "transaction_id": "0199d025-0000-7000-8000-000000000067",
+        "amount_minor": "12000"
+      }
+    ]
+  },
+  "document_search_vector": {
+    "synthetic_only": true,
+    "status": "VECTOR_ONLY_DOCUMENT_SCHEMA_PENDING",
+    "document_id": "0199d025-0000-7000-8000-0000000001f5",
+    "purchase_transaction_id": "0199d025-0000-7000-8000-000000000067",
+    "items": [
+      {
+        "id": "0199d025-0000-7000-8000-0000000001ff",
+        "description": "SYNTHETIC ENERGETICO",
+        "quantity": "2",
+        "unit_amount_minor": "1000",
+        "amount_minor": "2000",
+        "matches": true
+      },
+      {
+        "id": "0199d025-0000-7000-8000-000000000200",
+        "description": "SYNTHETIC OTHER ITEM",
+        "quantity": "1",
+        "unit_amount_minor": "10000",
+        "amount_minor": "10000",
+        "matches": false
+      }
+    ],
+    "payments": [
+      {
+        "transaction_id": "0199d025-0000-7000-8000-00000000006a",
+        "amount_minor": "7000"
+      },
+      {
+        "transaction_id": "0199d025-0000-7000-8000-00000000006d",
+        "amount_minor": "5000"
+      }
+    ],
+    "expected": {
+      "document_total_minor": "12000",
+      "matched_items_minor": "2000",
+      "payment_total_minor": "12000",
+      "matching_item_count": 1
+    }
+  }
+}

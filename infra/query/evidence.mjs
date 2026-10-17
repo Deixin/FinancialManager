@@ -60,7 +60,10 @@ export const repositoryHashes = () =>
         .digest('hex'),
     ]),
   );
-export function validateRepositoryEvidence(report) {
+export function validateRepositoryEvidence(
+  report,
+  { matchSources = true } = {},
+) {
   const exact = (object, names) =>
     object &&
     JSON.stringify(Object.keys(object).sort()) ===
@@ -106,7 +109,11 @@ export function validateRepositoryEvidence(report) {
   const hashes = repositoryHashes();
   if (
     !exact(report.source_sha256, files) ||
-    files.some((name) => report.source_sha256[name] !== hashes[name])
+    files.some((name) =>
+      matchSources
+        ? report.source_sha256[name] !== hashes[name]
+        : !/^[a-f0-9]{64}$/.test(report.source_sha256[name]),
+    )
   )
     fail();
   return report;

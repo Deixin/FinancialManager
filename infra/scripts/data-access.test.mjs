@@ -291,11 +291,29 @@ test('pure account activity composes ports and snapshots filters before asynchro
   assert.equal(calls[1].from, '2026-01-01');
 });
 test('current repository evidence requires every real gate, source hash, cleanup and declared limitations', () => {
+  const historical = JSON.parse(
+    readFileSync(
+      new URL(
+        '../../docs/quality/evidence/us-024-repositories-2026-10-16.json',
+        import.meta.url,
+      ),
+      'utf8',
+    ),
+  );
+  assert.equal(
+    validateRepositoryEvidence(historical, { matchSources: false }).passed,
+    true,
+  );
+  historical.source_sha256['package.json'] = 'invalid-hash';
+  assert.throws(
+    () => validateRepositoryEvidence(historical, { matchSources: false }),
+    /REPOSITORY_EVIDENCE_INVALID/,
+  );
   const load = () =>
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-024-repositories-2026-10-16.json',
+          '../../docs/quality/evidence/us-024-repositories-2026-10-16-us025.json',
           import.meta.url,
         ),
         'utf8',

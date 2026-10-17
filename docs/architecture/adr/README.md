@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0036 — Fixtures financeiras canônicas](0036-fixtures-financeiras-canonicas.md): FIN-002 versionado, snapshots/goldens iguais PostgreSQL/SQLite e vetor preparatório para documentos.
+
 [0035 — Ports e repositories por módulo](0035-ports-e-repositories-por-modulo.md): G07-QUERY validado; leituras PostgreSQL por workspace/conta e verificação de fronteiras. Escritas, policy engine/HTTP e adapters nativos pendentes.
 
 [0034 — UUIDv7 e política temporal](0034-uuidv7-e-politica-temporal.md): codecs e geradores por plataforma, com CSPRNG e relógio separado de regras de negócio; iOS/integração de produto pendentes.
