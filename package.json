@@ -9,6 +9,8 @@
     "node": ">=24.19.0 <25"
   },
   "scripts": {
+    "invariants:test": "turbo run build && node infra/invariants/run.mjs",
+    "invariants:clean": "node infra/invariants/clean.mjs",
     "revisions:test": "turbo run build && node infra/revisions/run.mjs",
     "revisions:clean": "node infra/revisions/clean.mjs",
     "fixtures:generate": "node infra/fixtures/generate.mjs",

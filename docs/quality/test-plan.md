@@ -1,5 +1,7 @@
 # Plano de testes
 
+A US-027 possui [catálogo/protocolo](../development/cross-engine-invariants.md) e [evidência de 50 gates](evidence/us-027-invariants-2026-10-16.json): 43 cenários comuns PostgreSQL/SQLite, incluindo 24 vetores de ida/volta, mais 33 casos físicos por engine, migrations, geração, reabertura, logs e limpeza. Estado das 12 tabelas, snapshots e versões são comparados após cada comando; rejeições/no-op preservam tudo. Oráculo BigInt sem Domain, checkpoints literais e teste de COMMIT diferido evitam validação circular. Sete testes Node novos cobrem instrumentos e roteiro SQLite integral. Aceite das seis famílias atendido no núcleo; Native/iOS, produto/sync e documentos permanecem nos seus gates.
+
 ## Revisões — US-026
 
 O [protocolo](../development/financial-revisions.md) aplica migrations v2 e testa nove cenários persistidos por engine: edição/snapshot/no-op, base obsoleta/reversão, criar/excluir/restaurar, classificação/grupos atômicos, i64, autorização/contas, falha no append, concorrência e histórico/relógio. As falhas incluem a segunda revisão da transferência e conexão PostgreSQL perdida após UPDATE, conservando ambos os registros e seu histórico. Dez gates transversais completam 28, incluindo local anônimo, API/worker/revogação/nesting, tipos/fronteiras, goldens, reabertura e limpeza/logs.

@@ -85,7 +85,7 @@ export const revisionHashes = () =>
         .digest('hex'),
     ]),
   );
-export function validateRevisionEvidence(report) {
+export function validateRevisionEvidence(report, { matchSources = true } = {}) {
   const exact = (value, names) =>
     value &&
     JSON.stringify(Object.keys(value).sort()) ===
@@ -121,11 +121,17 @@ export function validateRevisionEvidence(report) {
     !/^24\./.test(report.versions.node) ||
     !/^18\.\d+$/.test(report.versions.postgresql) ||
     !/^3\.\d+\.\d+$/.test(report.versions.sqlite) ||
-    JSON.stringify(report.pending) !==
+    (JSON.stringify(report.pending) !==
       JSON.stringify([
         'product-write-routes-feed-outbox-and-idempotency',
-        'native-runtime-and-full-us027-suite',
-      ]) ||
+        'native-product-runtime-integration',
+      ]) &&
+      (matchSources ||
+        JSON.stringify(report.pending) !==
+          JSON.stringify([
+            'product-write-routes-feed-outbox-and-idempotency',
+            'native-runtime-and-full-us027-suite',
+          ]))) ||
     !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(report.completed_at_utc) ||
     !Number.isFinite(Date.parse(report.completed_at_utc))
   )
@@ -133,7 +139,11 @@ export function validateRevisionEvidence(report) {
   const hashes = revisionHashes();
   if (
     !exact(report.source_sha256, files) ||
-    files.some((name) => report.source_sha256[name] !== hashes[name])
+    files.some((name) =>
+      matchSources
+        ? report.source_sha256[name] !== hashes[name]
+        : !/^[a-f0-9]{64}$/.test(report.source_sha256[name]),
+    )
   )
     fail();
   return report;

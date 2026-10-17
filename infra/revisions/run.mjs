@@ -92,7 +92,7 @@ const report = {
   versions: { node: process.versions.node },
   pending: [
     'product-write-routes-feed-outbox-and-idempotency',
-    'native-runtime-and-full-us027-suite',
+    'native-product-runtime-integration',
   ],
 };
 const step = async (name, operation) => {

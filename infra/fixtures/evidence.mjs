@@ -95,11 +95,17 @@ export function validateFixtureEvidence(report, { matchSources = true } = {}) {
     !/^24\./.test(report.versions.node) ||
     !/^18\.\d+$/.test(report.versions.postgresql) ||
     !/^3\.\d+\.\d+$/.test(report.versions.sqlite) ||
-    JSON.stringify(report.pending) !==
+    (JSON.stringify(report.pending) !==
       JSON.stringify([
         'document-search-product-schema-and-ct08-integration',
-        'native-runtime-and-full-us027-suite',
-      ]) ||
+        'native-product-runtime-integration',
+      ]) &&
+      (matchSources ||
+        JSON.stringify(report.pending) !==
+          JSON.stringify([
+            'document-search-product-schema-and-ct08-integration',
+            'native-runtime-and-full-us027-suite',
+          ]))) ||
     !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(report.completed_at_utc) ||
     !Number.isFinite(Date.parse(report.completed_at_utc))
   )

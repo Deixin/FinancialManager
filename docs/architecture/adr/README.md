@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0038 — Suíte de invariantes cross-engine](0038-suite-invariantes-cross-engine.md): seis famílias financeiras testadas com estado/auditoria comparados, oráculo independente e propriedades reproduzíveis PostgreSQL/SQLite.
+
 [0037 — Revisões financeiras atômicas](0037-revisoes-financeiras-atomicas.md): agregado versionado nas duas engines, conflitos explícitos e reversão por nova revisão; fluxos de produto/sync/Native pendentes.
 
 [0036 — Fixtures financeiras canônicas](0036-fixtures-financeiras-canonicas.md): FIN-002 versionado, snapshots/goldens iguais PostgreSQL/SQLite e vetor preparatório para documentos.

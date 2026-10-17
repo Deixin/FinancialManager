@@ -92,7 +92,7 @@ const report = {
   versions: { node: process.versions.node },
   pending: [
     'document-search-product-schema-and-ct08-integration',
-    'native-runtime-and-full-us027-suite',
+    'native-product-runtime-integration',
   ],
 };
 const step = async (name, operation) => {
