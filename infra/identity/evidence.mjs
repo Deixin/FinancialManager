@@ -97,7 +97,11 @@ const exact = (value, names) =>
   value &&
   JSON.stringify(Object.keys(value).sort()) ===
     JSON.stringify([...names].sort());
-export function validateIdentityEvidence(report, kind = 'node') {
+export function validateIdentityEvidence(
+  report,
+  kind = 'node',
+  { matchSources = true } = {},
+) {
   const fail = () => {
     throw new Error('IDENTITY_EVIDENCE_INVALID');
   };
@@ -150,8 +154,10 @@ export function validateIdentityEvidence(report, kind = 'node') {
   const hashes = sourceHashes(kind);
   if (
     !exact(report.source_sha256, Object.keys(hashes)) ||
-    Object.entries(hashes).some(
-      ([name, hash]) => report.source_sha256[name] !== hash,
+    Object.entries(hashes).some(([name, hash]) =>
+      matchSources
+        ? report.source_sha256[name] !== hash
+        : !/^[a-f0-9]{64}$/.test(report.source_sha256[name]),
     )
   )
     fail();

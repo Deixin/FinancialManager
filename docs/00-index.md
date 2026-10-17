@@ -26,6 +26,7 @@ Conflitos devem ser registrados e resolvidos por ADR ou correção documental. A
 ## Material de apoio
 
 - [Estado do projeto](delivery/status.md).
+- [Ports e repositories US-024](development/data-access.md), com G07-QUERY, contexto autorizado e fronteiras de tabelas por módulo.
 - [Núcleo monetário puro US-013](development/domain-core.md), com MoneyMinor, saldos, transferências e cartões.
 - [Contratos OpenAPI e clientes US-012](development/api-contracts.md), com geração e validação compartilhadas.
 - [Fundação dos ambientes US-014](development/environments.md), com perfis Docker sintéticos e protocolo de isolamento/limpeza.

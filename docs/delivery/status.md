@@ -1,5 +1,15 @@
 # Estado do projeto
 
+## Fundação — US-024: ports de leitura e fronteiras implementados — 2026-10-16
+
+G07-QUERY passou em PostgreSQL 18.6 real antes da adoção de Kysely 0.29.6 no adapter Node. finance-ports permanece puro; persistence-postgres implementa Accounts/Transactions sem cliente SQL público, com composição explícita em API/worker. Cada unidade autoriza workspace/contas, usa o mesmo client em READ ONLY/SET LOCAL/RLS e expira seus ports ao terminar. Associações de rateio/tag/revisão filtram a conta do pai no mesmo SQL. Dinheiro/versão são strings exatas, calendário e UTC/ms preservados. [Guia](../development/data-access.md), [ADR-0035](../architecture/adr/0035-ports-e-repositories-por-modulo.md).
+
+O [protocolo](../quality/evidence/us-024-repositories-2026-10-16.json) passou nos 22 gates: tipos, BIGINT, contexto, RLS sem WHERE/WITH CHECK, rollback, conexão perdida, concorrência/locks/paginação e onze verificações dos ports, logs/limpeza. A base migrou para v2 antes das leituras. Nove testes Node novos cobrem violações de arquitetura, lifecycle, autorização, descarte/ownership do pool e evidência. A matriz atribui as 12 tabelas a cinco módulos e impede tabelas alheias/raw SQL/dynamic imports nos adapters de leitura. CI scoped-repositories configurada, execução remota pendente.
+
+pnpm check passou com 244 testes Node, sem skips, além de formatação, lint/fronteiras, geração/configuração, tipos negativos e build. São 19 workspaces e 86 Markdown. Os [quatro perfis Docker](../quality/evidence/us-014-environments-2026-10-16-us024.json), [12 gates DOM](../quality/evidence/us-016-dom-2026-10-16-us024.json) e [oito de flags](../quality/evidence/us-017-flags-2026-10-16-us024.json) passaram novamente com hashes atuais. Bancos, senhas, contêineres e redes de teste próprios removidos; relatórios anteriores e sete documentos originais preservados.
+
+Não há port de escrita financeira, policy engine/handler HTTP novo ou adapter nativo de produto. O schema mantém default deny; permissões do protocolo são exclusivamente sintéticas. Cursors internos vinculam workspace/filtros e não substituem tokens HTTP ou feed de sync. Relatórios US-023 foram preservados como históricos após mudança do lockfile/validador; nenhum teste Native foi reexecutado nesta história. G07-QUERY foi atendido neste recorte; G07-VAULT/JOBS/PDF, iOS e DP-01 a DP-04 continuam nos seus escopos. Próxima história independente: US-025, fixtures financeiras canônicas.
+
 ## Fundação — US-023 implementada nas plataformas disponíveis; iOS/integração pendentes — 2026-10-16
 
 UUIDv7 usa 48 bits de Unix ms e 74 bits aleatórios novos, sem contador/fallback Math.random. Web/API/worker usam Web Crypto; Mobile usa getRandomValues do Expo; Rust usa uuid/getrandom fixados. resourceId preserva UUIDs legados canônicos v1–v8. O domínio fornece codecs UTC/ms exatos e mantém data financeira sem fuso; relógio/ID não arbitra revisão ou conflito. Chrono 0.4.45, já transitivo no lock Rust, passa a dependência direta para calendário/UTC, justificada no [ADR-0034](../architecture/adr/0034-uuidv7-e-politica-temporal.md). [Guia](../development/identity-and-time.md).

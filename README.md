@@ -25,6 +25,8 @@ packages/
   observability/  Correlação e telemetria operacional com scrub no servidor
   runtime-config/ Configuração funcional pública e feature gates por ambiente
   storage-schema/ Schema SQLite portátil, migração inicial e corpus sintético
+  finance-ports/  Ports puros de leitura e orquestração entre módulos
+  persistence-postgres/ Repositories Node com Kysely e contexto autorizado
   sync-core/      Protocolo e regras de sincronização
   importers/      Parsers e normalização
   search/         Contratos e lógica de busca
@@ -58,6 +60,8 @@ O instrumento [US-006](docs/development/spikes/us-006-parsers.md) valida OFX/CSV
 A [US-007](docs/development/spikes/us-007-physical-decisions.md) consolida representações e candidatos físicos, com gates antes de adoção. Execute pnpm spike:physical:test para validar UUID TEXT, UTC/DATE e decimal exato em SQLite sintético. A consolidação mantém explícitas as homologações nativas, typed-query, fila e PDF pendentes; não encerra toda a W0.
 
 ## Ambiente e comandos
+
+A [US-024](docs/development/data-access.md) entrega ports de leitura/backend e repositories PostgreSQL de Accounts/Transactions, com workspace/conta autorizados e verificação de fronteiras. Kysely 0.29.6 foi adotado após G07-QUERY real. pnpm repositories:test repete 22 gates e pnpm check:data-access detecta atalhos entre módulos. Escritas, policy engine/rotas e adapters nativos continuam nas histórias próprias.
 
 A [US-023](docs/development/identity-and-time.md) acrescenta UUIDv7 por host e codecs UTC/ms/data financeira, preservando IDs antigos. identity:test verifica Node/Chromium/PostgreSQL/SQLite; identity:native:windows e os comandos Android validam CSPRNG e persistência SQLCipher nos runtimes reais. Instantes e IDs não arbitram conflitos ou datas financeiras. Integração dos fluxos de produto e iOS permanecem pendentes.
 

@@ -1,0 +1,21 @@
+{
+  "name": "@financial-manager/finance-ports",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@financial-manager/domain": "workspace:*",
+    "@financial-manager/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@financial-manager/config": "workspace:*"
+  }
+}

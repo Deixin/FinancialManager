@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+Avanço US-024 em 2026-10-16: [ADR-0035](adr/0035-ports-e-repositories-por-modulo.md) adota Kysely 0.29.6 no adapter PostgreSQL após G07-QUERY real. Ports de leitura/backend aplicam workspace/conta; não autorizam engine/driver nativo, escrita financeira, policy engine ou handlers. DP-01 a DP-04 e os demais gates mantêm seus escopos. Não foi escolhido enum de papel.
+
 Registro inicial de divergências encontradas na documentação v1.0. Nenhuma delas impede organizar o repositório; devem ser resolvidas antes da implementação afetada.
 
 Avanço US-023 em 2026-10-16: [ADR-0034](adr/0034-uuidv7-e-politica-temporal.md) implementa UUIDv7/CSPRNG e codecs temporais nas plataformas disponíveis, com RFC, relógio fixo/regressivo, instâncias independentes e persistência. G07-IDS/TIME mantêm iOS pendente. G07-QUERY precede US-024; comandos de produto/cofre/restore permanecem em G07-VAULT. Nenhuma duração offline, retenção ou papel foi escolhida; DP-01 a DP-04 continuam abertas.

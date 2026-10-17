@@ -9,6 +9,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@financial-manager/finance-ports": "workspace:*",
+    "@financial-manager/persistence-postgres": "workspace:*",
     "@financial-manager/contracts": "workspace:*",
     "@financial-manager/runtime-config": "workspace:*",
     "@financial-manager/observability": "workspace:*"

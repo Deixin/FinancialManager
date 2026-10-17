@@ -1,5 +1,7 @@
 # Política de fixtures
 
+A [US-024](../development/data-access.md) reutiliza FIN-SCHEMA-001 no PostgreSQL efêmero e acrescenta rateio/vínculo de tag/cabeçalhos de revisão sintéticos. Grupos/principais/contas de teste não são usuários reais. SQL, parâmetros e DTOs ficam apenas em memória nas asserções; o relatório inclui somente gates/versões/hashes de fontes. Políticas de login/workspace são exclusivas da fixture, com RLS ativa. Não há dump financeiro versionado.
+
 A [US-023](../development/identity-and-time.md) usa packages/contracts/fixtures/us023.json, com vetor RFC público, UUID legado fictício e casos de calendário/UTC/epoch. IDs aleatórios, chaves, bases e logs brutos não são versionados. O corpus compartilhado é gerado como TS para probes; relatórios guardam somente gates/contagens/versões/hashes de fontes. Amostras de unicidade são finitas e não demonstram impossibilidade universal de colisão.
 
 A [US-022](../development/schema-migrations.md) reutiliza FIN-SCHEMA-001 em bancos descartáveis, adicionando somente objetos técnicos sintéticos para testar migrations inválidas/irreversíveis. Doze processos são encerrados nos checkpoints de up/down PostgreSQL/SQLite. Snapshots financeiros são comparados por hash somente em memória; o relatório contém contagens/gates/versões/hashes de fontes, sem linhas ou hashes financeiros. Bancos, journals, segredo, contêiner e rede próprios são removidos ao final.

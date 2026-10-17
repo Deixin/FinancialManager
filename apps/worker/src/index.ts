@@ -1,5 +1,6 @@
 import { createObservability } from '@financial-manager/observability';
 export { createWorkerIdentity } from './identity.js';
+export { createWorkerReadModel } from './read-model.js';
 export { createWorkerFeatures } from './features.js';
 import type { ObservabilityOptions } from '@financial-manager/observability';
 

@@ -1,0 +1,24 @@
+{
+  "modules": {
+    "workspaces": ["workspace"],
+    "accounts": ["financial_account", "balance_reference"],
+    "transactions": [
+      "financial_transaction",
+      "transaction_group",
+      "transaction_allocation",
+      "transaction_tag",
+      "transaction_revision"
+    ],
+    "categories": ["category", "subcategory", "tag"],
+    "counterparties": ["counterparty"]
+  },
+  "parent_scoped_tables": [
+    "transaction_allocation",
+    "transaction_tag",
+    "transaction_revision"
+  ],
+  "composition_files": [
+    "apps/api/src/read-model.ts",
+    "apps/worker/src/read-model.ts"
+  ]
+}

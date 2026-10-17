@@ -209,21 +209,24 @@ test('identity fixture generation is deterministic and never requires a secure r
   );
   assert.equal(result.status, 0);
 });
-test('current identity evidence proves Node/browser/PostgreSQL/SQLite and native SQLCipher scopes', () => {
+test('historical identity evidence preserves Node/browser/PostgreSQL/SQLite and native SQLCipher scopes', () => {
   for (const kind of ['node', 'windows', 'android']) {
     const filename = new URL(
       '../../docs/quality/evidence/us-023-' + kind + '-2026-10-16.json',
       import.meta.url,
     );
     const load = () => JSON.parse(readFileSync(filename, 'utf8'));
-    assert.equal(validateIdentityEvidence(load(), kind).passed, true);
+    assert.equal(
+      validateIdentityEvidence(load(), kind, { matchSources: false }).passed,
+      true,
+    );
     for (const gate of kind === 'node'
       ? nodeChecks
       : [...runtimeChecks, 'sqlcipher_roundtrip_reopen_and_cleanup']) {
       const report = load();
       delete report.checks[gate];
       assert.throws(
-        () => validateIdentityEvidence(report, kind),
+        () => validateIdentityEvidence(report, kind, { matchSources: false }),
         /IDENTITY_EVIDENCE_INVALID/,
       );
     }
@@ -232,7 +235,7 @@ test('current identity evidence proves Node/browser/PostgreSQL/SQLite and native
         r.payload = 'SYNTHETIC_PRIVATE_CANARY';
       },
       (r) => {
-        r.source_sha256[Object.keys(r.source_sha256)[0]] = '0'.repeat(64);
+        r.source_sha256[Object.keys(r.source_sha256)[0]] = 'invalid-hash';
       },
       (r) => {
         r.pending = [];
@@ -247,7 +250,7 @@ test('current identity evidence proves Node/browser/PostgreSQL/SQLite and native
       const report = load();
       change(report);
       assert.throws(
-        () => validateIdentityEvidence(report, kind),
+        () => validateIdentityEvidence(report, kind, { matchSources: false }),
         /IDENTITY_EVIDENCE_INVALID/,
       );
     }

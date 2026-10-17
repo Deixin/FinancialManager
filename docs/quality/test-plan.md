@@ -1,5 +1,11 @@
 # Plano de testes
 
+## Ports e repositories — US-024
+
+O [protocolo](../development/data-access.md) repete nove gates G07-QUERY antes das leituras reais: tipos negativos, BIGINT/string, mesmo client/SET LOCAL, RLS sem WHERE e WITH CHECK, rollback, conexão perdida/recuperada, concorrência, locks e keyset. Onze gates adicionais cobrem fronteiras, autorização antes do pool, escopo por conta/workspace, precisão/imutabilidade, cursors vinculados, joins do pai, orquestração API/worker, expiração/nesting/await, erros sanitizados, role e ownership/concorrência. Logs e limpeza completam 22 gates, com migração v2 aplicada antes do teste de repositories.
+
+Nove testes Node novos exercitam violações AST deliberadas, cobertura das 12 tabelas, grant capturado, deny sem conexão, descarte de conexão/ownership, escopo pendente/falha, orquestração pura e validação estrita de evidência. Tipos negativos participam de typecheck; o job scoped-repositories usa PostgreSQL real. Relatórios US-023 são históricos: estrutura/gates/manifests continuam validados sem alegar hashes atuais após atualização do lockfile/validador. O produtor desses relatórios mantém correspondência estrita por padrão. Não há reexecução Native nesta história.
+
 ## UUIDv7 e tempo — US-023
 
 O [protocolo](../development/identity-and-time.md) compara vetor RFC, versão/variante, 4096 IDs em ms fixo, avanço/regressão de relógio, instâncias independentes, fonte segura obrigatória e legado preservado. Calendário/UTC estritos rejeitam offsets, precisão excessiva e leap seconds. Quatro fusos rodam em processos Node/Chromium reais; PostgreSQL nativo, SQLite e SQLCipher Windows/Android exercitam persistência. Um teste financeiro impede usar ordem de UUID como ordem econômica. [Node](evidence/us-023-node-2026-10-16.json), [Windows](evidence/us-023-windows-2026-10-16.json), [Android](evidence/us-023-android-2026-10-16.json), [ADR-0034](../architecture/adr/0034-uuidv7-e-politica-temporal.md). iOS e integração de produto permanecem pendentes.

@@ -12,6 +12,8 @@
     "@financial-manager/config": "workspace:*"
   },
   "dependencies": {
+    "@financial-manager/finance-ports": "workspace:*",
+    "@financial-manager/persistence-postgres": "workspace:*",
     "@financial-manager/contracts": "workspace:*",
     "@financial-manager/runtime-config": "workspace:*",
     "pg": "8.23.1",

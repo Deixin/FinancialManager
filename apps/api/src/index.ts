@@ -1,5 +1,6 @@
 import { createObservability } from '@financial-manager/observability';
 export { createApiIdentity } from './identity.js';
+export { createApiReadModel } from './read-model.js';
 export { createApiFeatures } from './features.js';
 import type { ObservabilityOptions } from '@financial-manager/observability';
 

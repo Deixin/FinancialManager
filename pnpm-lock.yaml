@@ -26,6 +26,9 @@ importers:
       eslint:
         specifier: 10.12.0
         version: 10.12.0(supports-color@10.2.2)
+      kysely:
+        specifier: 0.29.6
+        version: 0.29.6
       openapi-typescript:
         specifier: 7.13.0
         version: 7.13.0(typescript@5.9.3)
@@ -59,9 +62,15 @@ importers:
       '@financial-manager/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@financial-manager/finance-ports':
+        specifier: workspace:*
+        version: link:../../packages/finance-ports
       '@financial-manager/observability':
         specifier: workspace:*
         version: link:../../packages/observability
+      '@financial-manager/persistence-postgres':
+        specifier: workspace:*
+        version: link:../../packages/persistence-postgres
       '@financial-manager/runtime-config':
         specifier: workspace:*
         version: link:../../packages/runtime-config
@@ -174,9 +183,15 @@ importers:
       '@financial-manager/contracts':
         specifier: workspace:*
         version: link:../../packages/contracts
+      '@financial-manager/finance-ports':
+        specifier: workspace:*
+        version: link:../../packages/finance-ports
       '@financial-manager/observability':
         specifier: workspace:*
         version: link:../../packages/observability
+      '@financial-manager/persistence-postgres':
+        specifier: workspace:*
+        version: link:../../packages/persistence-postgres
       '@financial-manager/runtime-config':
         specifier: workspace:*
         version: link:../../packages/runtime-config
@@ -204,6 +219,19 @@ importers:
         version: link:../config
 
   packages/domain:
+    devDependencies:
+      '@financial-manager/config':
+        specifier: workspace:*
+        version: link:../config
+
+  packages/finance-ports:
+    dependencies:
+      '@financial-manager/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@financial-manager/domain':
+        specifier: workspace:*
+        version: link:../domain
     devDependencies:
       '@financial-manager/config':
         specifier: workspace:*
@@ -240,6 +268,28 @@ importers:
       '@types/node':
         specifier: 26.6.5
         version: 26.6.5
+
+  packages/persistence-postgres:
+    dependencies:
+      '@financial-manager/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@financial-manager/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@financial-manager/finance-ports':
+        specifier: workspace:*
+        version: link:../finance-ports
+      kysely:
+        specifier: 0.29.6
+        version: 0.29.6
+    devDependencies:
+      '@financial-manager/config':
+        specifier: workspace:*
+        version: link:../config
+      '@types/node':
+        specifier: 24.19.2
+        version: 24.19.2
 
   packages/runtime-config:
     devDependencies:
@@ -1293,6 +1343,9 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
+  '@types/node@24.19.2':
+    resolution: {integrity: sha512-93d49wCWJkCyN87MxLpNN6KXPCwFw7bVUg79mGUV1OS40JGWwVCr8n61DXCSqz7CV6/VfPkb7xec7uP2M+QHWQ==}
+
   '@types/node@26.6.5':
     resolution: {integrity: sha512-uMzsv9stDdofIZBx4UGh4Z9ZgXnGC9seRDscilBcTHAeOFk67MZg/k9bWVfO+bk4qZmG+l52hRnLwUiH2LnJTg==}
 
@@ -2166,6 +2219,10 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
+  kysely@0.29.6:
+    resolution: {integrity: sha512-hHaB8C/rfzDDtr/t8YZwxAuPJTT0zHyaPoVzcXwDYhYNAgH/4sIfVhi/XLLIY+bL/FqaIJnjATDbi8ObSELmxg==}
+    engines: {node: '>=22.0.0'}
+
   lan-network@0.2.1:
     resolution: {integrity: sha512-ONPnazC96VKDntab9j9JKwIWhZ4ZUceB4A9Epu4Ssg0hYFmtHZSeQ+n15nIwTFmcBUKtExOer8WTJ4GF9MO64A==}
     hasBin: true
@@ -2928,6 +2985,9 @@ packages:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  undici-types@7.24.6:
+    resolution: {integrity: sha512-WRNW+sJgj5OBN4/0JpHFqtqzhpbnV0GuB+OozA9gCL7a993SmU+1JBZCzLNxYsbMfIeDL+lTsphD5jN5N+n0zg==}
 
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
@@ -4288,6 +4348,10 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
+  '@types/node@24.19.2':
+    dependencies:
+      undici-types: 7.24.6
+
   '@types/node@26.6.5':
     dependencies:
       undici-types: 8.9.0
@@ -5221,6 +5285,8 @@ snapshots:
 
   kleur@3.0.3: {}
 
+  kysely@0.29.6: {}
+
   lan-network@0.2.1: {}
 
   leven@3.1.0: {}
@@ -6046,6 +6112,8 @@ snapshots:
       - supports-color
 
   typescript@5.9.3: {}
+
+  undici-types@7.24.6: {}
 
   undici-types@8.9.0: {}
 

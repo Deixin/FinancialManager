@@ -1,5 +1,7 @@
 # US-007 — Decisões físicas e gates restantes
 
+A US-024 validou G07-QUERY em PostgreSQL 18.6 real e adotou Kysely 0.29.6 apenas nas leituras de backend. [ADR-0035](../../architecture/adr/0035-ports-e-repositories-por-modulo.md), [protocolo](../data-access.md) e [evidência](../../quality/evidence/us-024-repositories-2026-10-16.json). Os nove gates foram repetidos antes dos testes de ports; drivers SQLCipher, escrita, policy engine e os demais gates não são homologados por essa escolha.
+
 História: [US-007](../../delivery/05-backlog.md), ERD §21 e arquitetura §30. Propostas e limites: [ADR-0024](../../architecture/adr/0024-consolidacao-fisica-e-gates.md). Os seis itens de aceite têm encaminhamento e gate explícito; isto não encerra todas as homologações W0.
 
 ## Probe reproduzível
