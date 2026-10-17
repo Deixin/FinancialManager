@@ -66,6 +66,9 @@ pub struct Installation {
     _lock: File,
 }
 impl Installation {
+    pub(crate) fn id(&self) -> Uuid {
+        self.id
+    }
     pub fn open(root: &Path, keys: Arc<dyn KeyStore>) -> Result<Self> {
         checked_dir(root)?;
         let lock_path = root.join(".lock");

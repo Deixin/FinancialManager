@@ -1,19 +1,79 @@
 /* global structuredClone */
 // Installed by Playwright only. Never bundled into the application.
-export function installSyntheticWorkspaceBridge() {
+export function installSyntheticWorkspaceBridge(options = {}) {
   const state = {
-    rows: [],
+    rows: structuredClone(options.rows ?? []),
     calls: [],
     hold: false,
     release: null,
     loseAck: false,
     failNext: false,
+    pin: options.pin ?? null,
+    locked: Boolean(options.pin),
+    failures: 0,
+    retry: 0,
+    holdUnlock: false,
+    releaseUnlock: null,
+    failLockNext: false,
   };
   globalThis.isTauri = true;
   globalThis.__syntheticWorkspace = state;
   globalThis.__TAURI_INTERNALS__ = {
     async invoke(command, args) {
       state.calls.push(command);
+      const status = () => ({
+        enabled: Boolean(state.pin),
+        locked: Boolean(state.pin) && state.locked,
+        retry_after_seconds: state.retry,
+        biometrics: 'UNAVAILABLE',
+      });
+      const authenticate = (pin) => {
+        if (state.retry) throw 'RETRY_LATER';
+        if (pin !== state.pin) {
+          state.locked = true;
+          state.failures++;
+          if (state.failures >= 5) state.retry = 30;
+          throw 'AUTHENTICATION_FAILED';
+        }
+        state.failures = 0;
+      };
+      if (command === 'local_lock_status') return status();
+      if (command === 'lock_local_session') {
+        if (state.failLockNext) {
+          state.failLockNext = false;
+          throw 'SYNTHETIC_LOST_LOCK_REQUEST';
+        }
+        state.locked = Boolean(state.pin);
+        return status();
+      }
+      if (command === 'configure_local_pin') {
+        const input = args.input;
+        if (
+          !/^[0-9]{6,12}$/.test(input.new_pin) ||
+          input.new_pin !== input.confirm_pin
+        )
+          throw 'INVALID_PIN';
+        if (state.pin) authenticate(input.current_pin);
+        state.pin = input.new_pin;
+        state.locked = false;
+        return status();
+      }
+      if (command === 'unlock_local_session') {
+        if (state.holdUnlock)
+          await new Promise((resolve) => {
+            state.releaseUnlock = resolve;
+          });
+        authenticate(args.input.pin);
+        state.locked = false;
+        return status();
+      }
+      if (command === 'disable_local_pin') {
+        authenticate(args.input.pin);
+        state.pin = null;
+        state.locked = false;
+        return status();
+      }
+      if (state.pin && state.locked) throw 'LOCAL_LOCKED';
       if (command === 'list_local_workspaces')
         return structuredClone(state.rows);
       if (command === 'open_local_workspace') {

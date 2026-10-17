@@ -1,7 +1,9 @@
 pub mod commands;
 pub mod identity;
 pub mod keys;
+pub mod local_lock;
 pub mod local_workspaces;
+pub mod lock_store;
 mod migrations;
 
 pub type Result<T> = std::result::Result<T, LocalError>;
@@ -18,6 +20,10 @@ pub enum LocalError {
     UnsupportedSchema,
     NotFound,
     RequestConflict,
+    LocalLocked,
+    InvalidPin,
+    AuthenticationFailed,
+    RetryLater,
 }
 impl From<std::io::Error> for LocalError {
     fn from(_: std::io::Error) -> Self {

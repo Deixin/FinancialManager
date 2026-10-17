@@ -14,7 +14,7 @@ import {
 } from './evidence.mjs';
 const directory = new URL('../../.tools/us031-workspaces/', import.meta.url);
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us031-local-workspace-browser',
   passed: false,
   checks: {},

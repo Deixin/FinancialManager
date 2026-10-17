@@ -35,6 +35,7 @@ const codes = [
   'UNSUPPORTED_SCHEMA',
   'NOT_FOUND',
   'REQUEST_CONFLICT',
+  'LOCAL_LOCKED',
 ];
 export function decodeLocalWorkspace(value: unknown): LocalWorkspace {
   if (!value || typeof value !== 'object' || Array.isArray(value))
@@ -119,6 +120,8 @@ export function createLocalWorkspaceGateway(): LocalWorkspaceGateway | null {
 }
 export function localWorkspaceMessage(error: unknown): string {
   const code = error instanceof LocalWorkspaceError ? error.code : '';
+  if (code === 'LOCAL_LOCKED')
+    return 'O aplicativo está bloqueado. Desbloqueie com o PIN para continuar.';
   if (code === 'KEY_MISSING')
     return 'A chave deste espaço não está disponível neste perfil Windows. Nenhum dado foi substituído.';
   if (code === 'INSTALLATION_BUSY')

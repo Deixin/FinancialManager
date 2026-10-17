@@ -11,7 +11,7 @@ export const browserChecks = Object.freeze([
   'accessible_form_list_and_overview',
   'no_web_storage_or_remote_requests',
 ]);
-export const nativeChecks = Object.freeze([
+const legacyNativeChecks = Object.freeze([
   'locked_clippy_build_and_six_rust_tests',
   'create_through_production_commands',
   'reopen_in_another_webview_process',
@@ -28,6 +28,13 @@ export const nativeChecks = Object.freeze([
   'only_three_product_permissions',
   'owned_keys_profiles_and_files_removed',
 ]);
+export const nativeChecks = Object.freeze(
+  legacyNativeChecks.map((name) =>
+    name === 'only_three_product_permissions'
+      ? 'only_narrow_product_permissions'
+      : name,
+  ),
+);
 export const pending = Object.freeze([
   'native-vault-expanded-g07-vault-us032',
   'financial-account-and-movement-ui',
@@ -89,7 +96,11 @@ export function validateWorkspaceEvidence(
       throw Error('WORKSPACE_EVIDENCE_INVALID');
     };
   const native = report?.scope === 'us031-local-workspace-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks = native
+      ? report?.format_version === 1
+        ? legacyNativeChecks
+        : nativeChecks
+      : browserChecks;
   if (
     !exact(report, [
       'format_version',
@@ -102,7 +113,8 @@ export function validateWorkspaceEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    report.format_version !== 1 ||
+    ![1, 2].includes(report.format_version) ||
+    (matchSources && report.format_version !== 2) ||
     ![
       'us031-local-workspace-windows',
       'us031-local-workspace-browser',

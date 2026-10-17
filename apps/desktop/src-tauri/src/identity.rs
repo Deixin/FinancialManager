@@ -42,7 +42,7 @@ pub fn new_id_with(
     fill(&mut bytes)?;
     uuid_v7(milliseconds, &bytes)
 }
-fn system_milliseconds() -> Result<i64> {
+pub(crate) fn system_milliseconds() -> Result<i64> {
     let nanos = match SystemTime::now().duration_since(UNIX_EPOCH) {
         Ok(elapsed) => {
             i128::try_from(elapsed.as_nanos()).map_err(|_| IdentityError::ClockUnavailable)?

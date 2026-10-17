@@ -1,10 +1,15 @@
 {
   "identifier": "entry-main",
-  "description": "Somente criação, listagem e abertura de espaços locais; sem SQL, caminhos ou segredos.",
+  "description": "Espaços locais e bloqueio opcional por PIN; sem SQL, filesystem ou exportação de segredos.",
   "windows": ["main"],
   "permissions": [
     "allow-list-local-workspaces",
     "allow-create-local-workspace",
-    "allow-open-local-workspace"
+    "allow-open-local-workspace",
+    "allow-local-lock-status",
+    "allow-lock-local-session",
+    "allow-unlock-local-session",
+    "allow-configure-local-pin",
+    "allow-disable-local-pin"
   ]
 }

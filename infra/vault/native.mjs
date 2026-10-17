@@ -192,6 +192,11 @@ try {
         'allow-list-local-workspaces',
         'allow-create-local-workspace',
         'allow-open-local-workspace',
+        'allow-local-lock-status',
+        'allow-lock-local-session',
+        'allow-unlock-local-session',
+        'allow-configure-local-pin',
+        'allow-disable-local-pin',
       ],
     );
   });

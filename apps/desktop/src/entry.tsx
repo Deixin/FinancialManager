@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { LocalWorkspaceFlow } from './local-workspace-flow.js';
+import { LocalPrivacyFlow } from './local-privacy-flow.js';
 export function DesktopEntry() {
   const [local, setLocal] = useState(false),
     [online, setOnline] = useState(() => navigator.onLine);
@@ -15,7 +15,7 @@ export function DesktopEntry() {
   useEffect(() => {
     if (!local) document.title = 'Financial Manager · Boas-vindas';
   }, [local]);
-  if (local) return <LocalWorkspaceFlow onExit={() => setLocal(false)} />;
+  if (local) return <LocalPrivacyFlow onExit={() => setLocal(false)} />;
   return (
     <div className="fm-entry">
       <a className="entry-skip" href="#entry-main">

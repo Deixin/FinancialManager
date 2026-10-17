@@ -28,7 +28,7 @@ const pathKey =
 const perl = path.join(root, '.tools/strawberry-perl-5.42.3.1/perl/bin');
 if (existsSync(perl)) env[pathKey] = perl + path.delimiter + env[pathKey];
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us031-local-workspace-windows',
   passed: false,
   checks: {},
@@ -110,7 +110,7 @@ try {
   const store = path.join(own, 'store'),
     probe = path.join(target, 'debug/workspace-probe.exe'),
     smoke = path.join(target, 'debug/workspace-smoke.exe');
-  step('only_three_product_permissions', () => {
+  step('only_narrow_product_permissions', () => {
     assert.deepEqual(
       JSON.parse(
         readFileSync(path.join(crate, 'capabilities/entry-main.json'), 'utf8'),
@@ -119,6 +119,11 @@ try {
         'allow-list-local-workspaces',
         'allow-create-local-workspace',
         'allow-open-local-workspace',
+        'allow-local-lock-status',
+        'allow-lock-local-session',
+        'allow-unlock-local-session',
+        'allow-configure-local-pin',
+        'allow-disable-local-pin',
       ],
     );
     assert.equal(

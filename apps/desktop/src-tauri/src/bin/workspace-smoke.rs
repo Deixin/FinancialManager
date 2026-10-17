@@ -54,6 +54,11 @@ fn main() {
             financial_manager_desktop::commands::list_local_workspaces,
             financial_manager_desktop::commands::create_local_workspace,
             financial_manager_desktop::commands::open_local_workspace,
+            financial_manager_desktop::commands::local_lock_status,
+            financial_manager_desktop::commands::lock_local_session,
+            financial_manager_desktop::commands::unlock_local_session,
+            financial_manager_desktop::commands::configure_local_pin,
+            financial_manager_desktop::commands::disable_local_pin,
             finish_workspace_smoke
         ])
         .setup(move |app| {

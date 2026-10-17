@@ -11,6 +11,7 @@ default-run = "financial-manager"
 entry-smoke = ["tauri/dynamic-acl"]
 workspace-smoke = ["tauri/dynamic-acl"]
 vault-smoke = ["rusqlite/trace"]
+lock-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
@@ -23,6 +24,8 @@ uuid = { version = "=1.28.0", features = ["v7", "serde"] }
 chrono = { version = "=0.4.45", default-features = false, features = ["std"] }
 zeroize = { version = "=1.9.1", features = ["derive"] }
 sha2 = "=0.10.9"
+argon2 = { version = "=0.6.0", features = ["zeroize"] }
+ctutils = "=0.4.3"
 
 [target.'cfg(windows)'.dependencies]
 keyring-core = "=1.0.1"
@@ -57,3 +60,13 @@ required-features = ["vault-smoke"]
 name = "workspace-smoke"
 path = "src/bin/workspace-smoke.rs"
 required-features = ["workspace-smoke"]
+
+[[bin]]
+name = "lock-probe"
+path = "src/bin/lock-probe.rs"
+required-features = ["lock-smoke"]
+
+[[bin]]
+name = "lock-smoke"
+path = "src/bin/lock-smoke.rs"
+required-features = ["lock-smoke"]

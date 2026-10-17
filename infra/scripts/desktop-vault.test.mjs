@@ -6,7 +6,7 @@ const load = () =>
   JSON.parse(
     readFileSync(
       new URL(
-        '../../docs/quality/evidence/us-032-vault-windows-2026-10-17.json',
+        '../../docs/quality/evidence/us-032-vault-windows-2026-10-17-us033.json',
         import.meta.url,
       ),
       'utf8',
@@ -70,6 +70,19 @@ test('vault evidence rejects unsafe payloads, incomplete cleanup and stale sourc
   }
 });
 test('historical vault evidence retains the complete manifest and rejects malformed hashes', () => {
+  const historical = JSON.parse(
+    readFileSync(
+      new URL(
+        '../../docs/quality/evidence/us-032-vault-windows-2026-10-17.json',
+        import.meta.url,
+      ),
+      'utf8',
+    ),
+  );
+  assert.equal(
+    validateVaultEvidence(historical, { matchSources: false }).passed,
+    true,
+  );
   const report = load();
   report.source_sha256['package.json'] = '0'.repeat(64);
   assert.equal(

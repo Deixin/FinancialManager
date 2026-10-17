@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+Avanço US-033 em 2026-10-17: [ADR-0042](adr/0042-bloqueio-local-por-pin.md) implementa o caminho PIN opcional em Windows x64, com liberação de chaves no Rust, bloqueio por foco/saída/reinício e espera persistida. Biometria é informada indisponível nesta versão e requer adapter/hardware homologados. PIN não substitui chave SQLCipher ou senha de backup. Backup/restore, outbox, distribuição e DP-01 a DP-04 permanecem nos seus gates.
+
 Avanço US-032 em 2026-10-17: [ADR-0041](adr/0041-homologacao-cofre-produto.md) valida chave Windows, falhas do secret store, migrations interrompidas e journal quente no core SQLCipher de produto, preservando a política vigente de abertura/compatibilidade. Aceite da história atendido em Windows x64; G07-VAULT global mantém backup_manifest/restore em outra instalação, outbox e distribuição/plataformas pendentes. DP-01 a DP-04 permanecem abertas.
 
 Avanço US-031 em 2026-10-17: [ADR-0040](adr/0040-workspace-local-anonimo.md) adota o mínimo SQLCipher/secret store necessário a criar/reabrir espaços de produto sem identidade cloud, com schema v2, staging e testes entre processos. Substitui apenas a ausência de IPC/persistência da US-030 por três comandos estreitos. Não encerra US-032/G07-VAULT ampliado, backup/restore, distribuição ou outras plataformas. DP-01 a DP-04 permanecem abertas.

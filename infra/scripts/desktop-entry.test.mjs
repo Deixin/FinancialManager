@@ -27,7 +27,7 @@ test('Desktop local entry is repeatable, independent of identity and rejects unk
     /DESKTOP_ENTRY_ACTION_INVALID/,
   );
 });
-test('Desktop host grants only the three local workspace commands and embeds local assets', () => {
+test('Desktop host grants only eight narrow workspace/privacy commands and embeds local assets', () => {
   const config = JSON.parse(
     readFileSync(
       new URL('../../apps/desktop/src-tauri/tauri.conf.json', import.meta.url),
@@ -47,6 +47,11 @@ test('Desktop host grants only the three local workspace commands and embeds loc
     'allow-list-local-workspaces',
     'allow-create-local-workspace',
     'allow-open-local-workspace',
+    'allow-local-lock-status',
+    'allow-lock-local-session',
+    'allow-unlock-local-session',
+    'allow-configure-local-pin',
+    'allow-disable-local-pin',
   ]);
   assert.equal(config.app.withGlobalTauri, false);
   assert.equal(config.build.devUrl, undefined);

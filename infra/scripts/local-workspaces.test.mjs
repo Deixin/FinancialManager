@@ -100,13 +100,32 @@ test('local workspace reports require every gate, current sources, cleanup and r
       validateWorkspaceEvidence(historical, { matchSources: false }).passed,
       true,
     );
+    const prior = JSON.parse(
+      readFileSync(
+        new URL(
+          '../../docs/quality/evidence/us-031-workspaces-' +
+            kind +
+            '-2026-10-17-us032.json',
+          import.meta.url,
+        ),
+        'utf8',
+      ),
+    );
+    assert.equal(
+      validateWorkspaceEvidence(prior, { matchSources: false }).passed,
+      true,
+    );
+    assert.throws(
+      () => validateWorkspaceEvidence(prior),
+      /WORKSPACE_EVIDENCE_INVALID/,
+    );
     const load = () =>
       JSON.parse(
         readFileSync(
           new URL(
             '../../docs/quality/evidence/us-031-workspaces-' +
               kind +
-              '-2026-10-17-us032.json',
+              '-2026-10-17-us033.json',
             import.meta.url,
           ),
           'utf8',

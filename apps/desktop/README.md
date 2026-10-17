@@ -1,5 +1,7 @@
 # desktop
 
+A [US-033](../../docs/development/local-privacy.md) entrega PIN opcional de aplicativo em Windows: barreira nativa de sessão, política por instalação no secret store, bloqueio por foco/saída/reinício e espera persistida. pnpm desktop:lock:check/native verificam oito gates Chromium, 16 Windows e dez testes Rust. São oito comandos estreitos no produto; instrumentos exigem lock-smoke. Biometria é indisponível nesta versão. Próximo passo: US-034. Os registros abaixo são históricos.
+
 A [US-032](../../docs/development/desktop-vault.md) amplia a prova do cofre de produto com oito testes Rust e 11 gates Windows, incluindo migrations/journal interrompidos e secret store. pnpm desktop:vault:check roda o protocolo real com instalações sintéticas e limpeza verificada. Instrumentação fica somente em vault-smoke/vault-probe; a política de abertura e os três comandos de produto são preservados. Próximo passo: US-033. Backup/restore, outbox e release permanecem nos seus gates; os registros abaixo são históricos.
 
 A [US-031](../../docs/development/local-workspaces.md) cria e reabre espaços de produto sem identidade cloud. O core Rust agora mantém SQLCipher/schema v2 e chave Windows no mínimo necessário à persistência, com três comandos estreitos. desktop:workspaces:check/native verificam DOM e persistência real; os aliases entry apontam para esses protocolos atuais. Preview continua sem gravar dados. US-032/G07-VAULT ampliado, backup/restore e release permanecem pendentes; os registros anteriores abaixo são históricos.
