@@ -1,4 +1,6 @@
 export { sqliteMigration, sqliteMigrationSha256 } from './generated.js';
+export { createSqliteAccountService } from './account-changes.js';
+export type { SqliteAccountOptions } from './account-changes.js';
 import { sqliteMigration, sqliteMigrationSha256 } from './generated.js';
 export function normalizedName(value: string): string {
   if (typeof value !== 'string') throw new Error('STORAGE_NAME_INVALID');

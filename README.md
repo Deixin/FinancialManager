@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-040 está em andamento](docs/development/financial-accounts.md): a base compartilhada já cria, edita, arquiva/reativa contas e preserva referências de saldo nas duas engines. O saldo é lido em snapshot consistente, com cálculo exato e conflitos explícitos. O próximo incremento integra IPC/telas Desktop; esta entrega não declara essas telas concluídas.
+
 A [US-036](docs/development/workspace-manager.md) permite criar e alternar entre múltiplos espaços locais independentes, sem limite comercial. O seletor mostra finalidade e Local; o filtro Nuvem explica a indisponibilidade do acesso cloud. Os testes verificam persistência SQLCipher e troca de contexto. Homologações humanas ficam para após a integração completa.
 
 Gestão financeira pessoal, com evolução prevista para MEI e pequenas empresas. O produto combina Desktop local gratuito, Web em nuvem e Mobile com réplica offline autorizada, mantendo o workspace como fronteira de dados, acesso e cobrança.

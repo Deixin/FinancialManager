@@ -1,5 +1,7 @@
 # domain
 
+A fundação US-040 exporta AccountChange/captureAccountChange/planAccountChange, referências preservadas e compareAccountBalance. Nenhuma função consulta storage ou gera IDs. Valores continuam i64 em strings; a integração de produto está descrita em docs/development/financial-accounts.md.
+
 Regras de negócio puras, sem dependência de UI, banco de dados, transporte ou runtime nativo.
 
 US-013 implementada: MoneyMinor como string canônica i64, aritmética BigInt, rateios, saldos com referência/cobertura, consolidação por natureza, planos de transferência/pagamento de cartão e resumo separado de consumo e caixa. Sem dependências de produção.

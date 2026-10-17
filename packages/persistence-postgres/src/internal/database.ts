@@ -97,3 +97,6 @@ type Writable<T> = {
 export type WriteTransactionsTables = {
   [K in keyof TransactionsTables]: Writable<TransactionsTables[K]>;
 };
+export type WriteAccountsTables = {
+  [K in keyof AccountsTables]: Writable<AccountsTables[K]>;
+};

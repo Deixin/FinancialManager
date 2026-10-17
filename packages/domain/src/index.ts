@@ -52,3 +52,20 @@ export {
 export type { CompositeInput, CompositePlan } from './composites.js';
 export { summarizeMovements } from './reports.js';
 export type { MovementSummary } from './reports.js';
+export {
+  AccountChangeError,
+  captureAccountChange,
+  decodeAccountState,
+  planAccountChange,
+  selectBalanceReference,
+  compareAccountBalance,
+} from './accounts.js';
+export type {
+  AccountChangeCode,
+  ManagedAccount,
+  ManagedReference,
+  AccountState,
+  ManualReferenceInput,
+  AccountChange,
+  AccountPlan,
+} from './accounts.js';

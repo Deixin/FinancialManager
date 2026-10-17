@@ -37,6 +37,16 @@
       "owner": "transactions",
       "write": true,
       "syntax": "sqlite"
+    },
+    "packages/storage-schema/src/revision-adapters/account-writes.ts": {
+      "owner": "accounts",
+      "write": true,
+      "syntax": "sqlite"
+    },
+    "packages/persistence-postgres/src/modules/account-writes.ts": {
+      "owner": "accounts",
+      "write": true,
+      "syntax": "kysely"
     }
   },
   "composition_imports": {

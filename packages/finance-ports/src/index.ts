@@ -8,6 +8,18 @@ import type {
   UtcInstant,
 } from '@financial-manager/domain';
 import type { ResourceId } from '@financial-manager/contracts';
+export {
+  createAccountWriteService,
+  readCalculatedAccountBalance,
+} from './account-changes.js';
+export { AccountChangeError } from '@financial-manager/domain';
+export type {
+  AccountWriteRequest,
+  AccountWriteGrant,
+  AccountWriteScope,
+  AccountWriteTransaction,
+  AccountWriteOptions,
+} from './account-changes.js';
 export type { AccountKind, BalanceNature };
 const codes = [
   'INVALID_INPUT',
@@ -145,6 +157,7 @@ export type AuthorizeRead = (
   request: Readonly<ReadRequest>,
 ) => Promise<ReadGrant | null>;
 export interface WorkspaceReadUnit {
+  readonly snapshot_consistency?: boolean;
   read<T>(
     request: ReadRequest,
     operation: (ports: ScopedReadPorts) => Promise<T>,

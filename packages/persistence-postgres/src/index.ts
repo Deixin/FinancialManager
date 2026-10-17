@@ -1,4 +1,6 @@
 import { activeDataUnit } from './internal/unit-scope.js';
+export { createPostgresAccountService } from './account-changes.js';
+export type { PostgresAccountOptions } from './account-changes.js';
 import { Kysely, PostgresDialect, sql } from 'kysely';
 import { DataAccessError } from '@financial-manager/finance-ports';
 import type {
@@ -30,6 +32,7 @@ export interface PostgresReadOptions {
   readonly authorize: AuthorizeRead;
   readonly expected_role: string;
   readonly owns_pool?: boolean;
+  readonly snapshot?: boolean;
 }
 export interface PostgresReadUnit extends WorkspaceReadUnit {
   close(): Promise<void>;
@@ -45,11 +48,14 @@ export function createPostgresReadUnit(
     typeof options.pool.connect !== 'function' ||
     typeof options.pool.end !== 'function' ||
     !/^[a-z_][a-z0-9_]{0,62}$/.test(options.expected_role) ||
-    (options.owns_pool !== undefined && typeof options.owns_pool !== 'boolean')
+    (options.owns_pool !== undefined &&
+      typeof options.owns_pool !== 'boolean') ||
+    (options.snapshot !== undefined && typeof options.snapshot !== 'boolean')
   )
     throw new DataAccessError('CONFIGURATION_INVALID');
   const authorize = options.authorize,
-    expectedRole = options.expected_role;
+    expectedRole = options.expected_role,
+    snapshot = options.snapshot === true;
   const db = new Kysely<Database>({
     dialect: new PostgresDialect({
       pool: guardedPool(options.pool, options.owns_pool ?? false),
@@ -74,7 +80,7 @@ export function createPostgresReadUnit(
       return await activeScope.run(true, () =>
         db
           .transaction()
-          .setIsolationLevel('read committed')
+          .setIsolationLevel(snapshot ? 'repeatable read' : 'read committed')
           .setAccessMode('read only')
           .execute(async (trx) => {
             const role = (
@@ -130,6 +136,7 @@ export function createPostgresReadUnit(
     }
   }
   return Object.freeze({
+    snapshot_consistency: snapshot,
     read<T>(
       request: ReadRequest,
       operation: (ports: ScopedReadPorts) => Promise<T>,

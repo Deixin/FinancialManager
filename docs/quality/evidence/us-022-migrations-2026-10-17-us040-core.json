@@ -1,0 +1,56 @@
+{
+  "format_version": 1,
+  "scope": "us022-transactional-dual-engine-migrations",
+  "synthetic_only": true,
+  "passed": true,
+  "checks": {
+    "fresh_upgrade_and_supported_downgrade": true,
+    "sqlite_process_interruption_up_and_down": true,
+    "postgres_process_interruption_up_and_down": true,
+    "serialized_concurrent_migrators": true,
+    "checksum_history_and_unsupported_plans": true,
+    "legacy_clients_fail_closed_on_new_schema": true,
+    "financial_corpus_and_snapshots_preserved": true,
+    "rls_and_metadata_privileges_preserved": true,
+    "operational_logs_sanitized": true,
+    "owned_resources_removed": true
+  },
+  "engines": {
+    "postgresql": "18.6",
+    "sqlite": "3.53.3"
+  },
+  "cases_per_engine": 33,
+  "interruptions_per_engine": 6,
+  "pending": [
+    "product-vault-and-native-host-integration",
+    "destructive-migrations-with-protected-backup",
+    "api-client-version-adapters"
+  ],
+  "resources_closed": true,
+  "source_sha256": {
+    "packages/storage-schema/src/index.ts": "97f20f8529d7cf77eda7c3bf96170a69397e952be5ee079764415805bbbf6434",
+    "packages/storage-schema/src/generated.ts": "353b1cd72eac2a7a4bd07aa4020f54e64cb76c95a1f0f42cc3f13fb5d49af0fd",
+    "packages/storage-schema/src/migration-plan.ts": "fec49e32641789f3f65a07ac09be738cdad4790a773cc799d47e6cf776e6e2e7",
+    "packages/storage-schema/src/migrations.ts": "4c0572b06a9fdd8dea424d3c09439e68ac213676a6ce66708ae2f87cd12db4a3",
+    "packages/storage-schema/src/generated-migrations.ts": "f1aea0ea4f8a77fb03c108c0ca7450a94e48007481227bc0501c09b31e51e1a5",
+    "packages/storage-schema/sqlite/migrations/0001-financial-core.sql": "2bda88a05a988952abe11591b02648a097cbc532eced750367d33c0b417f37b8",
+    "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.up.sql": "73660ad3988a4f56bd434fd9ee168576881e0a235bacb4bd3f909b26a073b6c2",
+    "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.down.sql": "c8da2d985f70ea4215d480bffe801cc13b8714bd6d141d105fe0746f0f526c6c",
+    "apps/api/persistence/postgres/migrate.mjs": "b48c2fe61fa7998f77e69fdb12a3cd8a15734e4d80d40dfc817260945a7a90cd",
+    "apps/api/persistence/postgres/migrations/0001-financial-core.sql": "6af5a8ffcbd71fe0704dd93c7eb00d24f0549ce71e4e1f03f57848d4a100c196",
+    "apps/api/persistence/postgres/migrations/0002-balance-reference-lookup.up.sql": "9956e997e03ca149750829dd122f408989fd6aad88f3502ea1d4cc411eeb0a4f",
+    "apps/api/persistence/postgres/migrations/0002-balance-reference-lookup.down.sql": "5eca69b12a6eb6a0027b03ae668c2befe90c220a9dd5d082383c0bd591c204d6",
+    "infra/schema/generate-migrations.mjs": "1052c47f8e6cff9b526aa233c6bbfd9158e590d5a90ef37073002a0e3b28dde0",
+    "infra/schema/postgres-migrations.mjs": "d1f4212afa79773ae9629c63a79c51324b1de9f7819e7c7184fe508da85ca168",
+    "infra/schema/migration-worker.mjs": "d77a416266dee596e02e31bdcd05cb8e8b111bfab63d3988030845ca40edf295",
+    "infra/schema/migrations.mjs": "46917afc25c28adb09e938aa76aa426a4b60c7f78ca7d430e8bff27a1b0b8fd6",
+    "infra/schema/migrations-compose.yaml": "f0e87d3ae9a771da48d400fb799da5621c0924b669a5146f593f6ba2ba4526bb",
+    "infra/schema/migration-evidence.mjs": "1e83d779c11bdf4e1b1e98396f5f2e1847210415bc36076686bf3c8606e520ea",
+    "infra/schema/sqlite-adapter.mjs": "423a898197ec7a5c2674c87d450533aad79ce6cd2a51d4a7d46451bcee39d492",
+    "infra/schema/dual-postgres.mjs": "da9c05774daa78540af557d0a849e1990e11565234dafa09f880e6ed46fa4194",
+    "infra/schema/us021-corpus.mjs": "105c1103240f53465914d7ff1131699273ae91a840a321db9414dac9e8913d09",
+    "packages/storage-schema/src/synthetic-probe.ts": "dc13b80045451c5316dc392af725e012965dc8ddf7f9b1cfadb2a72355207295",
+    "packages/storage-schema/src/generated-probe.ts": "16dbfbbdaba3b7200899d735ecc573926773d576629f3dc3c8a2f7ac98e76950"
+  },
+  "completed_at_utc": "2026-10-17T22:00:28.197Z"
+}

@@ -208,7 +208,7 @@ test('archived migration evidence binds current sources, interruptions, corpus a
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-022-migrations-2026-10-16.json',
+          '../../docs/quality/evidence/us-022-migrations-2026-10-17-us040-core.json',
           import.meta.url,
         ),
         'utf8',

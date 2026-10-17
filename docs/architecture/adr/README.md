@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0048 — Operações compartilhadas de contas](0048-operacoes-compartilhadas-de-contas.md): criação atômica, base explícita, arquivamento e referências preservadas, com leitura de saldo em snapshot; US-040 em andamento, integração Desktop pendente.
+
 [0047 — Múltiplos espaços locais](0047-multiplos-espacos-locais.md): catálogo nativo completo, novas intenções independentes, retry imutável e descarte da tela anterior; cloud autenticado e homologação humana integrada mantêm seus gates.
 
 [0046 — Restauração como novo workspace](0046-restauracao-como-novo-workspace.md): seleção nativa, segredo, prévia em staging, novas identidades/chave/geração e confirmação idempotente; homologações humanas pós-integração.

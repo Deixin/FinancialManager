@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-040 em andamento: [ADR-0048](adr/0048-operacoes-compartilhadas-de-contas.md) adota a base compartilhada de contas/referências sem nova migration, dependência ou IPC. Base de metadados é comparada por valores; versão/linhagem, recibos, auditoria/outbox e escrita cloud permanecem pendentes. Próximo incremento integra Desktop, sem aguardar homologação humana por história. DP-01 a DP-04 e registros anteriores preservados.
+
 US-036: [ADR-0047](adr/0047-multiplos-espacos-locais.md) implementa gestão de múltiplos espaços locais independentes sem cap comercial. Catálogo e troca usam o cofre nativo existente; nenhum novo schema, dependência ou IPC. Cloud autenticado permanece na US-095; homologação humana segue ADR-0044. Próxima história US-040. DP-01 a DP-04 e registros anteriores preservados.
 
 US-035: [ADR-0046](adr/0046-restauracao-como-novo-workspace.md) integra restauração de produto em nova autoridade local, com prévia, IDs/chave/geração novos e repetição segura de confirmação. Não substitui espaços existentes ou reconecta cloud. Homologações humanas seguem diferidas conforme ADR-0044; próxima história US-036. As entradas abaixo preservam decisões anteriores.

@@ -1,5 +1,7 @@
 # Acesso a dados por módulo — US-024
 
+A [US-040 em andamento](financial-accounts.md) acrescenta as factories internas de escrita de contas e a opção snapshot: true em createPostgresReadUnit para leituras financeiras consistentes. O comportamento anterior READ COMMITTED permanece como default; regras continuam no Domain e SQL só nos adapters proprietários.
+
 finance-ports fornece AccountsReadPort, TransactionsReadPort, WorkspaceReadUnit e DTOs imutáveis. persistence-postgres fornece createPostgresReadUnit; os composition roots createApiReadModel/createWorkerReadModel instalam o adapter e expõem read, accountActivity e close. Não criam conexão, aplicam migration ou concedem autorização por padrão. [Decisão e ameaças](../architecture/adr/0035-ports-e-repositories-por-modulo.md).
 
 ## Uso pelo backend

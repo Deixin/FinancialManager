@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [fundação de contas US-040](development/financial-accounts.md) acrescenta escrita autorizada PostgreSQL/SQLite e leitura de saldo em snapshot. A história segue em andamento até integrar o Desktop.
+
 A gestão de múltiplos espaços locais está documentada na [US-036](development/workspace-manager.md), com criação independente, seletor completo, filtro Local/Nuvem e repetição segura após resposta perdida.
 
 ## Leitura inicial

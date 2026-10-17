@@ -129,7 +129,7 @@ test('SQLite migration is idempotent and refuses an altered schema checksum', as
   }
 });
 test('dual-engine evidence includes both real engines, every case, gates and current sources', () => {
-  const filename = 'us-021-dual-engine-2026-10-16.json';
+  const filename = 'us-021-dual-engine-2026-10-17-us040-core.json';
   assert.equal(validateDualEvidence(fixture(filename)).passed, true);
   for (const mutate of [
     (report) => {
