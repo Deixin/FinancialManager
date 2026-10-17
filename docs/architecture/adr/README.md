@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0049 — Contas no Desktop SQLCipher](0049-contas-no-desktop-sqlcipher.md): snapshot consistente, dois comandos estreitos, planos Rust conferidos com Domain e UI com dinheiro exato; aceite local US-040, próxima US-041.
+
 [0048 — Operações compartilhadas de contas](0048-operacoes-compartilhadas-de-contas.md): criação atômica, base explícita, arquivamento e referências preservadas, com leitura de saldo em snapshot; US-040 em andamento, integração Desktop pendente.
 
 [0047 — Múltiplos espaços locais](0047-multiplos-espacos-locais.md): catálogo nativo completo, novas intenções independentes, retry imutável e descarte da tela anterior; cloud autenticado e homologação humana integrada mantêm seus gates.

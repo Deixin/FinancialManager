@@ -1,0 +1,2997 @@
+{
+  "format_version": 1,
+  "synthetic_only": true,
+  "source": "shared-production-domain",
+  "vectors": [
+    {
+      "name": "create_with_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "replay_create",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": false,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "optional_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": null
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": []
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "i64_9223372036854775807",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "9223372036854775807",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "9223372036854775807",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "i64_negative_9223372036854775808",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "-9223372036854775808",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "-9223372036854775808",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "i64_9007199254740993",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "9007199254740993",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "i64_0",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "0",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "0",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_CHECKING",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_SAVINGS",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "SAVINGS",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "SAVINGS",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_DIGITAL",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "DIGITAL",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "DIGITAL",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_CASH",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CASH",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CASH",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_CREDIT_CARD",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CREDIT_CARD",
+          "balance_nature": "LIABILITY",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CREDIT_CARD",
+              "balance_nature": "LIABILITY",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_INVESTMENT_SIMPLE",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "INVESTMENT_SIMPLE",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "INVESTMENT_SIMPLE",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_LOAN_SIMPLE",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "LOAN_SIMPLE",
+          "balance_nature": "LIABILITY",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "LOAN_SIMPLE",
+              "balance_nature": "LIABILITY",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "kind_OTHER",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "OTHER",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "OTHER",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "label_15",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "  SYNTHETIC TRIM  ",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC TRIM",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "label_16",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "﻿SYNTHETIC BOM﻿",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC BOM",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "label_17",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "label_18",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "label_19",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC\nCONTROL",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "label_20",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": " ",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "label_21",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_22",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "01",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_23",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "-0",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_24",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "+1",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_25",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "1.0",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_26",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "1,0",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_27",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "9223372036854775808",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_28",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": 1,
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_29",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": 1.5,
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_money_30",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": null,
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_31",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "USD"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_32",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "LIABILITY",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_33",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "UNKNOWN",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_34",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": "",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_35",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "path": "SYNTHETIC_PRIVATE"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "invalid_account_36",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "malformed",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "reference_codec_37",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-02-30",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "reference_codec_38",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2028-02-29",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "plan": {
+          "kind": "CREATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2028-02-29",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001002",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "reference_codec_39",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": null
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "reference_codec_40",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "UNKNOWN"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "reference_codec_41",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "required_nullable_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "required_nullable_institution",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "CREATE",
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL"
+        },
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001002",
+          "amount_minor": "100000",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        }
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "edit",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC RENAMED",
+              "institution_name": "SYNTHETIC BANK",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "edit_replay",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC RENAMED",
+          "institution_name": "SYNTHETIC BANK",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC RENAMED",
+              "institution_name": "SYNTHETIC BANK",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": false,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "stale_edit",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC RENAMED",
+          "institution_name": "SYNTHETIC BANK",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC STALE",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "error": "STALE_ACCOUNT"
+      }
+    },
+    {
+      "name": "archive",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ARCHIVED"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC RENAMED",
+              "institution_name": "SYNTHETIC BANK",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ARCHIVED",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "reactivate",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ARCHIVED",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ARCHIVED",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC RENAMED",
+              "institution_name": "SYNTHETIC BANK",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "preserve_legacy_archive",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+          "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+          "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+        "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+        "status": "ARCHIVED"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+              "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ARCHIVED",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "correct_legacy",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+          "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "  SYNTHETIC LEGACY xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  ",
+          "institution_name": "SYNTHETIC LEGACY yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plan": {
+          "kind": "UPDATE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC RENAMED",
+              "institution_name": "SYNTHETIC BANK",
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": null,
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "immutable_kind",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE",
+        "account_kind": "SAVINGS"
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "foreign_base",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000099",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "missing_account",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": null,
+      "change": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "name": "SYNTHETIC RENAMED",
+        "institution_name": "SYNTHETIC BANK",
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "error": "ACCOUNT_NOT_FOUND"
+      }
+    },
+    {
+      "name": "correct_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001002"
+      },
+      "expected": {
+        "plan": {
+          "kind": "REFERENCE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "SUPERSEDED",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              },
+              {
+                "id": "0199d040-0000-7000-8000-000000001003",
+                "amount_minor": "9007199254740993",
+                "reference_date": "2026-10-02",
+                "day_position": "END_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001003",
+          "replaces_id": "0199d040-0000-7000-8000-000000001002"
+        }
+      }
+    },
+    {
+      "name": "replay_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "SUPERSEDED",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          },
+          {
+            "id": "0199d040-0000-7000-8000-000000001003",
+            "amount_minor": "9007199254740993",
+            "reference_date": "2026-10-02",
+            "day_position": "END_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001002"
+      },
+      "expected": {
+        "plan": {
+          "kind": "REFERENCE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "SUPERSEDED",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              },
+              {
+                "id": "0199d040-0000-7000-8000-000000001003",
+                "amount_minor": "9007199254740993",
+                "reference_date": "2026-10-02",
+                "day_position": "END_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": false,
+          "reference_id": "0199d040-0000-7000-8000-000000001003",
+          "replaces_id": "0199d040-0000-7000-8000-000000001002"
+        }
+      }
+    },
+    {
+      "name": "stale_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "SUPERSEDED",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          },
+          {
+            "id": "0199d040-0000-7000-8000-000000001003",
+            "amount_minor": "9007199254740993",
+            "reference_date": "2026-10-02",
+            "day_position": "END_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001004",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001002"
+      },
+      "expected": {
+        "error": "STALE_ACCOUNT"
+      }
+    },
+    {
+      "name": "archived_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ARCHIVED",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001002"
+      },
+      "expected": {
+        "error": "ACCOUNT_ARCHIVED"
+      }
+    },
+    {
+      "name": "active_point_conflict",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-01",
+          "day_position": "START_OF_DAY"
+        },
+        "replaces_id": null
+      },
+      "expected": {
+        "error": "REFERENCE_CONFLICT"
+      }
+    },
+    {
+      "name": "add_second_position",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-01",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": null
+      },
+      "expected": {
+        "plan": {
+          "kind": "REFERENCE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              },
+              {
+                "id": "0199d040-0000-7000-8000-000000001003",
+                "amount_minor": "9007199254740993",
+                "reference_date": "2026-10-01",
+                "day_position": "END_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": true,
+          "reference_id": "0199d040-0000-7000-8000-000000001003",
+          "replaces_id": null
+        }
+      }
+    },
+    {
+      "name": "self_reference_id",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001003"
+      },
+      "expected": {
+        "error": "INVALID_ACCOUNT_CHANGE"
+      }
+    },
+    {
+      "name": "replay_never_reactivates_old_reference",
+      "workspace_id": "0199d040-0000-7000-8000-000000000001",
+      "now": "2026-10-17T12:00:00.000Z",
+      "current": {
+        "account": {
+          "id": "0199d040-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC US040 ACCOUNT",
+          "institution_name": null,
+          "account_kind": "CHECKING",
+          "balance_nature": "ASSET",
+          "currency_code": "BRL",
+          "workspace_id": "0199d040-0000-7000-8000-000000000001",
+          "status": "ACTIVE",
+          "created_at": "2026-10-17T12:00:00.000Z"
+        },
+        "references": [
+          {
+            "id": "0199d040-0000-7000-8000-000000001002",
+            "amount_minor": "100000",
+            "reference_date": "2026-10-01",
+            "day_position": "START_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "SUPERSEDED",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          },
+          {
+            "id": "0199d040-0000-7000-8000-000000001003",
+            "amount_minor": "9007199254740993",
+            "reference_date": "2026-10-02",
+            "day_position": "END_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "SUPERSEDED",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          },
+          {
+            "id": "0199d040-0000-7000-8000-000000001004",
+            "amount_minor": "1",
+            "reference_date": "2026-10-02",
+            "day_position": "END_OF_DAY",
+            "workspace_id": "0199d040-0000-7000-8000-000000000001",
+            "account_id": "0199d040-0000-7000-8000-000000000002",
+            "status": "ACTIVE",
+            "source": "MANUAL",
+            "created_at": "2026-10-17T12:00:00.000Z"
+          }
+        ]
+      },
+      "change": {
+        "kind": "REFERENCE",
+        "account_id": "0199d040-0000-7000-8000-000000000002",
+        "reference": {
+          "id": "0199d040-0000-7000-8000-000000001003",
+          "amount_minor": "9007199254740993",
+          "reference_date": "2026-10-02",
+          "day_position": "END_OF_DAY"
+        },
+        "replaces_id": "0199d040-0000-7000-8000-000000001002"
+      },
+      "expected": {
+        "plan": {
+          "kind": "REFERENCE",
+          "state": {
+            "account": {
+              "id": "0199d040-0000-7000-8000-000000000002",
+              "name": "SYNTHETIC US040 ACCOUNT",
+              "institution_name": null,
+              "account_kind": "CHECKING",
+              "balance_nature": "ASSET",
+              "currency_code": "BRL",
+              "workspace_id": "0199d040-0000-7000-8000-000000000001",
+              "status": "ACTIVE",
+              "created_at": "2026-10-17T12:00:00.000Z"
+            },
+            "references": [
+              {
+                "id": "0199d040-0000-7000-8000-000000001002",
+                "amount_minor": "100000",
+                "reference_date": "2026-10-01",
+                "day_position": "START_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "SUPERSEDED",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              },
+              {
+                "id": "0199d040-0000-7000-8000-000000001003",
+                "amount_minor": "9007199254740993",
+                "reference_date": "2026-10-02",
+                "day_position": "END_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "SUPERSEDED",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              },
+              {
+                "id": "0199d040-0000-7000-8000-000000001004",
+                "amount_minor": "1",
+                "reference_date": "2026-10-02",
+                "day_position": "END_OF_DAY",
+                "workspace_id": "0199d040-0000-7000-8000-000000000001",
+                "account_id": "0199d040-0000-7000-8000-000000000002",
+                "status": "ACTIVE",
+                "source": "MANUAL",
+                "created_at": "2026-10-17T12:00:00.000Z"
+              }
+            ]
+          },
+          "changed": false,
+          "reference_id": "0199d040-0000-7000-8000-000000001003",
+          "replaces_id": "0199d040-0000-7000-8000-000000001002"
+        }
+      }
+    }
+  ]
+}

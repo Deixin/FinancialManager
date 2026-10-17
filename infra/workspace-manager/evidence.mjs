@@ -14,7 +14,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_fmt_clippy_build_and_default_without_probe',
-  'fifteen_narrow_product_permissions',
+  'seventeen_narrow_product_permissions',
   'many_local_workspaces_without_plan_or_cloud_identity',
   'reopen_in_independent_process_and_preserve_financial_state',
   'webview_catalog_purpose_local_and_cloud_unavailable',
@@ -58,7 +58,15 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
     throw Error('WORKSPACE_MANAGER_EVIDENCE_INVALID');
   };
   const native = report?.scope === 'us036-workspace-manager-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks = native
+      ? report?.format_version === 1
+        ? nativeChecks.map((n) =>
+            n === 'seventeen_narrow_product_permissions'
+              ? 'fifteen_narrow_product_permissions'
+              : n,
+          )
+        : nativeChecks
+      : browserChecks;
   if (
     !exact(report, [
       'format_version',
@@ -72,7 +80,8 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    report.format_version !== 1 ||
+    (report.format_version !== 2 &&
+      !(report.format_version === 1 && !matchSources)) ||
     ![
       'us036-workspace-manager-windows',
       'us036-workspace-manager-browser',

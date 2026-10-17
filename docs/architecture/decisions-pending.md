@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-040 local: [ADR-0049](adr/0049-contas-no-desktop-sqlcipher.md) integra contas/referências/conferência no Desktop SQLCipher com dois novos comandos específicos, 17 no total. Não altera schema ou dependências de produção. Limites de leitura recusam snapshots grandes sem truncar; paginação, versão monotônica/auditoria/outbox e escrita cloud permanecem nos respectivos gates. Próxima história US-041, movimentações manuais e ajuste identificado. Homologação humana segue diferida conforme ADR-0044. DP-01 a DP-04 preservadas; entradas abaixo são históricas.
+
 US-040 em andamento: [ADR-0048](adr/0048-operacoes-compartilhadas-de-contas.md) adota a base compartilhada de contas/referências sem nova migration, dependência ou IPC. Base de metadados é comparada por valores; versão/linhagem, recibos, auditoria/outbox e escrita cloud permanecem pendentes. Próximo incremento integra Desktop, sem aguardar homologação humana por história. DP-01 a DP-04 e registros anteriores preservados.
 
 US-036: [ADR-0047](adr/0047-multiplos-espacos-locais.md) implementa gestão de múltiplos espaços locais independentes sem cap comercial. Catálogo e troca usam o cofre nativo existente; nenhum novo schema, dependência ou IPC. Cloud autenticado permanece na US-095; homologação humana segue ADR-0044. Próxima história US-040. DP-01 a DP-04 e registros anteriores preservados.

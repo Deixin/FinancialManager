@@ -125,7 +125,7 @@ test('local workspace reports require every gate, current sources, cleanup and r
           new URL(
             '../../docs/quality/evidence/us-031-workspaces-' +
               kind +
-              '-2026-10-17-us036.json',
+              '-2026-10-17-us040-desktop.json',
             import.meta.url,
           ),
           'utf8',

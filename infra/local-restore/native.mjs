@@ -136,7 +136,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 15);
+    assert.equal(permissions.length, 17);
     run('cargo', [
       'build',
       '--locked',
@@ -219,6 +219,16 @@ try {
   step('webview_restored_graph_verified', () => invoke('verify-ui', uiStore));
   report.passed = true;
 } catch {
+  const uiFile = own && path.join(own, 'webview.json');
+  if (uiFile && existsSync(uiFile)) {
+    const diagnostic = JSON.parse(readFileSync(uiFile, 'utf8'));
+    if (
+      Number.isInteger(diagnostic.failure_stage) &&
+      diagnostic.failure_stage >= 10 &&
+      diagnostic.failure_stage <= 95
+    )
+      console.error('US035_WEBVIEW_FAILED_STAGE_' + diagnostic.failure_stage);
+  }
   report.passed = false;
   process.exitCode = 1;
   console.error('US035_NATIVE_FAILED_' + stage.toUpperCase());

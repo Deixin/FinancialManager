@@ -75,6 +75,7 @@
     'DOMContentLoaded',
     async () => {
       const checks = {};
+      let stage = 1;
       try {
         await click('Continuar sem conta');
         await wait(() => text().includes('Aplicativo bloqueado'));
@@ -88,6 +89,7 @@
           !document.getElementById('restore-password');
         await unlock();
         await wait(() => document.getElementById('restore-password'));
+        stage = 2;
         await preview('SYNTHETIC incorrect secret');
         await wait(() =>
           text().includes('Senha incorreta ou pacote adulterado'),
@@ -95,25 +97,46 @@
         checks.invalid_secret_preserves_existing =
           document.getElementById('restore-password').value === '' &&
           !text().includes(PASSWORD);
+        stage = 3;
         await preview(PASSWORD);
         await wait(() => text().includes('Prévia da restauração'));
         checks.verified_preview_counts_and_no_publication =
           text().includes('Saldos de referência') &&
           text().includes('Revisões históricas') &&
           button('Restaurar como novo espaço').disabled;
+        stage = 4;
         await click('Cancelar restauração');
         await wait(() => button('Restaurar backup'));
         checks.canceled_preview_removes_stage =
           !text().includes('Prévia da restauração') &&
           !document.getElementById('restore-password');
+        stage = 5;
         await select();
         await unlock();
+        stage = 6;
         await preview(PASSWORD);
         await wait(() => text().includes('Prévia da restauração'));
+        stage = 7;
         document.querySelector('.backup-ack input').click();
         await click('Restaurar como novo espaço');
-        await wait(() => text().includes('Restauração concluída'));
-        await wait(() => text().includes('Backup local'));
+        stage = 8;
+        await wait(
+          () =>
+            text().includes('Restauração concluída') ||
+            document.querySelector('[role=alert]') ||
+            text().includes('Aplicativo bloqueado'),
+        );
+        if (!text().includes('Restauração concluída'))
+          throw Error('CONFIRMATION_NOT_ACCEPTED');
+        stage = 9;
+        await wait(
+          () =>
+            text().includes('Backup local') ||
+            document.querySelector('[role=alert]') ||
+            text().includes('Aplicativo bloqueado'),
+        );
+        if (!text().includes('Backup local'))
+          throw Error('RESTORED_WORKSPACE_NOT_OPEN');
         checks.confirmed_restore_opens_new_local_workspace =
           text().includes('(restaurado)') &&
           text().includes('Local') &&
@@ -126,8 +149,19 @@
           report: { passed: Object.values(checks).every(Boolean), checks },
         });
       } catch {
+        const state = text().includes('Aplicativo bloqueado')
+          ? 1
+          : text().includes('Não foi possível validar ou concluir')
+            ? 2
+            : text().includes('Não foi possível acessar')
+              ? 3
+              : text().includes('chave deste espaço')
+                ? 4
+                : text().includes('Processando restauração')
+                  ? 5
+                  : 0;
         await window.__TAURI_INTERNALS__.invoke('finish_restore_smoke', {
-          report: { passed: false, checks },
+          report: { passed: false, checks, failure_stage: stage * 10 + state },
         });
       }
     },

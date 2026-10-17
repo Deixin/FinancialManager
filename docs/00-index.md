@@ -1,6 +1,6 @@
 # Financial Manager — índice da documentação
 
-A [fundação de contas US-040](development/financial-accounts.md) acrescenta escrita autorizada PostgreSQL/SQLite e leitura de saldo em snapshot. A história segue em andamento até integrar o Desktop.
+A [US-040 no Desktop](development/desktop-accounts.md) integra contas, referências e conferência de saldo ao cofre SQLCipher, com testes Chromium/WebView2 e restauração em outra instalação. A [base compartilhada](development/financial-accounts.md) atende PostgreSQL/SQLite. Próxima história: US-041, movimentações manuais; homologação humana fica para após integrar todo o sistema.
 
 A gestão de múltiplos espaços locais está documentada na [US-036](development/workspace-manager.md), com criação independente, seletor completo, filtro Local/Nuvem e repetição segura após resposta perdida.
 

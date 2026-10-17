@@ -1,3 +1,4 @@
+import { LocalAccountsFlow } from './local-accounts-flow.js';
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { createShellModel } from '@financial-manager/design-tokens';
@@ -32,7 +33,9 @@ export function LocalWorkspaceFlow({
   const [workspaces, setWorkspaces] = useState<readonly LocalWorkspace[]>([]);
   const [current, setCurrent] = useState<LocalWorkspace | null>(null);
   const [loading, setLoading] = useState(Boolean(gateway));
-  const [route, setRoute] = useState<'overview' | 'settings'>('overview');
+  const [route, setRoute] = useState<'overview' | 'accounts' | 'settings'>(
+    'overview',
+  );
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [purpose, setPurpose] = useState<Purpose>('PERSONAL');
@@ -192,7 +195,7 @@ export function LocalWorkspaceFlow({
           },
           route,
           state: 'ready',
-          sections: ['overview', 'settings'],
+          sections: ['overview', 'accounts', 'settings'],
         })}
         workspaces={summaries}
         workspaceActions={
@@ -207,7 +210,13 @@ export function LocalWorkspaceFlow({
         }
         onWorkspaceChange={(id) => void open(id)}
         onNavigate={(next) =>
-          setRoute(next === 'settings' ? 'settings' : 'overview')
+          setRoute(
+            next === 'settings'
+              ? 'settings'
+              : next === 'accounts'
+                ? 'accounts'
+                : 'overview',
+          )
         }
         footer={
           <button type="button" onClick={onExit}>
@@ -215,7 +224,13 @@ export function LocalWorkspaceFlow({
           </button>
         }
       >
-        {route === 'settings' ? (
+        {route === 'accounts' ? (
+          <LocalAccountsFlow
+            key={current.id}
+            workspaceId={current.id}
+            onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+          />
+        ) : route === 'settings' ? (
           <section className="local-empty">
             <h2>Configurações do espaço</h2>
             <p>Nome: {current.display_name}</p>
@@ -248,9 +263,9 @@ export function LocalWorkspaceFlow({
             </p>
             <h3>Contas e movimentações</h3>
             <p>
-              O cofre local pode ser protegido por backup. A consulta e a edição
-              dos registros estarão disponíveis com as próximas telas
-              financeiras.
+              Cadastre contas e referências em Contas e cartões. Os dados ficam
+              no cofre local, com saldos estimados até confirmar a cobertura do
+              histórico. Movimentações serão integradas na próxima etapa.
             </p>
             <button type="button" onClick={() => void load()}>
               Ver espaços locais

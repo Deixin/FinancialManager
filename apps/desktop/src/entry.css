@@ -326,3 +326,25 @@ main:focus {
   max-width: 46rem;
   overflow-wrap: anywhere;
 }
+
+.account-flow {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.account-flow form {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+.account-flow :is(select, input:not([type='checkbox'])) {
+  width: 100%;
+  min-width: 0;
+}
+.account-flow .backup-ack input {
+  width: auto;
+}
+.account-flow :is(p, h3, ul) {
+  margin: 0;
+}

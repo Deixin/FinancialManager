@@ -17,6 +17,8 @@ use tauri::Manager;
 struct Report {
     passed: bool,
     checks: BTreeMap<String, bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    failure_stage: Option<u8>,
 }
 struct Output(PathBuf);
 struct SyntheticSource {

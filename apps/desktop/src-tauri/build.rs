@@ -59,6 +59,8 @@ fn main() {
         "preview_local_restore",
         "confirm_local_restore",
         "cancel_local_restore",
+        "read_local_accounts",
+        "apply_local_account_change",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -71,6 +73,9 @@ fn main() {
     }
     if cfg!(feature = "manager-smoke") {
         commands.push("finish_workspace_manager_smoke");
+    }
+    if cfg!(feature = "accounts-smoke") {
+        commands.push("finish_accounts_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

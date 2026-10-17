@@ -193,7 +193,36 @@ try {
     await page
       .getByRole('heading', { name: 'Prévia da restauração', exact: true })
       .waitFor();
+    await page.evaluate(() => {
+      const state = window.__syntheticWorkspace,
+        original = window.__TAURI_INTERNALS__.invoke;
+      state.originalCancelInvoke = original;
+      window.__TAURI_INTERNALS__.invoke = async (command, args) => {
+        if (command === 'cancel_local_restore')
+          await new Promise((resolve) => {
+            state.releaseCancel = resolve;
+          });
+        return original(command, args);
+      };
+    });
     await click('Cancelar restauração');
+    await page.waitForFunction(
+      () => typeof window.__syntheticWorkspace.releaseCancel === 'function',
+    );
+    await page.locator('.local-list li').first().waitFor();
+    assert.equal(
+      await page
+        .getByRole('button', { name: 'Restaurar backup', exact: true })
+        .count(),
+      0,
+    );
+    await page.evaluate(() => {
+      const state = window.__syntheticWorkspace;
+      state.releaseCancel();
+      window.__TAURI_INTERNALS__.invoke = state.originalCancelInvoke;
+      delete state.originalCancelInvoke;
+      delete state.releaseCancel;
+    });
     await page
       .getByRole('button', { name: 'Restaurar backup', exact: true })
       .waitFor();

@@ -225,6 +225,23 @@ export function installSyntheticWorkspaceBridge(options = {}) {
               : null,
         };
       }
+      if (
+        command === 'read_local_accounts' ||
+        command === 'apply_local_account_change'
+      ) {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (state.lockAccountNext) {
+          state.lockAccountNext = false;
+          state.locked = true;
+          throw 'LOCAL_LOCKED';
+        }
+        if (typeof globalThis.__syntheticAccountHost !== 'function')
+          throw 'SYNTHETIC_ACCOUNT_HOST_MISSING';
+        const reply = await globalThis.__syntheticAccountHost(command, args);
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
       if (command === 'list_local_workspaces') {
         if (state.failListNext) {
           state.failListNext = false;

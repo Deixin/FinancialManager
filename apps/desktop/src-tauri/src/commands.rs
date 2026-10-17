@@ -186,6 +186,31 @@ impl LocalState {
     pub fn open(&self, id: &str) -> Result<Workspace> {
         self.with(|i| i.open_workspace(id))
     }
+    pub fn read_accounts(
+        &self,
+        workspace: &str,
+    ) -> Result<crate::local_accounts::AccountsSnapshot> {
+        self.with(|i| i.read_accounts(workspace))
+    }
+    pub fn apply_account_change(
+        &self,
+        workspace: &str,
+        input: crate::account_model::AccountChange,
+    ) -> Result<crate::local_accounts::AccountResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation.apply_account_change(workspace, input, || {
+                if protected && self.force_locked.load(Ordering::SeqCst) {
+                    Err(LocalError::LocalLocked)
+                } else {
+                    Ok(())
+                }
+            })
+        })
+    }
     pub fn prepare_backup(&self, input: CreateBackup) -> Result<BackupJob> {
         input.validate()?;
         self.backup_active
@@ -734,7 +759,9 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             select_local_backup,
             preview_local_restore,
             confirm_local_restore,
-            cancel_local_restore
+            cancel_local_restore,
+            read_local_accounts,
+            apply_local_account_change
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -755,4 +782,25 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             }
             Ok(())
         })
+}
+#[tauri::command]
+pub async fn read_local_accounts(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+) -> Result<crate::local_accounts::AccountsSnapshot> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.read_accounts(&workspace_id))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn apply_local_account_change(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: crate::account_model::AccountChange,
+) -> Result<crate::local_accounts::AccountResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.apply_account_change(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
 }

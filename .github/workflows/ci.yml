@@ -353,7 +353,7 @@ jobs:
       - run: pnpm identity:native:windows
 
   desktop-entry:
-    name: US-031–036 local workspaces, privacy, backup and restore (Windows)
+    name: US-031–040 local workspaces, privacy, backup, restore and accounts (Windows)
     runs-on: windows-2025
     timeout-minutes: 60
     steps:
@@ -384,3 +384,5 @@ jobs:
       - run: pnpm desktop:restore:native
       - run: pnpm desktop:manager:check
       - run: pnpm desktop:manager:native
+      - run: pnpm desktop:accounts:check
+      - run: pnpm desktop:accounts:native

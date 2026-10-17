@@ -49,6 +49,8 @@ export const permissions = Object.freeze([
   'allow-preview-local-restore',
   'allow-confirm-local-restore',
   'allow-cancel-local-restore',
+  'allow-read-local-accounts',
+  'allow-apply-local-account-change',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',

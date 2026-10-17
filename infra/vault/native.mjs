@@ -204,6 +204,8 @@ try {
         'allow-preview-local-restore',
         'allow-confirm-local-restore',
         'allow-cancel-local-restore',
+        'allow-read-local-accounts',
+        'allow-apply-local-account-change',
       ],
     );
   });

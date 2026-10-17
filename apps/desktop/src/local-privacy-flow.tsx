@@ -488,13 +488,17 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
             onExit={() => void leave()}
             initialWorkspaceId={restoredWorkspaceId}
             onLocked={lockNow}
-            onRestore={() => void restoreOperation('selecting')}
-            onBackup={(workspace) => {
-              setRestoredWorkspaceId(null);
-              setError('');
-              setNotice('');
-              setBackupWorkspace(workspace);
-            }}
+            {...(busy
+              ? {}
+              : {
+                  onRestore: () => void restoreOperation('selecting'),
+                  onBackup: (workspace: LocalWorkspace) => {
+                    setRestoredWorkspaceId(null);
+                    setError('');
+                    setNotice('');
+                    setBackupWorkspace(workspace);
+                  },
+                })}
           />
         )}
       </>

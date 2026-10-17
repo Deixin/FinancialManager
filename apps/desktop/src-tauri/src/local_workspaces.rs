@@ -171,6 +171,13 @@ impl Installation {
     pub fn open_workspace(&self, id: &str) -> Result<Workspace> {
         self.read(identity::resource_id(id).map_err(|_| LocalError::InvalidWorkspace)?)
     }
+    // Trusted Rust adapters only. The WebView receives domain DTOs, never this connection.
+    pub(crate) fn financial_database(&self, workspace: &str) -> Result<Connection> {
+        let id = identity::resource_id(workspace).map_err(|_| LocalError::InvalidWorkspace)?;
+        self.read(id)?;
+        let key = self.keys.get(self.id, id)?;
+        open_database(&self.path(id), &key)
+    }
     pub fn create(&self, input: CreateWorkspace) -> Result<Workspace> {
         self.create_inner(input, |_| Ok(()))
     }

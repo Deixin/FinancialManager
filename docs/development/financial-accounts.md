@@ -1,6 +1,6 @@
-# Contas financeiras e referências — US-040 em andamento
+# Contas financeiras e referências — US-040
 
-Este incremento entrega a base compartilhada de contas em Domain, finance-ports e adapters PostgreSQL/SQLite. As telas e o IPC do Desktop ainda serão integrados na própria US-040. A UI atual permanece como na US-036; build TypeScript não comprova essa integração. [Decisão e ameaças](../architecture/adr/0048-operacoes-compartilhadas-de-contas.md).
+Domain, finance-ports e adapters PostgreSQL/SQLite oferecem a base compartilhada de contas. A [integração Desktop](desktop-accounts.md) acrescenta telas e IPC SQLCipher, com validação Rust/WebView2 própria conforme [ADR-0049](../architecture/adr/0049-contas-no-desktop-sqlcipher.md). [Decisão e ameaças da base](../architecture/adr/0048-operacoes-compartilhadas-de-contas.md). Os registros de validação abaixo preservam o incremento inicial.
 
 ## Operações disponíveis
 
@@ -31,10 +31,10 @@ O protocolo usa Docker Linux local com imagem fixa de PostgreSQL 18.6 e Node SQL
 
 ## Evidências
 
-[49 gates reais](../quality/evidence/us-040-accounts-core-2026-10-17.json) incluem 28 regressões de revisões e 21 verificações de contas. O mesmo roteiro cria, repete, edita, rejeita base obsoleta, arquiva/reativa e corrige referências nas duas engines. Testa i64 mínimo/máximo e valores acima de 2^53, referência ausente, data/posição inválidas, rollback após INSERT e após SUPERSEDED, autorização por workspace/conta e conflito concorrente. Compara estado e histórico completos, incluindo instituição, sem alterar FIN-002.
+[49 gates reais](../quality/evidence/us-040-accounts-core-2026-10-17-us040-desktop.json) incluem 28 regressões de revisões e 21 verificações de contas. O mesmo roteiro cria, repete, edita, rejeita base obsoleta, arquiva/reativa e corrige referências nas duas engines. Testa i64 mínimo/máximo e valores acima de 2^53, referência ausente, data/posição inválidas, rollback após INSERT e após SUPERSEDED, autorização por workspace/conta e conflito concorrente. Compara estado e histórico completos, incluindo instituição, sem alterar FIN-002.
 
 PostgreSQL confere os sete goldens originais por leitura através dos ports. Um pedido independente grava enquanto uma unit de snapshot lê duas vezes; a unit mantém o estado anterior e outra leitura confirma o commit. Conta local SQLite funciona sem principal cloud. Owner/nesting são recusados, conexão SQLite reabre preservando o estado e logs não contêm credenciais ou canários financeiros.
 
-Dezesseis testes Node novos cobrem planos, captura antes de await, concorrência, falhas/atomicidade, todas as páginas, snapshot obrigatório, precisão, fechamento e evidência. Os seis protocolos compartilhados afetados são reexecutados e arquivados com sufixo us040-core; evidências Desktop anteriores continuam atuais e preservadas. Homologação humana fica para depois da integração completa, conforme ADR-0044, sem aprovação registrada ou nova confirmação por incremento.
+Dezesseis testes Node da base cobrem planos, captura antes de await, concorrência, falhas/atomicidade, todas as páginas, snapshot obrigatório, precisão, fechamento e evidência. Contas, repositories, fixtures, revisões e invariantes foram reexecutados com sufixo us040-desktop; schema/migrations conservam os relatórios atuais us040-core. Os históricos permanecem preservados. Homologação humana fica para depois da integração completa, conforme ADR-0044, sem aprovação registrada ou nova confirmação por incremento.
 
-Próximo passo: integração das contas/referências no Desktop da US-040. As telas de conferência, ajuste identificado por movimentação, IPC, testes WebView2/SQLCipher deste fluxo, rotas cloud, outbox/auditoria/recibos e paridade Web/Mobile permanecem com seus gates próprios.
+A [integração Desktop](desktop-accounts.md) conclui o aceite local de contas/referências, com IPC, telas de conferência e testes WebView2/SQLCipher. Próximo passo: US-041, movimentações manuais e ajuste identificado. Rotas cloud, outbox/auditoria/recibos e paridade Web/Mobile permanecem com seus gates próprios.

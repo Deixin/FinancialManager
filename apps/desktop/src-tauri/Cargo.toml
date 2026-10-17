@@ -15,6 +15,17 @@ lock-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 backup-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 restore-smoke = ["backup-smoke"]
 manager-smoke = ["workspace-smoke", "vault-smoke"]
+accounts-smoke = ["workspace-smoke", "restore-smoke"]
+
+[[bin]]
+name = "accounts-probe"
+path = "src/bin/accounts-probe.rs"
+required-features = ["accounts-smoke"]
+
+[[bin]]
+name = "accounts-smoke"
+path = "src/bin/accounts-smoke.rs"
+required-features = ["accounts-smoke"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
