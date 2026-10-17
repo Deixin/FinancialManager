@@ -60,9 +60,9 @@ pub fn open_database(path: &Path, key: &SecretKey) -> Result<Connection> {
 }
 
 pub struct Installation {
-    root: PathBuf,
-    id: Uuid,
-    keys: Arc<dyn KeyStore>,
+    pub(crate) root: PathBuf,
+    pub(crate) id: Uuid,
+    pub(crate) keys: Arc<dyn KeyStore>,
     _lock: File,
 }
 impl Installation {

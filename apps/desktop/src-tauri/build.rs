@@ -55,12 +55,19 @@ fn main() {
         "configure_local_hello",
         "unlock_local_hello",
         "create_local_backup",
+        "select_local_backup",
+        "preview_local_restore",
+        "confirm_local_restore",
+        "cancel_local_restore",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
     }
     if cfg!(feature = "backup-smoke") {
         commands.push("finish_backup_smoke");
+    }
+    if cfg!(feature = "restore-smoke") {
+        commands.push("finish_restore_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0046 — Restauração como novo workspace](0046-restauracao-como-novo-workspace.md): seleção nativa, segredo, prévia em staging, novas identidades/chave/geração e confirmação idempotente; homologações humanas pós-integração.
+
 [0045 — Backup criptografado de produto](0045-backup-criptografado-de-produto.md): snapshot SQLCipher, manifesto autenticado, senha independente, seletor Windows estreito e publicação sem sobrescrita; US-035 e homologação humana diferidas.
 
 [0044 — Homologação humana após integração](0044-homologacao-humana-apos-integracao.md): instrução do usuário para continuar desenvolvimento/automação sem aguardar confirmações humanas por incremento, preservando os testes diferidos.

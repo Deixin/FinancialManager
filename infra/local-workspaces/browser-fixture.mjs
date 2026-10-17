@@ -26,6 +26,13 @@ export function installSyntheticWorkspaceBridge(options = {}) {
     holdBackup: false,
     releaseBackup: null,
     savedBackups: 0,
+    restoreSelected: false,
+    restorePrepared: false,
+    restoreCancelPicker: false,
+    restoreError: null,
+    holdRestore: false,
+    releaseRestore: null,
+    loseRestoreAck: false,
   };
   globalThis.isTauri = true;
   globalThis.__syntheticWorkspace = state;
@@ -52,6 +59,7 @@ export function installSyntheticWorkspaceBridge(options = {}) {
       if (command === 'local_lock_status') return status();
       if (command === 'lock_local_session') {
         state.generation++;
+        state.restorePrepared = false;
         if (state.failLockNext) {
           state.failLockNext = false;
           throw 'SYNTHETIC_LOST_LOCK_REQUEST';
@@ -75,6 +83,7 @@ export function installSyntheticWorkspaceBridge(options = {}) {
       }
       if (command === 'unlock_local_session') {
         state.generation++;
+        state.restorePrepared = false;
         if (state.holdUnlock)
           await new Promise((resolve) => {
             state.releaseUnlock = resolve;
@@ -112,7 +121,85 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         else state.locked = false;
         return status();
       }
+      if (command === 'cancel_local_restore') {
+        state.generation++;
+        state.restoreSelected = false;
+        state.restorePrepared = false;
+        return null;
+      }
       if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+      if (command === 'select_local_backup') {
+        state.generation++;
+        state.restorePrepared = false;
+        state.restoreSelected = !state.restoreCancelPicker;
+        state.locked = Boolean(state.pin);
+        return {
+          selection_id: state.restoreSelected
+            ? '0199d035-0000-7000-8000-000000000001'
+            : null,
+        };
+      }
+      if (command === 'preview_local_restore') {
+        if (
+          !state.restoreSelected ||
+          args.input.selection_id !== '0199d035-0000-7000-8000-000000000001'
+        )
+          throw 'RESTORE_UNAVAILABLE';
+        const generation = ++state.generation;
+        if (state.holdRestore)
+          await new Promise((resolve) => {
+            state.releaseRestore = resolve;
+          });
+        if (generation !== state.generation) throw 'LOCAL_LOCKED';
+        if (state.restoreError) throw state.restoreError;
+        if (args.input.password !== 'SYNTHETIC restore password US035')
+          throw 'BACKUP_AUTHENTICATION_FAILED';
+        state.restoreSelected = false;
+        state.restorePrepared = true;
+        return {
+          restore_id: '0199d035-0000-7000-8000-000000000002',
+          source_name: 'SYNTHETIC backup source',
+          display_name: 'SYNTHETIC backup source (restaurado)',
+          purpose: 'PERSONAL',
+          backup_created_at: '2026-10-17T12:00:00.000Z',
+          record_counts: {
+            workspace: '1',
+            financial_account: '3',
+            balance_reference: '3',
+            category: '2',
+            subcategory: '1',
+            tag: '1',
+            counterparty: '1',
+            transaction_group: '2',
+            financial_transaction: '7',
+            transaction_allocation: '3',
+            transaction_tag: '1',
+            transaction_revision: '1',
+          },
+        };
+      }
+      if (command === 'confirm_local_restore') {
+        const id = '0199d035-0000-7000-8000-000000000002';
+        if (args.restoreId !== id) throw 'RESTORE_UNAVAILABLE';
+        const previous = state.rows.find((r) => r.id === id);
+        if (previous) return structuredClone(previous);
+        if (!state.restorePrepared) throw 'RESTORE_UNAVAILABLE';
+        const row = {
+          id,
+          display_name: 'SYNTHETIC backup source (restaurado)',
+          purpose: 'PERSONAL',
+          storage_mode: 'LOCAL',
+          default_currency: 'BRL',
+          created_at: '2026-10-17T12:00:00.000Z',
+        };
+        state.rows.push(row);
+        state.restorePrepared = false;
+        if (state.loseRestoreAck) {
+          state.loseRestoreAck = false;
+          throw 'SYNTHETIC_LOST_RESTORE_ACK';
+        }
+        return structuredClone(row);
+      }
       if (command === 'create_local_backup') {
         if (!state.rows.some((row) => row.id === args.input.workspace_id))
           throw 'NOT_FOUND';

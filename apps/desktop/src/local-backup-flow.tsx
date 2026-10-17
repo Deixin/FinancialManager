@@ -159,7 +159,8 @@ export function LocalBackupFlow({
             </button>
           </form>
           <p>
-            Restauração como novo espaço será disponibilizada na próxima etapa.
+            Para restaurar como novo espaço, volte à lista de espaços locais e
+            escolha Restaurar backup.
           </p>
           <button
             type="button"

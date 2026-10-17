@@ -13,9 +13,13 @@ import '@financial-manager/ui-dom/styles.css';
 export function LocalWorkspaceFlow({
   onExit,
   onBackup,
+  onRestore,
+  initialWorkspaceId,
 }: {
   onExit: () => void;
   onBackup?: (workspace: LocalWorkspace) => void;
+  onRestore?: () => void;
+  initialWorkspaceId?: string | null;
 }) {
   const [gateway] = useState(createLocalWorkspaceGateway);
   const [workspaces, setWorkspaces] = useState<readonly LocalWorkspace[]>([]);
@@ -52,8 +56,9 @@ export function LocalWorkspaceFlow({
     }
   }
   useEffect(() => {
-    void load();
-  }, [gateway]);
+    if (initialWorkspaceId) void open(initialWorkspaceId);
+    else void load();
+  }, [gateway, initialWorkspaceId]);
   useEffect(() => {
     if (!loading) heading.current?.focus();
     document.title = current
@@ -167,11 +172,11 @@ export function LocalWorkspaceFlow({
               As informações deste espaço ficam neste computador. Você não
               precisa de uma conta na nuvem.
             </p>
-            <h3>Nenhuma conta financeira cadastrada</h3>
+            <h3>Contas e movimentações</h3>
             <p>
-              O cadastro de contas será disponibilizado em uma próxima etapa.
-              Seus saldos aparecerão depois de cadastrar uma conta e sua
-              referência.
+              O cofre local pode ser protegido por backup. A consulta e a edição
+              dos registros estarão disponíveis com as próximas telas
+              financeiras.
             </p>
             <button type="button" onClick={() => void load()}>
               Ver espaços locais
@@ -281,6 +286,16 @@ export function LocalWorkspaceFlow({
           >
             Voltar à entrada
           </button>
+          {gateway && onRestore && (
+            <button
+              type="button"
+              className="entry-secondary"
+              disabled={loading}
+              onClick={onRestore}
+            >
+              Restaurar backup
+            </button>
+          )}
         </section>
       </main>
     </div>

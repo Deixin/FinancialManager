@@ -110,7 +110,7 @@ try {
       .waitFor();
     assert.equal(
       await page
-        .getByRole('heading', { name: 'Nenhuma conta financeira cadastrada' })
+        .getByRole('heading', { name: 'Contas e movimentações' })
         .count(),
       1,
     );

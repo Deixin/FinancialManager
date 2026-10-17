@@ -6,6 +6,8 @@ Este repositório contém a documentação v1.0, a estrutura inicial de desenvol
 
 ## Documentação
 
+A [US-035](docs/development/local-restore.md) integra a restauração de backup com senha e prévia verificada, criando outro workspace local com IDs, geração e chave Windows novos. Não substitui espaços existentes; repetir a mesma confirmação não duplica a cópia. Homologações humanas continuam diferidas para após integrar o sistema, conforme instrução do usuário. Registros abaixo preservam os incrementos anteriores.
+
 A [US-034](docs/development/local-backup.md) adiciona criação de backup .fmbackup com manifesto autenticado, schema/checksum, snapshot consistente e senha independente do Windows. Destino é escolhido no diálogo nativo, sem sobrescrever arquivos existentes. Restauração de produto segue na US-035. Por instrução do usuário, [homologações humanas ficam para após a integração completa](docs/architecture/adr/0044-homologacao-humana-apos-integracao.md), sem bloquear os próximos incrementos ou marcar testes não executados como aprovados. Registros abaixo preservam os incrementos anteriores.
 
 O complemento da [US-033](docs/development/local-privacy.md) implementa Windows Hello opcional com rosto, digital ou PIN Windows, mantendo PIN do aplicativo como alternativa. Consulta nativa confirmou disponibilidade neste host; autenticação interativa ainda não foi homologada. Há protocolo/pacote sintético para o usuário validar consentimento e cancelamento, sem compartilhar credenciais. [ADR-0043](docs/architecture/adr/0043-windows-hello-local.md). O registro abaixo descreve a entrega PIN anterior.

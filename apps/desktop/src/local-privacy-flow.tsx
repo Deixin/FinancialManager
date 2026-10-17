@@ -10,9 +10,21 @@ import type { LockStatus } from './local-privacy.js';
 import type { LocalWorkspace } from './local-workspaces.js';
 import { LocalBackupFlow, LocalBackupPending } from './local-backup-flow.js';
 import { createBackupGateway, backupMessage } from './local-backup.js';
+import { createRestoreGateway, restoreMessage } from './local-restore.js';
+import type { RestorePreview } from './local-restore.js';
+import { LocalRestoreFlow } from './local-restore-flow.js';
 export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   const [gateway] = useState(createPrivacyGateway);
   const [backups] = useState(createBackupGateway);
+  const [restores] = useState(createRestoreGateway);
+  const [restoredWorkspaceId, setRestoredWorkspaceId] = useState<string | null>(
+    null,
+  );
+  const [restoreSelection, setRestoreSelection] = useState<string | null>(null),
+    [restorePreview, setRestorePreview] = useState<RestorePreview | null>(null),
+    [restoreBusy, setRestoreBusy] = useState<
+      'selecting' | 'validating' | 'restoring' | null
+    >(null);
   const [backupWorkspace, setBackupWorkspace] = useState<LocalWorkspace | null>(
     null,
   );
@@ -30,6 +42,8 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     pending = useRef(false),
     helloPending = useRef(false),
     backupPending = useRef(false),
+    restorePickerPending = useRef(false),
+    restorePending = useRef(false),
     current = useRef<LockStatus | null>(null),
     heading = useRef<HTMLHeadingElement>(null);
   function clearPins() {
@@ -65,14 +79,22 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     if (
       !gateway ||
       !current.current ||
-      (!current.current.enabled && !backupPending.current)
+      (!current.current.enabled &&
+        !backupPending.current &&
+        !restorePending.current)
     )
       return;
     const token = ++epoch.current;
     pending.current = false;
     helloPending.current = false;
     backupPending.current = false;
+    restorePickerPending.current = false;
+    restorePending.current = false;
+    setRestoreSelection(null);
+    setRestorePreview(null);
+    setRestoreBusy(null);
     setBackupWorkspace(null);
+    setRestoredWorkspaceId(null);
     // Remove the financial tree immediately; late replies belong to the old epoch.
     accept({ ...current.current, locked: current.current.enabled });
     clearPins();
@@ -107,7 +129,12 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     // Native consent starts with the financial tree removed. Its owned prompt
     // blurs this window; Rust requires OS success and restored foreground focus.
     const blur = () => {
-      if (!helloPending.current && !backupPending.current) lockNow();
+      if (
+        !helloPending.current &&
+        !backupPending.current &&
+        !restorePickerPending.current
+      )
+        lockNow();
     };
     window.addEventListener('blur', blur);
     return () => window.removeEventListener('blur', blur);
@@ -189,6 +216,106 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
         pending.current = false;
         backupPending.current = false;
         if (alive.current) setBusy(false);
+      }
+    }
+  }
+  async function cancelRestoreFlow() {
+    const token = ++epoch.current;
+    pending.current = true;
+    restorePending.current = false;
+    restorePickerPending.current = false;
+    setRestoreSelection(null);
+    setRestorePreview(null);
+    setRestoreBusy(null);
+    setError('');
+    setNotice('');
+    setBusy(true);
+    try {
+      await restores?.cancel();
+      const next = await gateway?.status();
+      if (next && alive.current && epoch.current === token) accept(next);
+    } catch (reason) {
+      if (alive.current && epoch.current === token)
+        setError(restoreMessage(reason));
+    } finally {
+      if (epoch.current === token) pending.current = false;
+      if (alive.current && epoch.current === token) setBusy(false);
+    }
+  }
+  async function restoreOperation(
+    kind: 'selecting' | 'validating' | 'restoring',
+    password?: string,
+  ) {
+    if (!gateway || !restores || pending.current || !current.current) return;
+    const token = ++epoch.current;
+    pending.current = true;
+    restorePending.current = true;
+    restorePickerPending.current = kind === 'selecting';
+    setBackupWorkspace(null);
+    clearPins();
+    setRestoreBusy(kind);
+    setBusy(true);
+    setError('');
+    setNotice('');
+    try {
+      if (kind === 'selecting') {
+        setRestoredWorkspaceId(null);
+        setRestoreSelection(null);
+        setRestorePreview(null);
+        const selection = await restores.select();
+        if (alive.current && epoch.current === token) {
+          setRestoreSelection(selection);
+          if (!selection)
+            setNotice(
+              'Seleção de backup cancelada. Nenhum espaço foi alterado.',
+            );
+        }
+      } else if (kind === 'validating' && restoreSelection) {
+        const preview = await restores.preview(
+          restoreSelection,
+          password ?? '',
+        );
+        if (alive.current && epoch.current === token) {
+          setRestorePreview(preview);
+          setRestoreSelection(null);
+        }
+      } else if (kind === 'restoring' && restorePreview) {
+        const workspace = await restores.confirm(restorePreview.restore_id);
+        if (alive.current && epoch.current === token) {
+          setRestorePreview(null);
+          setRestoreSelection(null);
+          setRestoredWorkspaceId(workspace.id);
+          setNotice(
+            'Restauração concluída. O espaço restaurado está disponível nos espaços locais.',
+          );
+        }
+      }
+    } catch (reason) {
+      if (alive.current && epoch.current === token)
+        setError(restoreMessage(reason));
+    } finally {
+      if (alive.current && epoch.current === token) {
+        try {
+          const next = await gateway.status();
+          if (alive.current && epoch.current === token) {
+            accept(next);
+            if (next.locked && kind !== 'selecting') {
+              setRestoreSelection(null);
+              setRestorePreview(null);
+            }
+          }
+        } catch {
+          if (alive.current && epoch.current === token) setStatus(null);
+        }
+      }
+      if (epoch.current === token) {
+        pending.current = false;
+        restorePending.current = false;
+        restorePickerPending.current = false;
+        if (alive.current) {
+          setRestoreBusy(null);
+          setBusy(false);
+        }
       }
     }
   }
@@ -289,6 +416,17 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   }
   if (!gateway) return <LocalWorkspaceFlow onExit={onExit} />;
   if (backupPending.current) return <LocalBackupPending onCancel={lockNow} />;
+  if (restoreBusy)
+    return (
+      <LocalRestoreFlow
+        key={restoreBusy}
+        preview={null}
+        busy={restoreBusy}
+        onPreview={() => {}}
+        onConfirm={() => {}}
+        onCancel={() => void cancelRestoreFlow()}
+      />
+    );
   if (status && !status.locked && !settings)
     return (
       <>
@@ -300,6 +438,12 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
               setError('');
               setNotice('');
               setSettings(true);
+              if (restoreSelection || restorePreview)
+                void restores
+                  ?.cancel()
+                  .catch((reason) => setError(restoreMessage(reason)));
+              setRestoreSelection(null);
+              setRestorePreview(null);
             }}
           >
             Privacidade local
@@ -320,7 +464,18 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
             {error}
           </p>
         )}
-        {backupWorkspace ? (
+        {restoreSelection || restorePreview ? (
+          <LocalRestoreFlow
+            key={restorePreview ? 'preview' : 'password'}
+            preview={restorePreview}
+            busy={null}
+            onPreview={(password) =>
+              void restoreOperation('validating', password)
+            }
+            onConfirm={() => void restoreOperation('restoring')}
+            onCancel={() => void cancelRestoreFlow()}
+          />
+        ) : backupWorkspace ? (
           <LocalBackupFlow
             name={backupWorkspace.display_name}
             onCreate={(password, confirmation) =>
@@ -331,7 +486,10 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
         ) : (
           <LocalWorkspaceFlow
             onExit={() => void leave()}
+            initialWorkspaceId={restoredWorkspaceId}
+            onRestore={() => void restoreOperation('selecting')}
             onBackup={(workspace) => {
+              setRestoredWorkspaceId(null);
               setError('');
               setNotice('');
               setBackupWorkspace(workspace);

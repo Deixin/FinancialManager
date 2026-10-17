@@ -4,8 +4,10 @@ use crate::{
     keys::KeyStore,
     local_backup::{BackupResult, CreateBackup, SealedBackup},
     local_lock::{ConfigurePin, LocalLock, LockStatus, PinInput},
+    local_restore::{self, Controller, PreviewRestore, RestorePreview, SelectedBackup},
     local_workspaces::{CreateWorkspace, Installation, Workspace},
     lock_store::PolicyStore,
+    restore_source::{RestoreSource, WindowsRestoreSource},
     windows_hello::{HelloAvailability, HelloVerifier, WindowsHello},
 };
 use std::{
@@ -28,11 +30,21 @@ pub struct LocalState {
     hello: Arc<dyn HelloVerifier>,
     backup_active: Arc<AtomicBool>,
     backup_destination: Arc<dyn BackupDestination>,
+    restore_source: Arc<dyn RestoreSource>,
 }
 pub struct BackupJob {
     sealed: SealedBackup,
     lease: BackupLease,
     _permit: BackupPermit,
+}
+pub struct RestoreSelectionJob {
+    lease: BackupLease,
+    _permit: BackupPermit,
+}
+impl RestoreSelectionJob {
+    pub fn lease(&self) -> BackupLease {
+        self.lease
+    }
 }
 #[derive(Clone, Copy)]
 pub struct BackupLease {
@@ -53,6 +65,7 @@ impl BackupJob {
 struct Session {
     installation: Installation,
     privacy: LocalLock,
+    restore: Controller,
 }
 impl LocalState {
     #[cfg(windows)]
@@ -98,7 +111,18 @@ impl LocalState {
             hello,
             backup_active: Arc::new(AtomicBool::new(false)),
             backup_destination,
+            restore_source: Arc::new(WindowsRestoreSource),
         }
+    }
+    pub fn with_restore_source(
+        root: PathBuf,
+        keys: Arc<dyn KeyStore>,
+        policies: Arc<dyn PolicyStore>,
+        source: Arc<dyn RestoreSource>,
+    ) -> Self {
+        let mut state = Self::with_policies(root, keys, policies);
+        state.restore_source = source;
+        state
     }
     pub fn force_lock(&self) {
         self.generation.fetch_add(1, Ordering::SeqCst);
@@ -124,11 +148,13 @@ impl LocalState {
             *state = Some(Session {
                 installation,
                 privacy,
+                restore: Controller::default(),
             });
         }
         let session = state.as_mut().ok_or(LocalError::StorageUnavailable)?;
         if self.force_locked.swap(false, Ordering::SeqCst) {
             session.privacy.lock();
+            session.restore.clear_preview(&session.installation)?;
         }
         if sensitive {
             session.privacy.require_open()?;
@@ -136,6 +162,7 @@ impl LocalState {
         let result = action(session);
         if self.force_locked.swap(false, Ordering::SeqCst) {
             session.privacy.lock();
+            session.restore.clear_preview(&session.installation)?;
         }
         if sensitive {
             session.privacy.require_open()?;
@@ -149,7 +176,12 @@ impl LocalState {
         self.with(|i| i.list())
     }
     pub fn create(&self, input: CreateWorkspace) -> Result<Workspace> {
-        self.with(|i| i.create(input))
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            s.installation.create(input)
+        })
     }
     pub fn open(&self, id: &str) -> Result<Workspace> {
         self.with(|i| i.open_workspace(id))
@@ -165,6 +197,9 @@ impl LocalState {
             .fetch_add(1, Ordering::SeqCst)
             .wrapping_add(1);
         let (sealed, installation) = self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
             Ok((s.installation.prepare_backup(&input)?, s.installation.id()))
         })?;
         // Drop and zeroize the recovery password before any OS picker can wait for input.
@@ -338,6 +373,201 @@ impl LocalState {
         Ok(status)
     }
 }
+impl LocalState {
+    pub fn begin_restore_selection(&self) -> Result<RestoreSelectionJob> {
+        self.backup_active
+            .compare_exchange(false, true, Ordering::SeqCst, Ordering::SeqCst)
+            .map_err(|_| LocalError::RequestConflict)?;
+        let permit = BackupPermit(self.backup_active.clone());
+        let generation = self
+            .generation
+            .fetch_add(1, Ordering::SeqCst)
+            .wrapping_add(1);
+        let installation = self.access(true, |s| {
+            s.restore.clear(&s.installation)?;
+            Ok(s.installation.id())
+        })?;
+        Ok(RestoreSelectionJob {
+            lease: BackupLease {
+                installation,
+                generation,
+            },
+            _permit: permit,
+        })
+    }
+    pub fn choose_restore_source(
+        &self,
+        lease: BackupLease,
+        window: isize,
+    ) -> Result<Option<PathBuf>> {
+        self.access(true, |s| {
+            if !self.valid_backup_lease(lease) || s.installation.id() != lease.installation {
+                return Err(LocalError::LocalLocked);
+            }
+            Ok(())
+        })?;
+        self.on_focus_lost();
+        self.restore_source.choose(window)
+    }
+    pub fn finish_restore_selection(
+        &self,
+        job: RestoreSelectionJob,
+        path: Option<PathBuf>,
+    ) -> Result<SelectedBackup> {
+        self.access(false, |s| {
+            if !self.valid_backup_lease(job.lease) || s.installation.id() != job.lease.installation
+            {
+                return Err(LocalError::LocalLocked);
+            }
+            let Some(path) = path else {
+                return Ok(SelectedBackup { selection_id: None });
+            };
+            let metadata = std::fs::symlink_metadata(&path)?;
+            if metadata.file_type().is_symlink()
+                || !metadata.is_file()
+                || !path
+                    .extension()
+                    .is_some_and(|e| e.eq_ignore_ascii_case("fmbackup"))
+                || metadata.len() > crate::local_backup::MAX_PACKAGE as u64
+            {
+                return Err(LocalError::RestoreUnavailable);
+            }
+            let path = path.canonicalize()?;
+            if path.starts_with(self.root.canonicalize()?) {
+                return Err(LocalError::RestoreUnavailable);
+            }
+            let id = crate::identity::new_id().map_err(|_| LocalError::StorageUnavailable)?;
+            s.restore.selection = Some((id, path));
+            Ok(SelectedBackup {
+                selection_id: Some(id.to_string()),
+            })
+        })
+    }
+    pub fn preview_restore(&self, input: PreviewRestore) -> Result<RestorePreview> {
+        input.validate()?;
+        if self.backup_active.load(Ordering::SeqCst) {
+            return Err(LocalError::RequestConflict);
+        }
+        let generation = self
+            .generation
+            .fetch_add(1, Ordering::SeqCst)
+            .wrapping_add(1);
+        let preview = self.access(true, |s| {
+            s.restore.clear_preview(&s.installation)?;
+            let (id, path) = s
+                .restore
+                .selection
+                .as_ref()
+                .ok_or(LocalError::RestoreUnavailable)?;
+            if id.to_string() != input.selection_id {
+                return Err(LocalError::RestoreUnavailable);
+            }
+            let backup = crate::local_backup::read_verified(path, &input.password)?;
+            let prepared = local_restore::prepare(&s.installation, backup)?;
+            let preview = prepared.preview.clone();
+            s.restore.prepared = Some((generation, prepared));
+            s.restore.selection = None;
+            Ok(preview)
+        })?;
+        drop(input);
+        if self.generation.load(Ordering::SeqCst) != generation {
+            self.access(false, |s| s.restore.clear_preview(&s.installation))?;
+            return Err(LocalError::LocalLocked);
+        }
+        Ok(preview)
+    }
+    pub fn confirm_restore(&self, restore_id: &str) -> Result<Workspace> {
+        let id =
+            crate::identity::resource_id(restore_id).map_err(|_| LocalError::RestoreUnavailable)?;
+        let generation = self.generation.load(Ordering::SeqCst);
+        let result = self.access(true, |s| {
+            if let Some(workspace) = local_restore::replay(&s.installation, id)? {
+                return Ok(workspace);
+            }
+            let (preview_generation, prepared) = s
+                .restore
+                .prepared
+                .as_ref()
+                .ok_or(LocalError::RestoreUnavailable)?;
+            if *preview_generation != generation || prepared.preview.restore_id != restore_id {
+                return Err(LocalError::RestoreUnavailable);
+            }
+            let result = local_restore::confirm(&s.installation, prepared, || {
+                self.generation.load(Ordering::SeqCst) == generation
+                    && !self.force_locked.load(Ordering::SeqCst)
+            })?;
+            s.restore.prepared = None;
+            Ok(result)
+        })?;
+        if self.generation.load(Ordering::SeqCst) != generation {
+            return Err(LocalError::LocalLocked);
+        }
+        Ok(result)
+    }
+    pub fn cancel_restore(&self) -> Result<()> {
+        self.generation.fetch_add(1, Ordering::SeqCst);
+        self.access(false, |s| s.restore.clear(&s.installation))
+    }
+}
+#[tauri::command]
+pub async fn select_local_backup(
+    state: State<'_, Arc<LocalState>>,
+    window: tauri::WebviewWindow,
+) -> Result<SelectedBackup> {
+    let state = state.inner().clone();
+    let worker = state.clone();
+    let job = tauri::async_runtime::spawn_blocking(move || worker.begin_restore_selection())
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)??;
+    let lease = job.lease();
+    #[cfg(windows)]
+    let handle = window.hwnd().map_err(|_| LocalError::RestoreUnavailable)?.0 as isize;
+    #[cfg(not(windows))]
+    let handle = 0;
+    let (sender, receiver) = std::sync::mpsc::channel();
+    let chooser = state.clone();
+    window
+        .run_on_main_thread(move || {
+            let _ = sender.send(chooser.choose_restore_source(lease, handle));
+        })
+        .map_err(|_| LocalError::RestoreUnavailable)?;
+    let path = tauri::async_runtime::spawn_blocking(move || receiver.recv())
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)?
+        .map_err(|_| LocalError::RestoreUnavailable)??;
+    tauri::async_runtime::spawn_blocking(move || state.finish_restore_selection(job, path))
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)?
+}
+#[tauri::command]
+pub async fn preview_local_restore(
+    state: State<'_, Arc<LocalState>>,
+    input: PreviewRestore,
+) -> Result<RestorePreview> {
+    input.validate()?;
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.preview_restore(input))
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)?
+}
+#[tauri::command]
+pub async fn confirm_local_restore(
+    state: State<'_, Arc<LocalState>>,
+    restore_id: String,
+) -> Result<Workspace> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.confirm_restore(&restore_id))
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)?
+}
+#[tauri::command]
+pub async fn cancel_local_restore(state: State<'_, Arc<LocalState>>) -> Result<()> {
+    state.generation.fetch_add(1, Ordering::SeqCst);
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.cancel_restore())
+        .await
+        .map_err(|_| LocalError::RestoreUnavailable)?
+}
 #[tauri::command]
 pub async fn list_local_workspaces(state: State<'_, Arc<LocalState>>) -> Result<Vec<Workspace>> {
     let state = state.inner().clone();
@@ -500,7 +730,11 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             disable_local_pin,
             configure_local_hello,
             unlock_local_hello,
-            create_local_backup
+            create_local_backup,
+            select_local_backup,
+            preview_local_restore,
+            confirm_local_restore,
+            cancel_local_restore
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))

@@ -45,18 +45,26 @@ export const permissions = Object.freeze([
   'allow-configure-local-hello',
   'allow-unlock-local-hello',
   'allow-create-local-backup',
+  'allow-select-local-backup',
+  'allow-preview-local-restore',
+  'allow-confirm-local-restore',
+  'allow-cancel-local-restore',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',
-  'product-restore-as-new-workspace-us035',
   'durable-outbox-sync-product-integration',
   'signed-desktop-release-and-other-platforms',
 ]);
 const priorPending = Object.freeze([
   'native-windows-hello-interactive-hardware-validation',
   'product-backup-restore-us034-us035',
-  ...pending.slice(2),
+  ...pending.slice(1),
 ]);
+const priorBackupPending = [
+  pending[0],
+  'product-restore-as-new-workspace-us035',
+  ...pending.slice(1),
+];
 export const lockHashes = () => ({
   ...vaultHashes(),
   ...Object.fromEntries(
@@ -97,6 +105,7 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
   const native = report?.scope === 'us033-local-lock-windows',
     legacy = report?.format_version === 1,
     priorHello = report?.format_version === 2,
+    priorBackup = report?.format_version === 3,
     checks = native
       ? legacy
         ? nativeChecks
@@ -133,8 +142,8 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (report.format_version !== 3 &&
-      !((legacy || priorHello) && !matchSources)) ||
+    (report.format_version !== 4 &&
+      !((legacy || priorHello || priorBackup) && !matchSources)) ||
     !['us033-local-lock-windows', 'us033-local-lock-browser'].includes(
       report.scope,
     ) ||
@@ -152,7 +161,9 @@ export function validateLockEvidence(report, { matchSources = true } = {}) {
             ]
           : priorHello
             ? priorPending
-            : pending,
+            : priorBackup
+              ? priorBackupPending
+              : pending,
       ) ||
     !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(report.completed_at_utc) ||
     !Number.isFinite(Date.parse(report.completed_at_utc)) ||

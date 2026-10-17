@@ -29,7 +29,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us034-backup-windows',
   passed: false,
   synthetic_only: true,
@@ -132,7 +132,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 11);
+    assert.equal(permissions.length, 15);
     run('cargo', [
       'build',
       '--locked',

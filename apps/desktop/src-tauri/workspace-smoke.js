@@ -73,9 +73,8 @@
           'SYNTHETIC US031 FIRST',
         );
         checks.empty_overview_without_fake_balance =
-          document.body.textContent.includes(
-            'Nenhuma conta financeira cadastrada',
-          ) && !document.body.textContent.includes('R$');
+          document.body.textContent.includes('Contas e movimentações') &&
+          !document.body.textContent.includes('R$');
         button('Ver espaços locais').click();
         await wait(() => button('SYNTHETIC US031 FIRST'));
         checks.reopened_or_listed = true;

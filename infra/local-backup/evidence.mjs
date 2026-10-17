@@ -30,10 +30,14 @@ export const nativeChecks = Object.freeze([
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',
-  'product-restore-as-new-workspace-us035',
   'expanded-schema-future-entities-and-outbox-integration',
   'signed-release-other-platforms-and-power-loss-filesystems',
 ]);
+const legacyPending = [
+  pending[0],
+  'product-restore-as-new-workspace-us035',
+  ...pending.slice(1),
+];
 export const backupHashes = () => ({
   ...lockHashes(),
   ...Object.fromEntries(
@@ -84,14 +88,16 @@ export function validateBackupEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    report.format_version !== 1 ||
+    (report.format_version !== 2 &&
+      !(report.format_version === 1 && !matchSources)) ||
     !['us034-backup-windows', 'us034-backup-browser'].includes(report.scope) ||
     report.passed !== true ||
     report.synthetic_only !== true ||
     report.resources_closed !== true ||
     !exact(report.checks, checks) ||
     checks.some((name) => report.checks[name] !== true) ||
-    JSON.stringify(report.pending) !== JSON.stringify(pending) ||
+    JSON.stringify(report.pending) !==
+      JSON.stringify(report.format_version === 1 ? legacyPending : pending) ||
     !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(report.completed_at_utc) ||
     !Number.isFinite(Date.parse(report.completed_at_utc)) ||
     new Date(report.completed_at_utc).toISOString() !== report.completed_at_utc

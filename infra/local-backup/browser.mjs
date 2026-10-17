@@ -20,7 +20,7 @@ const row = {
   created_at: '2026-10-17T00:00:00.000Z',
 };
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us034-backup-browser',
   passed: false,
   synthetic_only: true,
@@ -135,7 +135,7 @@ try {
       /não são substituídos/,
       /serviço receberá o pacote criptografado/,
       /64 MiB/,
-      /Restauração como novo espaço/,
+      /Para restaurar como novo espaço/,
     ])
       await page.getByText(text).waitFor();
   });

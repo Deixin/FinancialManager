@@ -127,6 +127,10 @@ try {
         'allow-configure-local-hello',
         'allow-unlock-local-hello',
         'allow-create-local-backup',
+        'allow-select-local-backup',
+        'allow-preview-local-restore',
+        'allow-confirm-local-restore',
+        'allow-cancel-local-restore',
       ],
     );
     assert.equal(

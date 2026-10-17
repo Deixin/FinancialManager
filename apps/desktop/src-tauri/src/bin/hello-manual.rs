@@ -66,7 +66,11 @@ fn run() -> std::result::Result<(), Box<dyn std::error::Error>> {
             financial_manager_desktop::commands::disable_local_pin,
             financial_manager_desktop::commands::configure_local_hello,
             financial_manager_desktop::commands::unlock_local_hello,
-            financial_manager_desktop::commands::create_local_backup
+            financial_manager_desktop::commands::create_local_backup,
+            financial_manager_desktop::commands::select_local_backup,
+            financial_manager_desktop::commands::preview_local_restore,
+            financial_manager_desktop::commands::confirm_local_restore,
+            financial_manager_desktop::commands::cancel_local_restore,
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))

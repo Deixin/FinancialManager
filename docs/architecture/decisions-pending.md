@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-035: [ADR-0046](adr/0046-restauracao-como-novo-workspace.md) integra restauração de produto em nova autoridade local, com prévia, IDs/chave/geração novos e repetição segura de confirmação. Não substitui espaços existentes ou reconecta cloud. Homologações humanas seguem diferidas conforme ADR-0044; próxima história US-036. As entradas abaixo preservam decisões anteriores.
+
 Em 2026-10-17, o usuário determinou que homologações humanas serão feitas após integrar todo o sistema. [ADR-0044](adr/0044-homologacao-humana-apos-integracao.md) registra o avanço sem exigir essas confirmações por incremento. Windows Hello/US-033 continua com homologação interativa diferida, sem aprovação humana registrada; isso não bloqueia US-034 ou as histórias seguintes. Automação e gates de segurança continuam obrigatórios.
 
 US-034: [ADR-0045](adr/0045-backup-criptografado-de-produto.md) implementa pacote de produto v1 autenticado, manifesto/schema/checksum, snapshot SQLCipher e senha independente, com seletor nativo estreito e publicação sem sobrescrita. Restauração em novo workspace pertence à US-035. Interação humana do seletor é diferida; G07-VAULT global, outras plataformas, distribuição, outbox e DP-01 a DP-04 mantêm seus escopos. Registros abaixo descrevem as decisões anteriores.

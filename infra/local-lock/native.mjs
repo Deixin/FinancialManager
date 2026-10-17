@@ -31,7 +31,7 @@ const env = { ...process.env, CARGO_TARGET_DIR: target },
   perl = path.join(root, '.tools/strawberry-perl-5.42.3.1/perl/bin');
 if (existsSync(perl)) env[pathKey] = perl + path.delimiter + env[pathKey];
 const report = {
-  format_version: 3,
+  format_version: 4,
   scope: 'us033-local-lock-windows',
   passed: false,
   synthetic_only: true,

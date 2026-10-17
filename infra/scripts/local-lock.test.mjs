@@ -19,7 +19,7 @@ const load = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-033-lock-' +
           kind +
-          '-2026-10-17-us034.json',
+          '-2026-10-17-us035.json',
         import.meta.url,
       ),
       'utf8',
@@ -70,7 +70,7 @@ test('local privacy status decoder rejects unknown secrets, unsupported biometri
 });
 test('historical PIN and Hello reports cannot claim the current backup permission scope', () => {
   for (const kind of ['browser', 'windows']) {
-    for (const suffix of ['', '-hello']) {
+    for (const suffix of ['', '-hello', '-us034']) {
       const report = JSON.parse(
         readFileSync(
           new URL(
