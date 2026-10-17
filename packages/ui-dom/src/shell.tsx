@@ -18,6 +18,7 @@ export type AppShellProps = Readonly<{
   onRetry?: () => void;
   children?: ReactNode;
   footer?: ReactNode;
+  workspaceActions?: ReactNode;
 }>;
 
 export function ContentNotice({
@@ -51,6 +52,7 @@ export function AppShell({
   onRetry,
   children,
   footer,
+  workspaceActions,
 }: AppShellProps) {
   const id = useId();
   const mainId = `main-${id}`;
@@ -115,9 +117,11 @@ export function AppShell({
               <option key={workspace.id} value={workspace.id}>
                 {workspace.name} —{' '}
                 {workspace.mode === 'local' ? 'Local' : 'Nuvem'}
+                {workspace.detail ? ` · ${workspace.detail}` : ''}
               </option>
             ))}
           </select>
+          {workspaceActions}
           <div className="fm-location">
             <span className="fm-badge">{model.locationLabel}</span>
             <span>{model.locationDescription}</span>

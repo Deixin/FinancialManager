@@ -14,6 +14,7 @@ vault-smoke = ["rusqlite/trace"]
 lock-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 backup-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 restore-smoke = ["backup-smoke"]
+manager-smoke = ["workspace-smoke", "vault-smoke"]
 
 [dependencies]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
@@ -98,3 +99,13 @@ required-features = ["restore-smoke"]
 name = "restore-smoke"
 path = "src/bin/restore-smoke.rs"
 required-features = ["restore-smoke"]
+
+[[bin]]
+name = "workspace-manager-probe"
+path = "src/bin/workspace-manager-probe.rs"
+required-features = ["manager-smoke"]
+
+[[bin]]
+name = "workspace-manager-smoke"
+path = "src/bin/workspace-manager-smoke.rs"
+required-features = ["manager-smoke"]

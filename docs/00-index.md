@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A gestão de múltiplos espaços locais está documentada na [US-036](development/workspace-manager.md), com criação independente, seletor completo, filtro Local/Nuvem e repetição segura após resposta perdida.
+
 ## Leitura inicial
 
 | Ordem | Documento                                                        | Conteúdo                                |

@@ -6,8 +6,13 @@ import { createCryptoIdentity } from '@financial-manager/contracts';
 import {
   createLocalWorkspaceGateway,
   localWorkspaceMessage,
+  LocalWorkspaceError,
 } from './local-workspaces.js';
-import type { LocalWorkspace, Purpose } from './local-workspaces.js';
+import type {
+  LocalWorkspace,
+  Purpose,
+  CreateLocalWorkspace,
+} from './local-workspaces.js';
 import '@financial-manager/ui-dom/styles.css';
 
 export function LocalWorkspaceFlow({
@@ -15,11 +20,13 @@ export function LocalWorkspaceFlow({
   onBackup,
   onRestore,
   initialWorkspaceId,
+  onLocked,
 }: {
   onExit: () => void;
   onBackup?: (workspace: LocalWorkspace) => void;
   onRestore?: () => void;
   initialWorkspaceId?: string | null;
+  onLocked?: () => void;
 }) {
   const [gateway] = useState(createLocalWorkspaceGateway);
   const [workspaces, setWorkspaces] = useState<readonly LocalWorkspace[]>([]);
@@ -29,9 +36,12 @@ export function LocalWorkspaceFlow({
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [purpose, setPurpose] = useState<Purpose>('PERSONAL');
+  const [creating, setCreating] = useState(false),
+    [catalogReady, setCatalogReady] = useState(false),
+    [filter, setFilter] = useState<'local' | 'cloud'>('local');
   const pending = useRef(false),
     alive = useRef(true),
-    requestId = useRef<string | null>(null),
+    request = useRef<CreateLocalWorkspace | null>(null),
     heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
     alive.current = true;
@@ -39,43 +49,86 @@ export function LocalWorkspaceFlow({
       alive.current = false;
     };
   }, []);
-  async function load() {
+  function failure(reason: unknown) {
+    setError(localWorkspaceMessage(reason));
+    if (
+      reason instanceof LocalWorkspaceError &&
+      reason.code === 'LOCAL_LOCKED'
+    ) {
+      setCurrent(null);
+      setWorkspaces([]);
+      setCatalogReady(false);
+      onLocked?.();
+    }
+  }
+  function beginCreate() {
+    if (loading || !gateway || !catalogReady) return;
+    setCurrent(null);
+    setRoute('overview');
+    setCreating(true);
+    setFilter('local');
+    setName('');
+    setPurpose('PERSONAL');
+    setError('');
+    request.current = null;
+  }
+  async function load(initialId?: string) {
     if (!gateway || pending.current) return;
     pending.current = true;
     setLoading(true);
     setError('');
     setCurrent(null);
+    setWorkspaces([]);
+    setCatalogReady(false);
+    setCreating(false);
+    setFilter('local');
+    setRoute('overview');
     try {
       const rows = await gateway.list();
-      if (alive.current) setWorkspaces(rows);
+      if (alive.current) {
+        setWorkspaces(rows);
+        setCatalogReady(true);
+        request.current = null;
+        if (initialId) {
+          if (!rows.some((row) => row.id === initialId))
+            throw new LocalWorkspaceError('INVALID_RESPONSE');
+          const row = await gateway.open(initialId);
+          if (alive.current) setCurrent(row);
+        }
+      }
     } catch (reason) {
-      if (alive.current) setError(localWorkspaceMessage(reason));
+      if (alive.current) failure(reason);
     } finally {
       pending.current = false;
       if (alive.current) setLoading(false);
     }
   }
   useEffect(() => {
-    if (initialWorkspaceId) void open(initialWorkspaceId);
-    else void load();
+    void load(initialWorkspaceId ?? undefined);
   }, [gateway, initialWorkspaceId]);
   useEffect(() => {
     if (!loading) heading.current?.focus();
     document.title = current
       ? 'Financial Manager · ' + current.display_name
-      : 'Financial Manager · Primeiro espaço';
-  }, [loading, current]);
+      : creating
+        ? 'Financial Manager · Novo espaço local'
+        : workspaces.length || (gateway && !catalogReady)
+          ? 'Financial Manager · Espaços locais'
+          : 'Financial Manager · Primeiro espaço';
+  }, [loading, current, creating, workspaces.length, gateway, catalogReady]);
   async function open(id: string) {
     if (!gateway || pending.current) return;
     pending.current = true;
     setLoading(true);
     setError('');
     setCurrent(null);
+    setRoute('overview');
+    setCreating(false);
     try {
       const row = await gateway.open(id);
       if (alive.current) setCurrent(row);
     } catch (reason) {
-      if (alive.current) setError(localWorkspaceMessage(reason));
+      if (alive.current) failure(reason);
     } finally {
       pending.current = false;
       if (alive.current) setLoading(false);
@@ -88,24 +141,29 @@ export function LocalWorkspaceFlow({
     setLoading(true);
     setError('');
     try {
-      requestId.current ??= createCryptoIdentity(
-        globalThis.crypto,
-        Date.now,
-      ).newId();
-      const row = await gateway.create({
-        workspace_id: requestId.current,
+      request.current ??= Object.freeze({
+        workspace_id: createCryptoIdentity(globalThis.crypto, Date.now).newId(),
         display_name: name.trim(),
         purpose,
       });
+      const row = await gateway.create(request.current);
       if (alive.current) {
         setWorkspaces((previous) => [
           ...previous.filter((item) => item.id !== row.id),
           row,
         ]);
         setCurrent(row);
+        setRoute('overview');
+        setCreating(false);
+        request.current = null;
       }
     } catch (reason) {
-      if (alive.current) setError(localWorkspaceMessage(reason));
+      if (
+        reason instanceof LocalWorkspaceError &&
+        reason.code === 'INVALID_WORKSPACE'
+      )
+        request.current = null;
+      if (alive.current) failure(reason);
     } finally {
       pending.current = false;
       if (alive.current) setLoading(false);
@@ -116,6 +174,12 @@ export function LocalWorkspaceFlow({
       id: row.id,
       name: row.display_name,
       mode: 'local' as const,
+      detail:
+        row.purpose === 'PERSONAL'
+          ? 'Pessoal'
+          : row.purpose === 'BUSINESS'
+            ? 'Empresa'
+            : 'Outro',
     }));
     return (
       <DesktopShell
@@ -131,6 +195,16 @@ export function LocalWorkspaceFlow({
           sections: ['overview', 'settings'],
         })}
         workspaces={summaries}
+        workspaceActions={
+          <>
+            <button type="button" onClick={beginCreate}>
+              Criar outro espaço local
+            </button>
+            <button type="button" onClick={() => void load()}>
+              Gerenciar espaços locais
+            </button>
+          </>
+        }
         onWorkspaceChange={(id) => void open(id)}
         onNavigate={(next) =>
           setRoute(next === 'settings' ? 'settings' : 'overview')
@@ -203,7 +277,13 @@ export function LocalWorkspaceFlow({
           aria-labelledby="local-heading"
         >
           <h1 id="local-heading" ref={heading} tabIndex={-1}>
-            {workspaces.length ? 'Seus espaços locais' : 'Primeiro espaço'}
+            {creating
+              ? 'Novo espaço local'
+              : gateway && !catalogReady
+                ? 'Espaços locais'
+                : workspaces.length
+                  ? 'Seus espaços locais'
+                  : 'Primeiro espaço'}
           </h1>
           {loading && <p role="status">Acessando armazenamento local…</p>}
           {error && (
@@ -224,7 +304,36 @@ export function LocalWorkspaceFlow({
               Desktop. Esta visualização não salva dados.
             </p>
           )}
-          {workspaces.length > 0 ? (
+          {catalogReady && !creating && workspaces.length > 0 && (
+            <>
+              <p>
+                Seus espaços locais são independentes e não têm limite comercial
+                de quantidade.
+              </p>
+              <label htmlFor="workspace-filter">Armazenamento</label>
+              <select
+                id="workspace-filter"
+                value={filter}
+                onChange={(event) =>
+                  setFilter(event.target.value as 'local' | 'cloud')
+                }
+                disabled={loading}
+              >
+                <option value="local">Local — neste computador</option>
+                <option value="cloud">Nuvem</option>
+              </select>
+              {filter === 'cloud' && (
+                <p role="status">
+                  Espaços na nuvem exigem conta e estão indisponíveis nesta
+                  versão. Seus espaços locais continuam disponíveis sem conta.
+                </p>
+              )}
+            </>
+          )}
+          {catalogReady &&
+          !creating &&
+          workspaces.length > 0 &&
+          filter === 'local' ? (
             <ul className="local-list">
               {workspaces.map((row) => (
                 <li key={row.id}>
@@ -234,11 +343,27 @@ export function LocalWorkspaceFlow({
                     onClick={() => void open(row.id)}
                   >
                     {row.display_name} <span>Local</span>
+                    <span>
+                      {' '}
+                      ·{' '}
+                      {row.purpose === 'PERSONAL'
+                        ? 'Pessoal'
+                        : row.purpose === 'BUSINESS'
+                          ? 'Empresa'
+                          : 'Outro'}
+                    </span>
+                    <span>
+                      {' '}
+                      · Criado em{' '}
+                      {new Date(row.created_at).toLocaleString('pt-BR')}
+                    </span>
                   </button>
                 </li>
               ))}
             </ul>
-          ) : (
+          ) : creating ||
+            (catalogReady && workspaces.length === 0) ||
+            !gateway ? (
             <form onSubmit={(event) => void submit(event)} aria-busy={loading}>
               <p>
                 Escolha um nome e uma finalidade. Dados pessoais e fiscais não
@@ -252,7 +377,7 @@ export function LocalWorkspaceFlow({
                 onChange={(event) => setName(event.target.value)}
                 required
                 maxLength={120}
-                disabled={loading}
+                disabled={loading || Boolean(request.current)}
                 autoComplete="off"
               />
               <label htmlFor="workspace-purpose">Finalidade</label>
@@ -260,7 +385,7 @@ export function LocalWorkspaceFlow({
                 id="workspace-purpose"
                 value={purpose}
                 onChange={(event) => setPurpose(event.target.value as Purpose)}
-                disabled={loading}
+                disabled={loading || Boolean(request.current)}
               >
                 <option value="PERSONAL">Pessoal</option>
                 <option value="BUSINESS">Empresa</option>
@@ -277,6 +402,35 @@ export function LocalWorkspaceFlow({
                 {loading ? 'Criando espaço…' : 'Criar espaço local'}
               </button>
             </form>
+          ) : null}
+          {request.current && error && (
+            <p role="status">
+              Repita a mesma solicitação ou verifique os espaços locais antes de
+              iniciar outra criação.
+            </p>
+          )}
+          {catalogReady &&
+            !creating &&
+            workspaces.length > 0 &&
+            filter === 'local' && (
+              <button
+                className="entry-primary"
+                type="button"
+                onClick={beginCreate}
+                disabled={loading}
+              >
+                Criar outro espaço local
+              </button>
+            )}
+          {creating && (
+            <button
+              type="button"
+              className="entry-secondary"
+              disabled={loading}
+              onClick={() => void load()}
+            >
+              Cancelar criação
+            </button>
           )}
           <button
             type="button"

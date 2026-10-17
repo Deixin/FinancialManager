@@ -288,7 +288,7 @@ test('current fixture evidence requires real dual-engine gates, source hashes, c
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-025-fixtures-2026-10-17-us035.json',
+          '../../docs/quality/evidence/us-025-fixtures-2026-10-17-us036.json',
           import.meta.url,
         ),
         'utf8',

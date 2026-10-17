@@ -26,6 +26,11 @@ export function installSyntheticWorkspaceBridge(options = {}) {
     holdBackup: false,
     releaseBackup: null,
     savedBackups: 0,
+    holdOpen: false,
+    releaseOpen: null,
+    failOpenNext: false,
+    lockOpenNext: false,
+    failListNext: false,
     restoreSelected: false,
     restorePrepared: false,
     restoreCancelPicker: false,
@@ -220,9 +225,27 @@ export function installSyntheticWorkspaceBridge(options = {}) {
               : null,
         };
       }
-      if (command === 'list_local_workspaces')
+      if (command === 'list_local_workspaces') {
+        if (state.failListNext) {
+          state.failListNext = false;
+          throw 'SYNTHETIC_CATALOG_UNAVAILABLE';
+        }
         return structuredClone(state.rows);
+      }
       if (command === 'open_local_workspace') {
+        if (state.holdOpen)
+          await new Promise((resolve) => {
+            state.releaseOpen = resolve;
+          });
+        if (state.lockOpenNext) {
+          state.lockOpenNext = false;
+          state.locked = Boolean(state.pin);
+          throw 'LOCAL_LOCKED';
+        }
+        if (state.failOpenNext) {
+          state.failOpenNext = false;
+          throw 'SYNTHETIC_PRIVATE_OPEN_FAILURE';
+        }
         const row = state.rows.find((row) => row.id === args.workspaceId);
         if (!row) throw 'NOT_FOUND';
         return structuredClone(row);

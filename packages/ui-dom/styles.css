@@ -107,7 +107,8 @@
   color: var(--fm-color-sidebarMuted);
   font-size: var(--fm-type-caption-size);
 }
-.fm-workspace select {
+.fm-workspace select,
+.fm-workspace > button {
   width: 100%;
   color: var(--fm-color-text);
 }

@@ -1,5 +1,7 @@
 # Restaurar backup local — US-035
 
+A [US-036](workspace-manager.md) amplia o fluxo com criação de outros espaços, finalidade no seletor, lista completa após restauração e reentrada e troca de contexto segura. Os protocolos atuais das histórias anteriores foram arquivados com sufixo us036; os registros abaixo preservam suas entregas históricas.
+
 Na lista de espaços locais do Desktop Windows, escolha Restaurar backup. Selecione o arquivo .fmbackup no Windows. Com PIN ativo, desbloqueie novamente por PIN/Hello e informe a senha original do pacote. Confira a prévia e reconheça a criação de um novo espaço local antes de confirmar. O aplicativo não guarda a senha; PIN/Hello não a recuperam. A prévia não publica um espaço e não altera nenhum espaço existente.
 
 A prévia contém nome de origem, data do backup, nome resultante e contagens das 12 tabelas financeiras disponíveis. Schema/integridade/contagens de todas as 15 tabelas são verificados no Rust. O nome recebe o sufixo restaurado; IDs do espaço e de recursos, geração e chave Windows são novos. Valores, vínculos e histórico são preservados. A cópia não reconecta cloud, não substitui outro espaço e não inclui originais de documentos. Consulta/edição financeira completa e entidades ainda não implementadas mantêm suas próximas histórias.

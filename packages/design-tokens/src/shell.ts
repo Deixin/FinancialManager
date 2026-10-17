@@ -56,6 +56,7 @@ export type WorkspaceSummary = Readonly<{
   id: string;
   name: string;
   mode: 'local' | 'cloud';
+  detail?: string;
 }>;
 export type ShellInput = Readonly<{
   surface: Surface;

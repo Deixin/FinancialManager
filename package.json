@@ -94,7 +94,9 @@
     "desktop:backup:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-backup/browser.mjs",
     "desktop:backup:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-backup/native.mjs",
     "desktop:restore:check": "turbo run build --filter=@financial-manager/desktop && node infra/local-restore/browser.mjs",
-    "desktop:restore:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-restore/native.mjs"
+    "desktop:restore:native": "turbo run build --filter=@financial-manager/desktop && node infra/local-restore/native.mjs",
+    "desktop:manager:check": "turbo run build --filter=@financial-manager/desktop && node infra/workspace-manager/browser.mjs",
+    "desktop:manager:native": "turbo run build --filter=@financial-manager/desktop && node infra/workspace-manager/native.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

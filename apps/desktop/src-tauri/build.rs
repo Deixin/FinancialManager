@@ -69,6 +69,9 @@ fn main() {
     if cfg!(feature = "restore-smoke") {
         commands.push("finish_restore_smoke");
     }
+    if cfg!(feature = "manager-smoke") {
+        commands.push("finish_workspace_manager_smoke");
+    }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());
     tauri_build::try_build(

@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-036](docs/development/workspace-manager.md) permite criar e alternar entre múltiplos espaços locais independentes, sem limite comercial. O seletor mostra finalidade e Local; o filtro Nuvem explica a indisponibilidade do acesso cloud. Os testes verificam persistência SQLCipher e troca de contexto. Homologações humanas ficam para após a integração completa.
+
 Gestão financeira pessoal, com evolução prevista para MEI e pequenas empresas. O produto combina Desktop local gratuito, Web em nuvem e Mobile com réplica offline autorizada, mantendo o workspace como fronteira de dados, acesso e cobrança.
 
 Este repositório contém a documentação v1.0, a estrutura inicial de desenvolvimento e um experimento nativo executável da US-001: Tauri, SQLCipher, chave protegida pelo Windows e backup autenticado. O experimento usa apenas dados sintéticos; a aplicação financeira de produto ainda será implementada. O bootstrap cobre a preparação da US-010 e parte da US-011. A US-001 foi homologada entre o host e uma VM Windows 11 independente, conforme a [evidência registrada](docs/quality/evidence/us-001-windows-vm-2026-10-13.json).
