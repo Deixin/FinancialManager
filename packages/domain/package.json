@@ -43,6 +43,10 @@
     "./classification": {
       "types": "./dist/classification.d.ts",
       "import": "./dist/classification.js"
+    },
+    "./counterparties": {
+      "types": "./dist/counterparties.d.ts",
+      "import": "./dist/counterparties.js"
     }
   },
   "files": [

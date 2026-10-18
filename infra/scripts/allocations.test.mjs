@@ -310,7 +310,7 @@ test('SQLite allocation scenarios exercise durable multi-category edits concurre
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-046-allocations-core-2026-10-18.json',
+      'docs/quality/evidence/us-046-allocations-core-2026-10-18-us047-counterparties.json',
     ),
   );
 test('allocation evidence requires real cross-engine gates current source hashes and closed synthetic resources', () => {

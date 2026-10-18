@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-047: catálogo compartilhado de contrapartes — 2026-10-18 — em andamento
+
+Cadastro leve por workspace com nome, identificador opcional, relacionamento, arquivo/reativação, busca normalizada e base completa. Homônimos são independentes; reutilização exige seleção explícita. Nenhuma edição altera o grafo financeiro ou a descrição original. [Guia](../development/counterparties.md) e [ADR-0065](../architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 472 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 144 Markdown. O protocolo próprio aprovou 82 gates PostgreSQL/SQLite, com 12 cenários por engine, e nove testes Node próprios. As 11 suítes de dados, nove Chromium e nove Windows afetadas passaram novamente. Foram arquivadas 30 cápsulas novas ou renovadas; 47 evidências atuais conferem com 505 hashes de fontes no Git staging. Os 17 relatórios não afetados mantêm fontes atuais. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Próximo incremento: associação versionada às transações pelo gravador existente; depois, Desktop. Auditoria/versionamento dos catálogos, feed/outbox e recibos duráveis seguem pendentes. Sem migration, dependência de produção, mudança de backup ou permissão Tauri. Sete originais e DP-01 a DP-04 preservados; registros abaixo são históricos.
+
 ## Desktop — US-046: editor de rateios versionados — 2026-10-18 — integrado no recorte local
 
 Movimentações e consulta por classificação oferecem edição explícita de parcelas, com categorias/subcategorias, valores e notas. A soma precisa fechar exatamente; valores financeiros, origem e tags permanecem iguais. IDs/base são preservados após resposta incerta; grupos exigem ambos os membros e somente registros alterados recebem revisão. [Guia](../development/desktop-allocations.md) e [ADR-0064](../architecture/adr/0064-editor-de-rateios-no-desktop.md).

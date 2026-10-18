@@ -133,3 +133,15 @@ export interface WriteTaxonomyTables extends WriteCategoriesTables {
     status: 'ACTIVE' | 'ARCHIVED';
   };
 }
+
+export interface WriteCounterpartiesTables {
+  counterparty: {
+    id: string;
+    workspace_id: string;
+    display_name: string;
+    identifier_type: 'CPF' | 'CNPJ' | 'OTHER' | null;
+    identifier_value: string | null;
+    relationship_hint: 'CUSTOMER' | 'SUPPLIER' | 'OTHER' | null;
+    status: 'ACTIVE' | 'ARCHIVED';
+  };
+}

@@ -135,6 +135,12 @@ export function validateDataAccessSource(filename, source) {
             '@financial-manager/contracts',
             '@financial-manager/finance-ports',
             '@financial-manager/finance-ports/revisions',
+            ...(module === 'counterparties'
+              ? [
+                  '@financial-manager/domain/counterparties',
+                  '@financial-manager/finance-ports/counterparties',
+                ]
+              : []),
             ...(module === 'categories'
               ? [
                   '@financial-manager/domain/categories',

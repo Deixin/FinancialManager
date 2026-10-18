@@ -12,7 +12,8 @@
     "./card-payments": "./dist/card-payments.js",
     "./categories": "./dist/categories.js",
     "./taxonomy": "./dist/taxonomy.js",
-    "./classification": "./dist/classification.js"
+    "./classification": "./dist/classification.js",
+    "./counterparties": "./dist/counterparties.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

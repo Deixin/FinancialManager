@@ -222,7 +222,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-045-desktop-taxonomy-' +
         kind +
-        '-2026-10-18-us046-allocations-desktop.json',
+        '-2026-10-18-us047-counterparties.json',
     ),
   );
 test('Desktop taxonomy evidence requires UI native portability crash rollback and cleanup gates with current sources', () => {

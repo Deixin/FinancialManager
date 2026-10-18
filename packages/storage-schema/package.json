@@ -10,7 +10,8 @@
     "./synthetic-probe": "./dist/synthetic-probe.js",
     "./migrations": "./dist/migrations.js",
     "./categories": "./dist/category-changes.js",
-    "./taxonomy": "./dist/taxonomy-changes.js"
+    "./taxonomy": "./dist/taxonomy-changes.js",
+    "./counterparties": "./dist/counterparty-changes.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

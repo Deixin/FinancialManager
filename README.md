@@ -1,5 +1,7 @@
 # Financial Manager
 
+A US-047 está em desenvolvimento: [cadastro compartilhado de contrapartes](docs/development/counterparties.md) implementado. Próximo incremento: associação versionada às movimentações; depois, integração Desktop. Homologações humanas após a integração completa.
+
 O [editor de rateios US-046 no Desktop](docs/development/desktop-allocations.md) permite editar parcelas de múltiplas categorias com soma exata, notas/IDs e histórico SQLCipher. Preserva valores, origem e tags e exige grupos completos. Próxima história: US-047, contrapartes normalizadas. Homologações humanas após integração completa; registros abaixo são históricos.
 
 A [base de rateios US-046](docs/development/allocations.md) permite múltiplas categorias com soma exata, IDs/notas preservados e revisões atômicas em PostgreSQL/SQLite. O próximo incremento integra o editor Desktop e a paridade Rust. Homologações humanas seguem após integração completa; registros abaixo são históricos.
