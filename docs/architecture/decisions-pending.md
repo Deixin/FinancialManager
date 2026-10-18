@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-046 Desktop: [ADR-0064](adr/0064-editor-de-rateios-no-desktop.md) integra o editor ao cofre/revisões, com 29 comandos específicos, soma exata e grupos completos. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Próxima história US-047; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.
+
 US-046 compartilhada: [ADR-0063](adr/0063-rateios-versionados-compartilhados.md) acrescenta edição explícita de parcelas às revisões, com soma exata, referências validadas e grupos completos. Sem migration, dependência, permissão ou alteração de DP-01 a DP-04. Próximo incremento integra Desktop/paridade Rust; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.
 
 US-045 Desktop, edição: [ADR-0062](adr/0062-editor-versionado-de-classificacao-no-desktop.md) integra categorias/subcategorias/tags às revisões SQLCipher, com grupos completos e 28 comandos. Próximo incremento é US-046; cloud/Mobile e outbox/feed mantêm seus gates. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Homologações humanas pós-integração preservadas; entradas abaixo são históricas.

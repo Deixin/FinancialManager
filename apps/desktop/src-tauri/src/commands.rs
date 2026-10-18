@@ -261,6 +261,25 @@ impl LocalState {
             })
         })
     }
+    pub fn apply_allocations(
+        &self,
+        workspace: &str,
+        input: Vec<crate::allocation_model::Command>,
+    ) -> Result<crate::local_allocations::AllocationResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation.apply_allocations(workspace, input, || {
+                if protected && self.force_locked.load(Ordering::SeqCst) {
+                    Err(LocalError::LocalLocked)
+                } else {
+                    Ok(())
+                }
+            })
+        })
+    }
     pub fn read_transfers(
         &self,
         workspace: &str,
@@ -922,7 +941,8 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             apply_local_category_change,
             read_local_taxonomy,
             apply_local_taxonomy_change,
-            apply_local_classification_change
+            apply_local_classification_change,
+            apply_local_allocation_change
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -1090,6 +1110,18 @@ pub async fn apply_local_classification_change(
 ) -> Result<crate::local_classification::ClassificationResult> {
     let state = state.inner().clone();
     tauri::async_runtime::spawn_blocking(move || state.apply_classification(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn apply_local_allocation_change(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: Vec<crate::allocation_model::Command>,
+) -> Result<crate::local_allocations::AllocationResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.apply_allocations(&workspace_id, input))
         .await
         .map_err(|_| LocalError::StorageUnavailable)?
 }

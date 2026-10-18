@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Desktop — US-046: editor de rateios versionados — 2026-10-18 — integrado no recorte local
+
+Movimentações e consulta por classificação oferecem edição explícita de parcelas, com categorias/subcategorias, valores e notas. A soma precisa fechar exatamente; valores financeiros, origem e tags permanecem iguais. IDs/base são preservados após resposta incerta; grupos exigem ambos os membros e somente registros alterados recebem revisão. [Guia](../development/desktop-allocations.md) e [ADR-0064](../architecture/adr/0064-editor-de-rateios-no-desktop.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 463 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 142 Markdown. A suíte própria aprovou 12 testes Rust, 47 vetores compartilhados, dez gates Chromium e 17 Windows. Todas as regressões Desktop afetadas passaram novamente, com os testes apontando para as evidências atuais. Foram arquivadas 29 cápsulas novas ou renovadas; 46 evidências atuais conferem com 490 hashes de fontes no Git staging. As fontes dos 17 relatórios de dados/infraestrutura não afetados também foram conferidas. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Política compartilhada e Desktop local integram o recorte de rateios da US-046. Próxima história: US-047, contrapartes normalizadas. Sem migration, dependência de produção, alteração de backup ou endpoint cloud. Web/Mobile, outbox/feed, recibos duráveis e reconciliação/descontos de documentos mantêm seus gates. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Registros abaixo são históricos.
+
 ## Financeiro — US-046: rateios versionados compartilhados — 2026-10-18 — em andamento
 
 A política permite editar múltiplas parcelas de categorias/subcategorias com soma exata, preservando valor, conta, data, origem, tags e natureza econômica. O coordenador existente valida base completa, referências e grupos e grava dados/histórico atomicamente. [Guia](../development/allocations.md) e [ADR-0063](../architecture/adr/0063-rateios-versionados-compartilhados.md).

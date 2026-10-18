@@ -144,6 +144,7 @@ try {
         'allow-read-local-taxonomy',
         'allow-apply-local-taxonomy-change',
         'allow-apply-local-classification-change',
+        'allow-apply-local-allocation-change',
       ],
     );
     assert.equal(

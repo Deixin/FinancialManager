@@ -18,7 +18,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_build_clippy_ten_tests_and_62_domain_vectors',
-  'twenty_eight_narrow_permissions_without_default_probes',
+  'twenty_nine_narrow_permissions_without_default_probes',
   'native_fin002_snapshot_matches_shared_domain_goldens',
   'webview_crud_and_canonical_money',
   'webview_reference_history_and_comparison',
@@ -82,7 +82,7 @@ export function validateDesktopAccountEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_eight_narrow_permissions_without_default_probes'
+            n === 'twenty_nine_narrow_permissions_without_default_probes'
               ? ({
                   1: 'seventeen_narrow_permissions_without_default_probes',
                   2: 'nineteen_narrow_permissions_without_default_probes',
@@ -90,6 +90,7 @@ export function validateDesktopAccountEvidence(
                   4: 'twenty_three_narrow_permissions_without_default_probes',
                   5: 'twenty_five_narrow_permissions_without_default_probes',
                   6: 'twenty_seven_narrow_permissions_without_default_probes',
+                  7: 'twenty_eight_narrow_permissions_without_default_probes',
                 }[r.format_version] ?? n)
               : n,
           )
@@ -109,8 +110,8 @@ export function validateDesktopAccountEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 7 &&
-      !([1, 2, 3, 4, 5, 6].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 8 &&
+      !([1, 2, 3, 4, 5, 6, 7].includes(r.format_version) && !matchSources)) ||
     ![
       'us040-desktop-accounts-windows',
       'us040-desktop-accounts-browser',

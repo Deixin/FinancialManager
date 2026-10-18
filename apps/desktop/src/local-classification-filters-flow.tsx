@@ -7,6 +7,11 @@ import {
   movementKindLabel,
 } from './local-movements.js';
 import { formatBrlMinor } from './local-accounts.js';
+const LocalAllocationsFlow = lazy(() =>
+  import('./local-allocations-flow.js').then((m) => ({
+    default: m.LocalAllocationsFlow,
+  })),
+);
 const LocalClassificationFlow = lazy(() =>
   import('./local-classification-flow.js').then((m) => ({
     default: m.LocalClassificationFlow,
@@ -30,7 +35,9 @@ export function LocalClassificationFiltersFlow({
   onClose: () => void;
   initialTransactionId?: string;
 }) {
-  const [editing, setEditing] = useState(false),
+  const [editing, setEditing] = useState<
+      'CLASSIFICATION' | 'ALLOCATION' | null
+    >(null),
     [notice, setNotice] = useState('');
   const [gateway] = useState(createLocalClassificationFiltersGateway),
     [snapshot, setSnapshot] = useState<ClassificationSnapshot | null>(null),
@@ -143,6 +150,8 @@ export function LocalClassificationFiltersFlow({
     ' · Tags: ' +
     (state.content.tag_ids.map((id) => name('TAG', id)).join(', ') ||
       'sem tags');
+  const Editor =
+    editing === 'ALLOCATION' ? LocalAllocationsFlow : LocalClassificationFlow;
   if (editing && snapshot && selected)
     return (
       <Suspense
@@ -153,12 +162,12 @@ export function LocalClassificationFiltersFlow({
           </section>
         }
       >
-        <LocalClassificationFlow
+        <Editor
           key={workspaceId + ':' + selected.id + ':' + selected.version}
           snapshot={snapshot}
           transactionId={selected.id}
           onLocked={onLocked}
-          onCancel={() => setEditing(false)}
+          onCancel={() => setEditing(null)}
           onReviewed={(next, result) => {
             setSnapshot(next);
             setSelected(
@@ -166,7 +175,7 @@ export function LocalClassificationFiltersFlow({
                 (r) => r.id === selected.id && !r.content.deleted,
               ) ?? null,
             );
-            setEditing(false);
+            setEditing(null);
             setNotice(
               result === 'SAVED'
                 ? 'Classificação registrada. Valores e saldos foram preservados.'
@@ -255,6 +264,15 @@ export function LocalClassificationFiltersFlow({
                   ))}
                 </ul>
               )}
+              <button
+                type="button"
+                onClick={() => {
+                  setNotice('');
+                  setEditing('ALLOCATION');
+                }}
+              >
+                Editar rateio
+              </button>
               <h3>Tags</h3>
               {!selected.content.tag_ids.length ? (
                 <p>Sem tags.</p>
@@ -270,7 +288,7 @@ export function LocalClassificationFiltersFlow({
                 type="button"
                 onClick={() => {
                   setNotice('');
-                  setEditing(true);
+                  setEditing('CLASSIFICATION');
                 }}
               >
                 Editar classificação e tags

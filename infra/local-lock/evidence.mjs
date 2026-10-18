@@ -62,6 +62,7 @@ export const permissions = Object.freeze([
   'allow-read-local-taxonomy',
   'allow-apply-local-taxonomy-change',
   'allow-apply-local-classification-change',
+  'allow-apply-local-allocation-change',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',

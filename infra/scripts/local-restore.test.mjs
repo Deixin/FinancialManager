@@ -20,7 +20,7 @@ const load = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-035-restore-' +
           kind +
-          '-2026-10-18-us045-classification-desktop.json',
+          '-2026-10-18-us046-allocations-desktop.json',
         import.meta.url,
       ),
       'utf8',

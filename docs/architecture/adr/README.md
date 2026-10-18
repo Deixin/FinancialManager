@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0064 — Editor de rateios no Desktop](0064-editor-de-rateios-no-desktop.md): comando específico, soma exata, parcelas/IDs/notas, validação conjunta de grupos e revisão SQLCipher; próximo incremento US-047.
+
 [0063 — Rateios versionados compartilhados](0063-rateios-versionados-compartilhados.md): intenções KEEP/CLEAR/REPLACE, soma exata com intermediários amplos e revisão atômica; editor Desktop é o próximo incremento.
 
 [0062 — Editor versionado de classificação no Desktop](0062-editor-versionado-de-classificacao-no-desktop.md): novo comando específico, planejador/gravador de revisões reutilizados, grupos completos, referência ativa e intenção congelada; próximo incremento US-046.

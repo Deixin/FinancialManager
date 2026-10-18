@@ -1,5 +1,7 @@
 # US-045 — Classificação versionada no Desktop
 
+Atualização US-046: [Editar rateio](desktop-allocations.md) já permite revisar as parcelas, com soma exata, notas/IDs preservados e histórico nativo. A edição de tags deste guia continua preservando as parcelas; os registros anteriores abaixo são históricos.
+
 Atualização US-046: a [base compartilhada de rateios](allocations.md) já permite editar parcelas com soma exata e histórico. A interface descrita abaixo conserva seu comportamento; integração do editor de rateios e paridade Rust são o próximo incremento.
 
 Movimentações → detalhe → Classificar movimentação permite editar categoria, subcategoria e tags. A opção também fica no detalhe da consulta Filtrar por classificação. O editor usa a base completa e o histórico do SQLCipher. Complementa os [catálogos](desktop-taxonomy.md), a [consulta](desktop-classification-filters.md) e a [política compartilhada](classification.md). [ADR-0062](../architecture/adr/0062-editor-versionado-de-classificacao-no-desktop.md).

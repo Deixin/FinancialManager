@@ -1,4 +1,9 @@
 pub mod account_model;
+pub mod allocation_model;
+#[cfg(feature = "allocations-smoke")]
+pub mod allocation_probe;
+#[cfg(all(test, feature = "allocations-smoke"))]
+mod allocation_tests;
 pub mod backup_destination;
 pub mod card_payment_model;
 pub mod category_model;
@@ -7,6 +12,7 @@ pub mod commands;
 pub mod identity;
 pub mod keys;
 pub mod local_accounts;
+pub mod local_allocations;
 pub mod local_backup;
 pub mod local_card_payments;
 pub mod local_categories;
@@ -99,6 +105,12 @@ pub enum LocalError {
     OriginImmutable,
     CompositeRequired,
     InvalidRevision,
+    InvalidAllocationChange,
+    AllocationTotalMismatch,
+    AllocationBaseConflict,
+    AllocationReferenceUnavailable,
+    AllocationScopeMismatch,
+    AllocationDeleted,
     InvalidClassification,
     ClassificationBaseConflict,
     ClassificationReferenceUnavailable,

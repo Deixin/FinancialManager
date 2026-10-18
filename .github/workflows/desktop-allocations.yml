@@ -1,0 +1,40 @@
+name: Desktop allocations
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: desktop-allocations-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  TURBO_TELEMETRY_DISABLED: '1'
+  CARGO_BUILD_JOBS: '1'
+jobs:
+  desktop-allocations:
+    name: US-046 versioned allocations in SQLCipher and WebView2
+    runs-on: windows-2025
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version-file: .node-version
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - run: rustup toolchain install 1.99.0 --profile minimal --component clippy,rustfmt
+      - run: pnpm exec playwright install chromium
+      - name: Prepare native Perl
+        shell: pwsh
+        run: |
+          if (Test-Path 'C:\Strawberry\perl\bin\perl.exe') { Add-Content -LiteralPath $env:GITHUB_PATH -Value 'C:\Strawberry\perl\bin' }
+      - run: pnpm build
+      - run: node infra/allocations-desktop/generate.mjs --check
+      - run: node infra/allocations-desktop/browser.mjs
+      - run: node infra/allocations-desktop/native.mjs

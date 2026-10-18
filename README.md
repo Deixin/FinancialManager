@@ -1,5 +1,7 @@
 # Financial Manager
 
+O [editor de rateios US-046 no Desktop](docs/development/desktop-allocations.md) permite editar parcelas de múltiplas categorias com soma exata, notas/IDs e histórico SQLCipher. Preserva valores, origem e tags e exige grupos completos. Próxima história: US-047, contrapartes normalizadas. Homologações humanas após integração completa; registros abaixo são históricos.
+
 A [base de rateios US-046](docs/development/allocations.md) permite múltiplas categorias com soma exata, IDs/notas preservados e revisões atômicas em PostgreSQL/SQLite. O próximo incremento integra o editor Desktop e a paridade Rust. Homologações humanas seguem após integração completa; registros abaixo são históricos.
 
 A [edição de classificação US-045 no Desktop](docs/development/desktop-classification.md) associa categoria/subcategoria e tags com revisão-base e histórico no SQLCipher, preservando valores e origem importada. Grupos são validados por inteiro; rateios permitem editar tags sem alterar parcelas. Próximo incremento: US-046, editor de rateios. Homologações humanas continuam após integração completa; registros abaixo são históricos.

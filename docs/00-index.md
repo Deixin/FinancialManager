@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+O [editor Desktop da US-046](development/desktop-allocations.md) integra rateios à política compartilhada e ao gravador de revisões SQLCipher, com soma exata e intenção congelada após resposta incerta. Consulte o [ADR-0064](architecture/adr/0064-editor-de-rateios-no-desktop.md). Próxima história: US-047. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 A [base compartilhada US-046](development/allocations.md) edita parcelas por múltiplas categorias com soma exata, preservação financeira e revisões existentes. Consulte o [ADR-0063](architecture/adr/0063-rateios-versionados-compartilhados.md). Próximo incremento: editor Desktop/paridade Rust. Homologações humanas após integração completa; entradas abaixo são históricas.
 
 O [editor de classificação US-045 no Desktop](development/desktop-classification.md) integra associação versionada às transações, com origem/valores preservados, grupos completos e intenção congelada após resposta incerta. Consulte o [ADR-0062](architecture/adr/0062-editor-versionado-de-classificacao-no-desktop.md). Núcleo compartilhado e Desktop local integrados; próximo incremento: US-046, editor de rateios. Homologações humanas seguem pós-integração; entradas abaixo são históricas.

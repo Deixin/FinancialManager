@@ -1,5 +1,7 @@
 # US-046 — Rateios versionados compartilhados
 
+Atualização: o [editor de rateios no Desktop](desktop-allocations.md) integra esta política ao cofre SQLCipher e às revisões nativas, com validação de grupos e respostas incertas. Próxima história: US-047. O texto abaixo preserva o incremento compartilhado original.
+
 Esta base permite criar, editar, substituir e remover parcelas de classificação por múltiplas categorias, preservando saldo, origem e tags. Complementa a [classificação](classification.md) e reutiliza as [revisões financeiras](financial-revisions.md). O editor Desktop é o próximo incremento. [ADR-0063](../architecture/adr/0063-rateios-versionados-compartilhados.md).
 
 ## API e invariantes

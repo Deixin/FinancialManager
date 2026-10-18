@@ -72,6 +72,7 @@ fn main() {
         "read_local_categories",
         "apply_local_category_change",
         "apply_local_classification_change",
+        "apply_local_allocation_change",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -103,6 +104,9 @@ fn main() {
     if cfg!(feature = "taxonomy-smoke") {
         commands.push("finish_taxonomy_smoke");
         commands.push("finish_classification_filters_smoke");
+    }
+    if cfg!(feature = "allocations-smoke") {
+        commands.push("finish_allocations_smoke");
     }
     if cfg!(feature = "classification-smoke") {
         commands.push("finish_classification_smoke");
