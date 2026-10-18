@@ -1,6 +1,6 @@
 # US-044 — Núcleo de categorias por workspace
 
-O núcleo compartilhado permite carregar sugestões, criar, renomear, reordenar, arquivar e reativar categorias sem alterar saldo ou histórico financeiro. A história permanece em andamento; integração Desktop é o próximo incremento. [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).
+O núcleo compartilhado permite carregar sugestões, criar, renomear, reordenar, arquivar e reativar categorias sem alterar saldo ou histórico financeiro. A [integração Desktop](desktop-categories.md) foi implementada posteriormente. Este guia registra os contratos e limites da fundação compartilhada. [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).
 
 ## Contratos
 
@@ -34,6 +34,6 @@ Resultado local em 2026-10-18: pnpm check passou com 390 testes Node, zero falha
 
 ## Limites atuais
 
-Nenhuma migration, dependência de produção, tela ou comando Tauri é acrescentado. Categoria não recebe versão/auditoria neste schema: bases completas detectam divergências atuais, mas não ABA. Escrita cloud de produto, outbox/feed e recibos duráveis continuam pendentes. Subcategorias, tags e edição das associações pertencem aos incrementos seguintes. Normalização foi verificada no corpus português/NFKC existente; Unicode/locale adicional permanece no gate da US-021. Limites de 10 mil linhas e 4 MiB de texto JSON recusam catálogos maiores sem truncamento.
+O incremento compartilhado não acrescentou migration, dependência de produção, tela ou comando Tauri; a integração nativa posterior está documentada no guia Desktop. Categoria não recebe versão/auditoria neste schema: bases completas detectam divergências atuais, mas não ABA. Escrita cloud de produto, outbox/feed e recibos duráveis continuam pendentes. Subcategorias, tags e edição das associações pertencem aos incrementos seguintes. Normalização foi verificada no corpus português/NFKC existente; Unicode/locale adicional permanece no gate da US-021. Limites de 10 mil linhas e 4 MiB de texto JSON recusam catálogos maiores sem truncamento.
 
 Homologação humana fica para depois da integração completa. DP-01 a DP-04 e os sete documentos originais permanecem preservados.

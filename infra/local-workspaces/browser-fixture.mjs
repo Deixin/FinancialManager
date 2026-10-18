@@ -226,6 +226,16 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         };
       }
       if (
+        command === 'read_local_categories' ||
+        command === 'apply_local_category_change'
+      ) {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        const reply = await globalThis.__syntheticCategoryHost(command, args);
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
+      if (
         command === 'read_local_card_payments' ||
         command === 'apply_local_card_payment'
       ) {

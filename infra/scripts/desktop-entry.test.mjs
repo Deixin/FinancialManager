@@ -27,7 +27,7 @@ test('Desktop local entry is repeatable, independent of identity and rejects unk
     /DESKTOP_ENTRY_ACTION_INVALID/,
   );
 });
-test('Desktop host grants only twenty-three narrow workspace/privacy/backup/account/movement/transfer commands and embeds local assets', () => {
+test('Desktop host grants only twenty-five narrow workspace/privacy/backup/account/movement/transfer/category commands and embeds local assets', () => {
   const config = JSON.parse(
     readFileSync(
       new URL('../../apps/desktop/src-tauri/tauri.conf.json', import.meta.url),
@@ -67,6 +67,8 @@ test('Desktop host grants only twenty-three narrow workspace/privacy/backup/acco
     'allow-apply-local-transfer',
     'allow-read-local-card-payments',
     'allow-apply-local-card-payment',
+    'allow-read-local-categories',
+    'allow-apply-local-category-change',
   ]);
   assert.equal(config.app.withGlobalTauri, false);
   assert.equal(config.build.devUrl, undefined);

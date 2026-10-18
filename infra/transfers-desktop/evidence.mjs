@@ -17,7 +17,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_ten_tests_and_69_shared_vectors',
-  'twenty_three_narrow_permissions_without_default_probes',
+  'twenty_five_narrow_permissions_without_default_probes',
   ...[
     'paired_crud_and_history',
     'canonical_money_and_conserved_balances',
@@ -82,10 +82,11 @@ export function validateDesktopTransferEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_three_narrow_permissions_without_default_probes'
-              ? ({ 1: 'twenty_one_narrow_permissions_without_default_probes' }[
-                  r.format_version
-                ] ?? n)
+            n === 'twenty_five_narrow_permissions_without_default_probes'
+              ? ({
+                  1: 'twenty_one_narrow_permissions_without_default_probes',
+                  2: 'twenty_three_narrow_permissions_without_default_probes',
+                }[r.format_version] ?? n)
               : n,
           )
         : native
@@ -104,8 +105,8 @@ export function validateDesktopTransferEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 2 &&
-      !([1].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 3 &&
+      !([1, 2].includes(r.format_version) && !matchSources)) ||
     ![
       'us042-desktop-transfers-windows',
       'us042-desktop-transfers-browser',

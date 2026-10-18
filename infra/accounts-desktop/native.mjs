@@ -39,7 +39,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 4,
+  format_version: 5,
   scope: 'us040-desktop-accounts-windows',
   passed: false,
   synthetic_only: true,
@@ -127,7 +127,7 @@ try {
       root,
     );
   });
-  step('twenty_three_narrow_permissions_without_default_probes', () => {
+  step('twenty_five_narrow_permissions_without_default_probes', () => {
     run('cargo', ['build', '--locked', '--bin', 'financial-manager']);
     const binary = readFileSync(
       path.join(target, 'debug/financial-manager.exe'),
@@ -144,7 +144,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 23);
+    assert.equal(permissions.length, 25);
     // Tauri retains generated permission descriptions across feature builds. Those
     // descriptions grant nothing: verify the actual production handler and grants.
     const handler = readFileSync(path.join(crate, 'src/commands.rs'), 'utf8')

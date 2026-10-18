@@ -14,7 +14,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_fmt_clippy_build_and_default_without_probe',
-  'twenty_three_narrow_product_permissions',
+  'twenty_five_narrow_product_permissions',
   'many_local_workspaces_without_plan_or_cloud_identity',
   'reopen_in_independent_process_and_preserve_financial_state',
   'webview_catalog_purpose_local_and_cloud_unavailable',
@@ -61,12 +61,13 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_three_narrow_product_permissions'
+            n === 'twenty_five_narrow_product_permissions'
               ? ({
                   1: 'fifteen_narrow_product_permissions',
                   2: 'seventeen_narrow_product_permissions',
                   3: 'nineteen_narrow_product_permissions',
                   4: 'twenty_one_narrow_product_permissions',
+                  5: 'twenty_three_narrow_product_permissions',
                 }[report.format_version] ?? n)
               : n,
           )
@@ -86,8 +87,8 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (report.format_version !== 5 &&
-      !([1, 2, 3, 4].includes(report.format_version) && !matchSources)) ||
+    (report.format_version !== 6 &&
+      !([1, 2, 3, 4, 5].includes(report.format_version) && !matchSources)) ||
     ![
       'us036-workspace-manager-windows',
       'us036-workspace-manager-browser',

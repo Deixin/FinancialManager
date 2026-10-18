@@ -26,7 +26,7 @@ const directory = new URL(
   h = syntheticTransferHost(),
   other = id(90),
   report = {
-    format_version: 2,
+    format_version: 3,
     scope: 'us042-desktop-transfers-browser',
     passed: false,
     synthetic_only: true,

@@ -57,6 +57,8 @@ export const permissions = Object.freeze([
   'allow-apply-local-transfer',
   'allow-read-local-card-payments',
   'allow-apply-local-card-payment',
+  'allow-read-local-categories',
+  'allow-apply-local-category-change',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',

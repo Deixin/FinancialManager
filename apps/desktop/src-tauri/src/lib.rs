@@ -1,12 +1,14 @@
 pub mod account_model;
 pub mod backup_destination;
 pub mod card_payment_model;
+pub mod category_model;
 pub mod commands;
 pub mod identity;
 pub mod keys;
 pub mod local_accounts;
 pub mod local_backup;
 pub mod local_card_payments;
+pub mod local_categories;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
@@ -48,6 +50,13 @@ pub enum LocalError {
     BackupAlreadyExists,
     BackupVerificationFailed,
     RestoreUnavailable,
+    InvalidCategoryChange,
+    InvalidCategoryState,
+    CategoryNotFound,
+    CategoryBaseConflict,
+    CategoryNameConflict,
+    CategorySeedConflict,
+    CategoryLimit,
     InvalidAccountChange,
     StaleAccount,
     AccountNotFound,
@@ -120,3 +129,8 @@ mod transfer_tests;
 pub mod card_payment_probe;
 #[cfg(all(test, feature = "card-payments-smoke"))]
 mod card_payment_tests;
+
+#[cfg(feature = "categories-smoke")]
+pub mod category_probe;
+#[cfg(all(test, feature = "categories-smoke"))]
+mod category_tests;

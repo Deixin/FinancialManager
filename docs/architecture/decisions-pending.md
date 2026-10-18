@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-044 Desktop: [ADR-0057](adr/0057-categorias-no-desktop-sqlcipher.md) integra categorias ao SQLCipher com bases completas, 25 permissões e paridade nativa. Dependência Rust fixada aplica NFKC. Sem migration, mudança de backup ou decisão de prazo. DP-01 a DP-04, escrita cloud com versão/auditoria/outbox e homologação humana pós-integração preservadas.
+
 US-044 compartilhada: [ADR-0056](adr/0056-categorias-compartilhadas-por-workspace.md) adota sugestões explícitas v1 em catálogo vazio, metadados com base completa e arquivamento sem exclusão. Sem migration ou dependência nova. Desktop, versão/auditoria/outbox e homologação humana mantêm seus gates; DP-01 a DP-04 preservadas.
 
 US-043 Desktop: [ADR-0055](adr/0055-cartoes-e-pagamentos-no-desktop.md) adota cartão/pagamento local com paridade Rust, 23 permissões e revisão conjunta. Pagamento sem detalhamento não presume conciliação. Não muda schema, dependências ou prazos; DP-01 a DP-04 e homologação humana pós-integração preservadas. Próxima história US-044.

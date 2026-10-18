@@ -286,6 +286,31 @@ impl LocalState {
             })
         })
     }
+    pub fn read_categories(
+        &self,
+        workspace: &str,
+    ) -> Result<crate::local_categories::CategoriesSnapshot> {
+        self.with(|i| i.read_categories(workspace))
+    }
+    pub fn apply_category_change(
+        &self,
+        workspace: &str,
+        input: crate::category_model::Command,
+    ) -> Result<crate::local_categories::CategoryResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation.apply_category_change(workspace, input, || {
+                if protected && self.force_locked.load(Ordering::SeqCst) {
+                    Err(LocalError::LocalLocked)
+                } else {
+                    Ok(())
+                }
+            })
+        })
+    }
     pub fn prepare_backup(&self, input: CreateBackup) -> Result<BackupJob> {
         input.validate()?;
         self.backup_active
@@ -842,7 +867,9 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             read_local_transfers,
             apply_local_transfer,
             read_local_card_payments,
-            apply_local_card_payment
+            apply_local_card_payment,
+            read_local_categories,
+            apply_local_category_change
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -947,6 +974,28 @@ pub async fn apply_local_card_payment(
 ) -> Result<crate::local_card_payments::CardPaymentResult> {
     let state = state.inner().clone();
     tauri::async_runtime::spawn_blocking(move || state.apply_card_payment(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn read_local_categories(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+) -> Result<crate::local_categories::CategoriesSnapshot> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.read_categories(&workspace_id))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn apply_local_category_change(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: crate::category_model::Command,
+) -> Result<crate::local_categories::CategoryResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.apply_category_change(&workspace_id, input))
         .await
         .map_err(|_| LocalError::StorageUnavailable)?
 }

@@ -19,6 +19,7 @@ accounts-smoke = ["workspace-smoke", "restore-smoke"]
 movements-smoke = ["accounts-smoke"]
 transfers-smoke = ["movements-smoke"]
 card-payments-smoke = ["transfers-smoke"]
+categories-smoke = ["accounts-smoke"]
 
 [[bin]]
 name = "accounts-probe"
@@ -34,6 +35,7 @@ required-features = ["accounts-smoke"]
 tauri = { version = "=2.12.3", default-features = false, features = ["wry", "compression", "common-controls-v6", "custom-protocol"] }
 serde = { version = "=1.0.229", features = ["derive"], optional = false }
 serde_json = "=1.0.154"
+unicode-normalization = "=0.1.26"
 
 rusqlite = { version = "=0.40.2", features = ["bundled-sqlcipher-vendored-openssl"] }
 getrandom = "=0.4.3"
@@ -153,3 +155,13 @@ required-features=["card-payments-smoke"]
 name="card-payments-smoke"
 path="src/bin/card-payments-smoke.rs"
 required-features=["card-payments-smoke"]
+
+[[bin]]
+name="categories-probe"
+path="src/bin/categories-probe.rs"
+required-features=["categories-smoke"]
+
+[[bin]]
+name="categories-smoke"
+path="src/bin/categories-smoke.rs"
+required-features=["categories-smoke"]

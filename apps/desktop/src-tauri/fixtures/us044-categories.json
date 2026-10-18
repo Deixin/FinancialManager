@@ -1,0 +1,5496 @@
+{
+  "synthetic_only": true,
+  "dataset_id": "SYNTHETIC_US044_DESKTOP_ONLY",
+  "vectors": [
+    {
+      "name": "seed_PERSONAL",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Moradia",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Transporte",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Saúde",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000104",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Educação",
+              "category_scope": "EXPENSE",
+              "sort_order": 4,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Lazer",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Salário",
+              "category_scope": "INCOME",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 8,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "seed_replay_PERSONAL",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "seed_BUSINESS",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "BUSINESS",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "BUSINESS",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Despesas operacionais",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Fornecedores",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Pessoal",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Tributos",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000104",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Tarifas e juros",
+              "category_scope": "EXPENSE",
+              "sort_order": 4,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Vendas",
+              "category_scope": "INCOME",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Prestação de serviços",
+              "category_scope": "INCOME",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 8,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "seed_replay_BUSINESS",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "BUSINESS",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Despesas operacionais",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Fornecedores",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Pessoal",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Tributos",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Tarifas e juros",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Vendas",
+          "category_scope": "INCOME",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Prestação de serviços",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "BUSINESS",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "seed_OTHER",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "OTHER",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "OTHER",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Receitas",
+              "category_scope": "INCOME",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "seed_replay_OTHER",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "OTHER",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Receitas",
+          "category_scope": "INCOME",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "OTHER",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101"
+        ]
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "seed_wrong_purpose",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "BUSINESS",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_SEED_CONFLICT" }
+    },
+    {
+      "name": "seed_changed",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC EDITED",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_SEED_CONFLICT" }
+    },
+    {
+      "name": "seed_archived",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_SEED_CONFLICT" }
+    },
+    {
+      "name": "wrong_profile",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 2,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "missing_seed_id",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107"
+        ]
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "duplicate_seed_id",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "unknown_field",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": {
+        "kind": "SEED",
+        "profile_version": 1,
+        "purpose": "PERSONAL",
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ],
+        "reset": true
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "create",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC CATEGORY",
+              "category_scope": "BOTH",
+              "sort_order": 10,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "create_replay",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000500",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC CATEGORY",
+          "category_scope": "BOTH",
+          "sort_order": 10,
+          "status": "ACTIVE",
+          "is_seeded": false
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "create_id_conflict",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000100",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "empty",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "spaces",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "   ",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "control",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC\nPRIVATE",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "name_limit",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "trim",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "﻿ SYNTHETIC TRIM ﻿",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TRIM",
+              "category_scope": "BOTH",
+              "sort_order": 10,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "utf16",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+              "category_scope": "BOTH",
+              "sort_order": 10,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "utf16_limit",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "nfkc_conflict",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": " ＳＡＬÁＲＩＯ ",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "CATEGORY_NAME_CONFLICT" }
+    },
+    {
+      "name": "combining_conflict",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "Salário",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "CATEGORY_NAME_CONFLICT" }
+    },
+    {
+      "name": "float",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 0.5
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "high",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 2147483648
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "low",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": -2147483649
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "minimum",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": -2147483648
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC CATEGORY",
+              "category_scope": "BOTH",
+              "sort_order": -2147483648,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "maximum",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 2147483647
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC CATEGORY",
+              "category_scope": "BOTH",
+              "sort_order": 2147483647,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "bad_scope",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "UNKNOWN",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "v4",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-4000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "extra",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "SYNTHETIC CATEGORY",
+        "category_scope": "BOTH",
+        "sort_order": 10,
+        "is_seeded": true
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "rename",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "SYNTHETIC RENAMED",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC RENAMED",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "noop",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "archive",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ARCHIVED"
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ARCHIVED",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "missing",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000999",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": { "error": "CATEGORY_NOT_FOUND" }
+    },
+    {
+      "name": "stale",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC STALE",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "SYNTHETIC STALE",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "forged_seeded",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": false
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "wrong_workspace",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000099",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ACTIVE"
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "scope_change",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "Alimentação",
+        "sort_order": 0,
+        "status": "ACTIVE",
+        "category_scope": "BOTH"
+      },
+      "expected": { "error": "INVALID_CATEGORY_CHANGE" }
+    },
+    {
+      "name": "archived_name_reuse",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "CREATE",
+        "id": "0199d244-0000-7000-8000-000000000500",
+        "name": "salário",
+        "category_scope": "BOTH",
+        "sort_order": 10
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000500",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "salário",
+              "category_scope": "BOTH",
+              "sort_order": 10,
+              "status": "ACTIVE",
+              "is_seeded": false
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reactivate_name_conflict",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000500",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "salário",
+          "category_scope": "BOTH",
+          "sort_order": 10,
+          "status": "ACTIVE",
+          "is_seeded": false
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        "name": "Salário",
+        "sort_order": 7,
+        "status": "ACTIVE"
+      },
+      "expected": { "error": "CATEGORY_NAME_CONFLICT" }
+    },
+    {
+      "name": "reactivate",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        "name": "Salário",
+        "sort_order": 7,
+        "status": "ACTIVE"
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Salário",
+              "category_scope": "INCOME",
+              "sort_order": 7,
+              "status": "ARCHIVED",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Salário",
+              "category_scope": "INCOME",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reorder",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000100",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Alimentação",
+            "category_scope": "EXPENSE",
+            "sort_order": 0,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000107",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Salário",
+            "category_scope": "INCOME",
+            "sort_order": 7,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000108",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000100"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 8,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Moradia",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Moradia",
+              "category_scope": "EXPENSE",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Transporte",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Transporte",
+              "category_scope": "EXPENSE",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Saúde",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Saúde",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Lazer",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Lazer",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Salário",
+              "category_scope": "INCOME",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000107",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Salário",
+              "category_scope": "INCOME",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 8,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reorder_stale",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000100",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC FORGED",
+            "category_scope": "EXPENSE",
+            "sort_order": 0,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000107",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Salário",
+            "category_scope": "INCOME",
+            "sort_order": 7,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_missing",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000107",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Salário",
+            "category_scope": "INCOME",
+            "sort_order": 7,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000107",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_archived",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000100",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Alimentação",
+            "category_scope": "EXPENSE",
+            "sort_order": 0,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000108",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000100"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Alimentação",
+              "category_scope": "EXPENSE",
+              "sort_order": 7,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Moradia",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000101",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Moradia",
+              "category_scope": "EXPENSE",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Transporte",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000102",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Transporte",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Saúde",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000103",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Saúde",
+              "category_scope": "EXPENSE",
+              "sort_order": 4,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000104",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Educação",
+              "category_scope": "EXPENSE",
+              "sort_order": 4,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000104",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Educação",
+              "category_scope": "EXPENSE",
+              "sort_order": 3,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Lazer",
+              "category_scope": "EXPENSE",
+              "sort_order": 5,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000105",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Lazer",
+              "category_scope": "EXPENSE",
+              "sort_order": 2,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 6,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000106",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras despesas",
+              "category_scope": "EXPENSE",
+              "sort_order": 1,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          },
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 8,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000108",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "Outras receitas",
+              "category_scope": "INCOME",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reorder_archived_stale",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000100",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC FORGED",
+            "category_scope": "EXPENSE",
+            "sort_order": 0,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000100",
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_archived_missing",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Alimentação",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000101",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Moradia",
+          "category_scope": "EXPENSE",
+          "sort_order": 1,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000102",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Transporte",
+          "category_scope": "EXPENSE",
+          "sort_order": 2,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000103",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Saúde",
+          "category_scope": "EXPENSE",
+          "sort_order": 3,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000104",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Educação",
+          "category_scope": "EXPENSE",
+          "sort_order": 4,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000105",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Lazer",
+          "category_scope": "EXPENSE",
+          "sort_order": 5,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000106",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras despesas",
+          "category_scope": "EXPENSE",
+          "sort_order": 6,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000107",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Salário",
+          "category_scope": "INCOME",
+          "sort_order": 7,
+          "status": "ARCHIVED",
+          "is_seeded": true
+        },
+        {
+          "id": "0199d244-0000-7000-8000-000000000108",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "Outras receitas",
+          "category_scope": "INCOME",
+          "sort_order": 8,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "REORDER",
+        "bases": [
+          {
+            "id": "0199d244-0000-7000-8000-000000000101",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Moradia",
+            "category_scope": "EXPENSE",
+            "sort_order": 1,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000102",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Transporte",
+            "category_scope": "EXPENSE",
+            "sort_order": 2,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000103",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Saúde",
+            "category_scope": "EXPENSE",
+            "sort_order": 3,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000104",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Educação",
+            "category_scope": "EXPENSE",
+            "sort_order": 4,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000105",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Lazer",
+            "category_scope": "EXPENSE",
+            "sort_order": 5,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000106",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras despesas",
+            "category_scope": "EXPENSE",
+            "sort_order": 6,
+            "status": "ACTIVE",
+            "is_seeded": true
+          },
+          {
+            "id": "0199d244-0000-7000-8000-000000000108",
+            "workspace_id": "0199d244-0000-7000-8000-000000000001",
+            "name": "Outras receitas",
+            "category_scope": "INCOME",
+            "sort_order": 8,
+            "status": "ACTIVE",
+            "is_seeded": true
+          }
+        ],
+        "ids": [
+          "0199d244-0000-7000-8000-000000000101",
+          "0199d244-0000-7000-8000-000000000102",
+          "0199d244-0000-7000-8000-000000000103",
+          "0199d244-0000-7000-8000-000000000104",
+          "0199d244-0000-7000-8000-000000000105",
+          "0199d244-0000-7000-8000-000000000106",
+          "0199d244-0000-7000-8000-000000000108"
+        ]
+      },
+      "expected": { "error": "CATEGORY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_empty",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [],
+      "command": { "kind": "REORDER", "bases": [], "ids": [] },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "legacy_label",
+      "workspace_id": "0199d244-0000-7000-8000-000000000001",
+      "purpose": "PERSONAL",
+      "current": [
+        {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        }
+      ],
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "id": "0199d244-0000-7000-8000-000000000100",
+          "workspace_id": "0199d244-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "category_scope": "EXPENSE",
+          "sort_order": 0,
+          "status": "ACTIVE",
+          "is_seeded": true
+        },
+        "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "sort_order": 0,
+        "status": "ARCHIVED"
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ACTIVE",
+              "is_seeded": true
+            },
+            "after": {
+              "id": "0199d244-0000-7000-8000-000000000100",
+              "workspace_id": "0199d244-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "category_scope": "EXPENSE",
+              "sort_order": 0,
+              "status": "ARCHIVED",
+              "is_seeded": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

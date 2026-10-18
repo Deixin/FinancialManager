@@ -1,5 +1,11 @@
 # Estado do projeto
 
+## Desktop — US-044: categorias por workspace — 2026-10-18
+
+Configurações oferece sugestões por finalidade, criação, renomeação, ordem e arquivamento/reativação. Comandos específicos e política Rust persistem lotes SQLCipher com base completa, sem alterar vínculos, saldos ou histórico financeiro. A capability possui 25 permissões. Após ACK perdido, IDs e base permanecem congelados; bloqueio/troca de espaço removem dados anteriores. [Guia](../development/desktop-categories.md), [ADR-0057](../architecture/adr/0057-categorias-no-desktop-sqlcipher.md).
+
+Validação local concluída: pnpm check passou com 398 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 128 Markdown. A suíte própria aprovou nove testes Rust/52 vetores, nove gates Chromium e 16 Windows, incluindo categorias usadas, interrupções e restauração sem chave de origem. Regressões afetadas de workspaces, cofre, bloqueio, backup/restauração e operações financeiras passaram. As 21 cápsulas novas ou renovadas compõem 35 relatórios atuais com hashes conferidos. Sem migration ou formato de backup novo; unicode-normalization =0.1.26 foi acrescentada para NFKC nativo. Próximo passo US-045, subcategorias, tags e associações; versão/auditoria/outbox cloud, Unicode/locale adicional e homologação humana pós-integração mantêm seus gates. DP-01 a DP-04 preservadas. Registros abaixo são históricos.
+
 ## US-044 — núcleo compartilhado de categorias — 2026-10-18
 
 Sugestões v1 para PERSONAL/BUSINESS/OTHER, criação, renomeação, reordenação completa e arquivamento/reativação usam política pura, autorização de leitura/gestão e transações PostgreSQL/SQLite. Seed só em catálogo vazio ou replay exato; edições não são sobrescritas. Históricos, saldos e referências permanecem intactos. Sem migration ou dependência nova. [Guia](../development/categories.md), [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).

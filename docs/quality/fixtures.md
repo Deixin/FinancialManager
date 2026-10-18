@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-044 Desktop usa 52 vetores sintéticos de paridade e perfis SQLCipher/Chromium/WebView2 próprios. FIN-002 é preservada; a categoria usada no teste tem seus metadados originais restaurados após comparar o grafo financeiro. Chaves, perfis, bancos e backups de teste são descartados. [Guia](../development/desktop-categories.md).
+
 US-044 compartilhada usa sugestões e categorias explicitamente sintéticas, além de FIN-002 inalterada. Snapshots financeiros originais são comparados antes/depois; workspaces, credenciais e bancos descartáveis são removidos. Evidência só contém flags, versões, pendências e hashes. [Guia](../development/categories.md).
 
 US-043 Desktop usa 72 vetores compartilhados e perfis/bancos/backups sintéticos de cartão. FIN-002 e goldens originais são preservados; credenciais e arquivos próprios são descartados. [Protocolo](../development/desktop-card-payments.md).

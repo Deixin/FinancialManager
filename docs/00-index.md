@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-044 no Desktop](development/desktop-categories.md) oferece gestão de categorias por workspace no SQLCipher, com paridade Rust/TypeScript e comandos específicos. Consulte o [ADR-0057](architecture/adr/0057-categorias-no-desktop-sqlcipher.md). Próximo passo: US-045; homologações humanas permanecem pós-integração. Entradas abaixo são históricas.
+
 A [US-044 compartilhada](development/categories.md) implementa categorias por workspace sobre PostgreSQL/SQLite. Consulte o [ADR-0056](architecture/adr/0056-categorias-compartilhadas-por-workspace.md). Próximo incremento integra o Desktop; homologações humanas permanecem após integração completa. Entradas abaixo são históricas.
 
 A [US-043 no Desktop](development/desktop-card-payments.md) integra cartões, pagamentos atômicos e histórico ao cofre local. Consulte o [ADR-0055](architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md). Próxima história: US-044; importação/conciliação e homologações humanas integradas permanecem nos próprios gates. Entradas abaixo são históricas.

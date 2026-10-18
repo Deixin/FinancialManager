@@ -364,3 +364,21 @@ main:focus {
 .movement-flow .local-list button {
   overflow-wrap: anywhere;
 }
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.category-row {
+  display: grid;
+  gap: 0.5rem;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.category-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}

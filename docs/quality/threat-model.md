@@ -1,5 +1,7 @@
 # Modelo de ameaças — ponto de partida
 
+US-044 Desktop: WebView envia comandos fechados; Rust confirma workspace, bloqueio e bases atuais antes de escrita atômica. NFKC é derivado no host, escopo/proveniência são imutáveis e arquivamento preserva referências. Nenhum SQL/caminho/chave arbitrário é aceito; respostas tardias são descartadas. ABA e sincronização com versão/auditoria/outbox permanecem pendentes. [ADR-0057](../architecture/adr/0057-categorias-no-desktop-sqlcipher.md).
+
 US-044 compartilhada: autorização antecede armazenamento; workspace/modo/papel RLS são confirmados, comandos são fechados, bases completas e unicidade ativa são validadas na transação. Seed não sobrescreve categorias editadas e arquivar preserva referências. Sem exclusão, SQL arbitrário ou payload financeiro em logs. ABA e escrita cloud com versão/auditoria/outbox permanecem pendentes. [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).
 
 US-043 Desktop: pagamento é comando fechado, com autorização local/PIN, ambas as bases/contas atuais e grupo coerente na transação. Não aceita SQL/caminhos/chaves/ator arbitrários. Os dois deltas negativos não são consumo; UI não presume conciliação e descarta dados/respostas ao bloquear/trocar espaço. [ADR-0055](../architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md).

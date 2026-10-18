@@ -18,7 +18,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_eleven_tests_and_72_shared_vectors',
-  'twenty_three_narrow_permissions_without_default_probes',
+  'twenty_five_narrow_permissions_without_default_probes',
   ...[
     'paired_crud_and_history',
     'canonical_money_and_net_worth',
@@ -81,7 +81,18 @@ export function validateDesktopCardPaymentEvidence(
       throw Error('DESKTOP_CARD_PAYMENT_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us043-desktop-card-payments-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks =
+      native && !matchSources
+        ? nativeChecks.map((n) =>
+            n === 'twenty_five_narrow_permissions_without_default_probes'
+              ? ({
+                  1: 'twenty_three_narrow_permissions_without_default_probes',
+                }[r.format_version] ?? n)
+              : n,
+          )
+        : native
+          ? nativeChecks
+          : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -95,7 +106,7 @@ export function validateDesktopCardPaymentEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us043-desktop-card-payments-windows',
       'us043-desktop-card-payments-browser',
