@@ -1,3 +1,4 @@
+import { LocalTransfersFlow } from './local-transfers-flow.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { createCryptoIdentity } from '@financial-manager/contracts';
@@ -45,6 +46,10 @@ export function LocalMovementsFlow({
   onLocked: () => void;
   entry: MovementEntry;
 }) {
+  const [transferEntry, setTransferEntry] = useState<{
+    mode: 'list' | 'create';
+    groupId?: string;
+  } | null>(null);
   const [gateway] = useState(createLocalMovementsGateway),
     [snapshot, setSnapshot] = useState<MovementsSnapshot | null>(null),
     [busy, setBusy] = useState(Boolean(gateway)),
@@ -273,6 +278,26 @@ export function LocalMovementsFlow({
       };
     });
   }
+  if (transferEntry)
+    return (
+      <LocalTransfersFlow
+        key={
+          workspaceId +
+          ':' +
+          transferEntry.mode +
+          ':' +
+          (transferEntry.groupId ?? '')
+        }
+        workspaceId={workspaceId}
+        initialMode={transferEntry.mode}
+        {...(transferEntry.groupId ? { groupId: transferEntry.groupId } : {})}
+        onLocked={onLocked}
+        onClose={() => {
+          setTransferEntry(null);
+          void refresh();
+        }}
+      />
+    );
   if (busy)
     return (
       <section className="account-flow" aria-busy="true">
@@ -355,6 +380,29 @@ export function LocalMovementsFlow({
           )}
           {mode === 'list' && (
             <>
+              <div className="movement-actions">
+                <button
+                  type="button"
+                  onClick={() => setTransferEntry({ mode: 'create' })}
+                  disabled={
+                    captured ||
+                    accounts.filter(
+                      (a) =>
+                        a.account.status === 'ACTIVE' &&
+                        a.account.balance_nature === 'ASSET',
+                    ).length < 2
+                  }
+                >
+                  Nova transferência
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTransferEntry({ mode: 'list' })}
+                  disabled={captured}
+                >
+                  Ver transferências
+                </button>
+              </div>
               <label htmlFor="movement-filter-account">Filtrar por conta</label>
               <select
                 id="movement-filter-account"
@@ -515,6 +563,21 @@ export function LocalMovementsFlow({
                   usam seus próprios fluxos.
                 </p>
               )}
+              {current.content.group_id &&
+                current.content.economic_kind === 'TRANSFER' && (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setTransferEntry({
+                        mode: 'list',
+                        groupId: current.content.group_id!,
+                      })
+                    }
+                    disabled={captured}
+                  >
+                    Ver transferência completa
+                  </button>
+                )}
               <h3>Histórico de revisões</h3>
               <ol className="movement-history">
                 {snapshot.history

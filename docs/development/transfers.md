@@ -1,5 +1,7 @@
 # Transferências atômicas — núcleo US-042
 
+A [integração Desktop US-042](desktop-transfers.md) acrescenta comandos Rust e interface próprios. O coordenador agora exige os IDs/contas de todos os membros anteriores, recusando projeções parciais; criação sem membros continua compatível. O restante desta página preserva o escopo da fundação anterior.
+
 Validação local concluída: 54 gates reais nos dois engines e pnpm check com 351 testes, zero falhas/skips. As evidências registram fontes, versões e limpeza. A integração Desktop de transferência permanece pendente.
 
 O núcleo compartilhado cria, edita, exclui e restaura transferências entre duas contas de ativo. O grupo, os dois lançamentos e suas revisões são confirmados juntos. A saída é negativa e a entrada positiva, com mesma magnitude/data e economic_kind TRANSFER. A operação preserva o total consolidado e não cria consumo ou receita. Contas de passivo/pagamento de cartão pertencem à US-043.

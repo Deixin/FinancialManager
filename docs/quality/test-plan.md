@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-042 Desktop: node infra/transfers-desktop/browser.mjs/native.mjs e pnpm check. Gates cobrem confirmação conjunta, metadados íntegros, duas revisões, falhas antes/depois do commit, limite, PIN, i64, histórico, restauração portátil e limpeza. [Reprodução](../development/desktop-transfers.md). Homologação humana segue pós-integração.
+
 US-042: node infra/transfers/run.mjs cobre grupo/par/revisões atômicos nos dois engines, RLS/escopo, replay, concorrência e falha da segunda revisão. A suíte Node repete os 12 cenários SQLite. [Reprodução e limites](../development/transfers.md). UI Desktop/homologação humana têm gates próprios.
 
 US-041 Desktop: execute desktop:movements:check/native e pnpm check. Gates cobrem comandos reais SQLCipher, PIN antes da chave, i64, versões, rollback, histórico, ACK perdido, exclusão/restauração, acessibilidade, isolamento, término do processo e backup para outra instalação. [Reprodução e limites](../development/desktop-movements.md). Homologação humana fica após integração completa.

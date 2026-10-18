@@ -17,7 +17,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_ten_tests_and_80_shared_vectors',
-  'nineteen_narrow_permissions_without_default_probes',
+  'twenty_one_narrow_permissions_without_default_probes',
   ...[
     'crud_history_and_soft_deletion',
     'explicit_adjustment',
@@ -76,7 +76,15 @@ export function validateMovementEvidence(r, { matchSources = true } = {}) {
       throw Error('DESKTOP_MOVEMENT_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us041-desktop-movements-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks = native
+      ? r?.format_version === 1
+        ? nativeChecks.map((n) =>
+            n === 'twenty_one_narrow_permissions_without_default_probes'
+              ? 'nineteen_narrow_permissions_without_default_probes'
+              : n,
+          )
+        : nativeChecks
+      : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -90,7 +98,7 @@ export function validateMovementEvidence(r, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us041-desktop-movements-browser',
       'us041-desktop-movements-windows',

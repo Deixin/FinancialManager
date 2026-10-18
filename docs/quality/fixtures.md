@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-042 Desktop usa 69 vetores sintéticos compartilhados, pares/grupos SQLCipher e fixtures Chromium/WebView2. FIN-002 e goldens originais permanecem inalterados. [Guia](../development/desktop-transfers.md).
+
 US-042 acrescenta pares e grupos sintéticos aos protocolos, mantendo FIN-002 e seus goldens intactos. Os testes comparam versões e snapshots e removem os dados adicionais do cálculo por exclusão lógica. [Guia](../development/transfers.md).
 
 US-041 Desktop usa 78 vetores sintéticos gerados pelo serviço compartilhado e confrontados com Rust, além de contas e movimentos descartáveis nos protocolos Chromium/Windows. FIN-002 e goldens permanecem inalterados. [Guia e evidências](../development/desktop-movements.md).

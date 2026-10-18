@@ -39,7 +39,7 @@ const snapshots = new Map([
   [b, { workspace_id: b, read_at: now, accounts: [], movements: [] }],
 ]);
 const report = {
-  format_version: 2,
+  format_version: 3,
   scope: 'us040-desktop-accounts-browser',
   passed: false,
   synthetic_only: true,

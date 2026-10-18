@@ -55,7 +55,7 @@ pub(crate) fn load(db: &Connection, w: &str, id: &str) -> Result<Option<State>> 
         .map(Some)
         .map_err(|_| LocalError::IntegrityFailure)
 }
-fn save(db: &Connection, plan: &Plan, revision: &str, at: &str) -> Result<()> {
+pub(crate) fn save(db: &Connection, plan: &Plan, revision: &str, at: &str) -> Result<()> {
     let a = &plan.after;
     let c = &a.content;
     let rows = if let Some(before) = &plan.before {
@@ -86,69 +86,78 @@ fn save(db: &Connection, plan: &Plan, revision: &str, at: &str) -> Result<()> {
     db.execute("INSERT INTO transaction_revision(id,workspace_id,transaction_id,version,snapshot,actor_type,actor_id,device_id,change_source,created_at) VALUES(?,?,?,?,?,'LOCAL_USER',NULL,NULL,'MANUAL',?)",params![revision,a.workspace_id,a.id,movement_model::version(&a.version,false)?,serde_json::to_string(plan.snapshot.as_ref().ok_or(LocalError::IntegrityFailure)?).map_err(|_|LocalError::IntegrityFailure)?,at])?;
     Ok(())
 }
+pub(crate) fn snapshot(db: &Connection, w: &str) -> Result<MovementsSnapshot> {
+    let (count,history_bytes):(i64,i64)=db.query_row("SELECT (SELECT count(*) FROM financial_account WHERE workspace_id=?1)+(SELECT count(*) FROM balance_reference WHERE workspace_id=?1)+(SELECT count(*) FROM financial_transaction WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_allocation WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_tag WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_revision WHERE workspace_id=?1),coalesce((SELECT sum(length(snapshot)) FROM transaction_revision WHERE workspace_id=?1),0)",[w],|r|Ok((r.get(0)?,r.get(1)?)))?;
+    if count > MAX_RECORDS || history_bytes > MAX_BYTES as i64 {
+        return Err(LocalError::MovementLimit);
+    }
+    let balance = local_accounts::snapshot(db, w)?;
+    let ids = db
+        .prepare(
+            "SELECT id FROM financial_transaction WHERE workspace_id=? ORDER BY financial_date,id",
+        )?
+        .query_map([w], |r| r.get::<_, String>(0))?
+        .collect::<std::result::Result<Vec<_>, _>>()?;
+    let mut transactions = Vec::with_capacity(ids.len());
+    for id in ids {
+        transactions.push(load(db, w, &id)?.ok_or(LocalError::IntegrityFailure)?);
+    }
+    let raw=db.prepare("SELECT id,transaction_id,version,created_at,change_source,snapshot FROM transaction_revision WHERE workspace_id=? ORDER BY transaction_id,version")?.query_map([w],|r|Ok((r.get::<_,String>(0)?,r.get::<_,String>(1)?,r.get::<_,i64>(2)?,r.get::<_,String>(3)?,r.get::<_,String>(4)?,r.get::<_,String>(5)?)))?.collect::<std::result::Result<Vec<_>,_>>()?;
+    let mut history = Vec::with_capacity(raw.len());
+    for (id, transaction_id, version, created_at, change_source, text) in raw {
+        identity::resource_id(&id).map_err(|_| LocalError::IntegrityFailure)?;
+        identity::resource_id(&transaction_id).map_err(|_| LocalError::IntegrityFailure)?;
+        identity::utc_instant(&created_at).map_err(|_| LocalError::IntegrityFailure)?;
+        if version < 1
+            || ![
+                "MANUAL",
+                "IMPORT",
+                "SYNC_RESOLUTION",
+                "REVERSAL",
+                "MIGRATION",
+                "SYSTEM",
+            ]
+            .contains(&change_source.as_str())
+        {
+            return Err(LocalError::IntegrityFailure);
+        }
+        let snapshot = serde_json::from_str::<Snapshot>(&text)
+            .ok()
+            .and_then(|s| s.capture().ok())
+            .filter(|s| {
+                s.after.workspace_id == w
+                    && s.after.id == transaction_id
+                    && s.after.version == version.to_string()
+            });
+        history.push(History {
+            id,
+            transaction_id,
+            version: version.to_string(),
+            created_at,
+            change_source,
+            compatible: snapshot.is_some(),
+            snapshot,
+        });
+    }
+    let value = MovementsSnapshot {
+        balance,
+        transactions,
+        history,
+    };
+    if serde_json::to_vec(&value)
+        .map_err(|_| LocalError::IntegrityFailure)?
+        .len()
+        > MAX_BYTES
+    {
+        return Err(LocalError::MovementLimit);
+    }
+    Ok(value)
+}
 impl Installation {
     pub fn read_movements(&self, w: &str) -> Result<MovementsSnapshot> {
         let mut db = self.financial_database(w)?;
         let tx = db.transaction_with_behavior(TransactionBehavior::Deferred)?;
-        let (count,history_bytes):(i64,i64)=tx.query_row("SELECT (SELECT count(*) FROM financial_account WHERE workspace_id=?1)+(SELECT count(*) FROM balance_reference WHERE workspace_id=?1)+(SELECT count(*) FROM financial_transaction WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_allocation WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_tag WHERE workspace_id=?1)+(SELECT count(*) FROM transaction_revision WHERE workspace_id=?1),coalesce((SELECT sum(length(snapshot)) FROM transaction_revision WHERE workspace_id=?1),0)",[w],|r|Ok((r.get(0)?,r.get(1)?)))?;
-        if count > MAX_RECORDS || history_bytes > MAX_BYTES as i64 {
-            return Err(LocalError::MovementLimit);
-        }
-        let balance = local_accounts::snapshot(&tx, w)?;
-        let ids=tx.prepare("SELECT id FROM financial_transaction WHERE workspace_id=? ORDER BY financial_date,id")?.query_map([w],|r|r.get::<_,String>(0))?.collect::<std::result::Result<Vec<_>,_>>()?;
-        let mut transactions = Vec::with_capacity(ids.len());
-        for id in ids {
-            transactions.push(load(&tx, w, &id)?.ok_or(LocalError::IntegrityFailure)?);
-        }
-        let raw=tx.prepare("SELECT id,transaction_id,version,created_at,change_source,snapshot FROM transaction_revision WHERE workspace_id=? ORDER BY transaction_id,version")?.query_map([w],|r|Ok((r.get::<_,String>(0)?,r.get::<_,String>(1)?,r.get::<_,i64>(2)?,r.get::<_,String>(3)?,r.get::<_,String>(4)?,r.get::<_,String>(5)?)))?.collect::<std::result::Result<Vec<_>,_>>()?;
-        let mut history = Vec::with_capacity(raw.len());
-        for (id, transaction_id, version, created_at, change_source, text) in raw {
-            identity::resource_id(&id).map_err(|_| LocalError::IntegrityFailure)?;
-            identity::resource_id(&transaction_id).map_err(|_| LocalError::IntegrityFailure)?;
-            identity::utc_instant(&created_at).map_err(|_| LocalError::IntegrityFailure)?;
-            if version < 1
-                || ![
-                    "MANUAL",
-                    "IMPORT",
-                    "SYNC_RESOLUTION",
-                    "REVERSAL",
-                    "MIGRATION",
-                    "SYSTEM",
-                ]
-                .contains(&change_source.as_str())
-            {
-                return Err(LocalError::IntegrityFailure);
-            }
-            let snapshot = serde_json::from_str::<Snapshot>(&text)
-                .ok()
-                .and_then(|s| s.capture().ok())
-                .filter(|s| {
-                    s.after.workspace_id == w
-                        && s.after.id == transaction_id
-                        && s.after.version == version.to_string()
-                });
-            history.push(History {
-                id,
-                transaction_id,
-                version: version.to_string(),
-                created_at,
-                change_source,
-                compatible: snapshot.is_some(),
-                snapshot,
-            });
-        }
-        let value = MovementsSnapshot {
-            balance,
-            transactions,
-            history,
-        };
-        if serde_json::to_vec(&value)
-            .map_err(|_| LocalError::IntegrityFailure)?
-            .len()
-            > MAX_BYTES
-        {
-            return Err(LocalError::MovementLimit);
-        }
+        let value = snapshot(&tx, w)?;
         tx.commit()?;
         Ok(value)
     }

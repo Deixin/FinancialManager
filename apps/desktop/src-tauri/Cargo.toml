@@ -17,6 +17,7 @@ restore-smoke = ["backup-smoke"]
 manager-smoke = ["workspace-smoke", "vault-smoke"]
 accounts-smoke = ["workspace-smoke", "restore-smoke"]
 movements-smoke = ["accounts-smoke"]
+transfers-smoke = ["movements-smoke"]
 
 [[bin]]
 name = "accounts-probe"
@@ -131,3 +132,13 @@ required-features = ["movements-smoke"]
 name = "movements-smoke"
 path = "src/bin/movements-smoke.rs"
 required-features = ["movements-smoke"]
+
+[[bin]]
+name="transfers-probe"
+path="src/bin/transfers-probe.rs"
+required-features=["transfers-smoke"]
+
+[[bin]]
+name="transfers-smoke"
+path="src/bin/transfers-smoke.rs"
+required-features=["transfers-smoke"]

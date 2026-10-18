@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-042 Desktop](development/desktop-transfers.md) integra os dois lados da transferência ao cofre local e suas revisões. Consulte o [ADR-0053](architecture/adr/0053-transferencias-no-desktop-sqlcipher.md). Próxima história: US-043; homologações humanas permanecem após a integração completa.
+
 A [base compartilhada US-042](development/transfers.md) implementa transferências atômicas com grupos, pares e revisões. Consulte o [ADR-0052](architecture/adr/0052-transferencias-compartilhadas-atomicas.md). Próximo incremento: integração Desktop; homologações humanas continuam após a integração completa.
 
 A [US-041 no Desktop](development/desktop-movements.md) acrescenta entradas/gastos, edição, exclusão reversível, histórico e ajustes identificados ao cofre local. Consulte o [ADR-0051](architecture/adr/0051-movimentacoes-manuais-desktop.md). Próximo incremento: US-042; homologações humanas permanecem após a integração completa. Os parágrafos abaixo preservam o estado dos incrementos anteriores.

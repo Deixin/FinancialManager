@@ -31,7 +31,7 @@ pub fn version(s: &str, zero: bool) -> Result<i64> {
     }
     Ok(n)
 }
-fn label(s: &str) -> Result<String> {
+pub(crate) fn label(s: &str) -> Result<String> {
     let value = s.trim_matches(js_whitespace);
     if value.is_empty() || value.encode_utf16().count() > 2000 || s.chars().any(char::is_control) {
         return invalid();

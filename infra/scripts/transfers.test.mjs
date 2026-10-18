@@ -167,6 +167,54 @@ test('authorization precedes group storage and lifecycle remains controlled by r
   );
   assert.equal(storage, 0);
 });
+test('existing composite metadata must describe every current member and account before any save', async () => {
+  const b = pair();
+  let writes = 0;
+  const service = createRevisionService({
+    authorize: async () => ({
+      workspace_id: w,
+      authority: 'LOCAL',
+      can_write: true,
+      account_ids: null,
+      actor: { actor_type: 'LOCAL_USER', actor_id: null, device_id: null },
+    }),
+    identity: { newId: () => id(100), nowInstant: () => now },
+    change_source: 'MANUAL',
+    store: {
+      transaction: async (_, run) =>
+        run({
+          workspaceMode: async () => 'LOCAL',
+          load: async (id) =>
+            [b.source, b.target].find((s) => s.id === id) ?? null,
+          account: async (id) =>
+            [a, { ...a, id: b.target.content.account_id }].find(
+              (a) => a.id === id,
+            ) ?? null,
+          group: async () => ({
+            id: b.group_id,
+            group_type: 'TRANSFER',
+            state: 'ACTIVE',
+            members: [
+              { id: b.source.id, account_id: b.source.content.account_id },
+            ],
+          }),
+          history: async () => null,
+          save: async () => {
+            writes++;
+          },
+        }),
+    },
+  });
+  await assert.rejects(
+    () =>
+      createTransferService(service).apply(
+        { workspace_id: w },
+        { kind: 'DELETE', base: b },
+      ),
+    { code: 'COMPOSITE_REQUIRED' },
+  );
+  assert.equal(writes, 0);
+});
 test('SQLite transfer scenarios commit group both entries and revisions together with real schema constraints', async () => {
   const handle = openProbeDatabase(':memory:');
   await migrateSqliteTo(handle.db, { sha256 });
@@ -187,7 +235,9 @@ test('SQLite transfer scenarios commit group both entries and revisions together
 });
 const evidence = () =>
   JSON.parse(
-    readFileSync('docs/quality/evidence/us-042-transfer-core-2026-10-18.json'),
+    readFileSync(
+      'docs/quality/evidence/us-042-transfer-core-2026-10-18-us042-desktop.json',
+    ),
   );
 test('transfer evidence requires every two-engine atomicity authorization rollback and cleanup gate', () => {
   assert.equal(validateTransferEvidence(evidence()).passed, true);

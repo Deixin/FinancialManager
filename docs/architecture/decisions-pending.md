@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-042 Desktop: [ADR-0053](adr/0053-transferencias-no-desktop-sqlcipher.md) adota leitura de grupos e comando conjunto SQLCipher, com 21 permissões de produto. O coordenador compartilhado recusa projeções parciais de membros existentes. Nenhum prazo ou enum pendente foi escolhido; DP-01 a DP-04 e homologação humana pós-integração permanecem.
+
 US-042 compartilhada: [ADR-0052](adr/0052-transferencias-compartilhadas-atomicas.md) adota política de transferência e criação do grupo dentro do coordenador de revisões existente. Desktop é o próximo incremento. Não altera estados de grupo na exclusão, não resolve DP-01 a DP-04 e não antecipa homologação humana.
 
 US-041 Desktop: [ADR-0051](adr/0051-movimentacoes-manuais-desktop.md) adota comandos específicos, leitura consistente e política nativa confrontada com o serviço compartilhado. Não resolve DP-01 a DP-04, outbox/feed cloud, paginação ou release. A homologação humana continua após integração completa (ADR-0044).

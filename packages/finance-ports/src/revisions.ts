@@ -372,14 +372,23 @@ export function createRevisionService(options: RevisionOptions) {
         const group = await tx.group(groupId),
           members = plans.filter(
             (plan) => plan.after.content.group_id === groupId,
+          ),
+          previousMembers = members.flatMap((p) =>
+            p.before?.content.group_id === groupId
+              ? [{ id: p.before.id, account_id: p.before.content.account_id }]
+              : [],
           );
         if (
           !group ||
           group.state !== 'ACTIVE' ||
           group.group_type === 'OTHER_COMPOSITE' ||
           members.length !== 2 ||
+          group.members.length !== previousMembers.length ||
           group.members.some(
-            (member) => !members.some((plan) => plan.after.id === member.id),
+            (member) =>
+              !previousMembers.some(
+                (p) => p.id === member.id && p.account_id === member.account_id,
+              ),
           )
         )
           throw new RevisionError('COMPOSITE_REQUIRED');

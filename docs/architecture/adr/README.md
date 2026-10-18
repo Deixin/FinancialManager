@@ -65,3 +65,5 @@ Novos registros usam arquivos numerados a partir de 0016 e o [template](0000-tem
 [0051 — Movimentações manuais Desktop](0051-movimentacoes-manuais-desktop.md): adotado no Desktop local US-041; testes automatizados locais, homologação humana pós-integração.
 
 [0052 — Transferências compartilhadas atômicas](0052-transferencias-compartilhadas-atomicas.md): adotado no núcleo US-042; integração Desktop pendente.
+
+[0053 — Transferências Desktop SQLCipher](0053-transferencias-no-desktop-sqlcipher.md): adotado no Desktop local US-042; homologação humana pós-integração.

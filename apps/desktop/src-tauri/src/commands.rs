@@ -236,6 +236,31 @@ impl LocalState {
             })
         })
     }
+    pub fn read_transfers(
+        &self,
+        workspace: &str,
+    ) -> Result<crate::local_transfers::TransfersSnapshot> {
+        self.with(|i| i.read_transfers(workspace))
+    }
+    pub fn apply_transfer(
+        &self,
+        workspace: &str,
+        input: crate::transfer_model::Command,
+    ) -> Result<crate::local_transfers::TransferResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation.apply_transfer(workspace, input, || {
+                if protected && self.force_locked.load(Ordering::SeqCst) {
+                    Err(LocalError::LocalLocked)
+                } else {
+                    Ok(())
+                }
+            })
+        })
+    }
     pub fn prepare_backup(&self, input: CreateBackup) -> Result<BackupJob> {
         input.validate()?;
         self.backup_active
@@ -788,7 +813,9 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             read_local_accounts,
             apply_local_account_change,
             read_local_movements,
-            apply_local_manual_movement
+            apply_local_manual_movement,
+            read_local_transfers,
+            apply_local_transfer
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -849,6 +876,28 @@ pub async fn apply_local_manual_movement(
 ) -> Result<crate::local_movements::MovementResult> {
     let state = state.inner().clone();
     tauri::async_runtime::spawn_blocking(move || state.apply_manual_movement(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn read_local_transfers(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+) -> Result<crate::local_transfers::TransfersSnapshot> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.read_transfers(&workspace_id))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn apply_local_transfer(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: crate::transfer_model::Command,
+) -> Result<crate::local_transfers::TransferResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.apply_transfer(&workspace_id, input))
         .await
         .map_err(|_| LocalError::StorageUnavailable)?
 }

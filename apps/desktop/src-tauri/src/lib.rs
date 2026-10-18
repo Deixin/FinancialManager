@@ -8,11 +8,13 @@ pub mod local_backup;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
+pub mod local_transfers;
 pub mod local_workspaces;
 pub mod lock_store;
 mod migrations;
 pub mod movement_model;
 pub mod restore_source;
+pub mod transfer_model;
 pub mod windows_hello;
 
 pub type Result<T> = std::result::Result<T, LocalError>;
@@ -51,6 +53,12 @@ pub enum LocalError {
     ReferenceConflict,
     AccountLimit,
     InvalidManualMovement,
+    InvalidTransfer,
+    TransferReadOnly,
+    TransferBaseConflict,
+    TransferAccountChanged,
+    TransferAccountArchived,
+    TransferDeleted,
     ManualMovementReadOnly,
     ManualBaseConflict,
     ManualAccountChanged,
@@ -93,3 +101,9 @@ pub mod account_probe;
 pub mod movement_probe;
 #[cfg(feature = "restore-smoke")]
 pub mod restore_probe;
+
+#[cfg(feature = "transfers-smoke")]
+pub mod transfer_probe;
+
+#[cfg(all(test, feature = "transfers-smoke"))]
+mod transfer_tests;

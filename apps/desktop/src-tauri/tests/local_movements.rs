@@ -1,4 +1,4 @@
-#![cfg(feature = "accounts-smoke")]
+#![cfg(feature = "movements-smoke")]
 // All accounts and keys in these tests are explicitly synthetic and disposable.
 use financial_manager_desktop::{
     LocalError, Result, SecretKey,

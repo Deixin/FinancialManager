@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Desktop — US-042: transferências com confirmação conjunta — 2026-10-18
+
+Movimentações oferece criação e consulta do par completo, edição, exclusão/restauração e histórico. Dois comandos específicos elevam as permissões de produto a 21. A leitura inclui metadados de grupo e estado financeiro no mesmo snapshot; o Rust valida bases/contas atuais e grava grupo, membros, relações e revisões em uma transação SQLCipher. A UI congela a intenção após resposta perdida, aceita somente ativos distintos e mantém saldo estimado conforme data e referências. [Guia](../development/desktop-transfers.md), [ADR-0053](../architecture/adr/0053-transferencias-no-desktop-sqlcipher.md).
+
+O corpus TypeScript/Rust confronta 69 casos. A comparação identificou metadados parciais de membros aceitos pelo coordenador compartilhado; ele agora exige os IDs/contas de todos os membros anteriores, mantendo compatibilidade de criação sem membros. Há regressão antes de qualquer save e protocolos reais afetados são reexecutados.
+
+Dez testes SQLCipher, Chromium e WebView2 cobrem par/revisões, rollback, concorrência, PIN, ACK perdido, bases obsoletas, grupos incompatíveis, classificação, limites, precisão e isolamento. Processo independente, journal após o primeiro lado, repetição após commit e restauração em outra instalação verificam persistência e limpeza. CI configurada não representa execução remota observada.
+
+Verificação local concluída: pnpm check passou com 360 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 120 Markdown. A suíte própria aprovou dez testes Rust com 69 vetores compartilhados, 11 gates Chromium e 13 Windows. Regressões compartilhadas de revisões, invariantes, contas, movimentos e transferências, além dos fluxos Desktop anteriores, passaram novamente. Foram arquivadas 22 cápsulas novas; 29 evidências atuais vinculam os hashes das fontes e a limpeza dos recursos sintéticos.
+
+US-042 atendida neste recorte Desktop local; cloud/outbox/feed/recibos, outras plataformas, paginação e release assinado mantêm seus gates. Não houve schema, dependência de produção ou formato de backup novo. Próximo incremento: US-043. Homologações humanas seguem após integração completa, sem novas confirmações por história. Sete originais e DP-01 a DP-04 intactos; registros abaixo preservam a rastreabilidade.
+
 ## Financeiro — US-042: transferências compartilhadas — 2026-10-18 — em andamento
 
 Verificação local: pnpm check passou com 351 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 118 Markdown. O protocolo real aprovou 54 gates em PostgreSQL/SQLite, incluindo 24 cenários de transferência, comparação de snapshots, LOCAL anônimo, reabertura e limpeza. Regressões de repositories (22), revisões (28), invariantes (50), contas (49), manual (54), contas Desktop e movimentos Desktop Chromium/Windows foram reexecutadas. Dez cápsulas novas preservam as anteriores; os testes usam 27 evidências atuais. CI remota e homologação humana permanecem fora deste resultado local.
