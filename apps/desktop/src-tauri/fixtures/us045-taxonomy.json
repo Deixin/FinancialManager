@@ -1,0 +1,4158 @@
+{
+  "synthetic_only": true,
+  "dataset_id": "SYNTHETIC_US045_DESKTOP_ONLY",
+  "vectors": [
+    {
+      "name": "TAG_create",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_replay",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "TAG_replay_conflict",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC DIFFERENT",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "TAG_update",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC RENAMED",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ACTIVE"
+            },
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC RENAMED",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_archive",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ARCHIVED"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ACTIVE"
+            },
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ARCHIVED"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_noop",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "TAG_stale",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC FORGED",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC FORGED",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "TAG_missing",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "TAXONOMY_NOT_FOUND" }
+    },
+    {
+      "name": "TAG_reactivate",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ARCHIVED"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ARCHIVED"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ARCHIVED"
+            },
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC TAG",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_legacy_archive",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ACTIVE"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ARCHIVED"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "status": "ACTIVE"
+            },
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "status": "ARCHIVED"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_invalid_empty",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_control",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC\nPRIVATE",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_long",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_foreign",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_unknown",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE",
+          "extra": 1
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_v4",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-4000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_archived",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ARCHIVED"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_invalid_kind",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "UNKNOWN",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_label_18",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "  ＦÉＲＩＡＳ  ",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "ＦÉＲＩＡＳ",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_label_19",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC  NAME",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC  NAME",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_label_20",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETICNAME",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_label_21",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC﻿NAME",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC﻿NAME",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_label_22",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "áááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááá",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "áááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááá",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_label_23",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_label_24",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "TAG_alias",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "Ｆéｒｉａｓ",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": " férias ",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "TAXONOMY_NAME_CONFLICT" }
+    },
+    {
+      "name": "TAG_archived_name_available",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "Ｆéｒｉａｓ",
+            "status": "ARCHIVED"
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": " férias ",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000999",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "férias",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TAG_reactivation_conflict",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ARCHIVED"
+          },
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000999",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ARCHIVED"
+        },
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC TAG",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": { "error": "TAXONOMY_NAME_CONFLICT" }
+    },
+    {
+      "name": "SUBCATEGORY_create",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_replay",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "SUBCATEGORY_replay_conflict",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC DIFFERENT",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "SUBCATEGORY_update",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC RENAMED",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC RENAMED",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_archive",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ARCHIVED",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_noop",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "SUBCATEGORY_stale",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC FORGED",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC FORGED",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "SUBCATEGORY_missing",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_NOT_FOUND" }
+    },
+    {
+      "name": "SUBCATEGORY_reactivate",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ARCHIVED",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ARCHIVED",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_legacy_archive",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "status": "ARCHIVED",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_empty",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_control",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC\nPRIVATE",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_long",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_foreign",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000002",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_unknown",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10,
+          "extra": 1
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_v4",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-4000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_archived",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_invalid_kind",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "UNKNOWN",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_label_46",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "  ＦÉＲＩＡＳ  ",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "ＦÉＲＩＡＳ",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_label_47",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC  NAME",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC  NAME",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_label_48",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETICNAME",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_label_49",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC﻿NAME",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC﻿NAME",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_label_50",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "áááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááá",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "áááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááááá",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_label_51",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_label_52",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "SUBCATEGORY_alias",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "Ｆéｒｉａｓ",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": " férias ",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_NAME_CONFLICT" }
+    },
+    {
+      "name": "SUBCATEGORY_archived_name_available",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "Ｆéｒｉａｓ",
+            "status": "ARCHIVED",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000999",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": " férias ",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000999",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "férias",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SUBCATEGORY_reactivation_conflict",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ARCHIVED",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000999",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_NAME_CONFLICT" }
+    },
+    {
+      "name": "parent_immutable",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000011",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "parent_missing",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000999",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_PARENT_UNAVAILABLE" }
+    },
+    {
+      "name": "parent_archived_create",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ARCHIVED",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_PARENT_UNAVAILABLE" }
+    },
+    {
+      "name": "parent_archived_reactivate",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ARCHIVED",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ARCHIVED",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": { "error": "TAXONOMY_PARENT_UNAVAILABLE" }
+    },
+    {
+      "name": "parent_archived_keep",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ARCHIVED",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC MAINTAINED",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC MAINTAINED",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "names_different_types",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "TAG",
+          "id": "0199d245-0000-7000-8000-000000000100",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE"
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "TAG",
+              "id": "0199d245-0000-7000-8000-000000000100",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "names_different_parents",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000201",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000011",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000201",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000011",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "legacy_duplicate_archive",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000202",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "UPDATE",
+        "base": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        },
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ARCHIVED",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 10
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ARCHIVED",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reorder",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000202",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC OTHER",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000011",
+            "sort_order": 10
+          },
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ],
+        "ids": [
+          "0199d245-0000-7000-8000-000000000201",
+          "0199d245-0000-7000-8000-000000000200"
+        ]
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000201",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SECOND",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000201",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SECOND",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 0
+            }
+          },
+          {
+            "before": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 10
+            },
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "reorder_empty",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [],
+        "ids": []
+      },
+      "expected": { "plans": [] }
+    },
+    {
+      "name": "reorder_missing_parent",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000999",
+        "bases": [],
+        "ids": []
+      },
+      "expected": { "error": "TAXONOMY_PARENT_UNAVAILABLE" }
+    },
+    {
+      "name": "reorder_stale",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC FORGED",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ],
+        "ids": [
+          "0199d245-0000-7000-8000-000000000201",
+          "0199d245-0000-7000-8000-000000000200"
+        ]
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_partial",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ],
+        "ids": ["0199d245-0000-7000-8000-000000000200"]
+      },
+      "expected": { "error": "TAXONOMY_BASE_CONFLICT" }
+    },
+    {
+      "name": "reorder_repeated",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ],
+        "ids": [
+          "0199d245-0000-7000-8000-000000000200",
+          "0199d245-0000-7000-8000-000000000200"
+        ]
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "reorder_wrong_parent",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000011",
+        "bases": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ],
+        "ids": [
+          "0199d245-0000-7000-8000-000000000201",
+          "0199d245-0000-7000-8000-000000000200"
+        ]
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "reorder_tag_base",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": [
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000200",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SUB",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          },
+          {
+            "kind": "SUBCATEGORY",
+            "id": "0199d245-0000-7000-8000-000000000201",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC SECOND",
+            "status": "ACTIVE",
+            "category_id": "0199d245-0000-7000-8000-000000000010",
+            "sort_order": 10
+          }
+        ]
+      },
+      "command": {
+        "kind": "REORDER_SUBCATEGORIES",
+        "category_id": "0199d245-0000-7000-8000-000000000010",
+        "bases": [
+          {
+            "kind": "TAG",
+            "id": "0199d245-0000-7000-8000-000000000100",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC TAG",
+            "status": "ACTIVE"
+          }
+        ],
+        "ids": ["0199d245-0000-7000-8000-000000000100"]
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "order_-2147483648",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": -2147483648
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": -2147483648
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "order_2147483647",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 2147483647
+        }
+      },
+      "expected": {
+        "plans": [
+          {
+            "before": null,
+            "after": {
+              "kind": "SUBCATEGORY",
+              "id": "0199d245-0000-7000-8000-000000000200",
+              "workspace_id": "0199d245-0000-7000-8000-000000000001",
+              "name": "SYNTHETIC SUB",
+              "status": "ACTIVE",
+              "category_id": "0199d245-0000-7000-8000-000000000010",
+              "sort_order": 2147483647
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "order_-2147483649",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": -2147483649
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "order_2147483648",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 2147483648
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    },
+    {
+      "name": "order_0.5",
+      "workspace_id": "0199d245-0000-7000-8000-000000000001",
+      "current": {
+        "categories": [
+          {
+            "id": "0199d245-0000-7000-8000-000000000010",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 10",
+            "category_scope": "BOTH",
+            "sort_order": 10,
+            "status": "ACTIVE",
+            "is_seeded": false
+          },
+          {
+            "id": "0199d245-0000-7000-8000-000000000011",
+            "workspace_id": "0199d245-0000-7000-8000-000000000001",
+            "name": "SYNTHETIC CATEGORY 11",
+            "category_scope": "BOTH",
+            "sort_order": 11,
+            "status": "ACTIVE",
+            "is_seeded": false
+          }
+        ],
+        "items": []
+      },
+      "command": {
+        "kind": "CREATE",
+        "item": {
+          "kind": "SUBCATEGORY",
+          "id": "0199d245-0000-7000-8000-000000000200",
+          "workspace_id": "0199d245-0000-7000-8000-000000000001",
+          "name": "SYNTHETIC SUB",
+          "status": "ACTIVE",
+          "category_id": "0199d245-0000-7000-8000-000000000010",
+          "sort_order": 0.5
+        }
+      },
+      "expected": { "error": "INVALID_TAXONOMY_CHANGE" }
+    }
+  ]
+}

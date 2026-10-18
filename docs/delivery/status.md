@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Desktop — US-045: catálogos de subcategorias e tags — 2026-10-18 — em andamento
+
+Configurações oferece criação, edição, pesquisa, filtro, ordem de filhos e arquivamento no cofre SQLCipher. Comandos específicos validam bases/pais e preservam vínculos e saldos; gateway confere o ACK e conserva intenção após resposta perdida. Troca de espaço e bloqueio descartam dados transitórios. [Guia](../development/desktop-taxonomy.md) e [ADR-0060](../architecture/adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 426 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 134 Markdown. A suíte própria aprovou nove testes Rust, 77 vetores compartilhados, nove gates Chromium e 16 Windows. Todas as regressões Desktop afetadas foram reexecutadas em Chromium/Windows. Foram arquivadas 23 cápsulas novas ou renovadas; 39 evidências atuais conferem com 433 hashes de fontes no Git staging. Os 16 relatórios de dados/infraestrutura não afetados tiveram a atualidade das fontes verificada. Recursos sintéticos próprios encerrados. Isso não representa execução de CI remota, integração do editor financeiro desta história ou homologação humana.
+
+US-045 continua em andamento até integrar associação versionada e filtros à tela de movimentações. Não há migration, dependência de produção ou mudança de backup. Cloud/outbox/feed, versão/auditoria de metadados, outras plataformas e editor de rateio US-046 mantêm seus gates. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Registros abaixo são históricos.
+
 ## Financeiro — US-045: associação versionada de classificação — 2026-10-18 — em andamento
 
 Categorias, subcategorias e tags são associadas pelo coordenador de revisões, com bases completas, referências validadas na transação e histórico. A política preserva conta, data, valor, natureza econômica e origem; suporta tags em rateios e exige pares completos em grupos. Filtros puros deduplicam tags e exigem categoria/subcategoria na mesma parcela. [Guia](../development/classification.md) e [ADR-0059](../architecture/adr/0059-associacao-versionada-de-classificacao.md).

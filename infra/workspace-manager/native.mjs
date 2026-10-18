@@ -33,7 +33,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 6,
+  format_version: 7,
   scope: 'us036-workspace-manager-windows',
   passed: false,
   synthetic_only: true,
@@ -107,7 +107,7 @@ try {
       'warnings',
     ]);
   });
-  step('twenty_five_narrow_product_permissions', () => {
+  step('twenty_seven_narrow_product_permissions', () => {
     run('cargo', ['build', '--locked', '--bin', 'financial-manager']);
     const binary = readFileSync(
       path.join(target, 'debug/financial-manager.exe'),
@@ -124,7 +124,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 25);
+    assert.equal(permissions.length, 27);
     run('cargo', [
       'build',
       '--locked',

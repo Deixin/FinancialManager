@@ -1,3 +1,4 @@
+import { LocalTaxonomyFlow } from './local-taxonomy-flow.js';
 import { LocalCategoriesFlow } from './local-categories-flow.js';
 import { LocalAccountsFlow } from './local-accounts-flow.js';
 import { LocalMovementsFlow } from './local-movements-flow.js';
@@ -43,6 +44,7 @@ export function LocalWorkspaceFlow({
     'overview' | 'accounts' | 'movements' | 'settings'
   >('overview');
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [taxonomyOpen, setTaxonomyOpen] = useState(false);
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [purpose, setPurpose] = useState<Purpose>('PERSONAL');
@@ -76,6 +78,7 @@ export function LocalWorkspaceFlow({
     setCurrent(null);
     setRoute('overview');
     setCategoriesOpen(false);
+    setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     setCreating(true);
     setFilter('local');
@@ -96,6 +99,7 @@ export function LocalWorkspaceFlow({
     setFilter('local');
     setRoute('overview');
     setCategoriesOpen(false);
+    setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     try {
       const rows = await gateway.list();
@@ -138,6 +142,7 @@ export function LocalWorkspaceFlow({
     setCurrent(null);
     setRoute('overview');
     setCategoriesOpen(false);
+    setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     setCreating(false);
     try {
@@ -171,6 +176,7 @@ export function LocalWorkspaceFlow({
         setCurrent(row);
         setRoute('overview');
         setCategoriesOpen(false);
+        setTaxonomyOpen(false);
         setMovementEntry({ mode: 'list' });
         setCreating(false);
         request.current = null;
@@ -226,6 +232,7 @@ export function LocalWorkspaceFlow({
         onWorkspaceChange={(id) => void open(id)}
         onNavigate={(next) => {
           setCategoriesOpen(false);
+          setTaxonomyOpen(false);
           setMovementEntry({ mode: 'list' });
           setRoute(
             next === 'settings' || next === 'accounts' || next === 'movements'
@@ -262,6 +269,13 @@ export function LocalWorkspaceFlow({
               setRoute('movements');
             }}
           />
+        ) : route === 'settings' && taxonomyOpen ? (
+          <LocalTaxonomyFlow
+            key={current.id}
+            workspaceId={current.id}
+            onBack={() => setTaxonomyOpen(false)}
+            onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+          />
         ) : route === 'settings' && categoriesOpen ? (
           <LocalCategoriesFlow
             key={current.id}
@@ -274,6 +288,9 @@ export function LocalWorkspaceFlow({
             <h2>Configurações do espaço</h2>
             <button type="button" onClick={() => setCategoriesOpen(true)}>
               Gerenciar categorias
+            </button>
+            <button type="button" onClick={() => setTaxonomyOpen(true)}>
+              Gerenciar subcategorias e tags
             </button>
             <p>Nome: {current.display_name}</p>
             <p>

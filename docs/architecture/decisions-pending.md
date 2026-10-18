@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-045 Desktop, catálogos: [ADR-0060](adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md) integra subcategorias/tags ao SQLCipher, com bases completas, 27 comandos e paridade. Associação/filtros de movimentações são o próximo incremento. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Homologações humanas pós-integração preservadas.
+
 US-045, associação compartilhada: [ADR-0059](adr/0059-associacao-versionada-de-classificacao.md) compõe intenções de classificação sobre revisões, com consulta transacional aos catálogos e filtros puros deduplicados. Desktop, autorização/cobertura dos snapshots de leitura e cloud de produto permanecem pendentes. Sem migration, dependência nova ou alteração de DP-01 a DP-04; homologações humanas pós-integração preservadas.
 
 US-045 em andamento: [ADR-0058](adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md) adota catálogos de subcategorias e tags, bases completas, arquivamento e pesquisa, com preservação financeira. Associação às transações e Desktop permanecem pendentes. Sem migration, dependência nova ou resolução de DP-01 a DP-04; homologações humanas pós-integração preservadas.

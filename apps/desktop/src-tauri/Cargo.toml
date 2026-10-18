@@ -20,6 +20,7 @@ movements-smoke = ["accounts-smoke"]
 transfers-smoke = ["movements-smoke"]
 card-payments-smoke = ["transfers-smoke"]
 categories-smoke = ["accounts-smoke"]
+taxonomy-smoke = ["categories-smoke"]
 
 [[bin]]
 name = "accounts-probe"
@@ -165,3 +166,13 @@ required-features=["categories-smoke"]
 name="categories-smoke"
 path="src/bin/categories-smoke.rs"
 required-features=["categories-smoke"]
+
+[[bin]]
+name="taxonomy-probe"
+path="src/bin/taxonomy-probe.rs"
+required-features=["taxonomy-smoke"]
+
+[[bin]]
+name="taxonomy-smoke"
+path="src/bin/taxonomy-smoke.rs"
+required-features=["taxonomy-smoke"]

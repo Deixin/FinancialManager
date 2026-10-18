@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-045 Desktop, catálogos: node infra/taxonomy-desktop/browser.mjs/native.mjs e pnpm check cobrem paridade, CRUD, busca/estado, ordem por pai, conflitos, ACK perdido, respostas tardias, isolamento, PIN, rollback/interrupções, preservação financeira e restauração portátil. [Reprodução](../development/desktop-taxonomy.md). Editor de classificação e filtros financeiros seguem no próximo incremento; homologações humanas após integração completa.
+
 US-045, associação: node infra/classification/run.mjs e pnpm check verificam bases/versões, preservação financeira e de origem, referências ativas, escopo econômico, grupos completos, rateios preservados, reversão, rollback da segunda revisão, concorrência e filtros deduplicados na mesma parcela. [Reprodução e limites](../development/classification.md). Integração Desktop, autorização/cobertura da leitura dos filtros e homologação humana integrada mantêm seus gates.
 
 US-045, catálogos: node infra/taxonomy/run.mjs e pnpm check cobrem bases completas, tipos/pais imutáveis, nomes, pesquisa, concorrência, rollback, autorização/RLS, reabertura e preservação de vínculos, saldos e histórico de itens usados. [Reprodução e limites](../development/taxonomy.md). Associação às movimentações, UI Desktop e homologação humana integrada continuam nos próprios gates.

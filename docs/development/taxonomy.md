@@ -1,6 +1,6 @@
 # US-045 — Catálogos de subcategorias e tags
 
-Primeiro incremento compartilhado da US-045: gestão de subcategorias e tags por workspace em PostgreSQL/SQLite, sem modificar valores, associações ou revisões de movimentações. [ADR-0058](../architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md). A [associação versionada e os filtros puros](classification.md) foram implementados posteriormente; integração Desktop e leitura autorizada/cobertura continuam pendentes.
+Primeiro incremento compartilhado da US-045: gestão de subcategorias e tags por workspace em PostgreSQL/SQLite, sem modificar valores, associações ou revisões de movimentações. [ADR-0058](../architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md). A [associação versionada e os filtros puros](classification.md) foram implementados posteriormente; a [gestão dos catálogos no Desktop](desktop-taxonomy.md) também foi integrada. Editor financeiro e leitura autorizada/cobertura dos filtros continuam pendentes.
 
 ## Contratos
 
@@ -39,4 +39,4 @@ Validação local concluída em 2026-10-18: pnpm check passou com 409 testes Nod
 
 Nenhuma migration, dependência de produção, tela ou permissão IPC nova. O catálogo é limitado a 10 mil itens de taxonomia, além das categorias, e 4 Mi unidades UTF-16 de JSON; excesso é recusado. Normalização usa o corpus português/NFKC existente; Unicode/locale adicional permanece no gate da US-021.
 
-O [incremento de associação](classification.md) acrescenta categoria/subcategoria/tags às transações usando revisão-base e histórico, com filtros puros deduplicados. Próximo incremento integra Desktop e leitura autorizada/cobertura. US-046 mantém o editor de rateio. A futura apresentação deve explicar que tags sobrepostas não são partes aditivas do orçamento. Escrita cloud de produto, auditoria/versão dos metadados, outbox/feed e recibos duráveis seguem pendentes. Homologações humanas ficam após integração completa; DP-01 a DP-04 e os sete originais permanecem intactos.
+O [incremento de associação](classification.md) acrescenta categoria/subcategoria/tags às transações usando revisão-base e histórico, com filtros puros deduplicados. A [gestão dos catálogos Desktop](desktop-taxonomy.md) foi integrada; o próximo incremento acrescenta o editor financeiro e leitura autorizada/cobertura dos filtros. US-046 mantém o editor de rateio. A futura apresentação deve explicar que tags sobrepostas não são partes aditivas do orçamento. Escrita cloud de produto, auditoria/versão dos metadados, outbox/feed e recibos duráveis seguem pendentes. Homologações humanas ficam após integração completa; DP-01 a DP-04 e os sete originais permanecem intactos.

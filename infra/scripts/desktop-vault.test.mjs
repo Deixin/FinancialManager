@@ -6,7 +6,7 @@ const load = () =>
   JSON.parse(
     readFileSync(
       new URL(
-        '../../docs/quality/evidence/us-032-vault-windows-2026-10-18-us044-desktop.json',
+        '../../docs/quality/evidence/us-032-vault-windows-2026-10-18-us045-taxonomy-desktop.json',
         import.meta.url,
       ),
       'utf8',

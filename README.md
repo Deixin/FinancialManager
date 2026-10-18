@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [gestão de subcategorias e tags chegou ao Desktop](docs/development/desktop-taxonomy.md), em Configurações, com SQLCipher, paridade nativa e catálogo por workspace. Próximo incremento da US-045: editor de classificação e filtros na tela de movimentações. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
+
 A [US-045 avançou na associação às transações](docs/development/classification.md): revisão-base, histórico e filtros compartilhados deduplicados, preservando valores e natureza econômica. Próximo incremento: integração Desktop e leitura autorizada com cobertura dos filtros. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
 
 A [US-045 começou pelo catálogo compartilhado](docs/development/taxonomy.md): subcategorias e tags com criação, edição, pesquisa e arquivamento em PostgreSQL/SQLite. Associação às transações e integração Desktop são os próximos incrementos. Homologações humanas seguem após integração completa; entradas abaixo são históricas.

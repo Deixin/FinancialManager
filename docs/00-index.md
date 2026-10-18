@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-045 no Desktop](development/desktop-taxonomy.md) integra primeiro os catálogos de subcategorias e tags em Configurações, com 27 comandos específicos e paridade Rust/TypeScript. Consulte o [ADR-0060](architecture/adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md). Próximo incremento: classificação e filtros de movimentações. Homologações humanas seguem pós-integração; entradas abaixo são históricas.
+
 A [associação compartilhada US-045](development/classification.md) usa revisões existentes e fornece filtros puros deduplicados sobre snapshots autorizados. Consulte o [ADR-0059](architecture/adr/0059-associacao-versionada-de-classificacao.md). Próximo incremento integra Desktop, leitura autorizada/cobertura e apresentação dos filtros. Homologações humanas continuam pós-integração; entradas abaixo são históricas.
 
 A [US-045 em andamento](development/taxonomy.md) entrega primeiro os catálogos compartilhados de subcategorias e tags. Consulte o [ADR-0058](architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md). Próximo incremento: associação versionada às transações e filtros; depois, integração Desktop. Homologações humanas permanecem pós-integração. Entradas abaixo são históricas.

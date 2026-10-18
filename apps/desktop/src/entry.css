@@ -382,3 +382,21 @@ main:focus {
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
+.taxonomy-heading,
+.taxonomy-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+.taxonomy-heading h2 {
+  flex: 1;
+}
+.taxonomy-filters label {
+  display: grid;
+  gap: 0.4rem;
+}
+.taxonomy-flow .category-list {
+  margin-top: 1rem;
+}

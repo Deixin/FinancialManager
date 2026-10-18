@@ -67,6 +67,8 @@ fn main() {
         "apply_local_transfer",
         "read_local_card_payments",
         "apply_local_card_payment",
+        "read_local_taxonomy",
+        "apply_local_taxonomy_change",
         "read_local_categories",
         "apply_local_category_change",
     ]);
@@ -96,6 +98,9 @@ fn main() {
     }
     if cfg!(feature = "categories-smoke") {
         commands.push("finish_categories_smoke");
+    }
+    if cfg!(feature = "taxonomy-smoke") {
+        commands.push("finish_taxonomy_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

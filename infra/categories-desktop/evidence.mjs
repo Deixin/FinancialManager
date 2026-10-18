@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_nine_tests_and_52_shared_vectors',
-  'twenty_five_permissions_real_production_handler_and_no_probe',
+  'twenty_seven_permissions_real_production_handler_and_no_probe',
   ...[
     'category_crud_seed_and_order',
     'archive_keeps_seed_provenance',
@@ -80,7 +80,17 @@ export function validateDesktopCategoryEvidence(
       throw Error('DESKTOP_CATEGORY_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us044-desktop-categories-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks =
+      native && !matchSources && r.format_version === 1
+        ? nativeChecks.map((n) =>
+            n ===
+            'twenty_seven_permissions_real_production_handler_and_no_probe'
+              ? 'twenty_five_permissions_real_production_handler_and_no_probe'
+              : n,
+          )
+        : native
+          ? nativeChecks
+          : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -94,7 +104,7 @@ export function validateDesktopCategoryEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us044-desktop-categories-windows',
       'us044-desktop-categories-browser',

@@ -57,7 +57,7 @@ pub fn name_key(s: &str) -> String {
         .join(" ")
         .to_lowercase()
 }
-fn label(s: String) -> Result<String> {
+pub(crate) fn label(s: String) -> Result<String> {
     let value = s.trim_matches(js_space);
     if value.is_empty() || value.encode_utf16().count() > 120 || s.chars().any(char::is_control) {
         return Err(LocalError::InvalidCategoryChange);

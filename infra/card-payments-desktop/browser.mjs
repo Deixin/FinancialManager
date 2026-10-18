@@ -31,7 +31,7 @@ const directory = new URL(
   h = syntheticCardPaymentHost(),
   other = id(90),
   report = {
-    format_version: 2,
+    format_version: 3,
     scope: 'us043-desktop-card-payments-browser',
     passed: false,
     synthetic_only: true,

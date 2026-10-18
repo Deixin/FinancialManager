@@ -12,12 +12,14 @@ pub mod local_categories;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
+pub mod local_taxonomy;
 pub mod local_transfers;
 pub mod local_workspaces;
 pub mod lock_store;
 mod migrations;
 pub mod movement_model;
 pub mod restore_source;
+pub mod taxonomy_model;
 pub mod transfer_model;
 pub mod windows_hello;
 
@@ -57,6 +59,13 @@ pub enum LocalError {
     CategoryNameConflict,
     CategorySeedConflict,
     CategoryLimit,
+    InvalidTaxonomyChange,
+    InvalidTaxonomyState,
+    TaxonomyNotFound,
+    TaxonomyBaseConflict,
+    TaxonomyNameConflict,
+    TaxonomyParentUnavailable,
+    TaxonomyLimit,
     InvalidAccountChange,
     StaleAccount,
     AccountNotFound,
@@ -134,3 +143,8 @@ mod card_payment_tests;
 pub mod category_probe;
 #[cfg(all(test, feature = "categories-smoke"))]
 mod category_tests;
+
+#[cfg(feature = "taxonomy-smoke")]
+pub mod taxonomy_probe;
+#[cfg(all(test, feature = "taxonomy-smoke"))]
+mod taxonomy_tests;
