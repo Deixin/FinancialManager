@@ -10,7 +10,8 @@
     ".": "./dist/index.js",
     "./transfers": "./dist/transfers.js",
     "./card-payments": "./dist/card-payments.js",
-    "./categories": "./dist/categories.js"
+    "./categories": "./dist/categories.js",
+    "./taxonomy": "./dist/taxonomy.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

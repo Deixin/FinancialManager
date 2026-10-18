@@ -236,7 +236,7 @@ test('SQLite transfer scenarios commit group both entries and revisions together
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-042-transfer-core-2026-10-18-us044-core.json',
+      'docs/quality/evidence/us-042-transfer-core-2026-10-18-us045-catalog.json',
     ),
   );
 test('transfer evidence requires every two-engine atomicity authorization rollback and cleanup gate', () => {

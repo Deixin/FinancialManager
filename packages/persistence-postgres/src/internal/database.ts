@@ -116,3 +116,20 @@ export interface WriteCategoriesTables {
     is_seeded: boolean;
   };
 }
+export interface WriteTaxonomyTables extends WriteCategoriesTables {
+  subcategory: {
+    id: string;
+    workspace_id: string;
+    category_id: string;
+    name: string;
+    sort_order: number;
+    status: 'ACTIVE' | 'ARCHIVED';
+  };
+  tag: {
+    id: string;
+    workspace_id: string;
+    name: string;
+    normalized_name: ColumnType<string, never, never>;
+    status: 'ACTIVE' | 'ARCHIVED';
+  };
+}

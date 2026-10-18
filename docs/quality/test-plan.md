@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-045, catálogos: node infra/taxonomy/run.mjs e pnpm check cobrem bases completas, tipos/pais imutáveis, nomes, pesquisa, concorrência, rollback, autorização/RLS, reabertura e preservação de vínculos, saldos e histórico de itens usados. [Reprodução e limites](../development/taxonomy.md). Associação às movimentações, UI Desktop e homologação humana integrada continuam nos próprios gates.
+
 US-044 Desktop: node infra/categories-desktop/browser.mjs/native.mjs e pnpm check verificam sugestões/replay, metadados, nomes equivalentes, ordem/arquivamento, bases forjadas, concorrência, SQLCipher/PIN, ACK perdido, respostas tardias, isolamento local por workspace, falhas de processo e restauração portátil. [Reprodução](../development/desktop-categories.md). Homologações humanas seguem após integração completa.
 
 US-044 compartilhada: node infra/categories/run.mjs e pnpm check verificam perfis/replay, categorias usadas, nomes normalizados, conflitos/base completa, reordenação atômica, falha na segunda escrita, RLS/owner, leitura/gestão, modo anônimo, concorrência e limpeza. [Reprodução e limites](../development/categories.md). Desktop e homologação humana seguem nos próprios gates.

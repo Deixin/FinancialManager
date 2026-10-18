@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-045 em andamento](development/taxonomy.md) entrega primeiro os catálogos compartilhados de subcategorias e tags. Consulte o [ADR-0058](architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md). Próximo incremento: associação versionada às transações e filtros; depois, integração Desktop. Homologações humanas permanecem pós-integração. Entradas abaixo são históricas.
+
 A [US-044 no Desktop](development/desktop-categories.md) oferece gestão de categorias por workspace no SQLCipher, com paridade Rust/TypeScript e comandos específicos. Consulte o [ADR-0057](architecture/adr/0057-categorias-no-desktop-sqlcipher.md). Próximo passo: US-045; homologações humanas permanecem pós-integração. Entradas abaixo são históricas.
 
 A [US-044 compartilhada](development/categories.md) implementa categorias por workspace sobre PostgreSQL/SQLite. Consulte o [ADR-0056](architecture/adr/0056-categorias-compartilhadas-por-workspace.md). Próximo incremento integra o Desktop; homologações humanas permanecem após integração completa. Entradas abaixo são históricas.

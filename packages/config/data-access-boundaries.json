@@ -57,6 +57,16 @@
       "owner": "categories",
       "write": true,
       "syntax": "kysely"
+    },
+    "packages/storage-schema/src/revision-adapters/taxonomy-writes.ts": {
+      "owner": "categories",
+      "write": true,
+      "syntax": "sqlite"
+    },
+    "packages/persistence-postgres/src/modules/taxonomy-writes.ts": {
+      "owner": "categories",
+      "write": true,
+      "syntax": "kysely"
     }
   },
   "composition_imports": {

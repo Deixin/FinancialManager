@@ -571,7 +571,7 @@ test('current revision evidence requires all real engine gates, exact sources an
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-026-revisions-2026-10-18-us044-core.json',
+          '../../docs/quality/evidence/us-026-revisions-2026-10-18-us045-catalog.json',
           import.meta.url,
         ),
         'utf8',

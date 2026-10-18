@@ -7,7 +7,8 @@
   "exports": {
     "./revisions": "./dist/revisions.js",
     ".": "./dist/index.js",
-    "./categories": "./dist/category-changes.js"
+    "./categories": "./dist/category-changes.js",
+    "./taxonomy": "./dist/taxonomy-changes.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

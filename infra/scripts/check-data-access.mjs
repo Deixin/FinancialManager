@@ -138,7 +138,9 @@ export function validateDataAccessSource(filename, source) {
             ...(module === 'categories'
               ? [
                   '@financial-manager/domain/categories',
+                  '@financial-manager/domain/taxonomy',
                   '@financial-manager/finance-ports/categories',
+                  '@financial-manager/finance-ports/taxonomy',
                 ]
               : []),
           ].includes(specifier) &&

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0058 — Catálogos de subcategorias e tags](0058-catalogos-compartilhados-de-subcategorias-e-tags.md): política pura, autorização por workspace, busca, reordenação de filhos e arquivamento em PostgreSQL/SQLite; associação financeira e Desktop são incrementos seguintes.
+
 [0055 — Cartões e pagamentos no Desktop](0055-cartoes-e-pagamentos-no-desktop.md): leitura coerente e pagamento conjunto SQLCipher, 23 comandos estreitos, UI de dívida/crédito e dados transitórios; importação/conciliação permanece pendente.
 
 [0054 — Pagamentos de cartão compartilhados](0054-pagamentos-de-cartao-compartilhados.md): par ASSET/CREDIT_CARD, dívida/caixa separados de consumo, revisões e rollback atômicos; US-043 em andamento até Desktop/conciliação.

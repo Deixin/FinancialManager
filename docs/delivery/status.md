@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-045: catálogos de subcategorias e tags — 2026-10-18 — em andamento
+
+Primeiro incremento compartilhado: criação, renomeação, pesquisa, ordenação de subcategorias e arquivamento por workspace em PostgreSQL/SQLite. Bases completas recusam divergências, IDs e categoria de origem permanecem imutáveis, e itens usados conservam vínculos e histórico. [Guia](../development/taxonomy.md) e [ADR-0058](../architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 409 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build. O protocolo próprio aprovou 82 gates em PostgreSQL/SQLite; regressões de repositories, revisões, invariantes, contas, movimentações, transferências e cartões, além dos cinco fluxos Desktop afetados em Chromium/Windows, passaram. Foram arquivadas 19 cápsulas novas ou renovadas, preservando as anteriores. As 36 evidências atuais conferem com 405 hashes de fontes no Git staging; recursos sintéticos próprios foram encerrados. Isso não representa execução de CI remota ou homologação humana.
+
+Sem migration, dependência nova, comando Tauri ou tela nova. US-045 continua em andamento: próximo incremento associa transações com revisões e filtros deduplicados; integração Desktop vem em seguida. Homologações humanas seguem após integrar o sistema. Sete originais e DP-01 a DP-04 preservados; registros abaixo são históricos.
+
 ## Desktop — US-044: categorias por workspace — 2026-10-18
 
 Configurações oferece sugestões por finalidade, criação, renomeação, ordem e arquivamento/reativação. Comandos específicos e política Rust persistem lotes SQLCipher com base completa, sem alterar vínculos, saldos ou histórico financeiro. A capability possui 25 permissões. Após ACK perdido, IDs e base permanecem congelados; bloqueio/troca de espaço removem dados anteriores. [Guia](../development/desktop-categories.md), [ADR-0057](../architecture/adr/0057-categorias-no-desktop-sqlcipher.md).

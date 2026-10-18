@@ -197,7 +197,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-043-desktop-card-payments-' +
         kind +
-        '-2026-10-18-us044-desktop.json',
+        '-2026-10-18-us045-catalog.json',
     ),
   );
 test('Desktop cardPayment evidence requires pair native crash restore cleanup and every UI gate', () => {

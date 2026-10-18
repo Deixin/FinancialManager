@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-045 em andamento: [ADR-0058](adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md) adota catálogos de subcategorias e tags, bases completas, arquivamento e pesquisa, com preservação financeira. Associação às transações e Desktop permanecem pendentes. Sem migration, dependência nova ou resolução de DP-01 a DP-04; homologações humanas pós-integração preservadas.
+
 US-044 Desktop: [ADR-0057](adr/0057-categorias-no-desktop-sqlcipher.md) integra categorias ao SQLCipher com bases completas, 25 permissões e paridade nativa. Dependência Rust fixada aplica NFKC. Sem migration, mudança de backup ou decisão de prazo. DP-01 a DP-04, escrita cloud com versão/auditoria/outbox e homologação humana pós-integração preservadas.
 
 US-044 compartilhada: [ADR-0056](adr/0056-categorias-compartilhadas-por-workspace.md) adota sugestões explícitas v1 em catálogo vazio, metadados com base completa e arquivamento sem exclusão. Sem migration ou dependência nova. Desktop, versão/auditoria/outbox e homologação humana mantêm seus gates; DP-01 a DP-04 preservadas.

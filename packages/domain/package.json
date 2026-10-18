@@ -35,6 +35,10 @@
     "./categories": {
       "types": "./dist/categories.d.ts",
       "import": "./dist/categories.js"
+    },
+    "./taxonomy": {
+      "types": "./dist/taxonomy.d.ts",
+      "import": "./dist/taxonomy.js"
     }
   },
   "files": [
