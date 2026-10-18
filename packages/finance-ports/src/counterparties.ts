@@ -141,3 +141,5 @@ export function createCounterpartyService(options: CounterpartyOptions) {
         : execute(r, c, all),
   });
 }
+
+export { createCounterpartyAssociationService } from './counterparty-associations.js';

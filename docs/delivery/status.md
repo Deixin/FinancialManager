@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-047: associação versionada de contrapartes — 2026-10-18 — núcleo compartilhado integrado
+
+Movimentações existentes podem manter, remover ou selecionar uma contraparte do workspace por revisão, com base completa, grupos atômicos e preservação das descrições, valores, classificações e tags. A validação consulta somente ID/workspace/estado dos IDs escolhidos dentro da transação. [Guia](../development/counterparty-associations.md) e [ADR-0066](../architecture/adr/0066-associacao-versionada-de-contrapartes.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 481 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 146 Markdown. O protocolo próprio aprovou 207 gates PostgreSQL/SQLite, incluindo 18 cenários de associação por engine, e os nove testes Node próprios passaram. As 11 suítes de dados, nove Chromium e nove Windows afetadas passaram novamente. Foram arquivadas 30 cápsulas novas ou renovadas; 48 evidências atuais conferem com 516 hashes de fontes no Git staging. Os 18 relatórios não afetados mantêm fontes atuais. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Núcleo compartilhado de cadastro e associação da US-047 integrado; próximo incremento: Desktop/paridade Rust. Web/Mobile, regras de importação, auditoria monotônica dos catálogos, recibos duráveis e feed/outbox mantêm seus gates. Sem migration, dependência nova, mudança de backup ou comando Tauri. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Entradas abaixo são históricas.
+
 ## Financeiro — US-047: catálogo compartilhado de contrapartes — 2026-10-18 — em andamento
 
 Cadastro leve por workspace com nome, identificador opcional, relacionamento, arquivo/reativação, busca normalizada e base completa. Homônimos são independentes; reutilização exige seleção explícita. Nenhuma edição altera o grafo financeiro ou a descrição original. [Guia](../development/counterparties.md) e [ADR-0065](../architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md).

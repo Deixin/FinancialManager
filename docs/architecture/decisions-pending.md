@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-047, associação compartilhada: [ADR-0066](adr/0066-associacao-versionada-de-contrapartes.md) integra escolhas explícitas de contraparte às revisões, com projeção mínima na mesma transação e preservação financeira. Sem migration, dependência, alteração de backup ou resolução de DP-01 a DP-04. Desktop/paridade Rust é o próximo incremento; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.
+
 US-047 compartilhada: [ADR-0065](adr/0065-catalogo-compartilhado-de-contrapartes.md) integra o cadastro leve de contrapartes por workspace sobre PostgreSQL/SQLite. Sem migration, dependência, mudança de backup ou resolução de DP-01 a DP-04. Associação versionada e Desktop são os próximos incrementos; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.
 
 US-046 Desktop: [ADR-0064](adr/0064-editor-de-rateios-no-desktop.md) integra o editor ao cofre/revisões, com 29 comandos específicos, soma exata e grupos completos. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Próxima história US-047; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.

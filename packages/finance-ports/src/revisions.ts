@@ -20,6 +20,7 @@ import type {
   RevisionPlan,
   RevisionSnapshot,
 } from '@financial-manager/domain/revisions';
+import type { CounterpartyReference } from '@financial-manager/domain/counterparties';
 import type { TaxonomyCatalog } from '@financial-manager/domain/taxonomy';
 export type {
   RevisionChange,
@@ -68,6 +69,9 @@ export interface RevisionScope {
 // Trusted adapter port. It is never exposed as an HTTP/IPC or user callback.
 export interface RevisionTransaction {
   taxonomyCatalog?(): Promise<TaxonomyCatalog>;
+  counterpartyReferences?(
+    ids: readonly string[],
+  ): Promise<readonly CounterpartyReference[]>;
   workspaceMode(): Promise<'LOCAL' | 'CLOUD' | null>;
   account(id: string): Promise<Account | null>;
   load(id: string): Promise<RevisionState | null>;
@@ -115,6 +119,9 @@ export type RevisionGuard = (
     account: Account;
     previous_account: Account | null;
     readTaxonomy?: () => Promise<TaxonomyCatalog>;
+    readCounterparties?: (
+      ids: readonly string[],
+    ) => Promise<readonly CounterpartyReference[]>;
   }>,
 ) => void | Promise<void>;
 function safeRequest(input: RevisionRequest): Readonly<RevisionRequest> {
@@ -352,6 +359,12 @@ export function createRevisionService(options: RevisionOptions) {
               plan,
               account,
               previous_account: previous,
+              ...(tx.counterpartyReferences
+                ? {
+                    readCounterparties: (ids: readonly string[]) =>
+                      tx.counterpartyReferences!(ids),
+                  }
+                : {}),
               ...(tx.taxonomyCatalog
                 ? { readTaxonomy: () => tx.taxonomyCatalog!() }
                 : {}),

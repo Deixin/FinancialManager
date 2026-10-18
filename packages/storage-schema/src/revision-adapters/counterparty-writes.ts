@@ -2,6 +2,7 @@ import type { SqliteConnection } from '../index.js';
 import {
   CounterpartyError,
   captureCounterparty,
+  captureCounterpartyReference,
 } from '@financial-manager/domain/counterparties';
 import type { CounterpartyPlan } from '@financial-manager/domain/counterparties';
 import type { CounterpartyWriteScope } from '@financial-manager/finance-ports/counterparties';
@@ -10,6 +11,17 @@ export function sqliteCounterpartyWrites(
   scope: CounterpartyWriteScope,
 ) {
   return Object.freeze({
+    async references(ids: readonly string[]) {
+      if (!ids.length) return Object.freeze([]);
+      return Object.freeze(
+        (
+          await db.rows(
+            'SELECT id,workspace_id,status FROM counterparty WHERE workspace_id=? AND id IN (SELECT value FROM json_each(?)) ORDER BY id',
+            [scope.workspace_id, JSON.stringify(ids)],
+          )
+        ).map((r) => captureCounterpartyReference(r, scope.workspace_id)),
+      );
+    },
     async catalog() {
       return (
         await db.rows(

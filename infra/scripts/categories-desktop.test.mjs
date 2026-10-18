@@ -195,7 +195,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-044-desktop-categories-' +
         kind +
-        '-2026-10-18-us047-counterparties.json',
+        '-2026-10-18-us047-associations.json',
     ),
   );
 test('category Desktop evidence requires all UI SQLCipher interruption portability and cleanup gates', () => {

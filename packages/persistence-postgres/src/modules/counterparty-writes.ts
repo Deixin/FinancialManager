@@ -3,6 +3,7 @@ import type { WriteCounterpartiesTables } from '../internal/database.js';
 import {
   CounterpartyError,
   captureCounterparty,
+  captureCounterpartyReference,
 } from '@financial-manager/domain/counterparties';
 import type { CounterpartyPlan } from '@financial-manager/domain/counterparties';
 import type { CounterpartyWriteScope } from '@financial-manager/finance-ports/counterparties';
@@ -11,6 +12,21 @@ export function postgresCounterpartyWrites(
   scope: CounterpartyWriteScope,
 ) {
   return Object.freeze({
+    async references(ids: readonly string[]) {
+      if (!ids.length) return Object.freeze([]);
+      return Object.freeze(
+        (
+          await db
+            .selectFrom('counterparty')
+            .select(['id', 'workspace_id', 'status'])
+            .where('workspace_id', '=', scope.workspace_id)
+            .where('id', 'in', ids)
+            .orderBy('id')
+            .forUpdate()
+            .execute()
+        ).map((r) => captureCounterpartyReference(r, scope.workspace_id)),
+      );
+    },
     async catalog() {
       return (
         await db

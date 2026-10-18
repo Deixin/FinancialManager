@@ -1,5 +1,7 @@
 # Financial Manager
 
+O núcleo compartilhado da US-047 integra [cadastro e associação versionada de contrapartes](docs/development/counterparty-associations.md), com descrições e valores preservados. Próximo incremento: integração Desktop e paridade Rust. Homologações humanas após integração completa.
+
 A US-047 está em desenvolvimento: [cadastro compartilhado de contrapartes](docs/development/counterparties.md) implementado. Próximo incremento: associação versionada às movimentações; depois, integração Desktop. Homologações humanas após a integração completa.
 
 O [editor de rateios US-046 no Desktop](docs/development/desktop-allocations.md) permite editar parcelas de múltiplas categorias com soma exata, notas/IDs e histórico SQLCipher. Preserva valores, origem e tags e exige grupos completos. Próxima história: US-047, contrapartes normalizadas. Homologações humanas após integração completa; registros abaixo são históricos.

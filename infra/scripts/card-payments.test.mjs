@@ -321,7 +321,7 @@ test('composite creation rejects unrelated group types before opening storage', 
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-043-card-payment-core-2026-10-18-us047-counterparties.json',
+      'docs/quality/evidence/us-043-card-payment-core-2026-10-18-us047-associations.json',
     ),
   );
 test('cardPayment evidence requires every two-engine atomicity authorization rollback and cleanup gate', () => {

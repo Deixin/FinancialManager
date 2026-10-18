@@ -14,6 +14,7 @@ import type {
   WorkspaceTables,
   WriteTransactionsTables,
   WriteTaxonomyTables,
+  WriteCounterpartiesTables,
 } from './internal/database.js';
 import { guardedPool } from './internal/driver.js';
 import type { TrustedPostgresPool } from './internal/driver.js';
@@ -22,6 +23,7 @@ import { activeDataUnit } from './internal/unit-scope.js';
 import { createAccountsRepository } from './modules/accounts.js';
 import { revisionWorkspace } from './modules/workspaces.js';
 import { postgresTransactionRevisions } from './modules/transaction-writes.js';
+import { postgresCounterpartyWrites } from './modules/counterparty-writes.js';
 import { postgresTaxonomyWrites } from './modules/taxonomy-writes.js';
 export interface PostgresRevisionOptions extends Omit<
   RevisionOptions,
@@ -106,6 +108,11 @@ export function createPostgresRevisionService(
               const result = await operation(
                 Object.freeze({
                   ...postgresTransactionRevisions(trx, scope),
+                  counterpartyReferences: (ids: readonly string[]) =>
+                    postgresCounterpartyWrites(
+                      trx as unknown as Kysely<WriteCounterpartiesTables>,
+                      scope,
+                    ).references(ids),
                   taxonomyCatalog: () =>
                     postgresTaxonomyWrites(
                       trx as unknown as Kysely<WriteTaxonomyTables>,

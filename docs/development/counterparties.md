@@ -1,6 +1,6 @@
 # US-047 — Cadastro compartilhado de contrapartes
 
-Este incremento implementa o catálogo compartilhado por workspace da US-047, conforme [ADR-0065](../architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md). A associação versionada às movimentações é o próximo incremento; a interface Desktop vem em seguida.
+Este incremento implementa o catálogo compartilhado por workspace da US-047, conforme [ADR-0065](../architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md). A [associação versionada às movimentações](counterparty-associations.md) foi integrada no incremento seguinte; a interface Desktop é o próximo incremento.
 
 ## Contrato
 
@@ -35,4 +35,4 @@ Validação local concluída em 2026-10-18: pnpm check passou com 472 testes Nod
 
 ## Estado
 
-Cadastro compartilhado implementado; associação versionada e Desktop pendentes. Catálogo ainda não possui auditoria/versionamento monotônico, feed/outbox ou recibo durável. Não há migration, dependência nova, mudança de backup ou comando Tauri. Web/Mobile e regras de importação seguem suas histórias. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. A validação integrada deste incremento é registrada no [estado do projeto](../delivery/status.md).
+Cadastro e associação compartilhados implementados; Desktop pendente. Catálogo ainda não possui auditoria/versionamento monotônico, feed/outbox ou recibo durável. Não há migration, dependência nova, mudança de backup ou comando Tauri. Web/Mobile e regras de importação seguem suas histórias. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. A validação integrada deste incremento é registrada no [estado do projeto](../delivery/status.md).

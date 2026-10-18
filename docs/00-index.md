@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [associação versionada US-047](development/counterparty-associations.md) integra contrapartes às movimentações pelo gravador de revisões, com projeção mínima, grupos completos e preservação financeira. Consulte o [ADR-0066](architecture/adr/0066-associacao-versionada-de-contrapartes.md). Núcleo compartilhado de cadastro/associação integrado; próximo incremento: Desktop/paridade Rust. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 A [US-047 compartilhada](development/counterparties.md) acrescenta o cadastro de contrapartes por workspace, preservando descrições e o grafo financeiro. Consulte o [ADR-0065](architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md). Próximo incremento: associação versionada às movimentações; depois, Desktop. Homologações humanas após integração completa; entradas abaixo são históricas.
 
 O [editor Desktop da US-046](development/desktop-allocations.md) integra rateios à política compartilhada e ao gravador de revisões SQLCipher, com soma exata e intenção congelada após resposta incerta. Consulte o [ADR-0064](architecture/adr/0064-editor-de-rateios-no-desktop.md). Próxima história: US-047. Homologações humanas após integração completa; entradas abaixo são históricas.

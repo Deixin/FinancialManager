@@ -392,7 +392,7 @@ test('SQLite classification scenarios exercise durable revisions rollback concur
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-045-classification-core-2026-10-18-us047-counterparties.json',
+      'docs/quality/evidence/us-045-classification-core-2026-10-18-us047-associations.json',
     ),
   );
 test('classification evidence requires real gates cleanup source hashes and explicit snapshot authorization and platform gates', () => {

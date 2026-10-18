@@ -218,3 +218,17 @@ export function filterCounterparties(
     ),
   );
 }
+
+export {
+  CounterpartyAssociationError,
+  captureCounterpartyReference,
+  captureCounterpartyAssociation,
+  counterpartyAssociationChange,
+  validateCounterpartyAssociationPlan,
+} from './counterparty-associations.js';
+export type {
+  CounterpartyReference,
+  CounterpartySelection,
+  CounterpartyAssociationCommand,
+  CounterpartyAssociationCode,
+} from './counterparty-associations.js';
