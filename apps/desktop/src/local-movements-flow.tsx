@@ -1,3 +1,4 @@
+import { LocalCardPaymentsFlow } from './local-card-payments-flow.js';
 import { LocalTransfersFlow } from './local-transfers-flow.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
@@ -22,7 +23,7 @@ import {
   todayFinancial,
 } from './local-accounts.js';
 export interface MovementEntry {
-  readonly mode: 'list' | 'create' | 'adjust';
+  readonly mode: 'list' | 'create' | 'adjust' | 'cards' | 'payment';
   readonly accountId?: string;
 }
 type Mode =
@@ -46,6 +47,18 @@ export function LocalMovementsFlow({
   onLocked: () => void;
   entry: MovementEntry;
 }) {
+  const [cardEntry, setCardEntry] = useState<{
+    mode: 'list' | 'create';
+    groupId?: string;
+    cardId?: string;
+  } | null>(
+    entry.mode === 'cards' || entry.mode === 'payment'
+      ? {
+          mode: entry.mode === 'cards' ? 'list' : 'create',
+          ...(entry.accountId ? { cardId: entry.accountId } : {}),
+        }
+      : null,
+  );
   const [transferEntry, setTransferEntry] = useState<{
     mode: 'list' | 'create';
     groupId?: string;
@@ -152,7 +165,11 @@ export function LocalMovementsFlow({
         setReason('');
         setSelected('');
         if (first.current) {
-          setMode(entry.mode);
+          setMode(
+            entry.mode === 'cards' || entry.mode === 'payment'
+              ? 'list'
+              : entry.mode,
+          );
           setAccountId(entry.accountId ?? '');
           first.current = false;
         } else
@@ -278,6 +295,29 @@ export function LocalMovementsFlow({
       };
     });
   }
+  if (cardEntry)
+    return (
+      <LocalCardPaymentsFlow
+        key={
+          workspaceId +
+          ':' +
+          cardEntry.mode +
+          ':' +
+          (cardEntry.groupId ?? '') +
+          ':' +
+          (cardEntry.cardId ?? '')
+        }
+        workspaceId={workspaceId}
+        initialMode={cardEntry.mode}
+        {...(cardEntry.groupId ? { groupId: cardEntry.groupId } : {})}
+        {...(cardEntry.cardId ? { cardId: cardEntry.cardId } : {})}
+        onLocked={onLocked}
+        onClose={() => {
+          setCardEntry(null);
+          void refresh();
+        }}
+      />
+    );
   if (transferEntry)
     return (
       <LocalTransfersFlow
@@ -401,6 +441,30 @@ export function LocalMovementsFlow({
                   disabled={captured}
                 >
                   Ver transferências
+                </button>
+              </div>
+              <div className="movement-actions">
+                <button
+                  type="button"
+                  disabled={captured}
+                  onClick={() => setCardEntry({ mode: 'list' })}
+                >
+                  Cartões e pagamentos
+                </button>
+                <button
+                  type="button"
+                  disabled={
+                    captured ||
+                    !accounts.some(
+                      (a) =>
+                        a.account.account_kind === 'CREDIT_CARD' &&
+                        a.account.balance_nature === 'LIABILITY' &&
+                        a.account.status === 'ACTIVE',
+                    )
+                  }
+                  onClick={() => setCardEntry({ mode: 'create' })}
+                >
+                  Novo pagamento de cartão
                 </button>
               </div>
               <label htmlFor="movement-filter-account">Filtrar por conta</label>
@@ -576,6 +640,21 @@ export function LocalMovementsFlow({
                     disabled={captured}
                   >
                     Ver transferência completa
+                  </button>
+                )}
+              {current.content.economic_kind === 'DEBT_SETTLEMENT' &&
+                current.content.group_id && (
+                  <button
+                    type="button"
+                    disabled={captured}
+                    onClick={() =>
+                      setCardEntry({
+                        mode: 'list',
+                        groupId: current.content.group_id!,
+                      })
+                    }
+                  >
+                    Ver pagamento completo
                   </button>
                 )}
               <h3>Histórico de revisões</h3>

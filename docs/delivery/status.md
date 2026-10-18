@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Desktop — US-043: cartões e pagamentos locais — 2026-10-18
+
+Cartões e pagamentos integra visão de dívida/crédito e compras disponíveis, pagamento com confirmação dos dois lados, edição, exclusão/restauração e histórico. Conta de cartão oferece navegação direta; compra manual mantém a conta selecionada. Dois comandos específicos elevam as permissões a 23. Rust valida bases/contas atuais e persiste grupo CARD_PAYMENT, membros DEBT_SETTLEMENT e revisões na mesma transação SQLCipher. Pagamento reduz banco e dívida, sem consumo duplicado; intentos preservam IDs/bases após ACK perdido. [Guia](../development/desktop-card-payments.md), [ADR-0055](../architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md).
+
+Verificação local concluída: pnpm check passou com 380 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 124 Markdown. A suíte própria aprovou 11 testes Rust/72 vetores compartilhados, 12 gates Chromium e 13 Windows, incluindo limite negativo i64 na apresentação do crédito, interrupções e restauração sem a chave de origem. Regressões afetadas de workspaces, cofre, bloqueio, backup, restauração, gerenciador, contas, movimentações e transferências foram reexecutadas. Dezenove cápsulas novas compõem 32 evidências atuais com hashes das fontes e recursos próprios encerrados. Protocolos compartilhados inalterados preservam suas evidências anteriores; CI remota e homologação humana não fazem parte deste resultado local.
+
+US-043 atendida neste recorte Desktop manual. Fatura/período, importação/conciliação e CT-06 integrado mantêm seus gates: pagamentos aparecem sem detalhamento, sem associação presumida a compras existentes. Não houve schema, dependência de produção ou formato de backup novo. Próxima história US-044. Homologações humanas permanecem após integração completa; commit/push por incremento autorizados. Sete originais e DP-01 a DP-04 intactos; registros abaixo preservam o histórico.
+
 ## Financeiro — US-043: pagamentos de cartão compartilhados — 2026-10-18 — em andamento
 
 O núcleo compartilha CREATE/EDIT/DELETE/RESTORE entre uma conta ASSET e um CREDIT_CARD/LIABILITY, usando grupo CARD_PAYMENT e dois membros DEBT_SETTLEMENT. Banco e dívida diminuem juntos; pagamentos parciais e crédito por pagamento excedente são representáveis. Compra/estorno conservam consumo e data próprios. O contrato captura a intenção, exige bases/descritores atuais e preserva originais/classificações; autorização, escopo, revisões e rollback usam os adapters existentes. [Guia](../development/card-payments.md), [ADR-0054](../architecture/adr/0054-pagamentos-de-cartao-compartilhados.md).

@@ -549,8 +549,8 @@ export function LocalTransfersFlow({
                       ))}
                   </select>
                   <p>
-                    Cartões e outras dívidas terão um fluxo específico de
-                    pagamento.
+                    Para pagar um cartão de crédito, acesse Cartões e pagamentos
+                    em Movimentações.
                   </p>
                   <label htmlFor="transfer-date">Data da transferência</label>
                   <input

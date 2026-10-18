@@ -27,7 +27,10 @@ export function LocalAccountsFlow({
 }: {
   workspaceId: string;
   onLocked: () => void;
-  onMovements?: (accountId: string, mode: 'list' | 'create' | 'adjust') => void;
+  onMovements?: (
+    accountId: string,
+    mode: 'list' | 'create' | 'adjust' | 'cards' | 'payment',
+  ) => void;
 }) {
   const [gateway] = useState(createLocalAccountsGateway),
     [snapshot, setSnapshot] = useState<AccountsSnapshot | null>(null),
@@ -465,6 +468,31 @@ export function LocalAccountsFlow({
           <p>Arquivar conserva movimentos e referências.</p>
           {onMovements && (
             <div className="movement-actions">
+              {current.state.account.account_kind === 'CREDIT_CARD' &&
+                current.state.account.balance_nature === 'LIABILITY' && (
+                  <>
+                    <button
+                      type="button"
+                      disabled={captured}
+                      onClick={() =>
+                        onMovements(current.state.account.id, 'cards')
+                      }
+                    >
+                      Ver cartão e pagamentos
+                    </button>
+                    <button
+                      type="button"
+                      disabled={
+                        captured || current.state.account.status !== 'ACTIVE'
+                      }
+                      onClick={() =>
+                        onMovements(current.state.account.id, 'payment')
+                      }
+                    >
+                      Pagar cartão
+                    </button>
+                  </>
+                )}
               <button
                 type="button"
                 onClick={() => onMovements(current.state.account.id, 'list')}

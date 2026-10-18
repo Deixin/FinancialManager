@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-043 Desktop usa 72 vetores compartilhados e perfis/bancos/backups sintéticos de cartão. FIN-002 e goldens originais são preservados; credenciais e arquivos próprios são descartados. [Protocolo](../development/desktop-card-payments.md).
+
 US-043 compartilhada usa comandos e compras/pagamentos/estornos explicitamente sintéticos. FIN-002 e seus goldens permanecem inalterados. Perfis, credenciais aleatórias e bancos temporários próprios são descartados; somente flags, versões, pendências e hashes compõem a evidência. [Guia](../development/card-payments.md).
 
 US-042 Desktop usa 69 vetores sintéticos compartilhados, pares/grupos SQLCipher e fixtures Chromium/WebView2. FIN-002 e goldens originais permanecem inalterados. [Guia](../development/desktop-transfers.md).

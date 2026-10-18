@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-043 no Desktop](development/desktop-card-payments.md) integra cartões, pagamentos atômicos e histórico ao cofre local. Consulte o [ADR-0055](architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md). Próxima história: US-044; importação/conciliação e homologações humanas integradas permanecem nos próprios gates. Entradas abaixo são históricas.
+
 A [US-043 compartilhada](development/card-payments.md) acrescenta pagamentos atômicos de cartão, separando consumo e liquidação de dívida. Consulte o [ADR-0054](architecture/adr/0054-pagamentos-de-cartao-compartilhados.md). Próximo incremento: integração Desktop; homologações humanas permanecem após integração completa. Os parágrafos abaixo preservam os incrementos anteriores.
 
 A [US-042 Desktop](development/desktop-transfers.md) integra os dois lados da transferência ao cofre local e suas revisões. Consulte o [ADR-0053](architecture/adr/0053-transferencias-no-desktop-sqlcipher.md). Próxima história: US-043; homologações humanas permanecem após a integração completa.

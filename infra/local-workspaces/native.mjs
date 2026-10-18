@@ -137,6 +137,8 @@ try {
         'allow-apply-local-manual-movement',
         'allow-read-local-transfers',
         'allow-apply-local-transfer',
+        'allow-read-local-card-payments',
+        'allow-apply-local-card-payment',
       ],
     );
     assert.equal(

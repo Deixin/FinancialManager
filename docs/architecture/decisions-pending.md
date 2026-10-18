@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-043 Desktop: [ADR-0055](adr/0055-cartoes-e-pagamentos-no-desktop.md) adota cartão/pagamento local com paridade Rust, 23 permissões e revisão conjunta. Pagamento sem detalhamento não presume conciliação. Não muda schema, dependências ou prazos; DP-01 a DP-04 e homologação humana pós-integração preservadas. Próxima história US-044.
+
 US-043 em andamento: [ADR-0054](adr/0054-pagamentos-de-cartao-compartilhados.md) compõe pagamento de cartão sobre revisões existentes. Transferência e pagamento têm sinais distintos; consumo permanece na compra. Desktop/importação/conciliação e cloud mantêm seus gates. Sem migration ou dependência nova; DP-01 a DP-04 e homologação humana pós-integração preservadas.
 
 US-042 Desktop: [ADR-0053](adr/0053-transferencias-no-desktop-sqlcipher.md) adota leitura de grupos e comando conjunto SQLCipher, com 21 permissões de produto. O coordenador compartilhado recusa projeções parciais de membros existentes. Nenhum prazo ou enum pendente foi escolhido; DP-01 a DP-04 e homologação humana pós-integração permanecem.

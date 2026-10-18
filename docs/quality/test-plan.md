@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-043 Desktop: node infra/card-payments-desktop/browser.mjs/native.mjs e pnpm check. Gates cobrem cartões/passivos, consumo/caixa/dívida, confirmações, revisões, ACK perdido, rollback, interrupções, PIN, precisão, isolamento, acessibilidade e restauração portátil. [Reprodução](../development/desktop-card-payments.md). Importação/conciliação e homologação humana integrada mantêm seus gates.
+
 US-043 compartilhada: node infra/card-payments/run.mjs e pnpm check. Roteiro real em PostgreSQL/SQLite cobre pagamento parcial/excedente, consumo por data da compra, caixa por data do pagamento, estorno posterior, grupo/revisões atômicos, replay, escopo/RLS, concorrência e limpeza. [Reprodução](../development/card-payments.md). Desktop e conciliação completa permanecem pendentes.
 
 US-042 Desktop: node infra/transfers-desktop/browser.mjs/native.mjs e pnpm check. Gates cobrem confirmação conjunta, metadados íntegros, duas revisões, falhas antes/depois do commit, limite, PIN, i64, histórico, restauração portátil e limpeza. [Reprodução](../development/desktop-transfers.md). Homologação humana segue pós-integração.

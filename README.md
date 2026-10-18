@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-043 no Desktop](docs/development/desktop-card-payments.md) integra cartões e pagamentos com revisão conjunta no SQLCipher, sem duplicar consumo. Próxima história: US-044. Importação/conciliação e homologações humanas integradas mantêm seus gates.
+
 US-043 em andamento: [pagamentos de cartão compartilhados](docs/development/card-payments.md), com liquidação atômica sem duplicar consumo. Próximo incremento integra o Desktop; homologações humanas permanecem após integração completa.
 
 A [US-042 no Desktop](docs/development/desktop-transfers.md) integra transferência com confirmação dos dois lados, edição, exclusão/restauração e histórico no SQLCipher. A [base compartilhada](docs/development/transfers.md) mantém PostgreSQL/SQLite. Próximo incremento: US-043, pagamento de cartão. Homologações humanas continuam após integrar todo o sistema; os registros abaixo são históricos.

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0055 — Cartões e pagamentos no Desktop](0055-cartoes-e-pagamentos-no-desktop.md): leitura coerente e pagamento conjunto SQLCipher, 23 comandos estreitos, UI de dívida/crédito e dados transitórios; importação/conciliação permanece pendente.
+
 [0054 — Pagamentos de cartão compartilhados](0054-pagamentos-de-cartao-compartilhados.md): par ASSET/CREDIT_CARD, dívida/caixa separados de consumo, revisões e rollback atômicos; US-043 em andamento até Desktop/conciliação.
 
 [0050 — Política de movimentações manuais](0050-politica-de-movimentacoes-manuais.md): comandos de intenção sobre revisões autorizadas, base inteira/conta atual, exclusão reversível, rateio preservado e ajuste separado; US-041 em andamento até Desktop.

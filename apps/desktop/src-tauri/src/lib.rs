@@ -1,10 +1,12 @@
 pub mod account_model;
 pub mod backup_destination;
+pub mod card_payment_model;
 pub mod commands;
 pub mod identity;
 pub mod keys;
 pub mod local_accounts;
 pub mod local_backup;
+pub mod local_card_payments;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
@@ -53,6 +55,12 @@ pub enum LocalError {
     ReferenceConflict,
     AccountLimit,
     InvalidManualMovement,
+    InvalidCardPayment,
+    CardPaymentReadOnly,
+    CardPaymentBaseConflict,
+    CardPaymentAccountChanged,
+    CardPaymentAccountArchived,
+    CardPaymentDeleted,
     InvalidTransfer,
     TransferReadOnly,
     TransferBaseConflict,
@@ -107,3 +115,8 @@ pub mod transfer_probe;
 
 #[cfg(all(test, feature = "transfers-smoke"))]
 mod transfer_tests;
+
+#[cfg(feature = "card-payments-smoke")]
+pub mod card_payment_probe;
+#[cfg(all(test, feature = "card-payments-smoke"))]
+mod card_payment_tests;

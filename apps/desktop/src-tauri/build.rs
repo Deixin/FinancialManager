@@ -65,6 +65,8 @@ fn main() {
         "apply_local_manual_movement",
         "read_local_transfers",
         "apply_local_transfer",
+        "read_local_card_payments",
+        "apply_local_card_payment",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -86,6 +88,9 @@ fn main() {
     }
     if cfg!(feature = "transfers-smoke") {
         commands.push("finish_transfers_smoke");
+    }
+    if cfg!(feature = "card-payments-smoke") {
+        commands.push("finish_card_payments_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

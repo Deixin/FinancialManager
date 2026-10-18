@@ -1,5 +1,7 @@
 # Cartão simplificado — núcleo compartilhado US-043
 
+Integração Desktop disponível em [Cartões e pagamentos](desktop-card-payments.md). As seções abaixo preservam o recorte e a evidência do incremento compartilhado, anterior à integração local.
+
 O núcleo cria, edita, exclui logicamente e restaura pagamentos entre uma conta ASSET e um CREDIT_CARD/LIABILITY. A compra aumenta a dívida exibida e representa consumo; pagamento reduz banco e dívida em uma transação e usa DEBT_SETTLEMENT, sem nova despesa. Desktop e conciliação de extratos/faturas permanecem pendentes. Consulte o [ADR-0054](../architecture/adr/0054-pagamentos-de-cartao-compartilhados.md).
 
 ## Contrato e persistência

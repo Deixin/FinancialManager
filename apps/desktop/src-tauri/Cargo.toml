@@ -18,6 +18,7 @@ manager-smoke = ["workspace-smoke", "vault-smoke"]
 accounts-smoke = ["workspace-smoke", "restore-smoke"]
 movements-smoke = ["accounts-smoke"]
 transfers-smoke = ["movements-smoke"]
+card-payments-smoke = ["transfers-smoke"]
 
 [[bin]]
 name = "accounts-probe"
@@ -142,3 +143,13 @@ required-features=["transfers-smoke"]
 name="transfers-smoke"
 path="src/bin/transfers-smoke.rs"
 required-features=["transfers-smoke"]
+
+[[bin]]
+name="card-payments-probe"
+path="src/bin/card-payments-probe.rs"
+required-features=["card-payments-smoke"]
+
+[[bin]]
+name="card-payments-smoke"
+path="src/bin/card-payments-smoke.rs"
+required-features=["card-payments-smoke"]
