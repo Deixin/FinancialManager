@@ -1,5 +1,17 @@
 # Estado do projeto
 
+## Desktop — US-041: movimentações manuais com histórico — 2026-10-18
+
+Verificação final local: pnpm check aprovado com 343 testes Node, zero falhas/skips, formatação, lint/fronteiras, geração, tipos e build. Dez testes Rust SQLCipher confrontam 80 vetores com o serviço compartilhado. Os protocolos Desktop aprovaram 11 gates Chromium e 13 Windows, incluindo reabertura, falhas de processo, restauração e limpeza. Foram renovadas 24 cápsulas afetadas; com as duas de schema/migrations ainda válidas, os testes usam 26 evidências atuais. Regressões de ambientes, DOM/flags, repositories, fixtures, revisões, invariantes, contas e todos os fluxos Desktop anteriores passaram. CI remota e homologação humana permanecem fora deste resultado local.
+
+Integração local de MV-02/03/05: listagem por conta/período, criação de entrada/gasto, edição preservando descrição original e vínculos, exclusão lógica, restauração e revisões. Contas oferecem atalhos para consulta, criação e ajuste de saldo identificado, com motivo e confirmação. Saldos usam o Domain com inteiros; exclusões saem do cálculo e ajustes permanecem separados de receita/consumo. [Guia](../development/desktop-movements.md), [ADR-0051](../architecture/adr/0051-movimentacoes-manuais-desktop.md).
+
+Os comandos específicos read_local_movements/apply_local_manual_movement ampliam as permissões de produto de 17 para 19. O Rust verifica PIN, workspace local, descritor/base completos, versão e contas atuais; grava transação, relações e revisão na mesma transação SQLCipher. História desconhecida é preservada sem interpretar seu payload. Leituras têm limite integral de 200 mil registros/32 MiB, comandos de 1 MiB, sem truncamento, SQL genérico, persistência financeira no browser ou nova dependência/schema.
+
+A evidência local cobre corpus compartilhado de 80 planos, testes SQLCipher, Chromium, WebView2, processo independente, falhas antes/depois do commit, restauração em outra instalação sem a chave de origem e limpeza dos recursos próprios. Os relatórios fechados do guia identificam os fontes e resultados executados. Build TypeScript isolado não comprova o nativo; CI configurada não significa execução remota observada.
+
+US-041 atendida no Desktop local dentro deste recorte; Web/Mobile/cloud, paginação, editores de classificação/tags/rateios/contrapartes e distribuição assinada permanecem nas próprias histórias. Próximo incremento: US-042, transferência atômica. Homologações humanas continuam após integração completa por instrução do usuário, sem nova confirmação por história e sem aprovação antecipada. Commit/push por incremento estão autorizados. Sete originais e DP-01 a DP-04 intactos. Os registros abaixo preservam a rastreabilidade.
+
 ## Financeiro — US-041: política compartilhada de lançamentos manuais — 2026-10-18 — em andamento
 
 A base oferece CREATE/EDIT/DELETE/RESTORE e ADJUST por comandos de intenção sobre RevisionService. Entrada/gasto recebem valor positivo; Domain deriva o sinal pela natureza da conta. Ajuste usa delta assinado no saldo exibido, motivo obrigatório e identificação própria, sem virar consumo/receita. Descrição original, tags, contraparte e histórico são preservados. Alocação única acompanha a magnitude; rateio múltiplo ou mudança de tipo já classificado pede revisão específica. [Guia](../development/manual-movements.md), [ADR-0050](../architecture/adr/0050-politica-de-movimentacoes-manuais.md).

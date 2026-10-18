@@ -19,7 +19,7 @@ const load = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-033-lock-' +
           kind +
-          '-2026-10-17-us040-desktop.json',
+          '-2026-10-18-us041-desktop.json',
         import.meta.url,
       ),
       'utf8',

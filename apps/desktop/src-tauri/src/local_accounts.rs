@@ -63,9 +63,12 @@ fn reference_row(row: &rusqlite::Row<'_>) -> rusqlite::Result<Reference> {
         created_at: row.get(8)?,
     })
 }
-fn load(db: &Connection, workspace: &str, id: &str) -> Result<Option<AccountState>> {
+pub(crate) fn read_account(db: &Connection, workspace: &str, id: &str) -> Result<Option<Account>> {
     use rusqlite::OptionalExtension;
-    let account=db.query_row("SELECT id,workspace_id,name,institution_name,account_kind,balance_nature,currency_code,status,created_at FROM financial_account WHERE workspace_id=? AND id=?",params![workspace,id],account_row).optional()?;
+    Ok(db.query_row("SELECT id,workspace_id,name,institution_name,account_kind,balance_nature,currency_code,status,created_at FROM financial_account WHERE workspace_id=? AND id=?",params![workspace,id],account_row).optional()?)
+}
+fn load(db: &Connection, workspace: &str, id: &str) -> Result<Option<AccountState>> {
+    let account = read_account(db, workspace, id)?;
     let Some(account) = account else {
         return Ok(None);
     };
@@ -115,38 +118,42 @@ fn save(db: &Connection, plan: &AccountPlan) -> Result<()> {
     }
     Ok(())
 }
+pub(crate) fn snapshot(db: &Connection, workspace: &str) -> Result<AccountsSnapshot> {
+    let count:i64=db.query_row("SELECT (SELECT count(*) FROM financial_account WHERE workspace_id=?1)+(SELECT count(*) FROM balance_reference WHERE workspace_id=?1)+(SELECT count(*) FROM financial_transaction WHERE workspace_id=?1 AND deleted_at IS NULL)",[workspace],|r|r.get(0))?;
+    if count > MAX_SNAPSHOT_RECORDS {
+        return Err(LocalError::AccountLimit);
+    }
+    let ids = db
+        .prepare("SELECT id FROM financial_account WHERE workspace_id=? ORDER BY id")?
+        .query_map([workspace], |r| r.get::<_, String>(0))?
+        .collect::<std::result::Result<Vec<_>, _>>()?;
+    let mut accounts = Vec::with_capacity(ids.len());
+    for id in ids {
+        accounts.push(load(db, workspace, &id)?.ok_or(LocalError::IntegrityFailure)?);
+    }
+    let movements=db.prepare("SELECT id,workspace_id,account_id,group_id,financial_date,account_amount_minor,economic_kind FROM financial_transaction WHERE workspace_id=? AND deleted_at IS NULL ORDER BY financial_date,id")?.query_map([workspace],|r|Ok(Movement{id:r.get(0)?,workspace_id:r.get(1)?,account_id:r.get(2)?,group_id:r.get(3)?,financial_date:r.get(4)?,account_amount_minor:r.get::<_,i64>(5)?.to_string(),economic_kind:r.get(6)?,posting_state:"CONFIRMED".into()}))?.collect::<std::result::Result<Vec<_>,_>>()?;
+    let snapshot = AccountsSnapshot {
+        workspace_id: workspace.into(),
+        read_at: identity::now_instant().map_err(|_| LocalError::StorageUnavailable)?,
+        accounts,
+        movements,
+    };
+    if serde_json::to_vec(&snapshot)
+        .map_err(|_| LocalError::IntegrityFailure)?
+        .len()
+        > MAX_SNAPSHOT_BYTES
+    {
+        return Err(LocalError::AccountLimit);
+    }
+    Ok(snapshot)
+}
 impl Installation {
     pub fn read_accounts(&self, workspace: &str) -> Result<AccountsSnapshot> {
         let mut db = self.financial_database(workspace)?;
         let tx = db.transaction_with_behavior(TransactionBehavior::Deferred)?;
-        let count:i64=tx.query_row("SELECT (SELECT count(*) FROM financial_account WHERE workspace_id=?1)+(SELECT count(*) FROM balance_reference WHERE workspace_id=?1)+(SELECT count(*) FROM financial_transaction WHERE workspace_id=?1 AND deleted_at IS NULL)",[workspace],|r|r.get(0))?;
-        if count > MAX_SNAPSHOT_RECORDS {
-            return Err(LocalError::AccountLimit);
-        }
-        let ids = tx
-            .prepare("SELECT id FROM financial_account WHERE workspace_id=? ORDER BY id")?
-            .query_map([workspace], |r| r.get::<_, String>(0))?
-            .collect::<std::result::Result<Vec<_>, _>>()?;
-        let mut accounts = Vec::with_capacity(ids.len());
-        for id in ids {
-            accounts.push(load(&tx, workspace, &id)?.ok_or(LocalError::IntegrityFailure)?);
-        }
-        let movements=tx.prepare("SELECT id,workspace_id,account_id,group_id,financial_date,account_amount_minor,economic_kind FROM financial_transaction WHERE workspace_id=? AND deleted_at IS NULL ORDER BY financial_date,id")?.query_map([workspace],|r|Ok(Movement{id:r.get(0)?,workspace_id:r.get(1)?,account_id:r.get(2)?,group_id:r.get(3)?,financial_date:r.get(4)?,account_amount_minor:r.get::<_,i64>(5)?.to_string(),economic_kind:r.get(6)?,posting_state:"CONFIRMED".into()}))?.collect::<std::result::Result<Vec<_>,_>>()?;
-        let snapshot = AccountsSnapshot {
-            workspace_id: workspace.into(),
-            read_at: identity::now_instant().map_err(|_| LocalError::StorageUnavailable)?,
-            accounts,
-            movements,
-        };
-        if serde_json::to_vec(&snapshot)
-            .map_err(|_| LocalError::IntegrityFailure)?
-            .len()
-            > MAX_SNAPSHOT_BYTES
-        {
-            return Err(LocalError::AccountLimit);
-        }
+        let value = snapshot(&tx, workspace)?;
         tx.commit()?;
-        Ok(snapshot)
+        Ok(value)
     }
     pub fn apply_account_change(
         &self,

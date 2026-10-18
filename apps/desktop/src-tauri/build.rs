@@ -61,6 +61,8 @@ fn main() {
         "cancel_local_restore",
         "read_local_accounts",
         "apply_local_account_change",
+        "read_local_movements",
+        "apply_local_manual_movement",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -76,6 +78,9 @@ fn main() {
     }
     if cfg!(feature = "accounts-smoke") {
         commands.push("finish_accounts_smoke");
+    }
+    if cfg!(feature = "movements-smoke") {
+        commands.push("finish_movements_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

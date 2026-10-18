@@ -23,9 +23,11 @@ import type { AccountsSnapshot } from './local-accounts.js';
 export function LocalAccountsFlow({
   workspaceId,
   onLocked,
+  onMovements,
 }: {
   workspaceId: string;
   onLocked: () => void;
+  onMovements?: (accountId: string, mode: 'list' | 'create' | 'adjust') => void;
 }) {
   const [gateway] = useState(createLocalAccountsGateway),
     [snapshot, setSnapshot] = useState<AccountsSnapshot | null>(null),
@@ -460,10 +462,32 @@ export function LocalAccountsFlow({
               ? 'Arquivar conta'
               : 'Reativar conta'}
           </button>
-          <p>
-            Arquivar conserva movimentos e referências. Ajustes identificados
-            serão integrados com as movimentações.
-          </p>
+          <p>Arquivar conserva movimentos e referências.</p>
+          {onMovements && (
+            <div className="movement-actions">
+              <button
+                type="button"
+                onClick={() => onMovements(current.state.account.id, 'list')}
+                disabled={captured}
+              >
+                Ver movimentações
+              </button>
+              <button
+                type="button"
+                onClick={() => onMovements(current.state.account.id, 'create')}
+                disabled={captured || current.state.account.status !== 'ACTIVE'}
+              >
+                Adicionar movimentação
+              </button>
+              <button
+                type="button"
+                onClick={() => onMovements(current.state.account.id, 'adjust')}
+                disabled={captured || current.state.account.status !== 'ACTIVE'}
+              >
+                Registrar ajuste identificado
+              </button>
+            </div>
+          )}
           <h3>Histórico de referências</h3>
           <ul>
             {current.state.references.map((r) => (

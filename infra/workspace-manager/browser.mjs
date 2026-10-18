@@ -25,7 +25,7 @@ const rows = Array.from({ length: 12 }, (_, index) => ({
   created_at: '2026-10-17T12:00:00.000Z',
 }));
 const report = {
-  format_version: 2,
+  format_version: 3,
   scope: 'us036-workspace-manager-browser',
   passed: false,
   synthetic_only: true,

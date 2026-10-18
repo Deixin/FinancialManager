@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-041 no Desktop](docs/development/desktop-movements.md) integra movimentações manuais, exclusão/restauração e histórico ao SQLCipher, com ajuste identificado e validação no Rust. As homologações humanas ficam após integrar todo o sistema. Próxima história: US-042, transferências atômicas. Os registros abaixo preservam o histórico dos incrementos.
+
 A [fundação US-041](docs/development/manual-movements.md) implementa política de criação, edição, exclusão lógica, restauração e ajuste identificado sobre o histórico transacional existente, com validação PostgreSQL/SQLite. A história segue em andamento: o próximo incremento integra comandos e telas de movimentações ao Desktop.
 
 A [US-040 no Desktop](docs/development/desktop-accounts.md) permite criar, editar, arquivar/reativar contas, registrar/corrigir referências e conferir saldos no cofre SQLCipher. Valores usam i64 exato, referências mantêm histórico e a troca de workspace ou bloqueio remove a tela financeira anterior. A [base compartilhada](docs/development/financial-accounts.md) também atende PostgreSQL/SQLite. Próxima história: US-041, movimentações manuais. Homologações humanas ficam para após integrar todo o sistema.

@@ -226,6 +226,23 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         };
       }
       if (
+        command === 'read_local_movements' ||
+        command === 'apply_local_manual_movement'
+      ) {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (state.lockMovementNext) {
+          state.lockMovementNext = false;
+          state.locked = true;
+          throw 'LOCAL_LOCKED';
+        }
+        if (typeof globalThis.__syntheticMovementHost !== 'function')
+          throw 'SYNTHETIC_MOVEMENT_HOST_MISSING';
+        const reply = await globalThis.__syntheticMovementHost(command, args);
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
+      if (
         command === 'read_local_accounts' ||
         command === 'apply_local_account_change'
       ) {

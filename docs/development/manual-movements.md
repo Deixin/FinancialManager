@@ -1,5 +1,7 @@
 # Movimentações manuais — fundação US-041
 
+A integração Desktop local foi acrescentada no [guia US-041](desktop-movements.md), com dois comandos específicos Tauri e política Rust validada contra o núcleo. O restante desta página registra a fundação compartilhada anterior; sua ausência de IPC na entrega original não descreve mais o Desktop atual.
+
 O núcleo compartilhado oferece CREATE, EDIT, DELETE, RESTORE e ADJUST por comandos fechados. O [ADR-0050](../architecture/adr/0050-politica-de-movimentacoes-manuais.md) define política, ameaças e limites. A UI Desktop continua na US-040; MV-02/03/05 e o IPC financeiro serão o próximo incremento da US-041. Build TypeScript não comprova integração Tauri.
 
 Use createManualMovementService com um createSqliteRevisionService ou createPostgresRevisionService configurado pelo host. Importe os subpaths manual-movements de domain e finance-ports. O serviço usa applyGuarded do adapter existente; não compartilhe uma conexão SQLite com outro serviço concorrente. Feche o adapter para drenar operações; não há conexão, credencial ou autorização instalada implicitamente.

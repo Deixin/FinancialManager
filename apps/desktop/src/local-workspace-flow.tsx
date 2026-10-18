@@ -1,4 +1,6 @@
 import { LocalAccountsFlow } from './local-accounts-flow.js';
+import { LocalMovementsFlow } from './local-movements-flow.js';
+import type { MovementEntry } from './local-movements-flow.js';
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
 import { createShellModel } from '@financial-manager/design-tokens';
@@ -33,9 +35,12 @@ export function LocalWorkspaceFlow({
   const [workspaces, setWorkspaces] = useState<readonly LocalWorkspace[]>([]);
   const [current, setCurrent] = useState<LocalWorkspace | null>(null);
   const [loading, setLoading] = useState(Boolean(gateway));
-  const [route, setRoute] = useState<'overview' | 'accounts' | 'settings'>(
-    'overview',
-  );
+  const [movementEntry, setMovementEntry] = useState<MovementEntry>({
+    mode: 'list',
+  });
+  const [route, setRoute] = useState<
+    'overview' | 'accounts' | 'movements' | 'settings'
+  >('overview');
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [purpose, setPurpose] = useState<Purpose>('PERSONAL');
@@ -68,6 +73,7 @@ export function LocalWorkspaceFlow({
     if (loading || !gateway || !catalogReady) return;
     setCurrent(null);
     setRoute('overview');
+    setMovementEntry({ mode: 'list' });
     setCreating(true);
     setFilter('local');
     setName('');
@@ -86,6 +92,7 @@ export function LocalWorkspaceFlow({
     setCreating(false);
     setFilter('local');
     setRoute('overview');
+    setMovementEntry({ mode: 'list' });
     try {
       const rows = await gateway.list();
       if (alive.current) {
@@ -126,6 +133,7 @@ export function LocalWorkspaceFlow({
     setError('');
     setCurrent(null);
     setRoute('overview');
+    setMovementEntry({ mode: 'list' });
     setCreating(false);
     try {
       const row = await gateway.open(id);
@@ -157,6 +165,7 @@ export function LocalWorkspaceFlow({
         ]);
         setCurrent(row);
         setRoute('overview');
+        setMovementEntry({ mode: 'list' });
         setCreating(false);
         request.current = null;
       }
@@ -195,7 +204,7 @@ export function LocalWorkspaceFlow({
           },
           route,
           state: 'ready',
-          sections: ['overview', 'accounts', 'settings'],
+          sections: ['overview', 'accounts', 'movements', 'settings'],
         })}
         workspaces={summaries}
         workspaceActions={
@@ -209,26 +218,42 @@ export function LocalWorkspaceFlow({
           </>
         }
         onWorkspaceChange={(id) => void open(id)}
-        onNavigate={(next) =>
+        onNavigate={(next) => {
+          setMovementEntry({ mode: 'list' });
           setRoute(
-            next === 'settings'
-              ? 'settings'
-              : next === 'accounts'
-                ? 'accounts'
-                : 'overview',
-          )
-        }
+            next === 'settings' || next === 'accounts' || next === 'movements'
+              ? next
+              : 'overview',
+          );
+        }}
         footer={
           <button type="button" onClick={onExit}>
             Voltar à entrada
           </button>
         }
       >
-        {route === 'accounts' ? (
+        {route === 'movements' ? (
+          <LocalMovementsFlow
+            key={
+              current.id +
+              ':' +
+              movementEntry.mode +
+              ':' +
+              (movementEntry.accountId ?? '')
+            }
+            workspaceId={current.id}
+            entry={movementEntry}
+            onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+          />
+        ) : route === 'accounts' ? (
           <LocalAccountsFlow
             key={current.id}
             workspaceId={current.id}
             onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+            onMovements={(accountId, mode) => {
+              setMovementEntry({ accountId, mode });
+              setRoute('movements');
+            }}
           />
         ) : route === 'settings' ? (
           <section className="local-empty">
@@ -265,7 +290,8 @@ export function LocalWorkspaceFlow({
             <p>
               Cadastre contas e referências em Contas e cartões. Os dados ficam
               no cofre local, com saldos estimados até confirmar a cobertura do
-              histórico. Movimentações serão integradas na próxima etapa.
+              histórico. Em Movimentações, registre entradas e gastos com
+              histórico e exclusão reversível.
             </p>
             <button type="button" onClick={() => void load()}>
               Ver espaços locais

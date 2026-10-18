@@ -1,5 +1,7 @@
 # Contas locais e conferência — US-040 Desktop
 
+A [US-041 Desktop](desktop-movements.md) integra os atalhos de movimentações e ajuste identificado no detalhe da conta. O histórico abaixo registra o escopo anterior da US-040.
+
 No Desktop Windows, entre sem conta, abra um espaço e escolha Contas e cartões. A lista separa disponibilidades de cartões/dívidas e permite mostrar arquivadas. Todos os saldos permanecem estimados enquanto a cobertura do histórico não for comprovada. Saldo até a data usa data financeira; Última leitura informa quando o cofre foi consultado. Não há consolidação automática entre espaços.
 
 Nova conta pede nome, instituição opcional, tipo/natureza e BRL. Você pode informar referência ou começar sem ela. Para a referência, use valor em reais como 1000,00 sem separador de milhares, data e posição explícita de início/fim do dia. Cartão/dívida simples usam natureza passiva; crédito pode ter valor negativo. Investimento/dívida simples não calculam rentabilidade, amortização ou juros futuros.

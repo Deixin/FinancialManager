@@ -133,6 +133,8 @@ try {
         'allow-cancel-local-restore',
         'allow-read-local-accounts',
         'allow-apply-local-account-change',
+        'allow-read-local-movements',
+        'allow-apply-local-manual-movement',
       ],
     );
     assert.equal(

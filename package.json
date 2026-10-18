@@ -98,7 +98,9 @@
     "desktop:manager:check": "turbo run build --filter=@financial-manager/desktop && node infra/workspace-manager/browser.mjs",
     "desktop:manager:native": "turbo run build --filter=@financial-manager/desktop && node infra/workspace-manager/native.mjs",
     "desktop:accounts:check": "turbo run build --filter=@financial-manager/desktop && node infra/accounts-desktop/browser.mjs",
-    "desktop:accounts:native": "turbo run build --filter=@financial-manager/desktop && node infra/accounts-desktop/native.mjs"
+    "desktop:accounts:native": "turbo run build --filter=@financial-manager/desktop && node infra/accounts-desktop/native.mjs",
+    "desktop:movements:check": "turbo run build --filter=@financial-manager/desktop && node infra/movements-desktop/browser.mjs",
+    "desktop:movements:native": "turbo run build --filter=@financial-manager/desktop && node infra/movements-desktop/native.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

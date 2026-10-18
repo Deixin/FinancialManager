@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-041 Desktop: [ADR-0051](adr/0051-movimentacoes-manuais-desktop.md) adota comandos específicos, leitura consistente e política nativa confrontada com o serviço compartilhado. Não resolve DP-01 a DP-04, outbox/feed cloud, paginação ou release. A homologação humana continua após integração completa (ADR-0044).
+
 US-041 em andamento: [ADR-0050](adr/0050-politica-de-movimentacoes-manuais.md) adota política compartilhada sobre as revisões existentes, sem schema, dependência de produção ou IPC novo. Desktop/manual/ajuste em CT-03, campos e gestão de classificações posteriores, transport limitado e outbox/recibos cloud mantêm seus gates. Homologação humana segue ADR-0044; DP-01 a DP-04 preservadas.
 
 US-040 local: [ADR-0049](adr/0049-contas-no-desktop-sqlcipher.md) integra contas/referências/conferência no Desktop SQLCipher com dois novos comandos específicos, 17 no total. Não altera schema ou dependências de produção. Limites de leitura recusam snapshots grandes sem truncar; paginação, versão monotônica/auditoria/outbox e escrita cloud permanecem nos respectivos gates. Próxima história US-041, movimentações manuais e ajuste identificado. Homologação humana segue diferida conforme ADR-0044. DP-01 a DP-04 preservadas; entradas abaixo são históricas.

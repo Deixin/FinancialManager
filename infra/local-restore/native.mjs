@@ -136,7 +136,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 17);
+    assert.equal(permissions.length, 19);
     run('cargo', [
       'build',
       '--locked',

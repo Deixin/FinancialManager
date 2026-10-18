@@ -16,6 +16,7 @@ backup-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 restore-smoke = ["backup-smoke"]
 manager-smoke = ["workspace-smoke", "vault-smoke"]
 accounts-smoke = ["workspace-smoke", "restore-smoke"]
+movements-smoke = ["accounts-smoke"]
 
 [[bin]]
 name = "accounts-probe"
@@ -120,3 +121,13 @@ required-features = ["manager-smoke"]
 name = "workspace-manager-smoke"
 path = "src/bin/workspace-manager-smoke.rs"
 required-features = ["manager-smoke"]
+
+[[bin]]
+name = "movements-probe"
+path = "src/bin/movements-probe.rs"
+required-features = ["movements-smoke"]
+
+[[bin]]
+name = "movements-smoke"
+path = "src/bin/movements-smoke.rs"
+required-features = ["movements-smoke"]

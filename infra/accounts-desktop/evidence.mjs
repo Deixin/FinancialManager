@@ -18,7 +18,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_build_clippy_ten_tests_and_62_domain_vectors',
-  'seventeen_narrow_permissions_without_default_probes',
+  'nineteen_narrow_permissions_without_default_probes',
   'native_fin002_snapshot_matches_shared_domain_goldens',
   'webview_crud_and_canonical_money',
   'webview_reference_history_and_comparison',
@@ -79,7 +79,15 @@ export function validateDesktopAccountEvidence(
       throw Error('DESKTOP_ACCOUNT_EVIDENCE_INVALID');
     };
   const native = r?.scope === 'us040-desktop-accounts-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks = native
+      ? r?.format_version === 1
+        ? nativeChecks.map((n) =>
+            n === 'nineteen_narrow_permissions_without_default_probes'
+              ? 'seventeen_narrow_permissions_without_default_probes'
+              : n,
+          )
+        : nativeChecks
+      : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -93,7 +101,7 @@ export function validateDesktopAccountEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us040-desktop-accounts-windows',
       'us040-desktop-accounts-browser',

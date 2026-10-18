@@ -348,3 +348,19 @@ main:focus {
 .account-flow :is(p, h3, ul) {
   margin: 0;
 }
+
+.movement-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.movement-history {
+  padding-inline-start: 1.5rem;
+  overflow-wrap: anywhere;
+}
+.movement-history li {
+  margin-block: 1rem;
+}
+.movement-flow .local-list button {
+  overflow-wrap: anywhere;
+}

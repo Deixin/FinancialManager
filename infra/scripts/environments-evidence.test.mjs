@@ -132,7 +132,7 @@ test('latest environment evidence matches current sources and historical evidenc
     ['us-014-environments-2026-10-17-us034.json', false],
     ['us-014-environments-2026-10-17-us035.json', false],
     ['us-014-environments-2026-10-17-us036.json', false],
-    ['us-014-environments-2026-10-17-us040-desktop.json', true],
+    ['us-014-environments-2026-10-18-us041-desktop.json', true],
   ]) {
     const filename = new URL(
       '../../docs/quality/evidence/' + name,

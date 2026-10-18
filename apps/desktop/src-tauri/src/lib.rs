@@ -6,10 +6,12 @@ pub mod keys;
 pub mod local_accounts;
 pub mod local_backup;
 pub mod local_lock;
+pub mod local_movements;
 pub mod local_restore;
 pub mod local_workspaces;
 pub mod lock_store;
 mod migrations;
+pub mod movement_model;
 pub mod restore_source;
 pub mod windows_hello;
 
@@ -48,6 +50,19 @@ pub enum LocalError {
     AccountArchived,
     ReferenceConflict,
     AccountLimit,
+    InvalidManualMovement,
+    ManualMovementReadOnly,
+    ManualBaseConflict,
+    ManualAccountChanged,
+    ManualAccountArchived,
+    MovementDeleted,
+    AllocationReviewRequired,
+    VersionConflict,
+    VersionExhausted,
+    OriginImmutable,
+    CompositeRequired,
+    InvalidRevision,
+    MovementLimit,
 }
 impl From<std::io::Error> for LocalError {
     fn from(_: std::io::Error) -> Self {
@@ -74,5 +89,7 @@ pub mod backup_probe;
 
 #[cfg(feature = "accounts-smoke")]
 pub mod account_probe;
+#[cfg(feature = "movements-smoke")]
+pub mod movement_probe;
 #[cfg(feature = "restore-smoke")]
 pub mod restore_probe;

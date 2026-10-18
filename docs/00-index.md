@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-041 no Desktop](development/desktop-movements.md) acrescenta entradas/gastos, edição, exclusão reversível, histórico e ajustes identificados ao cofre local. Consulte o [ADR-0051](architecture/adr/0051-movimentacoes-manuais-desktop.md). Próximo incremento: US-042; homologações humanas permanecem após a integração completa. Os parágrafos abaixo preservam o estado dos incrementos anteriores.
+
 A [fundação US-041](development/manual-movements.md) acrescenta a política compartilhada de lançamentos manuais com versões, histórico e sinais por natureza da conta. A integração Desktop dessa história é o próximo incremento; homologação humana continua após integração completa.
 
 A [US-040 no Desktop](development/desktop-accounts.md) integra contas, referências e conferência de saldo ao cofre SQLCipher, com testes Chromium/WebView2 e restauração em outra instalação. A [base compartilhada](development/financial-accounts.md) atende PostgreSQL/SQLite. Próxima história: US-041, movimentações manuais; homologação humana fica para após integrar todo o sistema.
