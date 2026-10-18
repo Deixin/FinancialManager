@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [associação compartilhada US-045](development/classification.md) usa revisões existentes e fornece filtros puros deduplicados sobre snapshots autorizados. Consulte o [ADR-0059](architecture/adr/0059-associacao-versionada-de-classificacao.md). Próximo incremento integra Desktop, leitura autorizada/cobertura e apresentação dos filtros. Homologações humanas continuam pós-integração; entradas abaixo são históricas.
+
 A [US-045 em andamento](development/taxonomy.md) entrega primeiro os catálogos compartilhados de subcategorias e tags. Consulte o [ADR-0058](architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md). Próximo incremento: associação versionada às transações e filtros; depois, integração Desktop. Homologações humanas permanecem pós-integração. Entradas abaixo são históricas.
 
 A [US-044 no Desktop](development/desktop-categories.md) oferece gestão de categorias por workspace no SQLCipher, com paridade Rust/TypeScript e comandos específicos. Consulte o [ADR-0057](architecture/adr/0057-categorias-no-desktop-sqlcipher.md). Próximo passo: US-045; homologações humanas permanecem pós-integração. Entradas abaixo são históricas.

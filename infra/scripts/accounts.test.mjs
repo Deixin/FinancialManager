@@ -603,7 +603,7 @@ const evidence = () =>
   JSON.parse(
     readFileSync(
       new URL(
-        '../../docs/quality/evidence/us-040-accounts-core-2026-10-18-us045-catalog.json',
+        '../../docs/quality/evidence/us-040-accounts-core-2026-10-18-us045-classification.json',
         import.meta.url,
       ),
       'utf8',

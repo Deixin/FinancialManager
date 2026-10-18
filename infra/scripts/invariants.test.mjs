@@ -137,7 +137,7 @@ test('US-027 evidence requires every gate, current sources and truthful platform
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-027-invariants-2026-10-18-us045-catalog.json',
+          '../../docs/quality/evidence/us-027-invariants-2026-10-18-us045-classification.json',
           import.meta.url,
         ),
         'utf8',

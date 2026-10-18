@@ -20,6 +20,7 @@ import type {
   RevisionPlan,
   RevisionSnapshot,
 } from '@financial-manager/domain/revisions';
+import type { TaxonomyCatalog } from '@financial-manager/domain/taxonomy';
 export type {
   RevisionChange,
   RevisionState,
@@ -66,6 +67,7 @@ export interface RevisionScope {
 }
 // Trusted adapter port. It is never exposed as an HTTP/IPC or user callback.
 export interface RevisionTransaction {
+  taxonomyCatalog?(): Promise<TaxonomyCatalog>;
   workspaceMode(): Promise<'LOCAL' | 'CLOUD' | null>;
   account(id: string): Promise<Account | null>;
   load(id: string): Promise<RevisionState | null>;
@@ -112,6 +114,7 @@ export type RevisionGuard = (
     plan: RevisionPlan;
     account: Account;
     previous_account: Account | null;
+    readTaxonomy?: () => Promise<TaxonomyCatalog>;
   }>,
 ) => void | Promise<void>;
 function safeRequest(input: RevisionRequest): Readonly<RevisionRequest> {
@@ -345,7 +348,14 @@ export function createRevisionService(options: RevisionOptions) {
             : null;
           if (current && !previous) throw new RevisionError('NOT_FOUND');
           await guard(
-            Object.freeze({ plan, account, previous_account: previous }),
+            Object.freeze({
+              plan,
+              account,
+              previous_account: previous,
+              ...(tx.taxonomyCatalog
+                ? { readTaxonomy: () => tx.taxonomyCatalog!() }
+                : {}),
+            }),
           );
         }
         validateRevisionAccount(plan, account);

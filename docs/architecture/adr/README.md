@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0059 — Associação versionada de classificação](0059-associacao-versionada-de-classificacao.md): categorias/subcategorias/tags sobre revisão-base e histórico existentes, referências validadas na transação e filtros puros sem duplicar transações; integração Desktop e leitura completa autorizada permanecem pendentes.
+
 [0058 — Catálogos de subcategorias e tags](0058-catalogos-compartilhados-de-subcategorias-e-tags.md): política pura, autorização por workspace, busca, reordenação de filhos e arquivamento em PostgreSQL/SQLite; associação financeira e Desktop são incrementos seguintes.
 
 [0055 — Cartões e pagamentos no Desktop](0055-cartoes-e-pagamentos-no-desktop.md): leitura coerente e pagamento conjunto SQLCipher, 23 comandos estreitos, UI de dívida/crédito e dados transitórios; importação/conciliação permanece pendente.

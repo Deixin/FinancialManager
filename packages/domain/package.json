@@ -39,6 +39,10 @@
     "./taxonomy": {
       "types": "./dist/taxonomy.d.ts",
       "import": "./dist/taxonomy.js"
+    },
+    "./classification": {
+      "types": "./dist/classification.d.ts",
+      "import": "./dist/classification.js"
     }
   },
   "files": [

@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-045: associação versionada de classificação — 2026-10-18 — em andamento
+
+Categorias, subcategorias e tags são associadas pelo coordenador de revisões, com bases completas, referências validadas na transação e histórico. A política preserva conta, data, valor, natureza econômica e origem; suporta tags em rateios e exige pares completos em grupos. Filtros puros deduplicam tags e exigem categoria/subcategoria na mesma parcela. [Guia](../development/classification.md) e [ADR-0059](../architecture/adr/0059-associacao-versionada-de-classificacao.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 418 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 132 Markdown. O protocolo próprio aprovou 108 gates reais em PostgreSQL/SQLite e os nove testes Node de classificação passaram. Regressões de repositories, revisões, invariantes, contas, movimentações, transferências, cartões e catálogos, além dos cinco fluxos Desktop afetados em Chromium/Windows, passaram novamente. Foram arquivadas 20 cápsulas novas ou renovadas; as 37 evidências atuais conferem com 416 hashes de fontes no Git staging. Recursos sintéticos próprios encerrados. Isso não representa execução de CI remota, integração Desktop desta funcionalidade ou homologação humana.
+
+Sem migration, dependência nova, endpoint, comando Tauri ou tela nova. US-045 segue em andamento: próximo incremento integra Desktop, paridade nativa, leitura autorizada/cobertura e apresentação dos filtros. Cloud/outbox/feed e editor de rateio US-046 permanecem nos próprios gates. Homologações humanas após integrar o sistema; sete originais e DP-01 a DP-04 intactos. Registros abaixo são históricos.
+
 ## Financeiro — US-045: catálogos de subcategorias e tags — 2026-10-18 — em andamento
 
 Primeiro incremento compartilhado: criação, renomeação, pesquisa, ordenação de subcategorias e arquivamento por workspace em PostgreSQL/SQLite. Bases completas recusam divergências, IDs e categoria de origem permanecem imutáveis, e itens usados conservam vínculos e histórico. [Guia](../development/taxonomy.md) e [ADR-0058](../architecture/adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md).

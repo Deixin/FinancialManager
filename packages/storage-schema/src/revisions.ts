@@ -11,6 +11,7 @@ import type {
 import { revisionAccount } from './revision-adapters/accounts.js';
 import { revisionWorkspace } from './revision-adapters/workspaces.js';
 import { sqliteTransactionRevisions } from './revision-adapters/transactions.js';
+import { sqliteTaxonomyWrites } from './revision-adapters/taxonomy-writes.js';
 export interface SqliteRevisionOptions extends Omit<RevisionOptions, 'store'> {
   readonly connection: SqliteConnection;
 }
@@ -48,6 +49,7 @@ export function createSqliteRevisionService(options: SqliteRevisionOptions) {
           const result = await operation(
             Object.freeze({
               ...sqliteTransactionRevisions(db, scope),
+              taxonomyCatalog: () => sqliteTaxonomyWrites(db, scope).catalog(),
               account: (id: string) => revisionAccount(db, scope, id),
               workspaceMode: () => revisionWorkspace(db, scope.workspace_id),
             }),

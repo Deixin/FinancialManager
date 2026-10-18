@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-045 avançou na associação às transações](docs/development/classification.md): revisão-base, histórico e filtros compartilhados deduplicados, preservando valores e natureza econômica. Próximo incremento: integração Desktop e leitura autorizada com cobertura dos filtros. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
+
 A [US-045 começou pelo catálogo compartilhado](docs/development/taxonomy.md): subcategorias e tags com criação, edição, pesquisa e arquivamento em PostgreSQL/SQLite. Associação às transações e integração Desktop são os próximos incrementos. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
 
 A [US-044 no Desktop](docs/development/desktop-categories.md) integra sugestões, criação, edição, ordem e arquivamento de categorias ao cofre SQLCipher. Próximo passo: US-045, subcategorias, tags e associações. Homologações humanas seguem após integração completa; entradas abaixo são históricas.

@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-045, associação compartilhada: [ADR-0059](adr/0059-associacao-versionada-de-classificacao.md) compõe intenções de classificação sobre revisões, com consulta transacional aos catálogos e filtros puros deduplicados. Desktop, autorização/cobertura dos snapshots de leitura e cloud de produto permanecem pendentes. Sem migration, dependência nova ou alteração de DP-01 a DP-04; homologações humanas pós-integração preservadas.
+
 US-045 em andamento: [ADR-0058](adr/0058-catalogos-compartilhados-de-subcategorias-e-tags.md) adota catálogos de subcategorias e tags, bases completas, arquivamento e pesquisa, com preservação financeira. Associação às transações e Desktop permanecem pendentes. Sem migration, dependência nova ou resolução de DP-01 a DP-04; homologações humanas pós-integração preservadas.
 
 US-044 Desktop: [ADR-0057](adr/0057-categorias-no-desktop-sqlcipher.md) integra categorias ao SQLCipher com bases completas, 25 permissões e paridade nativa. Dependência Rust fixada aplica NFKC. Sem migration, mudança de backup ou decisão de prazo. DP-01 a DP-04, escrita cloud com versão/auditoria/outbox e homologação humana pós-integração preservadas.

@@ -1,5 +1,7 @@
 # Revisões e versionamento financeiro — US-026
 
+A [US-045 compartilhada](classification.md) usa applyGuarded para classificação e acrescenta o port confiável opcional taxonomyCatalog/readTaxonomy. Os adapters compõem a leitura do catálogo na mesma transação, após autorização; classificações falham de forma fechada em adapters sem essa capacidade. O coordenador continua exigindo grupos completos e bases/versões correntes.
+
 A [política manual US-041](manual-movements.md) consome applyGuarded dos adapters: um guard interno de host recebe plano e contas atuais, depois da autorização/escopo e antes de persistir, dentro da mesma transação. Não recebe SQL/conexão ou função do corpo HTTP/IPC. apply/revert mantêm o comportamento anterior. O registro abaixo preserva a fundação original.
 
 A fundação implementa revisão atômica do agregado financial_transaction, incluindo rateios, tags e vínculos de conta/grupo/contraparte existentes. [Decisão, limites e ameaças](../architecture/adr/0037-revisoes-financeiras-atomicas.md). É um serviço interno; rotas HTTP, interface de histórico/conflito e integração dos cofres/replicas seguem nas histórias consumidoras.
