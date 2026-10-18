@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0054 — Pagamentos de cartão compartilhados](0054-pagamentos-de-cartao-compartilhados.md): par ASSET/CREDIT_CARD, dívida/caixa separados de consumo, revisões e rollback atômicos; US-043 em andamento até Desktop/conciliação.
+
 [0050 — Política de movimentações manuais](0050-politica-de-movimentacoes-manuais.md): comandos de intenção sobre revisões autorizadas, base inteira/conta atual, exclusão reversível, rateio preservado e ajuste separado; US-041 em andamento até Desktop.
 
 [0049 — Contas no Desktop SQLCipher](0049-contas-no-desktop-sqlcipher.md): snapshot consistente, dois comandos estreitos, planos Rust conferidos com Domain e UI com dinheiro exato; aceite local US-040, próxima US-041.

@@ -175,7 +175,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-042-desktop-transfers-' +
         kind +
-        '-2026-10-18.json',
+        '-2026-10-18-us043-core.json',
     ),
   );
 test('Desktop transfer evidence requires pair native crash restore cleanup and every UI gate', () => {

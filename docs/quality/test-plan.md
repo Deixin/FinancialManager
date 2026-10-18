@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-043 compartilhada: node infra/card-payments/run.mjs e pnpm check. Roteiro real em PostgreSQL/SQLite cobre pagamento parcial/excedente, consumo por data da compra, caixa por data do pagamento, estorno posterior, grupo/revisões atômicos, replay, escopo/RLS, concorrência e limpeza. [Reprodução](../development/card-payments.md). Desktop e conciliação completa permanecem pendentes.
+
 US-042 Desktop: node infra/transfers-desktop/browser.mjs/native.mjs e pnpm check. Gates cobrem confirmação conjunta, metadados íntegros, duas revisões, falhas antes/depois do commit, limite, PIN, i64, histórico, restauração portátil e limpeza. [Reprodução](../development/desktop-transfers.md). Homologação humana segue pós-integração.
 
 US-042: node infra/transfers/run.mjs cobre grupo/par/revisões atômicos nos dois engines, RLS/escopo, replay, concorrência e falha da segunda revisão. A suíte Node repete os 12 cenários SQLite. [Reprodução e limites](../development/transfers.md). UI Desktop/homologação humana têm gates próprios.

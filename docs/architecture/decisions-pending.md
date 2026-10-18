@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-043 em andamento: [ADR-0054](adr/0054-pagamentos-de-cartao-compartilhados.md) compõe pagamento de cartão sobre revisões existentes. Transferência e pagamento têm sinais distintos; consumo permanece na compra. Desktop/importação/conciliação e cloud mantêm seus gates. Sem migration ou dependência nova; DP-01 a DP-04 e homologação humana pós-integração preservadas.
+
 US-042 Desktop: [ADR-0053](adr/0053-transferencias-no-desktop-sqlcipher.md) adota leitura de grupos e comando conjunto SQLCipher, com 21 permissões de produto. O coordenador compartilhado recusa projeções parciais de membros existentes. Nenhum prazo ou enum pendente foi escolhido; DP-01 a DP-04 e homologação humana pós-integração permanecem.
 
 US-042 compartilhada: [ADR-0052](adr/0052-transferencias-compartilhadas-atomicas.md) adota política de transferência e criação do grupo dentro do coordenador de revisões existente. Desktop é o próximo incremento. Não altera estados de grupo na exclusão, não resolve DP-01 a DP-04 e não antecipa homologação humana.

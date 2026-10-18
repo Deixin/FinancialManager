@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-043: pagamentos de cartão compartilhados — 2026-10-18 — em andamento
+
+O núcleo compartilha CREATE/EDIT/DELETE/RESTORE entre uma conta ASSET e um CREDIT_CARD/LIABILITY, usando grupo CARD_PAYMENT e dois membros DEBT_SETTLEMENT. Banco e dívida diminuem juntos; pagamentos parciais e crédito por pagamento excedente são representáveis. Compra/estorno conservam consumo e data próprios. O contrato captura a intenção, exige bases/descritores atuais e preserva originais/classificações; autorização, escopo, revisões e rollback usam os adapters existentes. [Guia](../development/card-payments.md), [ADR-0054](../architecture/adr/0054-pagamentos-de-cartao-compartilhados.md).
+
+Verificação local concluída: pnpm check passou com 371 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 122 Markdown. O protocolo aprovou 62 gates PostgreSQL/SQLite, incluindo 16 cenários de pagamento por engine, comparação de snapshots/versões, LOCAL anônimo, reabertura e limpeza. Regressões de repositories (22), revisões (28), invariantes (50), contas (49), manual (54), transferências (54), além de contas/movimentações/transferências Desktop Chromium e Windows, passaram com as fontes finais. Treze cápsulas novas compõem o conjunto de 30 evidências atuais. CI remota e homologação humana não fazem parte desse resultado local.
+
+Próximo incremento integra comandos/telas e testes SQLCipher/WebView2 no Desktop. A entrega compartilhada não encerra RF-08/FL-21 ou CT-06 de produto: importação, períodos e conciliação preservam seus gates. Não houve schema, dependência de produção ou formato de backup novo. Homologações humanas seguem após integração completa, com commit/push por incremento já autorizado. Sete originais e DP-01 a DP-04 intactos; entradas abaixo preservam o histórico.
+
 ## Desktop — US-042: transferências com confirmação conjunta — 2026-10-18
 
 Movimentações oferece criação e consulta do par completo, edição, exclusão/restauração e histórico. Dois comandos específicos elevam as permissões de produto a 21. A leitura inclui metadados de grupo e estado financeiro no mesmo snapshot; o Rust valida bases/contas atuais e grava grupo, membros, relações e revisões em uma transação SQLCipher. A UI congela a intenção após resposta perdida, aceita somente ativos distintos e mantém saldo estimado conforme data e referências. [Guia](../development/desktop-transfers.md), [ADR-0053](../architecture/adr/0053-transferencias-no-desktop-sqlcipher.md).

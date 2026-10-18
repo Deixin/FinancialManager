@@ -1,5 +1,7 @@
 # Modelo de ameaças — ponto de partida
 
+US-043 compartilhada: comando fechado exige par de contas atual e bases completas. Autorização/escopo/autoridade, cobertura do grupo e natureza ASSET/CREDIT_CARD são validadas na transação; falha na segunda revisão não deixa grupo ou membro parcial. Replay não cria IDs/rebase. Logs não recebem payload financeiro. [ADR-0054](../architecture/adr/0054-pagamentos-de-cartao-compartilhados.md).
+
 US-042 Desktop: estado do grupo e membros vêm do mesmo snapshot, com validação fechada no TypeScript e Rust. Escrita exige ambos os lados, conta/base atual e autorização local; não aceita SQL/callback do usuário, não rebaseia intenção e não registra payload financeiro em logs. [ADR-0053](../architecture/adr/0053-transferencias-no-desktop-sqlcipher.md).
 
 US-042: comandos fechados e bases completas dos dois membros; o coordenador confirma autorização e as duas contas antes de criar o grupo, preservando RLS, locks e rollback. Escopo parcial, bases forjadas e grupo incompleto não produzem meia transferência. [ADR-0052](../architecture/adr/0052-transferencias-compartilhadas-atomicas.md).

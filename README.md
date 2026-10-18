@@ -1,5 +1,7 @@
 # Financial Manager
 
+US-043 em andamento: [pagamentos de cartão compartilhados](docs/development/card-payments.md), com liquidação atômica sem duplicar consumo. Próximo incremento integra o Desktop; homologações humanas permanecem após integração completa.
+
 A [US-042 no Desktop](docs/development/desktop-transfers.md) integra transferência com confirmação dos dois lados, edição, exclusão/restauração e histórico no SQLCipher. A [base compartilhada](docs/development/transfers.md) mantém PostgreSQL/SQLite. Próximo incremento: US-043, pagamento de cartão. Homologações humanas continuam após integrar todo o sistema; os registros abaixo são históricos.
 
 A [fundação US-042](docs/development/transfers.md) acrescenta transferências atômicas no núcleo PostgreSQL/SQLite: grupo, dois lançamentos e revisões confirmados juntos, com versões e exclusão/restauração. A integração Desktop é o próximo incremento. Homologações humanas permanecem após integrar todo o sistema; registros abaixo preservam as entregas anteriores.

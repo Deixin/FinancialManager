@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-043 compartilhada](development/card-payments.md) acrescenta pagamentos atômicos de cartão, separando consumo e liquidação de dívida. Consulte o [ADR-0054](architecture/adr/0054-pagamentos-de-cartao-compartilhados.md). Próximo incremento: integração Desktop; homologações humanas permanecem após integração completa. Os parágrafos abaixo preservam os incrementos anteriores.
+
 A [US-042 Desktop](development/desktop-transfers.md) integra os dois lados da transferência ao cofre local e suas revisões. Consulte o [ADR-0053](architecture/adr/0053-transferencias-no-desktop-sqlcipher.md). Próxima história: US-043; homologações humanas permanecem após a integração completa.
 
 A [base compartilhada US-042](development/transfers.md) implementa transferências atômicas com grupos, pares e revisões. Consulte o [ADR-0052](architecture/adr/0052-transferencias-compartilhadas-atomicas.md). Próximo incremento: integração Desktop; homologações humanas continuam após a integração completa.

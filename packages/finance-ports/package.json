@@ -8,7 +8,8 @@
     "./manual-movements": "./dist/manual-movements.js",
     "./revisions": "./dist/revisions.js",
     ".": "./dist/index.js",
-    "./transfers": "./dist/transfers.js"
+    "./transfers": "./dist/transfers.js",
+    "./card-payments": "./dist/card-payments.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

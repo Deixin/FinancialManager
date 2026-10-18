@@ -73,7 +73,11 @@ export interface RevisionTransaction {
   history(id: string, version: string): Promise<unknown | null>;
   save(plan: RevisionPlan, record: RevisionRecord): Promise<void>;
   createGroup?(
-    input: Readonly<{ id: string; group_type: 'TRANSFER'; created_at: string }>,
+    input: Readonly<{
+      id: string;
+      group_type: 'TRANSFER' | 'CARD_PAYMENT';
+      created_at: string;
+    }>,
   ): Promise<void>;
 }
 export interface RevisionStore {
@@ -278,7 +282,10 @@ export function createRevisionService(options: RevisionOptions) {
     changes: readonly (RevisionChange | ReversalChange)[],
     reversing: boolean,
     guard?: RevisionGuard,
-    creation?: Readonly<{ id: string; group_type: 'TRANSFER' }>,
+    creation?: Readonly<{
+      id: string;
+      group_type: 'TRANSFER' | 'CARD_PAYMENT';
+    }>,
   ): Promise<readonly RevisionResult[]> {
     const grant = await authorize(request, provider),
       scope = Object.freeze({
@@ -469,7 +476,10 @@ export function createRevisionService(options: RevisionOptions) {
     input: RevisionRequest,
     rows: readonly RevisionChange[],
     guard?: RevisionGuard,
-    creation?: Readonly<{ id: string; group_type: 'TRANSFER' }>,
+    creation?: Readonly<{
+      id: string;
+      group_type: 'TRANSFER' | 'CARD_PAYMENT';
+    }>,
   ) {
     try {
       const { request, changes } = captureInput(() => ({
@@ -492,22 +502,25 @@ export function createRevisionService(options: RevisionOptions) {
     async applyComposite(
       input: RevisionRequest,
       rows: readonly RevisionChange[],
-      group: Readonly<{ id: string; group_type: 'TRANSFER' }>,
+      group: Readonly<{ id: string; group_type: 'TRANSFER' | 'CARD_PAYMENT' }>,
       guard: RevisionGuard,
     ) {
       if (typeof guard !== 'function')
         throw new RevisionError('CONFIGURATION_INVALID');
-      let captured: Readonly<{ id: string; group_type: 'TRANSFER' }>;
+      let captured: Readonly<{
+        id: string;
+        group_type: 'TRANSFER' | 'CARD_PAYMENT';
+      }>;
       try {
         if (
           !group ||
           Object.keys(group).sort().join(',') !== 'group_type,id' ||
-          group.group_type !== 'TRANSFER'
+          !['TRANSFER', 'CARD_PAYMENT'].includes(group.group_type)
         )
           throw new Error();
         captured = Object.freeze({
           id: uuidV7(group.id),
-          group_type: 'TRANSFER',
+          group_type: group.group_type,
         });
       } catch {
         throw new RevisionError('INVALID_REVISION');

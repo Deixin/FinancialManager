@@ -19,7 +19,7 @@ export function postgresTransactionRevisions(
     async createGroup(
       input: Readonly<{
         id: string;
-        group_type: 'TRANSFER';
+        group_type: 'TRANSFER' | 'CARD_PAYMENT';
         created_at: string;
       }>,
     ) {

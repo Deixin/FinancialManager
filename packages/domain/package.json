@@ -27,6 +27,10 @@
     "./transfers": {
       "types": "./dist/transfers.d.ts",
       "import": "./dist/transfers.js"
+    },
+    "./card-payments": {
+      "types": "./dist/card-payments.d.ts",
+      "import": "./dist/card-payments.js"
     }
   },
   "files": [
