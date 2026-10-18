@@ -72,6 +72,9 @@ export interface RevisionTransaction {
   group(id: string): Promise<RevisionGroup | null>;
   history(id: string, version: string): Promise<unknown | null>;
   save(plan: RevisionPlan, record: RevisionRecord): Promise<void>;
+  createGroup?(
+    input: Readonly<{ id: string; group_type: 'TRANSFER'; created_at: string }>,
+  ): Promise<void>;
 }
 export interface RevisionStore {
   transaction<T>(
@@ -275,6 +278,7 @@ export function createRevisionService(options: RevisionOptions) {
     changes: readonly (RevisionChange | ReversalChange)[],
     reversing: boolean,
     guard?: RevisionGuard,
+    creation?: Readonly<{ id: string; group_type: 'TRANSFER' }>,
   ): Promise<readonly RevisionResult[]> {
     const grant = await authorize(request, provider),
       scope = Object.freeze({
@@ -339,6 +343,23 @@ export function createRevisionService(options: RevisionOptions) {
         }
         validateRevisionAccount(plan, account);
         plans.push(plan);
+      }
+      if (creation) {
+        if (!tx.createGroup) throw new RevisionError('CONFIGURATION_INVALID');
+        if (
+          plans.length !== 2 ||
+          plans.some(
+            (p) =>
+              p.before !== null ||
+              p.after.content.group_id !== creation.id ||
+              p.after.content.deleted ||
+              p.after.content.origin_kind !== 'MANUAL',
+          )
+        )
+          throw new RevisionError('COMPOSITE_REQUIRED');
+        if (await tx.group(creation.id))
+          throw new RevisionError('VERSION_CONFLICT');
+        await tx.createGroup(Object.freeze({ ...creation, created_at: at }));
       }
       const groupIds = [
         ...new Set(
@@ -439,6 +460,7 @@ export function createRevisionService(options: RevisionOptions) {
     input: RevisionRequest,
     rows: readonly RevisionChange[],
     guard?: RevisionGuard,
+    creation?: Readonly<{ id: string; group_type: 'TRANSFER' }>,
   ) {
     try {
       const { request, changes } = captureInput(() => ({
@@ -450,7 +472,7 @@ export function createRevisionService(options: RevisionOptions) {
           return value;
         }),
       }));
-      return await execute(request, changes, false, guard);
+      return await execute(request, changes, false, guard, creation);
     } catch (cause) {
       throw error(cause);
     }
@@ -458,6 +480,31 @@ export function createRevisionService(options: RevisionOptions) {
   return Object.freeze({
     apply: (input: RevisionRequest, rows: readonly RevisionChange[]) =>
       applyChanges(input, rows),
+    async applyComposite(
+      input: RevisionRequest,
+      rows: readonly RevisionChange[],
+      group: Readonly<{ id: string; group_type: 'TRANSFER' }>,
+      guard: RevisionGuard,
+    ) {
+      if (typeof guard !== 'function')
+        throw new RevisionError('CONFIGURATION_INVALID');
+      let captured: Readonly<{ id: string; group_type: 'TRANSFER' }>;
+      try {
+        if (
+          !group ||
+          Object.keys(group).sort().join(',') !== 'group_type,id' ||
+          group.group_type !== 'TRANSFER'
+        )
+          throw new Error();
+        captured = Object.freeze({
+          id: uuidV7(group.id),
+          group_type: 'TRANSFER',
+        });
+      } catch {
+        throw new RevisionError('INVALID_REVISION');
+      }
+      return applyChanges(input, rows, guard, captured);
+    },
     async applyGuarded(
       input: RevisionRequest,
       rows: readonly RevisionChange[],

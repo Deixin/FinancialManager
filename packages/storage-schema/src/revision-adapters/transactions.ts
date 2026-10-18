@@ -64,6 +64,18 @@ export function sqliteTransactionRevisions(
   }
   return Object.freeze({
     load,
+    async createGroup(
+      input: Readonly<{
+        id: string;
+        group_type: 'TRANSFER';
+        created_at: string;
+      }>,
+    ) {
+      await db.run(
+        "INSERT INTO transaction_group(id,workspace_id,group_type,state,created_at) VALUES(?,?,?,'ACTIVE',?)",
+        [input.id, scope.workspace_id, input.group_type, input.created_at],
+      );
+    },
     async group(id: string): Promise<RevisionGroup | null> {
       const row = (
         await db.rows(

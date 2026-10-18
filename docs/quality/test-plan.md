@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-042: node infra/transfers/run.mjs cobre grupo/par/revisões atômicos nos dois engines, RLS/escopo, replay, concorrência e falha da segunda revisão. A suíte Node repete os 12 cenários SQLite. [Reprodução e limites](../development/transfers.md). UI Desktop/homologação humana têm gates próprios.
+
 US-041 Desktop: execute desktop:movements:check/native e pnpm check. Gates cobrem comandos reais SQLCipher, PIN antes da chave, i64, versões, rollback, histórico, ACK perdido, exclusão/restauração, acessibilidade, isolamento, término do processo e backup para outra instalação. [Reprodução e limites](../development/desktop-movements.md). Homologação humana fica após integração completa.
 
 A [fundação US-041](../development/manual-movements.md) acrescenta dez testes Node e [54 gates reais](evidence/us-041-manual-core-2026-10-18.json): 28 regressões e 26 específicos. Verifica PostgreSQL/SQLite, sinais por natureza, base/versão, descritor vivo, arquivamento, descrição e relações preservadas, exclusão reversível, rateios, ajustes i64 sem consumo, rollback, concorrência, local sem identidade cloud, reabertura e limpeza. A mesma suíte de 12 casos por engine roda SQLite no pnpm test. UI/IPC manual permanecem pendentes; não declarar homologação de Desktop a partir desse protocolo. Evidências afetadas usam us041-core; as anteriores continuam históricas.

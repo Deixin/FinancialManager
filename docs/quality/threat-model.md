@@ -1,5 +1,7 @@
 # Modelo de ameaças — ponto de partida
 
+US-042: comandos fechados e bases completas dos dois membros; o coordenador confirma autorização e as duas contas antes de criar o grupo, preservando RLS, locks e rollback. Escopo parcial, bases forjadas e grupo incompleto não produzem meia transferência. [ADR-0052](../architecture/adr/0052-transferencias-compartilhadas-atomicas.md).
+
 US-041 Desktop: a WebView não é fronteira de confiança. O Rust recaptura comandos fechados, confirma workspace/base/versão/contas ativas e gera ator/horário/revisão em transação. Payload financeiro não entra em logs, storage do browser ou rede. Snapshot legado desconhecido não é enviado à UI; leituras e comandos têm limites integrais. [ADR-0051](../architecture/adr/0051-movimentacoes-manuais-desktop.md).
 
 O [ADR-0050](../architecture/adr/0050-politica-de-movimentacoes-manuais.md) avalia sinais forjados, base fabricada com versão atual, conta arquivada/trocada, perda de ACK, origem modificada, rateio parcial e erro privado. Captura imutável, base completa, descritor vivo, guard transacional após autorização, RLS/versões/rollback existentes e erros fixos mitigam esses caminhos. A extensão não recebe conexão ou função via JSON. Não há rota HTTP/IPC manual nova; transports, outbox/recibos e homologação humana integrada permanecem pendentes. Registros abaixo conservam os escopos anteriores.

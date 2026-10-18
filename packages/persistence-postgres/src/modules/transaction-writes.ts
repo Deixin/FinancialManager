@@ -16,6 +16,18 @@ export function postgresTransactionRevisions(
   scope: RevisionScope,
 ) {
   return Object.freeze({
+    async createGroup(
+      input: Readonly<{
+        id: string;
+        group_type: 'TRANSFER';
+        created_at: string;
+      }>,
+    ) {
+      await db
+        .insertInto('transaction_group')
+        .values({ ...input, workspace_id: scope.workspace_id, state: 'ACTIVE' })
+        .execute();
+    },
     async load(id: string) {
       let query = db
         .selectFrom('financial_transaction')

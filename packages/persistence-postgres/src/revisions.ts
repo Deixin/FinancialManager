@@ -136,6 +136,8 @@ export function createPostgresRevisionService(
       track(() => service.apply(...args)),
     applyGuarded: (...args: Parameters<typeof service.applyGuarded>) =>
       track(() => service.applyGuarded(...args)),
+    applyComposite: (...args: Parameters<typeof service.applyComposite>) =>
+      track(() => service.applyComposite(...args)),
     revert: (...args: Parameters<typeof service.revert>) =>
       track(() => service.revert(...args)),
     close() {

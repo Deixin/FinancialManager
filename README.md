@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [fundação US-042](docs/development/transfers.md) acrescenta transferências atômicas no núcleo PostgreSQL/SQLite: grupo, dois lançamentos e revisões confirmados juntos, com versões e exclusão/restauração. A integração Desktop é o próximo incremento. Homologações humanas permanecem após integrar todo o sistema; registros abaixo preservam as entregas anteriores.
+
 A [US-041 no Desktop](docs/development/desktop-movements.md) integra movimentações manuais, exclusão/restauração e histórico ao SQLCipher, com ajuste identificado e validação no Rust. As homologações humanas ficam após integrar todo o sistema. Próxima história: US-042, transferências atômicas. Os registros abaixo preservam o histórico dos incrementos.
 
 A [fundação US-041](docs/development/manual-movements.md) implementa política de criação, edição, exclusão lógica, restauração e ajuste identificado sobre o histórico transacional existente, com validação PostgreSQL/SQLite. A história segue em andamento: o próximo incremento integra comandos e telas de movimentações ao Desktop.

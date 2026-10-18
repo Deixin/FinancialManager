@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-042 acrescenta pares e grupos sintéticos aos protocolos, mantendo FIN-002 e seus goldens intactos. Os testes comparam versões e snapshots e removem os dados adicionais do cálculo por exclusão lógica. [Guia](../development/transfers.md).
+
 US-041 Desktop usa 78 vetores sintéticos gerados pelo serviço compartilhado e confrontados com Rust, além de contas e movimentos descartáveis nos protocolos Chromium/Windows. FIN-002 e goldens permanecem inalterados. [Guia e evidências](../development/desktop-movements.md).
 
 US-041 reutiliza FIN-002 intacto e cria somente lançamentos SYNTHETIC com IDs próprios. Compara conteúdo e histórico entre engines, normalizando somente IDs de revisões e timestamps que não fazem parte dessa comparação. Exclui logicamente os novos registros ao fim, mantém suas revisões e compara o grafo original inteiro por filtro explícito de transaction_id; goldens originais permanecem válidos. Ajustes i64 extremos não entram em consumo. O workspace LOCAL do protocolo de revisões é consultado por SQL sintético, sem fingir que pertence ao corpus FIN-002. Recursos temporários e credenciais são removidos/verificados; snapshots/payloads não são versionados. [Guia](../development/manual-movements.md).
