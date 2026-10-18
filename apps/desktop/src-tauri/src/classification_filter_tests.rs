@@ -19,9 +19,9 @@ use std::{
 use uuid::Uuid;
 use zeroize::Zeroizing;
 #[derive(Default)]
-struct Keys {
+pub(crate) struct Keys {
     values: Mutex<HashMap<(Uuid, Uuid), SecretKey>>,
-    reads: AtomicUsize,
+    pub(crate) reads: AtomicUsize,
 }
 impl KeyStore for Keys {
     fn get(&self, i: Uuid, w: Uuid) -> Result<SecretKey> {
@@ -47,7 +47,7 @@ impl KeyStore for Keys {
     }
 }
 #[derive(Default)]
-struct Policies(Mutex<Option<Zeroizing<Vec<u8>>>>);
+pub(crate) struct Policies(Mutex<Option<Zeroizing<Vec<u8>>>>);
 impl PolicyStore for Policies {
     fn read(&self, _: Uuid) -> Result<Option<Zeroizing<Vec<u8>>>> {
         Ok(self.0.lock().unwrap().clone())
@@ -57,7 +57,7 @@ impl PolicyStore for Policies {
         Ok(())
     }
 }
-fn setup() -> (tempfile::TempDir, Arc<Keys>, Installation, String) {
+pub(crate) fn setup() -> (tempfile::TempDir, Arc<Keys>, Installation, String) {
     let root = tempfile::tempdir().unwrap();
     let keys = Arc::new(Keys::default());
     let i = vault::fixture(root.path(), keys.clone()).unwrap();

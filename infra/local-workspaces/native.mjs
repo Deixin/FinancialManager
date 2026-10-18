@@ -143,6 +143,7 @@ try {
         'allow-apply-local-category-change',
         'allow-read-local-taxonomy',
         'allow-apply-local-taxonomy-change',
+        'allow-apply-local-classification-change',
       ],
     );
     assert.equal(

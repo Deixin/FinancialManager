@@ -19,7 +19,7 @@ const directory = new URL(
   PIN = '721947350682',
   h = syntheticTaxonomyHost();
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope: 'us045-desktop-taxonomy-browser',
   passed: false,
   synthetic_only: true,

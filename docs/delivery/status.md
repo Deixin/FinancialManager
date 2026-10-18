@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Desktop — US-045: edição versionada de classificação — 2026-10-18 — integrado no recorte local
+
+Movimentações e consulta por classificação oferecem editor de categoria/subcategoria e tags sobre base completa e histórico SQLCipher. Valor, conta, data, origem importada e natureza econômica são preservados. Grupos exigem ambos os membros atuais; o parceiro sem mudanças não ganha revisão artificial. Rateios permitem editar tags com parcelas conservadas. ACK perdido/inválido congela a tentativa e exige consulta explícita. [Guia](../development/desktop-classification.md) e [ADR-0062](../architecture/adr/0062-editor-versionado-de-classificacao-no-desktop.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 443 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 138 Markdown. A suíte própria aprovou dez testes Rust, 58 vetores compartilhados, dez gates Chromium e 17 Windows. Todas as regressões Desktop afetadas passaram novamente. Foram arquivadas 27 cápsulas novas ou renovadas; 43 evidências atuais conferem com 462 hashes de fontes no Git staging. Os 16 relatórios de dados/infraestrutura não afetados tiveram suas fontes conferidas. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Núcleo compartilhado e Desktop local integram associação/filtros da US-045. Próximo incremento: US-046, editor de rateios. UI/endpoint cloud, Mobile, outbox/feed, versão/auditoria dos catálogos e recibos duráveis mantêm seus gates. Sem migration, dependência de produção ou mudança de backup. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Registros abaixo são históricos.
+
 ## Desktop — US-045: consulta e filtros de classificação — 2026-10-18 — em andamento
 
 Movimentações oferece filtros combináveis por conta, datas, categoria/subcategoria, tags ANY/ALL e ausência de classificação monetária. A leitura SQLCipher reúne todo o snapshot autorizado com o catálogo; resultados não duplicam transações nem alteram valores, saldos ou revisões. Limites e respostas incompletas recusam a lista inteira. Troca de espaço e bloqueio descartam respostas atrasadas. [Guia](../development/desktop-classification-filters.md) e [ADR-0061](../architecture/adr/0061-filtros-de-classificacao-no-desktop.md).

@@ -40,6 +40,7 @@ export function LocalMovementsFlow({
   entry: MovementEntry;
 }) {
   const [classificationOpen, setClassificationOpen] = useState(false);
+  const [classificationId, setClassificationId] = useState('');
   const [cardEntry, setCardEntry] = useState<{
     mode: 'list' | 'create';
     groupId?: string;
@@ -293,6 +294,7 @@ export function LocalMovementsFlow({
       <LocalClassificationFiltersFlow
         key={workspaceId}
         workspaceId={workspaceId}
+        initialTransactionId={classificationId}
         onLocked={onLocked}
         onClose={() => {
           setClassificationOpen(false);
@@ -428,7 +430,10 @@ export function LocalMovementsFlow({
               <button
                 type="button"
                 disabled={captured}
-                onClick={() => setClassificationOpen(true)}
+                onClick={() => {
+                  setClassificationId('');
+                  setClassificationOpen(true);
+                }}
               >
                 Filtrar por classificação
               </button>
@@ -598,11 +603,21 @@ export function LocalMovementsFlow({
                   : 'Não vinculada'}
                 .
               </p>
+              <button
+                type="button"
+                disabled={captured || current.content.deleted}
+                onClick={() => {
+                  setClassificationId(current.id);
+                  setClassificationOpen(true);
+                }}
+              >
+                Classificar movimentação
+              </button>
               {current.content.allocations.length > 0 && (
                 <p>
-                  Classificações e observações existentes são preservadas.
-                  Gestão de categorias, tags e rateios será integrada nas
-                  próximas histórias.
+                  Classificações e observações existentes são preservadas. Use
+                  Classificar movimentação para revisar categoria, subcategoria
+                  e tags. As parcelas de rateio são preservadas.
                 </p>
               )}
               <button
@@ -634,9 +649,9 @@ export function LocalMovementsFlow({
               {(!canToggleMovement(current) ||
                 currentAccount?.status === 'ARCHIVED') && (
                 <p>
-                  Registro somente para consulta neste fluxo. Contas arquivadas
-                  precisam ser reativadas; outras origens e operações agrupadas
-                  usam seus próprios fluxos.
+                  A edição de valores e a exclusão estão indisponíveis neste
+                  editor. Reative contas arquivadas para essas operações;
+                  transferências e pagamentos usam seus próprios fluxos.
                 </p>
               )}
               {current.content.group_id &&

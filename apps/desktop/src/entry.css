@@ -401,12 +401,14 @@ main:focus {
   margin-top: 1rem;
 }
 
-.classification-filters-flow fieldset {
+.classification-filters-flow fieldset,
+.classification-editor fieldset {
   display: grid;
   gap: 0.65rem;
   min-inline-size: 0;
   margin: 0;
 }
-.classification-filters-flow legend {
+.classification-filters-flow legend,
+.classification-editor legend {
   max-inline-size: 100%;
 }

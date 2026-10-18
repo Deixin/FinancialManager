@@ -1,5 +1,7 @@
 # US-045 — Consulta e filtros de classificação no Desktop
 
+Atualização: o [editor versionado de classificação](desktop-classification.md) já está integrado ao detalhe das movimentações e desta consulta. O comando de escrita específico eleva o conjunto de produto a 28 permissões; a opção de leitura permanece igual. Os resultados abaixo preservam o recorte de consulta.
+
 Movimentações → Filtrar por classificação consulta o catálogo e todas as transações do espaço local em um único snapshot SQLCipher. Inclui critérios de conta, datas, categoria/subcategoria, tags com qualquer/todas e ausência de classificação monetária. Referências arquivadas continuam disponíveis para consulta. [ADR-0061](../architecture/adr/0061-filtros-de-classificacao-no-desktop.md).
 
 ## Comportamento

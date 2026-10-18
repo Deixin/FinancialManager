@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_nine_tests_and_77_shared_vectors',
-  'twenty_seven_permissions_real_production_handler_and_no_probe',
+  'twenty_eight_permissions_real_production_handler_and_no_probe',
   ...[
     'taxonomy_crud_and_parent_order',
     'archive_retains_parent_identity',
@@ -81,7 +81,19 @@ export function validateDesktopTaxonomyEvidence(
       throw Error('DESKTOP_TAXONOMY_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us045-desktop-taxonomy-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks =
+      native && !matchSources
+        ? nativeChecks.map((n) =>
+            n ===
+            'twenty_eight_permissions_real_production_handler_and_no_probe'
+              ? ({
+                  1: 'twenty_seven_permissions_real_production_handler_and_no_probe',
+                }[r.format_version] ?? n)
+              : n,
+          )
+        : native
+          ? nativeChecks
+          : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -95,7 +107,7 @@ export function validateDesktopTaxonomyEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us045-desktop-taxonomy-windows',
       'us045-desktop-taxonomy-browser',

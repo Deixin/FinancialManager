@@ -71,6 +71,7 @@ fn main() {
         "apply_local_taxonomy_change",
         "read_local_categories",
         "apply_local_category_change",
+        "apply_local_classification_change",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -102,6 +103,9 @@ fn main() {
     if cfg!(feature = "taxonomy-smoke") {
         commands.push("finish_taxonomy_smoke");
         commands.push("finish_classification_filters_smoke");
+    }
+    if cfg!(feature = "classification-smoke") {
+        commands.push("finish_classification_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

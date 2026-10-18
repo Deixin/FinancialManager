@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [edição de classificação US-045 no Desktop](docs/development/desktop-classification.md) associa categoria/subcategoria e tags com revisão-base e histórico no SQLCipher, preservando valores e origem importada. Grupos são validados por inteiro; rateios permitem editar tags sem alterar parcelas. Próximo incremento: US-046, editor de rateios. Homologações humanas continuam após integração completa; registros abaixo são históricos.
+
 A [US-045 no Desktop](docs/development/desktop-classification-filters.md) agora permite consultar movimentações por categoria, subcategoria, tags e ausência de classificação. A leitura completa reúne catálogo e transações em um snapshot SQLCipher, preservando valores, saldos e revisões. Próximo incremento: editor versionado de classificação. Homologações humanas continuam após a integração completa; registros abaixo são históricos.
 
 A [gestão de subcategorias e tags chegou ao Desktop](docs/development/desktop-taxonomy.md), em Configurações, com SQLCipher, paridade nativa e catálogo por workspace. Próximo incremento da US-045: editor de classificação e filtros na tela de movimentações. Homologações humanas seguem após integração completa; entradas abaixo são históricas.

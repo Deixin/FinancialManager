@@ -21,6 +21,17 @@ transfers-smoke = ["movements-smoke"]
 card-payments-smoke = ["transfers-smoke"]
 categories-smoke = ["accounts-smoke"]
 taxonomy-smoke = ["categories-smoke"]
+classification-smoke = ["taxonomy-smoke", "card-payments-smoke"]
+
+[[bin]]
+name="classification-probe"
+path="src/bin/classification-probe.rs"
+required-features=["classification-smoke"]
+
+[[bin]]
+name="classification-smoke"
+path="src/bin/classification-smoke.rs"
+required-features=["classification-smoke"]
 
 [[bin]]
 name = "accounts-probe"

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0062 — Editor versionado de classificação no Desktop](0062-editor-versionado-de-classificacao-no-desktop.md): novo comando específico, planejador/gravador de revisões reutilizados, grupos completos, referência ativa e intenção congelada; próximo incremento US-046.
+
 [0061 — Filtros de classificação no Desktop](0061-filtros-de-classificacao-no-desktop.md): snapshot SQLCipher completo com catálogo, opção explícita no comando de leitura existente, filtros puros deduplicados e detalhes preservados; editor sobre revisões é o próximo incremento da US-045.
 
 [0060 — Catálogos de subcategorias e tags no Desktop](0060-catalogos-de-subcategorias-e-tags-no-desktop.md): Configurações, planos nativos SQLCipher, 27 comandos, ACK validado e intenção congelada; editor financeiro e filtros são o próximo incremento da US-045.

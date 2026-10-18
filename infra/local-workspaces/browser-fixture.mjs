@@ -299,6 +299,15 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         if (reply.error) throw reply.error;
         return reply.value;
       }
+      if (command === 'apply_local_classification_change') {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (typeof globalThis.__syntheticClassificationHost !== 'function')
+          throw 'SYNTHETIC_CLASSIFICATION_HOST_MISSING';
+        const reply = await globalThis.__syntheticClassificationHost(args);
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
       if (
         command === 'read_local_accounts' ||
         command === 'apply_local_account_change'

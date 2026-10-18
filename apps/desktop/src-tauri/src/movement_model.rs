@@ -622,3 +622,90 @@ pub fn plan(
         snapshot,
     })
 }
+
+pub(crate) fn revision(
+    w: &str,
+    id: &str,
+    current: Option<State>,
+    content: Content,
+    base: &str,
+    now: &str,
+) -> Result<Plan> {
+    let before = current.map(State::capture).transpose()?;
+    if before.is_none() && base != "0" {
+        return Err(LocalError::NotFound);
+    }
+    if let Some(b) = &before {
+        if b.id != id || b.workspace_id != w {
+            return Err(LocalError::InvalidRevision);
+        }
+        if b.version != base {
+            return Err(LocalError::VersionConflict);
+        }
+        if b.content.origin_kind != content.origin_kind
+            || b.content.original_description != content.original_description
+        {
+            return Err(LocalError::OriginImmutable);
+        }
+        if b.content.group_id.is_some() && b.content.group_id != content.group_id {
+            return Err(LocalError::CompositeRequired);
+        }
+    }
+    let changed = before.as_ref().is_none_or(|b| b.content != content);
+    let next = if changed {
+        version(base, true)?
+            .checked_add(1)
+            .ok_or(LocalError::VersionExhausted)?
+            .to_string()
+    } else {
+        base.into()
+    };
+    identity::utc_instant(now).map_err(|_| LocalError::InvalidRevision)?;
+    let at = before
+        .as_ref()
+        .map_or(now, |b| {
+            if b.updated_at.as_str() > now {
+                &b.updated_at
+            } else {
+                now
+            }
+        })
+        .to_owned();
+    let after = if !changed {
+        before.clone().ok_or(LocalError::InvalidRevision)?
+    } else {
+        State {
+            workspace_id: w.into(),
+            id: id.into(),
+            version: next,
+            created_at: before
+                .as_ref()
+                .map_or_else(|| at.clone(), |b| b.created_at.clone()),
+            updated_at: at.clone(),
+            deleted_at: if content.deleted {
+                Some(
+                    before
+                        .as_ref()
+                        .and_then(|b| b.deleted_at.clone())
+                        .unwrap_or(at),
+                )
+            } else {
+                None
+            },
+            content,
+        }
+        .capture()?
+    };
+    let snapshot = changed.then(|| Snapshot {
+        format_version: 1,
+        base_revision: base.into(),
+        before: before.clone(),
+        after: after.clone(),
+    });
+    Ok(Plan {
+        changed,
+        before,
+        after,
+        snapshot,
+    })
+}

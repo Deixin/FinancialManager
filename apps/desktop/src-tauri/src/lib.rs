@@ -2,6 +2,7 @@ pub mod account_model;
 pub mod backup_destination;
 pub mod card_payment_model;
 pub mod category_model;
+pub mod classification_model;
 pub mod commands;
 pub mod identity;
 pub mod keys;
@@ -9,6 +10,7 @@ pub mod local_accounts;
 pub mod local_backup;
 pub mod local_card_payments;
 pub mod local_categories;
+pub mod local_classification;
 pub mod local_classification_filters;
 pub mod local_lock;
 pub mod local_movements;
@@ -97,6 +99,13 @@ pub enum LocalError {
     OriginImmutable,
     CompositeRequired,
     InvalidRevision,
+    InvalidClassification,
+    ClassificationBaseConflict,
+    ClassificationReferenceUnavailable,
+    ClassificationScopeMismatch,
+    ClassificationSplitReviewRequired,
+    ClassificationAmountUnsupported,
+    ClassificationDeleted,
     MovementLimit,
 }
 impl From<std::io::Error> for LocalError {
@@ -147,6 +156,10 @@ mod category_tests;
 
 #[cfg(all(test, feature = "taxonomy-smoke"))]
 mod classification_filter_tests;
+#[cfg(feature = "classification-smoke")]
+pub mod classification_probe;
+#[cfg(all(test, feature = "classification-smoke"))]
+mod classification_tests;
 #[cfg(feature = "taxonomy-smoke")]
 pub mod taxonomy_probe;
 #[cfg(all(test, feature = "taxonomy-smoke"))]

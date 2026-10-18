@@ -18,7 +18,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_eleven_tests_and_72_shared_vectors',
-  'twenty_seven_narrow_permissions_without_default_probes',
+  'twenty_eight_narrow_permissions_without_default_probes',
   ...[
     'paired_crud_and_history',
     'canonical_money_and_net_worth',
@@ -84,10 +84,11 @@ export function validateDesktopCardPaymentEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_seven_narrow_permissions_without_default_probes'
+            n === 'twenty_eight_narrow_permissions_without_default_probes'
               ? ({
                   1: 'twenty_three_narrow_permissions_without_default_probes',
                   2: 'twenty_five_narrow_permissions_without_default_probes',
+                  3: 'twenty_seven_narrow_permissions_without_default_probes',
                 }[r.format_version] ?? n)
               : n,
           )
@@ -107,8 +108,8 @@ export function validateDesktopCardPaymentEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 3 &&
-      !([1, 2].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 4 &&
+      !([1, 2, 3].includes(r.format_version) && !matchSources)) ||
     ![
       'us043-desktop-card-payments-windows',
       'us043-desktop-card-payments-browser',

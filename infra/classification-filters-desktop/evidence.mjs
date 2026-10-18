@@ -13,7 +13,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_six_read_only_tests',
-  'unchanged_27_production_permissions_and_no_probe',
+  'twenty_eight_production_permissions_and_no_probe',
   'independent_process_complete_snapshot',
   'read_preserves_ciphertext_finance_and_audit',
   'webview_complete_filter_read',
@@ -65,7 +65,18 @@ export function validateClassificationFilterEvidence(
       throw Error('CLASSIFICATION_FILTER_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us045-desktop-classification-filters-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks =
+      native && !matchSources
+        ? nativeChecks.map((n) =>
+            n === 'twenty_eight_production_permissions_and_no_probe'
+              ? ({ 1: 'unchanged_27_production_permissions_and_no_probe' }[
+                  r.format_version
+                ] ?? n)
+              : n,
+          )
+        : native
+          ? nativeChecks
+          : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -79,7 +90,7 @@ export function validateClassificationFilterEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us045-desktop-classification-filters-windows',
       'us045-desktop-classification-filters-browser',

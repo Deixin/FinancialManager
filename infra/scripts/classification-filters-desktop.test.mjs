@@ -126,11 +126,11 @@ test('Complete snapshot bounds refuse instead of truncating, including UTF16 gro
     code: 'INVALID_RESPONSE',
   });
 });
-test('Existing movement IPC remains read only with 27 permissions and classification is an explicit snapshot option', () => {
+test('Existing movement IPC remains read only with 28 permissions and classification is an explicit snapshot option', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 27);
+  assert.equal(capability.permissions.length, 28);
   const source = readFileSync(
     'apps/desktop/src-tauri/src/local_classification_filters.rs',
     'utf8',
@@ -150,8 +150,8 @@ test('Existing movement IPC remains read only with 27 permissions and classifica
 test('Classification filter evidence requires every real browser and Windows gate and immutable source hashes', () => {
   const dir = 'docs/quality/evidence/';
   for (const file of [
-    'us-045-desktop-classification-filters-browser-2026-10-18.json',
-    'us-045-desktop-classification-filters-windows-2026-10-18.json',
+    'us-045-desktop-classification-filters-browser-2026-10-18-us045-classification-desktop.json',
+    'us-045-desktop-classification-filters-windows-2026-10-18-us045-classification-desktop.json',
   ]) {
     const raw = JSON.parse(readFileSync(dir + file));
     validateClassificationFilterEvidence(raw, { matchSources: false });

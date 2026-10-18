@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-045 Desktop, edição: [ADR-0062](adr/0062-editor-versionado-de-classificacao-no-desktop.md) integra categorias/subcategorias/tags às revisões SQLCipher, com grupos completos e 28 comandos. Próximo incremento é US-046; cloud/Mobile e outbox/feed mantêm seus gates. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Homologações humanas pós-integração preservadas; entradas abaixo são históricas.
+
 US-045 Desktop, consulta: [ADR-0061](adr/0061-filtros-de-classificacao-no-desktop.md) integra filtros financeiros a uma leitura SQLCipher completa e consistente, com catálogo e referências arquivadas. Mantém 27 comandos de produto; editor versionado de classificação é o próximo incremento. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Homologações humanas pós-integração preservadas; entradas abaixo são históricas.
 
 US-045 Desktop, catálogos: [ADR-0060](adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md) integra subcategorias/tags ao SQLCipher, com bases completas, 27 comandos e paridade. Associação/filtros de movimentações são o próximo incremento. Sem migration, dependência nova, mudança de backup ou resolução de DP-01 a DP-04. Homologações humanas pós-integração preservadas.

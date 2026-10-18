@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_nine_tests_and_52_shared_vectors',
-  'twenty_seven_permissions_real_production_handler_and_no_probe',
+  'twenty_eight_permissions_real_production_handler_and_no_probe',
   ...[
     'category_crud_seed_and_order',
     'archive_keeps_seed_provenance',
@@ -81,11 +81,14 @@ export function validateDesktopCategoryEvidence(
     },
     native = r?.scope === 'us044-desktop-categories-windows',
     checks =
-      native && !matchSources && r.format_version === 1
+      native && !matchSources
         ? nativeChecks.map((n) =>
             n ===
-            'twenty_seven_permissions_real_production_handler_and_no_probe'
-              ? 'twenty_five_permissions_real_production_handler_and_no_probe'
+            'twenty_eight_permissions_real_production_handler_and_no_probe'
+              ? ({
+                  1: 'twenty_five_permissions_real_production_handler_and_no_probe',
+                  2: 'twenty_seven_permissions_real_production_handler_and_no_probe',
+                }[r.format_version] ?? n)
               : n,
           )
         : native
@@ -104,7 +107,8 @@ export function validateDesktopCategoryEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
+    (r.format_version !== 3 &&
+      !([1, 2].includes(r.format_version) && !matchSources)) ||
     ![
       'us044-desktop-categories-windows',
       'us044-desktop-categories-browser',

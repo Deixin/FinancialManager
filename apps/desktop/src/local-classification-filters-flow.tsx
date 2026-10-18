@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import type { ClassificationFilter } from '@financial-manager/domain/classification';
 import type { RevisionState } from '@financial-manager/domain/revisions';
 import {
@@ -7,6 +7,11 @@ import {
   movementKindLabel,
 } from './local-movements.js';
 import { formatBrlMinor } from './local-accounts.js';
+const LocalClassificationFlow = lazy(() =>
+  import('./local-classification-flow.js').then((m) => ({
+    default: m.LocalClassificationFlow,
+  })),
+);
 import {
   classificationRows,
   classificationReferenceName,
@@ -18,11 +23,15 @@ export function LocalClassificationFiltersFlow({
   workspaceId,
   onLocked,
   onClose,
+  initialTransactionId = '',
 }: {
   workspaceId: string;
   onLocked: () => void;
   onClose: () => void;
+  initialTransactionId?: string;
 }) {
+  const [editing, setEditing] = useState(false),
+    [notice, setNotice] = useState('');
   const [gateway] = useState(createLocalClassificationFiltersGateway),
     [snapshot, setSnapshot] = useState<ClassificationSnapshot | null>(null),
     [busy, setBusy] = useState(Boolean(gateway)),
@@ -35,6 +44,7 @@ export function LocalClassificationFiltersFlow({
     [to, setTo] = useState(''),
     [selected, setSelected] = useState<RevisionState | null>(null);
   const alive = useRef(true),
+    first = useRef(true),
     pending = useRef(false),
     heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -65,6 +75,7 @@ export function LocalClassificationFiltersFlow({
     setSnapshot(null);
     setError('');
     setSelected(null);
+    setNotice('');
     try {
       const next = await gateway.read(workspaceId);
       if (alive.current) {
@@ -73,6 +84,13 @@ export function LocalClassificationFiltersFlow({
         setAccountId('');
         setFrom('');
         setTo('');
+        if (first.current && initialTransactionId)
+          setSelected(
+            next.movements.transactions.find(
+              (r) => r.id === initialTransactionId && !r.content.deleted,
+            ) ?? null,
+          );
+        first.current = false;
       }
     } catch (failure) {
       if (alive.current) {
@@ -109,6 +127,57 @@ export function LocalClassificationFiltersFlow({
     accountName = (id: string) =>
       snapshot?.movements.balance.accounts.find((r) => r.account.id === id)
         ?.account.name ?? 'Conta indisponível';
+  const historySummary = (state: RevisionState) =>
+    (state.content.allocations
+      .map(
+        (a) =>
+          name('CATEGORY', a.category_id) +
+          (a.subcategory_id
+            ? ' / ' + name('SUBCATEGORY', a.subcategory_id)
+            : '') +
+          ' — ' +
+          formatBrlMinor(a.amount_minor) +
+          (a.note ? ' · ' + a.note : ''),
+      )
+      .join('; ') || 'Sem classificação monetária') +
+    ' · Tags: ' +
+    (state.content.tag_ids.map((id) => name('TAG', id)).join(', ') ||
+      'sem tags');
+  if (editing && snapshot && selected)
+    return (
+      <Suspense
+        fallback={
+          <section className="account-flow" aria-busy="true">
+            <h2>Abrindo editor de classificação</h2>
+            <p role="status">Aguarde.</p>
+          </section>
+        }
+      >
+        <LocalClassificationFlow
+          key={workspaceId + ':' + selected.id + ':' + selected.version}
+          snapshot={snapshot}
+          transactionId={selected.id}
+          onLocked={onLocked}
+          onCancel={() => setEditing(false)}
+          onReviewed={(next, result) => {
+            setSnapshot(next);
+            setSelected(
+              next.movements.transactions.find(
+                (r) => r.id === selected.id && !r.content.deleted,
+              ) ?? null,
+            );
+            setEditing(false);
+            setNotice(
+              result === 'SAVED'
+                ? 'Classificação registrada. Valores e saldos foram preservados.'
+                : result === 'UNCHANGED'
+                  ? 'A classificação já confere.'
+                  : 'Consulta atualizada. Confira o resultado antes de iniciar outra alteração.',
+            );
+          }}
+        />
+      </Suspense>
+    );
   return (
     <section
       className="account-flow classification-filters-flow"
@@ -126,6 +195,7 @@ export function LocalClassificationFiltersFlow({
         continuam com sua natureza econômica.
       </p>
       {error && <p role="alert">{error}</p>}
+      {notice && <p role="status">{notice}</p>}
       {busy && (
         <p role="status">Lendo movimentações e catálogo do espaço local.</p>
       )}
@@ -196,6 +266,51 @@ export function LocalClassificationFiltersFlow({
                 </ul>
               )}
               <p>Volte aos resultados para consultar outras classificações.</p>
+              <button
+                type="button"
+                onClick={() => {
+                  setNotice('');
+                  setEditing(true);
+                }}
+              >
+                Editar classificação e tags
+              </button>
+              <h3>Histórico da movimentação</h3>
+              <ol className="movement-history">
+                {snapshot.movements.history
+                  .filter((r) => r.transaction_id === selected.id)
+                  .map((r) => (
+                    <li key={r.id}>
+                      <p>
+                        Versão {r.version} ·{' '}
+                        {new Date(r.created_at).toLocaleString('pt-BR')} ·{' '}
+                        {r.change_source}
+                      </p>
+                      {r.compatible && r.snapshot ? (
+                        <details>
+                          <summary>
+                            Ver classificação da versão {r.version}
+                          </summary>
+                          <p>
+                            Antes:{' '}
+                            {r.snapshot.before
+                              ? historySummary(r.snapshot.before)
+                              : 'Registro ainda não existia'}
+                          </p>
+                          <p>Depois: {historySummary(r.snapshot.after)}</p>
+                        </details>
+                      ) : (
+                        <p>
+                          Histórico legado preservado; este formato não é
+                          interpretado nesta versão.
+                        </p>
+                      )}
+                    </li>
+                  ))}
+              </ol>
+              {!snapshot.movements.history.some(
+                (r) => r.transaction_id === selected.id,
+              ) && <p>Nenhuma revisão disponível nesta consulta.</p>}
               <button type="button" onClick={() => setSelected(null)}>
                 Voltar aos resultados
               </button>

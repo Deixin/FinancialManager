@@ -193,11 +193,11 @@ test('Desktop taxonomy exact CREATE replay accepts a lost acknowledgement withou
     { code: 'INVALID_RESPONSE' },
   );
 });
-test('Desktop taxonomy production exposes exactly twenty-seven narrow commands and excludes default probes', () => {
+test('Desktop taxonomy production exposes exactly twenty-eight narrow commands and excludes default probes', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 27);
+  assert.equal(capability.permissions.length, 28);
   const handler = readFileSync('apps/desktop/src-tauri/src/commands.rs', 'utf8')
     .split('pub fn production_builder()')[1]
     .match(/generate_handler!\[([\s\S]*?)\]/)[1]
@@ -222,7 +222,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-045-desktop-taxonomy-' +
         kind +
-        '-2026-10-18-us045-filters-desktop.json',
+        '-2026-10-18-us045-classification-desktop.json',
     ),
   );
 test('Desktop taxonomy evidence requires UI native portability crash rollback and cleanup gates with current sources', () => {
