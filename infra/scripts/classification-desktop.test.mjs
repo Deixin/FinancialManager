@@ -364,7 +364,7 @@ test('Desktop classification evidence requires every actual browser Windows faul
       readFileSync(
         'docs/quality/evidence/us-045-desktop-classification-' +
           kind +
-          '-2026-10-18.json',
+          '-2026-10-18-us046-allocations.json',
       ),
     );
     assert.equal(

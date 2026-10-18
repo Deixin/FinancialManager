@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Financeiro — US-046: rateios versionados compartilhados — 2026-10-18 — em andamento
+
+A política permite editar múltiplas parcelas de categorias/subcategorias com soma exata, preservando valor, conta, data, origem, tags e natureza econômica. O coordenador existente valida base completa, referências e grupos e grava dados/histórico atomicamente. [Guia](../development/allocations.md) e [ADR-0063](../architecture/adr/0063-rateios-versionados-compartilhados.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 453 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 140 Markdown. Os dez testes Node próprios e 142 gates PostgreSQL/SQLite passaram, incluindo 16 cenários de rateio por engine. As regressões afetadas de classificação compartilhada e filtros/editor Desktop em Chromium/Windows passaram novamente. Foram arquivadas seis cápsulas novas ou renovadas; 44 evidências atuais conferem com 473 hashes de fontes no Git staging. As fontes dos 38 relatórios não afetados também foram conferidas. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Próximo incremento: editor Desktop e paridade Rust da US-046. Sem migration, dependência de produção, mudança de backup ou permissão Tauri nova. Web/Mobile, outbox/feed, recibos duráveis e reconciliação de itens/descontos mantêm seus gates. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Registros abaixo são históricos.
+
 ## Desktop — US-045: edição versionada de classificação — 2026-10-18 — integrado no recorte local
 
 Movimentações e consulta por classificação oferecem editor de categoria/subcategoria e tags sobre base completa e histórico SQLCipher. Valor, conta, data, origem importada e natureza econômica são preservados. Grupos exigem ambos os membros atuais; o parceiro sem mudanças não ganha revisão artificial. Rateios permitem editar tags com parcelas conservadas. ACK perdido/inválido congela a tentativa e exige consulta explícita. [Guia](../development/desktop-classification.md) e [ADR-0062](../architecture/adr/0062-editor-versionado-de-classificacao-no-desktop.md).

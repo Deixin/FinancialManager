@@ -1,4 +1,5 @@
 import { resourceId, uuidV7 } from '@financial-manager/contracts';
+export { createAllocationService } from './allocations.js';
 import {
   captureClassification,
   classificationChange,

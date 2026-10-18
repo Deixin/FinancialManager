@@ -1,4 +1,15 @@
 import { requireId } from './model.js';
+export {
+  captureAllocation,
+  allocationChange,
+  validateAllocationPlan,
+  AllocationError,
+} from './allocations.js';
+export type {
+  AllocationCommand,
+  AllocationSelection,
+  AllocationCode,
+} from './allocations.js';
 import { moneyMinor } from './money.js';
 import { captureRevisionState, captureRevisionChange } from './revisions.js';
 import type {

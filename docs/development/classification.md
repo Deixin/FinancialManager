@@ -1,5 +1,7 @@
 # US-045 — Associação compartilhada de classificação
 
+Atualização US-046: a [política de rateios](allocations.md), também exposta pelo subpath classification, permite substituir parcelas por múltiplas categorias sem alterar tags ou dados financeiros. KEEP/CLEAR/SET da US-045 conservam o comportamento anterior; o editor Desktop de rateios é o próximo incremento.
+
 Atualização: o [editor Desktop](desktop-classification.md) já compõe a política de associação com o planejador/gravador nativo de revisões, sobre o snapshot completo da consulta. Próximo incremento é US-046. O texto abaixo preserva o recorte compartilhado original.
 
 Atualização: a [consulta com filtros no Desktop](desktop-classification-filters.md) fornece cobertura local completa e consistente. A edição Desktop sobre revisões ainda é o próximo incremento; o texto abaixo preserva o recorte compartilhado original.
