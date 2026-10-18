@@ -84,7 +84,11 @@ export interface TransactionsTables {
 }
 export type Database = AccountsTables & TransactionsTables;
 export interface WorkspaceTables {
-  workspace: { id: Id; storage_mode: Read<'LOCAL' | 'CLOUD'> };
+  workspace: {
+    id: Id;
+    storage_mode: Read<'LOCAL' | 'CLOUD'>;
+    purpose: Read<'PERSONAL' | 'BUSINESS' | 'OTHER'>;
+  };
 }
 type DriverInput<T> = T extends Date ? string : T;
 type Writable<T> = {
@@ -100,3 +104,15 @@ export type WriteTransactionsTables = {
 export type WriteAccountsTables = {
   [K in keyof AccountsTables]: Writable<AccountsTables[K]>;
 };
+export interface WriteCategoriesTables {
+  category: {
+    id: string;
+    workspace_id: string;
+    name: string;
+    normalized_name: ColumnType<string, never, never>;
+    category_scope: 'EXPENSE' | 'INCOME' | 'BOTH';
+    sort_order: number;
+    status: 'ACTIVE' | 'ARCHIVED';
+    is_seeded: boolean;
+  };
+}

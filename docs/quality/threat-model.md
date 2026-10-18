@@ -1,5 +1,7 @@
 # Modelo de ameaças — ponto de partida
 
+US-044 compartilhada: autorização antecede armazenamento; workspace/modo/papel RLS são confirmados, comandos são fechados, bases completas e unicidade ativa são validadas na transação. Seed não sobrescreve categorias editadas e arquivar preserva referências. Sem exclusão, SQL arbitrário ou payload financeiro em logs. ABA e escrita cloud com versão/auditoria/outbox permanecem pendentes. [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).
+
 US-043 Desktop: pagamento é comando fechado, com autorização local/PIN, ambas as bases/contas atuais e grupo coerente na transação. Não aceita SQL/caminhos/chaves/ator arbitrários. Os dois deltas negativos não são consumo; UI não presume conciliação e descarta dados/respostas ao bloquear/trocar espaço. [ADR-0055](../architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md).
 
 US-043 compartilhada: comando fechado exige par de contas atual e bases completas. Autorização/escopo/autoridade, cobertura do grupo e natureza ASSET/CREDIT_CARD são validadas na transação; falha na segunda revisão não deixa grupo ou membro parcial. Replay não cria IDs/rebase. Logs não recebem payload financeiro. [ADR-0054](../architecture/adr/0054-pagamentos-de-cartao-compartilhados.md).

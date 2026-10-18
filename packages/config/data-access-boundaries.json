@@ -47,6 +47,16 @@
       "owner": "accounts",
       "write": true,
       "syntax": "kysely"
+    },
+    "packages/storage-schema/src/revision-adapters/category-writes.ts": {
+      "owner": "categories",
+      "write": true,
+      "syntax": "sqlite"
+    },
+    "packages/persistence-postgres/src/modules/category-writes.ts": {
+      "owner": "categories",
+      "write": true,
+      "syntax": "kysely"
     }
   },
   "composition_imports": {

@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-044 compartilhada: [ADR-0056](adr/0056-categorias-compartilhadas-por-workspace.md) adota sugestões explícitas v1 em catálogo vazio, metadados com base completa e arquivamento sem exclusão. Sem migration ou dependência nova. Desktop, versão/auditoria/outbox e homologação humana mantêm seus gates; DP-01 a DP-04 preservadas.
+
 US-043 Desktop: [ADR-0055](adr/0055-cartoes-e-pagamentos-no-desktop.md) adota cartão/pagamento local com paridade Rust, 23 permissões e revisão conjunta. Pagamento sem detalhamento não presume conciliação. Não muda schema, dependências ou prazos; DP-01 a DP-04 e homologação humana pós-integração preservadas. Próxima história US-044.
 
 US-043 em andamento: [ADR-0054](adr/0054-pagamentos-de-cartao-compartilhados.md) compõe pagamento de cartão sobre revisões existentes. Transferência e pagamento têm sinais distintos; consumo permanece na compra. Desktop/importação/conciliação e cloud mantêm seus gates. Sem migration ou dependência nova; DP-01 a DP-04 e homologação humana pós-integração preservadas.

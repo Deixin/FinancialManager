@@ -1,5 +1,11 @@
 # Estado do projeto
 
+## US-044 — núcleo compartilhado de categorias — 2026-10-18
+
+Sugestões v1 para PERSONAL/BUSINESS/OTHER, criação, renomeação, reordenação completa e arquivamento/reativação usam política pura, autorização de leitura/gestão e transações PostgreSQL/SQLite. Seed só em catálogo vazio ou replay exato; edições não são sobrescritas. Históricos, saldos e referências permanecem intactos. Sem migration ou dependência nova. [Guia](../development/categories.md), [ADR-0056](../architecture/adr/0056-categorias-compartilhadas-por-workspace.md).
+
+Validação local concluída: pnpm check passou com 390 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 126 Markdown. Os 55 gates próprios passaram em PostgreSQL/SQLite, incluindo limpeza; regressões afetadas de dados, Chromium e Windows foram reexecutadas. As 16 cápsulas novas ou renovadas compõem 33 relatórios atuais com hashes verificados. A US-044 permanece em andamento: Desktop é o próximo incremento; subcategorias/tags, versão/auditoria/outbox cloud e homologação humana pós-integração mantêm seus gates. DP-01 a DP-04 preservadas. Registros abaixo são históricos.
+
 ## Desktop — US-043: cartões e pagamentos locais — 2026-10-18
 
 Cartões e pagamentos integra visão de dívida/crédito e compras disponíveis, pagamento com confirmação dos dois lados, edição, exclusão/restauração e histórico. Conta de cartão oferece navegação direta; compra manual mantém a conta selecionada. Dois comandos específicos elevam as permissões a 23. Rust valida bases/contas atuais e persiste grupo CARD_PAYMENT, membros DEBT_SETTLEMENT e revisões na mesma transação SQLCipher. Pagamento reduz banco e dívida, sem consumo duplicado; intentos preservam IDs/bases após ACK perdido. [Guia](../development/desktop-card-payments.md), [ADR-0055](../architecture/adr/0055-cartoes-e-pagamentos-no-desktop.md).

@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-044 compartilhada](docs/development/categories.md) acrescenta sugestões de categorias por finalidade, edição, ordenação e arquivamento isolados por workspace, com preservação do histórico. Próximo incremento: integração Desktop. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
+
 A [US-043 no Desktop](docs/development/desktop-card-payments.md) integra cartões e pagamentos com revisão conjunta no SQLCipher, sem duplicar consumo. Próxima história: US-044. Importação/conciliação e homologações humanas integradas mantêm seus gates.
 
 US-043 em andamento: [pagamentos de cartão compartilhados](docs/development/card-payments.md), com liquidação atômica sem duplicar consumo. Próximo incremento integra o Desktop; homologações humanas permanecem após integração completa.

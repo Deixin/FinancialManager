@@ -300,7 +300,7 @@ const evidence = () =>
   JSON.parse(
     readFileSync(
       new URL(
-        '../../docs/quality/evidence/us-041-manual-core-2026-10-18-us043-core.json',
+        '../../docs/quality/evidence/us-041-manual-core-2026-10-18-us044-core.json',
         import.meta.url,
       ),
     ),

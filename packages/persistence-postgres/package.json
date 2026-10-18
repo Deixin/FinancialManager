@@ -6,7 +6,8 @@
   "type": "module",
   "exports": {
     "./revisions": "./dist/revisions.js",
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./categories": "./dist/category-changes.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

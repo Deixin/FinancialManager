@@ -11,3 +11,15 @@ export async function revisionWorkspace(
     .executeTakeFirst();
   return row?.storage_mode ?? null;
 }
+export async function categoryWorkspace(
+  db: Kysely<WorkspaceTables>,
+  workspace: string,
+) {
+  return (
+    (await db
+      .selectFrom('workspace')
+      .select(['storage_mode', 'purpose'])
+      .where('id', '=', workspace)
+      .executeTakeFirst()) ?? null
+  );
+}

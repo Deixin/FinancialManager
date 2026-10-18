@@ -9,7 +9,8 @@
     "./revisions": "./dist/revisions.js",
     ".": "./dist/index.js",
     "./transfers": "./dist/transfers.js",
-    "./card-payments": "./dist/card-payments.js"
+    "./card-payments": "./dist/card-payments.js",
+    "./categories": "./dist/categories.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -31,6 +31,10 @@
     "./card-payments": {
       "types": "./dist/card-payments.d.ts",
       "import": "./dist/card-payments.js"
+    },
+    "./categories": {
+      "types": "./dist/categories.d.ts",
+      "import": "./dist/categories.js"
     }
   },
   "files": [

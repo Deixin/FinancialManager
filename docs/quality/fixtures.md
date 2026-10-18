@@ -1,5 +1,7 @@
 # Política de fixtures
 
+US-044 compartilhada usa sugestões e categorias explicitamente sintéticas, além de FIN-002 inalterada. Snapshots financeiros originais são comparados antes/depois; workspaces, credenciais e bancos descartáveis são removidos. Evidência só contém flags, versões, pendências e hashes. [Guia](../development/categories.md).
+
 US-043 Desktop usa 72 vetores compartilhados e perfis/bancos/backups sintéticos de cartão. FIN-002 e goldens originais são preservados; credenciais e arquivos próprios são descartados. [Protocolo](../development/desktop-card-payments.md).
 
 US-043 compartilhada usa comandos e compras/pagamentos/estornos explicitamente sintéticos. FIN-002 e seus goldens permanecem inalterados. Perfis, credenciais aleatórias e bancos temporários próprios são descartados; somente flags, versões, pendências e hashes compõem a evidência. [Guia](../development/card-payments.md).
