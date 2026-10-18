@@ -38,6 +38,8 @@ pub struct MovementsSnapshot {
     pub balance: AccountsSnapshot,
     pub transactions: Vec<State>,
     pub history: Vec<History>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub classification: Option<crate::local_taxonomy::TaxonomySnapshot>,
 }
 pub(crate) fn load(db: &Connection, w: &str, id: &str) -> Result<Option<State>> {
     let state=db.query_row("SELECT workspace_id,id,version,created_at,updated_at,deleted_at,account_id,group_id,counterparty_id,financial_date,account_amount_minor,economic_kind,original_description,display_name,origin_kind FROM financial_transaction WHERE workspace_id=? AND id=?",params![w,id],|r|Ok(State{workspace_id:r.get(0)?,id:r.get(1)?,version:r.get::<_,i64>(2)?.to_string(),created_at:r.get(3)?,updated_at:r.get(4)?,deleted_at:r.get(5)?,content:Content{account_id:r.get(6)?,group_id:r.get(7)?,counterparty_id:r.get(8)?,financial_date:r.get(9)?,account_amount_minor:r.get::<_,i64>(10)?.to_string(),economic_kind:r.get(11)?,original_description:r.get(12)?,display_name:r.get(13)?,origin_kind:r.get(14)?,deleted:r.get::<_,Option<String>>(5)?.is_some(),allocations:vec![],tag_ids:vec![]}})).optional()?;
@@ -143,6 +145,7 @@ pub(crate) fn snapshot(db: &Connection, w: &str) -> Result<MovementsSnapshot> {
         balance,
         transactions,
         history,
+        classification: None,
     };
     if serde_json::to_vec(&value)
         .map_err(|_| LocalError::IntegrityFailure)?

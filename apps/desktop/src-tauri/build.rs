@@ -101,6 +101,7 @@ fn main() {
     }
     if cfg!(feature = "taxonomy-smoke") {
         commands.push("finish_taxonomy_smoke");
+        commands.push("finish_classification_filters_smoke");
     }
     // The build helper requires static command metadata for this short-lived process.
     let commands = Box::leak(commands.into_boxed_slice());

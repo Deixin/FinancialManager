@@ -217,6 +217,12 @@ impl LocalState {
     ) -> Result<crate::local_movements::MovementsSnapshot> {
         self.with(|i| i.read_movements(workspace))
     }
+    pub fn read_movement_classifications(
+        &self,
+        workspace: &str,
+    ) -> Result<crate::local_movements::MovementsSnapshot> {
+        self.with(|i| i.read_movement_classifications(workspace))
+    }
     pub fn apply_manual_movement(
         &self,
         workspace: &str,
@@ -943,11 +949,18 @@ pub async fn apply_local_account_change(
 pub async fn read_local_movements(
     state: State<'_, Arc<LocalState>>,
     workspace_id: String,
+    include_classification: Option<bool>,
 ) -> Result<crate::local_movements::MovementsSnapshot> {
     let state = state.inner().clone();
-    tauri::async_runtime::spawn_blocking(move || state.read_movements(&workspace_id))
-        .await
-        .map_err(|_| LocalError::StorageUnavailable)?
+    tauri::async_runtime::spawn_blocking(move || {
+        if include_classification == Some(true) {
+            state.read_movement_classifications(&workspace_id)
+        } else {
+            state.read_movements(&workspace_id)
+        }
+    })
+    .await
+    .map_err(|_| LocalError::StorageUnavailable)?
 }
 #[tauri::command]
 pub async fn apply_local_manual_movement(

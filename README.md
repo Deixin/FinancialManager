@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-045 no Desktop](docs/development/desktop-classification-filters.md) agora permite consultar movimentações por categoria, subcategoria, tags e ausência de classificação. A leitura completa reúne catálogo e transações em um snapshot SQLCipher, preservando valores, saldos e revisões. Próximo incremento: editor versionado de classificação. Homologações humanas continuam após a integração completa; registros abaixo são históricos.
+
 A [gestão de subcategorias e tags chegou ao Desktop](docs/development/desktop-taxonomy.md), em Configurações, com SQLCipher, paridade nativa e catálogo por workspace. Próximo incremento da US-045: editor de classificação e filtros na tela de movimentações. Homologações humanas seguem após integração completa; entradas abaixo são históricas.
 
 A [US-045 avançou na associação às transações](docs/development/classification.md): revisão-base, histórico e filtros compartilhados deduplicados, preservando valores e natureza econômica. Próximo incremento: integração Desktop e leitura autorizada com cobertura dos filtros. Homologações humanas seguem após integração completa; entradas abaixo são históricas.

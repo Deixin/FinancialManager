@@ -355,3 +355,13 @@ export function canToggleMovement(state: RevisionState) {
     ['INCOME', 'EXPENSE', 'ADJUSTMENT'].includes(state.content.economic_kind)
   );
 }
+export const movementKindLabel = (kind: string) =>
+  ({
+    INCOME: 'Entrada',
+    EXPENSE: 'Gasto',
+    ADJUSTMENT: 'Ajuste de saldo',
+    TRANSFER: 'Transferência',
+    DEBT_SETTLEMENT: 'Liquidação de dívida',
+    EXPENSE_REVERSAL: 'Estorno de gasto',
+    OTHER: 'Outro',
+  })[kind] ?? 'Outro';

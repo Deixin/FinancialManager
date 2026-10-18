@@ -256,6 +256,14 @@ fn run() -> Checked<()> {
             return Err("SYNTHETIC_ROOT_REQUIRED".into());
         }
         match mode {
+            "classification-snapshot" => {
+                let native = check(state(&root))?;
+                let snapshot = check(
+                    native.read_movement_classifications(&vault::dataset_workspace().to_string()),
+                )?;
+                unchanged(&root)?;
+                serde_json::json!({"passed":true,"snapshot":snapshot})
+            }
             "taxonomy-snapshot" => {
                 serde_json::json!({"passed":true,"snapshot":check(state(&root))?.read_taxonomy(&other(&root)?).map_err(|_|"TAXONOMY_READ_FAILED")?})
             }

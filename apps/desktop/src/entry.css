@@ -400,3 +400,13 @@ main:focus {
 .taxonomy-flow .category-list {
   margin-top: 1rem;
 }
+
+.classification-filters-flow fieldset {
+  display: grid;
+  gap: 0.65rem;
+  min-inline-size: 0;
+  margin: 0;
+}
+.classification-filters-flow legend {
+  max-inline-size: 100%;
+}

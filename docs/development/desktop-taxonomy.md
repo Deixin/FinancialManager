@@ -1,5 +1,7 @@
 # US-045 — Catálogos de subcategorias e tags no Desktop
 
+Atualização: a [consulta com filtros de classificação](desktop-classification-filters.md) já está integrada ao Desktop. O editor financeiro sobre revisões é o próximo incremento. Os resultados abaixo registram a entrega dos catálogos.
+
 Configurações → Gerenciar subcategorias e tags integra o [catálogo compartilhado](taxonomy.md) ao SQLCipher local. Inclui criação, edição, pesquisa, filtros de tipo/estado, arquivamento, reativação e ordem de subcategorias. [ADR-0060](../architecture/adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md). O [núcleo de associação](classification.md) já existe; sua tela e os filtros de movimentações são o próximo incremento.
 
 ## Comportamento e limites

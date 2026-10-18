@@ -9,6 +9,7 @@ pub mod local_accounts;
 pub mod local_backup;
 pub mod local_card_payments;
 pub mod local_categories;
+pub mod local_classification_filters;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
@@ -144,6 +145,8 @@ pub mod category_probe;
 #[cfg(all(test, feature = "categories-smoke"))]
 mod category_tests;
 
+#[cfg(all(test, feature = "taxonomy-smoke"))]
+mod classification_filter_tests;
 #[cfg(feature = "taxonomy-smoke")]
 pub mod taxonomy_probe;
 #[cfg(all(test, feature = "taxonomy-smoke"))]

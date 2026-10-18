@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## Desktop — US-045: consulta e filtros de classificação — 2026-10-18 — em andamento
+
+Movimentações oferece filtros combináveis por conta, datas, categoria/subcategoria, tags ANY/ALL e ausência de classificação monetária. A leitura SQLCipher reúne todo o snapshot autorizado com o catálogo; resultados não duplicam transações nem alteram valores, saldos ou revisões. Limites e respostas incompletas recusam a lista inteira. Troca de espaço e bloqueio descartam respostas atrasadas. [Guia](../development/desktop-classification-filters.md) e [ADR-0061](../architecture/adr/0061-filtros-de-classificacao-no-desktop.md).
+
+Validação local concluída em 2026-10-18: pnpm check passou com 433 testes Node, zero falhas/skips, formatação, lint/fronteiras/geração, tipos e build; 19 workspaces e 136 Markdown. A suíte própria aprovou seis testes Rust, oito gates Chromium e dez Windows. As regressões Desktop afetadas passaram novamente. Foram arquivadas 25 cápsulas novas ou renovadas; 41 evidências atuais conferem com 445 hashes de fontes no Git staging. Os 16 relatórios de dados/infraestrutura não afetados tiveram suas fontes conferidas. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+US-045 segue em andamento: próximo incremento integra o editor de classificação às revisões nativas e aos pares completos das operações agrupadas. Rateio editável US-046 e paginação cloud autorizada mantêm seus gates. Sem migration, dependência de produção, mudança de backup ou novos comandos de produto. Homologações humanas após integração completa; sete originais e DP-01 a DP-04 preservados. Registros abaixo são históricos.
+
 ## Desktop — US-045: catálogos de subcategorias e tags — 2026-10-18 — em andamento
 
 Configurações oferece criação, edição, pesquisa, filtro, ordem de filhos e arquivamento no cofre SQLCipher. Comandos específicos validam bases/pais e preservam vínculos e saldos; gateway confere o ACK e conserva intenção após resposta perdida. Troca de espaço e bloqueio descartam dados transitórios. [Guia](../development/desktop-taxonomy.md) e [ADR-0060](../architecture/adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md).

@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [consulta de classificação US-045 no Desktop](development/desktop-classification-filters.md) integra filtros sobre cobertura completa e consistente do SQLCipher, com referências arquivadas e descarte de respostas tardias. Consulte o [ADR-0061](architecture/adr/0061-filtros-de-classificacao-no-desktop.md). Próximo incremento: editor de classificação sobre revisões; homologações humanas após integração completa. Entradas abaixo preservam os incrementos anteriores.
+
 A [US-045 no Desktop](development/desktop-taxonomy.md) integra primeiro os catálogos de subcategorias e tags em Configurações, com 27 comandos específicos e paridade Rust/TypeScript. Consulte o [ADR-0060](architecture/adr/0060-catalogos-de-subcategorias-e-tags-no-desktop.md). Próximo incremento: classificação e filtros de movimentações. Homologações humanas seguem pós-integração; entradas abaixo são históricas.
 
 A [associação compartilhada US-045](development/classification.md) usa revisões existentes e fornece filtros puros deduplicados sobre snapshots autorizados. Consulte o [ADR-0059](architecture/adr/0059-associacao-versionada-de-classificacao.md). Próximo incremento integra Desktop, leitura autorizada/cobertura e apresentação dos filtros. Homologações humanas continuam pós-integração; entradas abaixo são históricas.

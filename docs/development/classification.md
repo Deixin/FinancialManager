@@ -1,5 +1,7 @@
 # US-045 — Associação compartilhada de classificação
 
+Atualização: a [consulta com filtros no Desktop](desktop-classification-filters.md) fornece cobertura local completa e consistente. A edição Desktop sobre revisões ainda é o próximo incremento; o texto abaixo preserva o recorte compartilhado original.
+
 Este incremento associa categoria/subcategoria/tags às transações com revisão-base e histórico, e fornece filtros puros sobre snapshots autorizados. Complementa os [catálogos](taxonomy.md). [ADR-0059](../architecture/adr/0059-associacao-versionada-de-classificacao.md). A integração Desktop e a apresentação dos filtros são o próximo incremento; nenhuma tela ou comando Tauri é acrescentado aqui.
 
 ## Uso do núcleo

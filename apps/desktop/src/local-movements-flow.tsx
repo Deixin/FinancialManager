@@ -1,4 +1,5 @@
 import { LocalCardPaymentsFlow } from './local-card-payments-flow.js';
+import { LocalClassificationFiltersFlow } from './local-classification-filters-flow.js';
 import { LocalTransfersFlow } from './local-transfers-flow.js';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
@@ -14,6 +15,7 @@ import {
   canEditMovement,
   canToggleMovement,
   editableMinor,
+  movementKindLabel as title,
 } from './local-movements.js';
 import type { MovementsSnapshot } from './local-movements.js';
 import {
@@ -28,16 +30,6 @@ export interface MovementEntry {
 }
 type Mode =
   'list' | 'detail' | 'create' | 'edit' | 'delete' | 'restore' | 'adjust';
-const title = (kind: string) =>
-  ({
-    INCOME: 'Entrada',
-    EXPENSE: 'Gasto',
-    ADJUSTMENT: 'Ajuste de saldo',
-    TRANSFER: 'Transferência',
-    DEBT_SETTLEMENT: 'Liquidação de dívida',
-    EXPENSE_REVERSAL: 'Estorno de gasto',
-    OTHER: 'Outro',
-  })[kind] ?? 'Outro';
 export function LocalMovementsFlow({
   workspaceId,
   onLocked,
@@ -47,6 +39,7 @@ export function LocalMovementsFlow({
   onLocked: () => void;
   entry: MovementEntry;
 }) {
+  const [classificationOpen, setClassificationOpen] = useState(false);
   const [cardEntry, setCardEntry] = useState<{
     mode: 'list' | 'create';
     groupId?: string;
@@ -295,6 +288,18 @@ export function LocalMovementsFlow({
       };
     });
   }
+  if (classificationOpen)
+    return (
+      <LocalClassificationFiltersFlow
+        key={workspaceId}
+        workspaceId={workspaceId}
+        onLocked={onLocked}
+        onClose={() => {
+          setClassificationOpen(false);
+          void refresh();
+        }}
+      />
+    );
   if (cardEntry)
     return (
       <LocalCardPaymentsFlow
@@ -420,6 +425,13 @@ export function LocalMovementsFlow({
           )}
           {mode === 'list' && (
             <>
+              <button
+                type="button"
+                disabled={captured}
+                onClick={() => setClassificationOpen(true)}
+              >
+                Filtrar por classificação
+              </button>
               <div className="movement-actions">
                 <button
                   type="button"
