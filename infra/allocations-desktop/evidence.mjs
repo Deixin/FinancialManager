@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_twelve_tests_and_47_shared_vectors',
-  'twenty_nine_permissions_real_handler_and_no_probe',
+  'thirty_two_permissions_real_handler_and_no_probe',
   ...[
     'import_split_lost_ack_frozen_base',
     'paired_transfer_and_card',
@@ -81,7 +81,15 @@ export function validateDesktopAllocationEvidence(
       throw Error('DESKTOP_ALLOCATION_EVIDENCE_INVALID');
     },
     native = r?.scope === 'us046-desktop-allocations-windows',
-    checks = native ? nativeChecks : browserChecks;
+    checks = native
+      ? nativeChecks.map((n) =>
+          !matchSources &&
+          r.format_version === 1 &&
+          n === 'thirty_two_permissions_real_handler_and_no_probe'
+            ? 'twenty_nine_permissions_real_handler_and_no_probe'
+            : n,
+        )
+      : browserChecks;
   if (
     !exact(r, [
       'format_version',
@@ -95,7 +103,7 @@ export function validateDesktopAllocationEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    r.format_version !== 1 ||
+    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
     ![
       'us046-desktop-allocations-windows',
       'us046-desktop-allocations-browser',

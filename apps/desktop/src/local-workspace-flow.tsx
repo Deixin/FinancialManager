@@ -1,3 +1,4 @@
+import { LocalCounterpartiesFlow } from './local-counterparties-flow.js';
 import { LocalTaxonomyFlow } from './local-taxonomy-flow.js';
 import { LocalCategoriesFlow } from './local-categories-flow.js';
 import { LocalAccountsFlow } from './local-accounts-flow.js';
@@ -44,6 +45,7 @@ export function LocalWorkspaceFlow({
     'overview' | 'accounts' | 'movements' | 'settings'
   >('overview');
   const [categoriesOpen, setCategoriesOpen] = useState(false);
+  const [counterpartiesOpen, setCounterpartiesOpen] = useState(false);
   const [taxonomyOpen, setTaxonomyOpen] = useState(false);
   const [error, setError] = useState('');
   const [name, setName] = useState('');
@@ -78,6 +80,7 @@ export function LocalWorkspaceFlow({
     setCurrent(null);
     setRoute('overview');
     setCategoriesOpen(false);
+    setCounterpartiesOpen(false);
     setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     setCreating(true);
@@ -99,6 +102,7 @@ export function LocalWorkspaceFlow({
     setFilter('local');
     setRoute('overview');
     setCategoriesOpen(false);
+    setCounterpartiesOpen(false);
     setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     try {
@@ -142,6 +146,7 @@ export function LocalWorkspaceFlow({
     setCurrent(null);
     setRoute('overview');
     setCategoriesOpen(false);
+    setCounterpartiesOpen(false);
     setTaxonomyOpen(false);
     setMovementEntry({ mode: 'list' });
     setCreating(false);
@@ -176,6 +181,7 @@ export function LocalWorkspaceFlow({
         setCurrent(row);
         setRoute('overview');
         setCategoriesOpen(false);
+        setCounterpartiesOpen(false);
         setTaxonomyOpen(false);
         setMovementEntry({ mode: 'list' });
         setCreating(false);
@@ -232,6 +238,7 @@ export function LocalWorkspaceFlow({
         onWorkspaceChange={(id) => void open(id)}
         onNavigate={(next) => {
           setCategoriesOpen(false);
+          setCounterpartiesOpen(false);
           setTaxonomyOpen(false);
           setMovementEntry({ mode: 'list' });
           setRoute(
@@ -269,6 +276,13 @@ export function LocalWorkspaceFlow({
               setRoute('movements');
             }}
           />
+        ) : route === 'settings' && counterpartiesOpen ? (
+          <LocalCounterpartiesFlow
+            key={current.id}
+            workspaceId={current.id}
+            onBack={() => setCounterpartiesOpen(false)}
+            onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+          />
         ) : route === 'settings' && taxonomyOpen ? (
           <LocalTaxonomyFlow
             key={current.id}
@@ -286,6 +300,9 @@ export function LocalWorkspaceFlow({
         ) : route === 'settings' ? (
           <section className="local-empty">
             <h2>Configurações do espaço</h2>
+            <button type="button" onClick={() => setCounterpartiesOpen(true)}>
+              Gerenciar contrapartes
+            </button>
             <button type="button" onClick={() => setCategoriesOpen(true)}>
               Gerenciar categorias
             </button>

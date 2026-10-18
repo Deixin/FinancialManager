@@ -1,3 +1,4 @@
+import { LocalCounterpartiesFlow } from './local-counterparties-flow.js';
 import { LocalCardPaymentsFlow } from './local-card-payments-flow.js';
 import { LocalClassificationFiltersFlow } from './local-classification-filters-flow.js';
 import { LocalTransfersFlow } from './local-transfers-flow.js';
@@ -39,6 +40,7 @@ export function LocalMovementsFlow({
   onLocked: () => void;
   entry: MovementEntry;
 }) {
+  const [counterpartyId, setCounterpartyId] = useState('');
   const [classificationOpen, setClassificationOpen] = useState(false);
   const [classificationId, setClassificationId] = useState('');
   const [cardEntry, setCardEntry] = useState<{
@@ -289,6 +291,19 @@ export function LocalMovementsFlow({
       };
     });
   }
+  if (counterpartyId)
+    return (
+      <LocalCounterpartiesFlow
+        key={workspaceId + counterpartyId}
+        workspaceId={workspaceId}
+        transactionId={counterpartyId}
+        onLocked={onLocked}
+        onBack={() => {
+          setCounterpartyId('');
+          void refresh();
+        }}
+      />
+    );
   if (classificationOpen)
     return (
       <LocalClassificationFiltersFlow
@@ -612,6 +627,13 @@ export function LocalMovementsFlow({
                 }}
               >
                 Classificar movimentação
+              </button>
+              <button
+                type="button"
+                disabled={captured || current.content.deleted}
+                onClick={() => setCounterpartyId(current.id)}
+              >
+                Editar contraparte
               </button>
               {current.content.allocations.length > 0 && (
                 <p>

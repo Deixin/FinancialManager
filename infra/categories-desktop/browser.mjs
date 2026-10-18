@@ -18,7 +18,7 @@ const directory = new URL(
   PIN = '721947350682',
   h = syntheticCategoryHost(),
   report = {
-    format_version: 4,
+    format_version: 5,
     scope: 'us044-desktop-categories-browser',
     passed: false,
     synthetic_only: true,

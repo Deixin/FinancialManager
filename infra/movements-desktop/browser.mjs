@@ -22,7 +22,7 @@ const directory = new URL(
   financial = syntheticHost(),
   other = id(90),
   report = {
-    format_version: 7,
+    format_version: 8,
     scope: 'us041-desktop-movements-browser',
     passed: false,
     synthetic_only: true,

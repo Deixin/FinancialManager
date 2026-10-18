@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_ten_tests_and_58_shared_vectors',
-  'twenty_nine_permissions_real_handler_and_no_probe',
+  'thirty_two_permissions_real_handler_and_no_probe',
   ...[
     'import_lost_ack_frozen_base',
     'paired_transfer_and_card',
@@ -83,10 +83,11 @@ export function validateDesktopClassificationEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_nine_permissions_real_handler_and_no_probe'
-              ? ({ 1: 'twenty_eight_permissions_real_handler_and_no_probe' }[
-                  r.format_version
-                ] ?? n)
+            n === 'thirty_two_permissions_real_handler_and_no_probe'
+              ? ({
+                  2: 'twenty_nine_permissions_real_handler_and_no_probe',
+                  1: 'twenty_eight_permissions_real_handler_and_no_probe',
+                }[r.format_version] ?? n)
               : n,
           )
         : native
@@ -105,7 +106,8 @@ export function validateDesktopClassificationEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 2 && !(r.format_version === 1 && !matchSources)) ||
+    (r.format_version !== 3 &&
+      !([1, 2].includes(r.format_version) && !matchSources)) ||
     ![
       'us045-desktop-classification-windows',
       'us045-desktop-classification-browser',

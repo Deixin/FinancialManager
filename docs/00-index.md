@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [US-047 no Desktop](development/desktop-counterparties.md) integra cadastro e associação às movimentações, com paridade Rust/TypeScript, histórico e descrições preservadas. Consulte o [ADR-0067](architecture/adr/0067-contrapartes-no-desktop.md). Próximo incremento: US-050, central de importações. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 A [associação versionada US-047](development/counterparty-associations.md) integra contrapartes às movimentações pelo gravador de revisões, com projeção mínima, grupos completos e preservação financeira. Consulte o [ADR-0066](architecture/adr/0066-associacao-versionada-de-contrapartes.md). Núcleo compartilhado de cadastro/associação integrado; próximo incremento: Desktop/paridade Rust. Homologações humanas após integração completa; entradas abaixo são históricas.
 
 A [US-047 compartilhada](development/counterparties.md) acrescenta o cadastro de contrapartes por workspace, preservando descrições e o grafo financeiro. Consulte o [ADR-0065](architecture/adr/0065-catalogo-compartilhado-de-contrapartes.md). Próximo incremento: associação versionada às movimentações; depois, Desktop. Homologações humanas após integração completa; entradas abaixo são históricas.

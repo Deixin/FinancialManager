@@ -61,6 +61,22 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         }
         state.failures = 0;
       };
+      if (
+        [
+          'read_local_counterparties',
+          'apply_local_counterparty_change',
+          'apply_local_counterparty_association',
+        ].includes(command)
+      ) {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        const reply = await globalThis.__syntheticCounterpartyHost(
+          command,
+          args,
+        );
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
       if (command === 'local_lock_status') return status();
       if (command === 'lock_local_session') {
         state.generation++;

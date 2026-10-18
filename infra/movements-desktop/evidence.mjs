@@ -17,7 +17,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_ten_tests_and_80_shared_vectors',
-  'twenty_nine_narrow_permissions_without_default_probes',
+  'thirty_two_narrow_permissions_without_default_probes',
   ...[
     'crud_history_and_soft_deletion',
     'explicit_adjustment',
@@ -79,8 +79,9 @@ export function validateMovementEvidence(r, { matchSources = true } = {}) {
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_nine_narrow_permissions_without_default_probes'
+            n === 'thirty_two_narrow_permissions_without_default_probes'
               ? ({
+                  7: 'twenty_nine_narrow_permissions_without_default_probes',
                   1: 'nineteen_narrow_permissions_without_default_probes',
                   2: 'twenty_one_narrow_permissions_without_default_probes',
                   3: 'twenty_three_narrow_permissions_without_default_probes',
@@ -106,8 +107,8 @@ export function validateMovementEvidence(r, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 7 &&
-      !([1, 2, 3, 4, 5, 6].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 8 &&
+      !([1, 2, 3, 4, 5, 6, 7].includes(r.format_version) && !matchSources)) ||
     ![
       'us041-desktop-movements-browser',
       'us041-desktop-movements-windows',

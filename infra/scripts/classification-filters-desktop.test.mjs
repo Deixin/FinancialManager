@@ -126,11 +126,11 @@ test('Complete snapshot bounds refuse instead of truncating, including UTF16 gro
     code: 'INVALID_RESPONSE',
   });
 });
-test('Existing movement IPC remains read only with 29 permissions and classification is an explicit snapshot option', () => {
+test('Existing movement IPC remains read only with 32 permissions and classification is an explicit snapshot option', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 29);
+  assert.equal(capability.permissions.length, 32);
   const source = readFileSync(
     'apps/desktop/src-tauri/src/local_classification_filters.rs',
     'utf8',
@@ -150,21 +150,21 @@ test('Existing movement IPC remains read only with 29 permissions and classifica
 test('Classification filter evidence requires every real browser and Windows gate and immutable source hashes', () => {
   const dir = 'docs/quality/evidence/';
   for (const file of [
-    'us-045-desktop-classification-filters-browser-2026-10-18-us047-associations.json',
-    'us-045-desktop-classification-filters-windows-2026-10-18-us047-associations.json',
+    'us-045-desktop-classification-filters-browser-2026-10-18-us047-desktop.json',
+    'us-045-desktop-classification-filters-windows-2026-10-18-us047-desktop.json',
   ]) {
     const raw = JSON.parse(readFileSync(dir + file));
-    validateClassificationFilterEvidence(raw, { matchSources: false });
+    validateClassificationFilterEvidence(raw, { matchSources: true });
     assert.throws(() =>
       validateClassificationFilterEvidence(
         { ...raw, resources_closed: false },
-        { matchSources: false },
+        { matchSources: true },
       ),
     );
     const bad = structuredClone(raw);
     delete bad.checks[Object.keys(bad.checks)[0]];
     assert.throws(() =>
-      validateClassificationFilterEvidence(bad, { matchSources: false }),
+      validateClassificationFilterEvidence(bad, { matchSources: true }),
     );
   }
   assert.ok(browserChecks.length >= 8);

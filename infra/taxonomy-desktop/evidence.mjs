@@ -15,7 +15,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_nine_tests_and_77_shared_vectors',
-  'twenty_nine_permissions_real_production_handler_and_no_probe',
+  'thirty_two_permissions_real_production_handler_and_no_probe',
   ...[
     'taxonomy_crud_and_parent_order',
     'archive_retains_parent_identity',
@@ -84,8 +84,9 @@ export function validateDesktopTaxonomyEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_nine_permissions_real_production_handler_and_no_probe'
+            n === 'thirty_two_permissions_real_production_handler_and_no_probe'
               ? ({
+                  3: 'twenty_nine_permissions_real_production_handler_and_no_probe',
                   1: 'twenty_seven_permissions_real_production_handler_and_no_probe',
                   2: 'twenty_eight_permissions_real_production_handler_and_no_probe',
                 }[r.format_version] ?? n)
@@ -107,8 +108,8 @@ export function validateDesktopTaxonomyEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 3 &&
-      !([1, 2].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 4 &&
+      !([1, 2, 3].includes(r.format_version) && !matchSources)) ||
     ![
       'us045-desktop-taxonomy-windows',
       'us045-desktop-taxonomy-browser',

@@ -14,7 +14,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_fmt_clippy_build_and_default_without_probe',
-  'twenty_nine_narrow_product_permissions',
+  'thirty_two_narrow_product_permissions',
   'many_local_workspaces_without_plan_or_cloud_identity',
   'reopen_in_independent_process_and_preserve_financial_state',
   'webview_catalog_purpose_local_and_cloud_unavailable',
@@ -61,8 +61,9 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_nine_narrow_product_permissions'
+            n === 'thirty_two_narrow_product_permissions'
               ? ({
+                  9: 'twenty_nine_narrow_product_permissions',
                   1: 'fifteen_narrow_product_permissions',
                   2: 'seventeen_narrow_product_permissions',
                   3: 'nineteen_narrow_product_permissions',
@@ -90,9 +91,9 @@ export function validateManagerEvidence(report, { matchSources = true } = {}) {
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (report.format_version !== 9 &&
+    (report.format_version !== 10 &&
       !(
-        [1, 2, 3, 4, 5, 6, 7, 8].includes(report.format_version) &&
+        [1, 2, 3, 4, 5, 6, 7, 8, 9].includes(report.format_version) &&
         !matchSources
       )) ||
     ![

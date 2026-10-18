@@ -33,7 +33,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 4,
+  format_version: 5,
   scope: 'us044-desktop-categories-windows',
   passed: false,
   synthetic_only: true,
@@ -123,8 +123,8 @@ try {
       root,
     );
   });
-  step('twenty_nine_permissions_real_production_handler_and_no_probe', () => {
-    assert.equal(permissions.length, 29);
+  step('thirty_two_permissions_real_production_handler_and_no_probe', () => {
+    assert.equal(permissions.length, 32);
     assert.deepEqual(
       JSON.parse(readFileSync(path.join(crate, 'capabilities/entry-main.json')))
         .permissions,

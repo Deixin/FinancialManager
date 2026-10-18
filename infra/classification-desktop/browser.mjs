@@ -19,7 +19,7 @@ const directory = new URL(
   PIN = '721947350682',
   h = syntheticEditorHost(),
   report = {
-    format_version: 2,
+    format_version: 3,
     scope: 'us045-desktop-classification-browser',
     passed: false,
     synthetic_only: true,

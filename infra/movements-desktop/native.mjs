@@ -36,7 +36,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 7,
+  format_version: 8,
   scope: 'us041-desktop-movements-windows',
   passed: false,
   synthetic_only: true,
@@ -124,7 +124,7 @@ try {
       root,
     );
   });
-  step('twenty_nine_narrow_permissions_without_default_probes', () => {
+  step('thirty_two_narrow_permissions_without_default_probes', () => {
     run('cargo', ['build', '--locked', '--bin', 'financial-manager']);
     const binary = readFileSync(
       path.join(target, 'debug/financial-manager.exe'),
@@ -140,7 +140,7 @@ try {
         .permissions,
       permissions,
     );
-    assert.equal(permissions.length, 29);
+    assert.equal(permissions.length, 32);
     const handler = readFileSync(path.join(crate, 'src/commands.rs'), 'utf8')
       .split('pub fn production_builder()')[1]
       .match(/generate_handler!\[([\s\S]*?)\]/)[1]

@@ -24,7 +24,7 @@ const directory = new URL(
   ),
   PIN = '721947350682',
   report = {
-    format_version: 3,
+    format_version: 4,
     scope: 'us045-desktop-classification-filters-browser',
     passed: false,
     synthetic_only: true,

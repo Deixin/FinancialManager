@@ -13,7 +13,7 @@ export const browserChecks = Object.freeze([
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_six_read_only_tests',
-  'twenty_nine_production_permissions_and_no_probe',
+  'thirty_two_production_permissions_and_no_probe',
   'independent_process_complete_snapshot',
   'read_preserves_ciphertext_finance_and_audit',
   'webview_complete_filter_read',
@@ -68,8 +68,9 @@ export function validateClassificationFilterEvidence(
     checks =
       native && !matchSources
         ? nativeChecks.map((n) =>
-            n === 'twenty_nine_production_permissions_and_no_probe'
+            n === 'thirty_two_production_permissions_and_no_probe'
               ? ({
+                  3: 'twenty_nine_production_permissions_and_no_probe',
                   1: 'unchanged_27_production_permissions_and_no_probe',
                   2: 'twenty_eight_production_permissions_and_no_probe',
                 }[r.format_version] ?? n)
@@ -91,8 +92,8 @@ export function validateClassificationFilterEvidence(
       'source_sha256',
       'completed_at_utc',
     ]) ||
-    (r.format_version !== 3 &&
-      !([1, 2].includes(r.format_version) && !matchSources)) ||
+    (r.format_version !== 4 &&
+      !([1, 2, 3].includes(r.format_version) && !matchSources)) ||
     ![
       'us045-desktop-classification-filters-windows',
       'us045-desktop-classification-filters-browser',

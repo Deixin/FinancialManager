@@ -12,7 +12,7 @@ const load = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-036-workspace-manager-' +
           kind +
-          '-2026-10-18-us046-allocations-desktop.json',
+          '-2026-10-18-us047-desktop.json',
         import.meta.url,
       ),
       'utf8',

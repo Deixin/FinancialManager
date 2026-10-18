@@ -355,6 +355,53 @@ impl LocalState {
             })
         })
     }
+    pub fn read_counterparties(
+        &self,
+        workspace: &str,
+        include_movements: bool,
+    ) -> Result<crate::local_counterparties::CounterpartySnapshot> {
+        self.with(|i| i.read_counterparties(workspace, include_movements))
+    }
+    pub fn apply_counterparty_change(
+        &self,
+        workspace: &str,
+        input: crate::counterparty_model::Command,
+    ) -> Result<crate::local_counterparties::CounterpartyResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation
+                .apply_counterparty_change(workspace, input, || {
+                    if protected && self.force_locked.load(Ordering::SeqCst) {
+                        Err(LocalError::LocalLocked)
+                    } else {
+                        Ok(())
+                    }
+                })
+        })
+    }
+    pub fn apply_counterparty_association(
+        &self,
+        workspace: &str,
+        input: Vec<crate::counterparty_association_model::Command>,
+    ) -> Result<crate::local_counterparties::AssociationResult> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation
+                .apply_counterparty_association(workspace, input, || {
+                    if protected && self.force_locked.load(Ordering::SeqCst) {
+                        Err(LocalError::LocalLocked)
+                    } else {
+                        Ok(())
+                    }
+                })
+        })
+    }
     pub fn read_taxonomy(
         &self,
         workspace: &str,
@@ -942,7 +989,10 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             read_local_taxonomy,
             apply_local_taxonomy_change,
             apply_local_classification_change,
-            apply_local_allocation_change
+            apply_local_allocation_change,
+            read_local_counterparties,
+            apply_local_counterparty_change,
+            apply_local_counterparty_association
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -1124,4 +1174,45 @@ pub async fn apply_local_allocation_change(
     tauri::async_runtime::spawn_blocking(move || state.apply_allocations(&workspace_id, input))
         .await
         .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn read_local_counterparties(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    include_movements: Option<bool>,
+) -> Result<crate::local_counterparties::CounterpartySnapshot> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        state.read_counterparties(&workspace_id, include_movements.unwrap_or(false))
+    })
+    .await
+    .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn apply_local_counterparty_change(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: crate::counterparty_model::Command,
+) -> Result<crate::local_counterparties::CounterpartyResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        state.apply_counterparty_change(&workspace_id, input)
+    })
+    .await
+    .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn apply_local_counterparty_association(
+    state: State<'_, Arc<LocalState>>,
+    workspace_id: String,
+    input: Vec<crate::counterparty_association_model::Command>,
+) -> Result<crate::local_counterparties::AssociationResult> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || {
+        state.apply_counterparty_association(&workspace_id, input)
+    })
+    .await
+    .map_err(|_| LocalError::StorageUnavailable)?
 }

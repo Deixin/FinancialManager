@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0067 — Contrapartes no Desktop](0067-contrapartes-no-desktop.md): cadastro e associação explícita ao SQLCipher, projeção mínima na transação, paridade Rust/TypeScript, grupos completos e intenções congeladas. Próximo incremento US-050.
+
 [0064 — Editor de rateios no Desktop](0064-editor-de-rateios-no-desktop.md): comando específico, soma exata, parcelas/IDs/notas, validação conjunta de grupos e revisão SQLCipher; próximo incremento US-047.
 
 [0063 — Rateios versionados compartilhados](0063-rateios-versionados-compartilhados.md): intenções KEEP/CLEAR/REPLACE, soma exata com intermediários amplos e revisão atômica; editor Desktop é o próximo incremento.

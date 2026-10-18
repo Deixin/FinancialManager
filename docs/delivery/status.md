@@ -1,5 +1,11 @@
 # Estado do projeto
 
+## US-047 — Desktop e paridade Rust
+
+Cadastro e associação versionada integrados ao Desktop local: Configurações, detalhe financeiro, intenções congeladas, snapshot consistente e 32 comandos específicos. Rust reutiliza o gravador de revisões e valida grupos completos; não muda valores, descrições, parcelas ou tags. O corpus compartilhado contém 56 casos sintéticos. Consulte [integração e protocolo](../development/desktop-counterparties.md) e [ADR-0067](../architecture/adr/0067-contrapartes-no-desktop.md).
+
+Validação concluída: `pnpm check` aprovado com 491 testes Node, sem falhas ou skips; formatação, lint, fronteiras, geração, tipos e build aprovados. Corpus de 56 casos de paridade, onze testes Rust, 15 suítes Chromium e 16 protocolos Windows aprovados. Arquivadas 29 evidências Desktop renovadas e duas novas; auditoria de 50 relatórios atuais e 534 hashes únicos de fontes. Os 19 relatórios não afetados mantêm fontes atuais. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana. Sem migration/dependência nova; sete originais e DP-01 a DP-04 preservados. Homologações humanas após integração completa. Próximo incremento: US-050, central de importações e histórico de lotes; registros abaixo são históricos.
+
 ## Financeiro — US-047: associação versionada de contrapartes — 2026-10-18 — núcleo compartilhado integrado
 
 Movimentações existentes podem manter, remover ou selecionar uma contraparte do workspace por revisão, com base completa, grupos atômicos e preservação das descrições, valores, classificações e tags. A validação consulta somente ID/workspace/estado dos IDs escolhidos dentro da transação. [Guia](../development/counterparty-associations.md) e [ADR-0066](../architecture/adr/0066-associacao-versionada-de-contrapartes.md).

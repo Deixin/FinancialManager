@@ -21,6 +21,7 @@ transfers-smoke = ["movements-smoke"]
 card-payments-smoke = ["transfers-smoke"]
 categories-smoke = ["accounts-smoke"]
 taxonomy-smoke = ["categories-smoke"]
+counterparties-smoke = ["allocations-smoke"]
 allocations-smoke = ["classification-smoke"]
 classification-smoke = ["taxonomy-smoke", "card-payments-smoke"]
 
@@ -203,3 +204,13 @@ required-features=["allocations-smoke"]
 name="allocations-smoke"
 path="src/bin/allocations-smoke.rs"
 required-features=["allocations-smoke"]
+
+[[bin]]
+name="counterparties-probe"
+path="src/bin/counterparties-probe.rs"
+required-features=["counterparties-smoke"]
+
+[[bin]]
+name="counterparties-smoke"
+path="src/bin/counterparties-smoke.rs"
+required-features=["counterparties-smoke"]

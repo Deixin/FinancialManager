@@ -73,6 +73,9 @@ fn main() {
         "apply_local_category_change",
         "apply_local_classification_change",
         "apply_local_allocation_change",
+        "read_local_counterparties",
+        "apply_local_counterparty_change",
+        "apply_local_counterparty_association",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");
@@ -104,6 +107,9 @@ fn main() {
     if cfg!(feature = "taxonomy-smoke") {
         commands.push("finish_taxonomy_smoke");
         commands.push("finish_classification_filters_smoke");
+    }
+    if cfg!(feature = "counterparties-smoke") {
+        commands.push("finish_counterparties_smoke");
     }
     if cfg!(feature = "allocations-smoke") {
         commands.push("finish_allocations_smoke");

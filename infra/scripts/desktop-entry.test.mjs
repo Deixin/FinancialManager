@@ -73,6 +73,9 @@ test('Desktop host grants only twenty-nine narrow workspace/privacy/backup/accou
     'allow-apply-local-taxonomy-change',
     'allow-apply-local-classification-change',
     'allow-apply-local-allocation-change',
+    'allow-read-local-counterparties',
+    'allow-apply-local-counterparty-change',
+    'allow-apply-local-counterparty-association',
   ]);
   assert.equal(config.app.withGlobalTauri, false);
   assert.equal(config.build.devUrl, undefined);

@@ -37,7 +37,7 @@ env[pathKey] =
   path.delimiter +
   env[pathKey];
 const report = {
-  format_version: 3,
+  format_version: 4,
   scope: 'us045-desktop-classification-filters-windows',
   passed: false,
   synthetic_only: true,
@@ -114,8 +114,8 @@ try {
       /6 passed; 0 failed; 0 ignored/,
     );
   });
-  step('twenty_nine_production_permissions_and_no_probe', () => {
-    assert.equal(permissions.length, 29);
+  step('thirty_two_production_permissions_and_no_probe', () => {
+    assert.equal(permissions.length, 32);
     assert.deepEqual(
       JSON.parse(readFileSync(path.join(crate, 'capabilities/entry-main.json')))
         .permissions,

@@ -218,6 +218,9 @@ try {
         'allow-apply-local-taxonomy-change',
         'allow-apply-local-classification-change',
         'allow-apply-local-allocation-change',
+        'allow-read-local-counterparties',
+        'allow-apply-local-counterparty-change',
+        'allow-apply-local-counterparty-association',
       ],
     );
   });

@@ -9,6 +9,12 @@ pub mod card_payment_model;
 pub mod category_model;
 pub mod classification_model;
 pub mod commands;
+pub mod counterparty_association_model;
+pub mod counterparty_model;
+#[cfg(feature = "counterparties-smoke")]
+pub mod counterparty_probe;
+#[cfg(all(test, feature = "counterparties-smoke"))]
+mod counterparty_tests;
 pub mod identity;
 pub mod keys;
 pub mod local_accounts;
@@ -18,6 +24,7 @@ pub mod local_card_payments;
 pub mod local_categories;
 pub mod local_classification;
 pub mod local_classification_filters;
+pub mod local_counterparties;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
@@ -68,6 +75,15 @@ pub enum LocalError {
     CategoryNameConflict,
     CategorySeedConflict,
     CategoryLimit,
+    InvalidCounterpartyChange,
+    InvalidCounterpartyState,
+    CounterpartyNotFound,
+    CounterpartyBaseConflict,
+    CounterpartyLimit,
+    InvalidCounterpartyAssociation,
+    CounterpartyAssociationBaseConflict,
+    CounterpartyReferenceUnavailable,
+    CounterpartyAssociationDeleted,
     InvalidTaxonomyChange,
     InvalidTaxonomyState,
     TaxonomyNotFound,

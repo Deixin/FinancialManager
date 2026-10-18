@@ -163,7 +163,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-041-desktop-movements-' +
         kind +
-        '-2026-10-18-us047-associations.json',
+        '-2026-10-18-us047-desktop.json',
     ),
   );
 test('movement evidence requires actual UI native crash restore and cleanup gates', () => {

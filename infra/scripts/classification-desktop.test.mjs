@@ -332,7 +332,7 @@ test('Native classification is a specific 28th command and composes the existing
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 29);
+  assert.equal(capability.permissions.length, 32);
   assert.equal(
     capability.permissions[27],
     'allow-apply-local-classification-change',
@@ -364,24 +364,24 @@ test('Desktop classification evidence requires every actual browser Windows faul
       readFileSync(
         'docs/quality/evidence/us-045-desktop-classification-' +
           kind +
-          '-2026-10-18-us047-associations.json',
+          '-2026-10-18-us047-desktop.json',
       ),
     );
     assert.equal(
-      validateDesktopClassificationEvidence(r, { matchSources: false }).passed,
+      validateDesktopClassificationEvidence(r, { matchSources: true }).passed,
       true,
     );
     for (const name of kind === 'browser' ? browserChecks : nativeChecks) {
       const bad = structuredClone(r);
       delete bad.checks[name];
       assert.throws(() =>
-        validateDesktopClassificationEvidence(bad, { matchSources: false }),
+        validateDesktopClassificationEvidence(bad, { matchSources: true }),
       );
     }
     assert.throws(() =>
       validateDesktopClassificationEvidence(
         { ...r, financial_payload: 'SYNTHETIC' },
-        { matchSources: false },
+        { matchSources: true },
       ),
     );
   }

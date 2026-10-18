@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-047 no Desktop](docs/development/desktop-counterparties.md) integra cadastro e associação versionada de contrapartes ao SQLCipher, preservando descrições originais e conteúdo financeiro, com paridade Rust/TypeScript e 32 comandos específicos. Próximo incremento: US-050, central de importações. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 O núcleo compartilhado da US-047 integra [cadastro e associação versionada de contrapartes](docs/development/counterparty-associations.md), com descrições e valores preservados. Próximo incremento: integração Desktop e paridade Rust. Homologações humanas após integração completa.
 
 A US-047 está em desenvolvimento: [cadastro compartilhado de contrapartes](docs/development/counterparties.md) implementado. Próximo incremento: associação versionada às movimentações; depois, integração Desktop. Homologações humanas após a integração completa.
