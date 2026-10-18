@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [fundação US-041](docs/development/manual-movements.md) implementa política de criação, edição, exclusão lógica, restauração e ajuste identificado sobre o histórico transacional existente, com validação PostgreSQL/SQLite. A história segue em andamento: o próximo incremento integra comandos e telas de movimentações ao Desktop.
+
 A [US-040 no Desktop](docs/development/desktop-accounts.md) permite criar, editar, arquivar/reativar contas, registrar/corrigir referências e conferir saldos no cofre SQLCipher. Valores usam i64 exato, referências mantêm histórico e a troca de workspace ou bloqueio remove a tela financeira anterior. A [base compartilhada](docs/development/financial-accounts.md) também atende PostgreSQL/SQLite. Próxima história: US-041, movimentações manuais. Homologações humanas ficam para após integrar todo o sistema.
 
 A [US-036](docs/development/workspace-manager.md) permite criar e alternar entre múltiplos espaços locais independentes, sem limite comercial. O seletor mostra finalidade e Local; o filtro Nuvem explica a indisponibilidade do acesso cloud. Os testes verificam persistência SQLCipher e troca de contexto. Homologações humanas ficam para após a integração completa.

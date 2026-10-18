@@ -81,6 +81,8 @@ export function createSqliteRevisionService(options: SqliteRevisionOptions) {
   return Object.freeze({
     apply: (...args: Parameters<typeof service.apply>) =>
       track(() => service.apply(...args)),
+    applyGuarded: (...args: Parameters<typeof service.applyGuarded>) =>
+      track(() => service.applyGuarded(...args)),
     revert: (...args: Parameters<typeof service.revert>) =>
       track(() => service.revert(...args)),
     async close() {

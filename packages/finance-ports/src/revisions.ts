@@ -99,6 +99,14 @@ export interface RevisionResult {
   readonly version: string;
   readonly revision_id: string | null;
 }
+/** Trusted host policy, executed under the same authorization and transaction. */
+export type RevisionGuard = (
+  context: Readonly<{
+    plan: RevisionPlan;
+    account: Account;
+    previous_account: Account | null;
+  }>,
+) => void | Promise<void>;
 function safeRequest(input: RevisionRequest): Readonly<RevisionRequest> {
   if (
     !input ||
@@ -266,6 +274,7 @@ export function createRevisionService(options: RevisionOptions) {
     request: Readonly<RevisionRequest>,
     changes: readonly (RevisionChange | ReversalChange)[],
     reversing: boolean,
+    guard?: RevisionGuard,
   ): Promise<readonly RevisionResult[]> {
     const grant = await authorize(request, provider),
       scope = Object.freeze({
@@ -317,6 +326,17 @@ export function createRevisionService(options: RevisionOptions) {
           (await tx.account(plan.after.content.account_id));
         if (!account) throw new RevisionError('NOT_FOUND');
         accounts.set(account.id, account);
+        if (guard) {
+          const previous = current
+            ? current.content.account_id === account.id
+              ? account
+              : await tx.account(current.content.account_id)
+            : null;
+          if (current && !previous) throw new RevisionError('NOT_FOUND');
+          await guard(
+            Object.freeze({ plan, account, previous_account: previous }),
+          );
+        }
         validateRevisionAccount(plan, account);
         plans.push(plan);
       }
@@ -415,22 +435,37 @@ export function createRevisionService(options: RevisionOptions) {
       return Object.freeze(results);
     });
   }
+  async function applyChanges(
+    input: RevisionRequest,
+    rows: readonly RevisionChange[],
+    guard?: RevisionGuard,
+  ) {
+    try {
+      const { request, changes } = captureInput(() => ({
+        request: safeRequest(input),
+        changes: capture(rows, (row) => {
+          const value = captureRevisionChange(row);
+          resourceId(value.id);
+          resourceContent(value.content);
+          return value;
+        }),
+      }));
+      return await execute(request, changes, false, guard);
+    } catch (cause) {
+      throw error(cause);
+    }
+  }
   return Object.freeze({
-    async apply(input: RevisionRequest, rows: readonly RevisionChange[]) {
-      try {
-        const { request, changes } = captureInput(() => ({
-          request: safeRequest(input),
-          changes: capture(rows, (row) => {
-            const value = captureRevisionChange(row);
-            resourceId(value.id);
-            resourceContent(value.content);
-            return value;
-          }),
-        }));
-        return await execute(request, changes, false);
-      } catch (cause) {
-        throw error(cause);
-      }
+    apply: (input: RevisionRequest, rows: readonly RevisionChange[]) =>
+      applyChanges(input, rows),
+    async applyGuarded(
+      input: RevisionRequest,
+      rows: readonly RevisionChange[],
+      guard: RevisionGuard,
+    ) {
+      if (typeof guard !== 'function')
+        throw new RevisionError('CONFIGURATION_INVALID');
+      return applyChanges(input, rows, guard);
     },
     async revert(input: RevisionRequest, rows: readonly ReversalChange[]) {
       try {

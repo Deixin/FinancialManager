@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0050 — Política de movimentações manuais](0050-politica-de-movimentacoes-manuais.md): comandos de intenção sobre revisões autorizadas, base inteira/conta atual, exclusão reversível, rateio preservado e ajuste separado; US-041 em andamento até Desktop.
+
 [0049 — Contas no Desktop SQLCipher](0049-contas-no-desktop-sqlcipher.md): snapshot consistente, dois comandos estreitos, planos Rust conferidos com Domain e UI com dinheiro exato; aceite local US-040, próxima US-041.
 
 [0048 — Operações compartilhadas de contas](0048-operacoes-compartilhadas-de-contas.md): criação atômica, base explícita, arquivamento e referências preservadas, com leitura de saldo em snapshot; US-040 em andamento, integração Desktop pendente.

@@ -1,0 +1,35 @@
+name: Manual movements
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: manual-movements-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  TURBO_TELEMETRY_DISABLED: '1'
+jobs:
+  manual-movements:
+    name: US-041 manual policy in PostgreSQL and SQLite
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version-file: .node-version
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413
+        with:
+          run_install: false
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node infra/manual-movements/run.mjs
+        id: protocol
+      - name: Remove the owned synthetic environment
+        if: always() && steps.protocol.outcome != 'skipped'
+        run: node infra/manual-movements/clean.mjs

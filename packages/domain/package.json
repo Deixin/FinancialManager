@@ -12,6 +12,10 @@
     "@financial-manager/config": "workspace:*"
   },
   "exports": {
+    "./manual-movements": {
+      "types": "./dist/manual-movements.d.ts",
+      "import": "./dist/manual-movements.js"
+    },
     "./revisions": {
       "types": "./dist/revisions.d.ts",
       "import": "./dist/revisions.js"
