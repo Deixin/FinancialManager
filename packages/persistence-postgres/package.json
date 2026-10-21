@@ -9,7 +9,8 @@
     ".": "./dist/index.js",
     "./categories": "./dist/category-changes.js",
     "./taxonomy": "./dist/taxonomy-changes.js",
-    "./counterparties": "./dist/counterparty-changes.js"
+    "./counterparties": "./dist/counterparty-changes.js",
+    "./imports": "./dist/import-central.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

@@ -135,6 +135,12 @@ export function validateDataAccessSource(filename, source) {
             '@financial-manager/contracts',
             '@financial-manager/finance-ports',
             '@financial-manager/finance-ports/revisions',
+            ...(module === 'imports'
+              ? [
+                  '@financial-manager/domain/imports',
+                  '@financial-manager/finance-ports/imports',
+                ]
+              : []),
             ...(module === 'counterparties'
               ? [
                   '@financial-manager/domain/counterparties',
@@ -238,7 +244,12 @@ export function validateDataAccessSource(filename, source) {
               if (
                 /^\s*SELECT\b/i.test(sql) &&
                 dataAccessPolicy.parent_scoped_tables.includes(table) &&
-                !/INNER\s+JOIN\s+financial_transaction\b/i.test(sql)
+                !new RegExp(
+                  'INNER\\s+JOIN\\s+' +
+                    dataAccessPolicy.parent_tables[table] +
+                    '\\b',
+                  'i',
+                ).test(sql)
               )
                 report(
                   'child read requires its parent in the same SQL statement',
@@ -265,7 +276,7 @@ export function validateDataAccessSource(filename, source) {
                 if (
                   method === 'selectFrom' &&
                   dataAccessPolicy.parent_scoped_tables.includes(table) &&
-                  !chainIncludes(node, 'financial_transaction')
+                  !chainIncludes(node, dataAccessPolicy.parent_tables[table])
                 )
                   report(
                     'child read requires its parent in the same SQL statement',
@@ -314,6 +325,20 @@ export function checkDataAccess() {
   const tables = Object.values(dataAccessPolicy.modules).flat();
   if (new Set(tables).size !== tables.length)
     throw new Error('DUPLICATE_TABLE_OWNER');
+  if (
+    Object.keys(dataAccessPolicy.parent_tables).sort().join(',') !==
+      [...dataAccessPolicy.parent_scoped_tables].sort().join(',') ||
+    dataAccessPolicy.parent_scoped_tables.some((child) => {
+      const parent = dataAccessPolicy.parent_tables[child];
+      return (
+        !parent ||
+        child === parent ||
+        !ownTables.has(child) ||
+        ownTables.get(child) !== ownTables.get(parent)
+      );
+    })
+  )
+    throw new Error('INVALID_PARENT_TABLE_POLICY');
   const files = [
     'packages/persistence-postgres/src/modules',
     'packages/storage-schema/src/revision-adapters',

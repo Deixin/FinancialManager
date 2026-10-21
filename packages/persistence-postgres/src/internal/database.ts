@@ -1,10 +1,79 @@
 import type { ColumnType, SelectType } from 'kysely';
+import type { ImportStatus } from '@financial-manager/domain/imports';
 import type {
   AccountKind,
   BalanceNature,
   EconomicKind,
 } from '@financial-manager/domain';
 type Read<T> = ColumnType<T, never, never>;
+
+export interface WriteImportsTables {
+  import_batch: {
+    id: string;
+    workspace_id: string;
+    target_account_id: string | null;
+    batch_kind: 'IMPORT' | 'REVERSAL';
+    status: ImportStatus;
+    reverses_batch_id: string | null;
+    created_by_member_id: string | null;
+    created_at: ColumnType<Date, string, string>;
+    committed_at: ColumnType<Date | null, string | null, string | null>;
+    version: ColumnType<string, string, string>;
+    failure_code: string | null;
+  };
+  import_source: {
+    id: string;
+    workspace_id: string;
+    batch_id: string;
+    file_name: string;
+    file_hash: string;
+    format: string;
+    parser_name: string | null;
+    parser_version: string | null;
+    detected_currency: string | null;
+    period_start: ColumnType<Date | null, string | null, string | null>;
+    period_end: ColumnType<Date | null, string | null, string | null>;
+    imported_at: ColumnType<Date, string, string>;
+  };
+  import_item: {
+    id: string;
+    workspace_id: string;
+    batch_id: string;
+    source_id: string | null;
+    row_no: ColumnType<string | null, string | null, string | null>;
+    source_external_id: string | null;
+    normalized_date: ColumnType<Date | null, string | null, string | null>;
+    normalized_amount_minor: ColumnType<
+      string | null,
+      string | null,
+      string | null
+    >;
+    original_description: string | null;
+    proposed_name: string | null;
+    disposition:
+      | 'NEW'
+      | 'DUPLICATE'
+      | 'POSSIBLE_DUPLICATE'
+      | 'UPDATE'
+      | 'INVALID'
+      | 'SKIPPED'
+      | 'COMMITTED';
+    validation_errors: unknown;
+    provenance: unknown;
+    version: ColumnType<string, string, string>;
+  };
+  import_effect: {
+    id: string;
+    workspace_id: string;
+    batch_id: string;
+    import_item_id: string;
+    transaction_id: string;
+    action: 'CREATE' | 'UPDATE' | 'LINK' | 'UNLINK' | 'RESTORE' | 'DELETE';
+    before_revision_id: string | null;
+    after_revision_id: string | null;
+    created_at: ColumnType<Date, string, string>;
+  };
+}
 type Id = Read<string>;
 type Instant = Read<Date>;
 interface Identity {

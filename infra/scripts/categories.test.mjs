@@ -287,7 +287,7 @@ test('category data owners cannot query transactions or import drivers and unrel
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-044-categories-core-2026-10-18-us047-associations.json',
+      'docs/quality/evidence/us-044-categories-core-2026-10-20-us050-core.json',
     ),
   );
 test('category evidence requires every real engine gate cleanup and current source hash', () => {

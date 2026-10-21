@@ -47,6 +47,10 @@
     "./counterparties": {
       "types": "./dist/counterparties.d.ts",
       "import": "./dist/counterparties.js"
+    },
+    "./imports": {
+      "types": "./dist/imports.d.ts",
+      "import": "./dist/imports.js"
     }
   },
   "files": [

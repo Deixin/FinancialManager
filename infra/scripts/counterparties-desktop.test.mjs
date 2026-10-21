@@ -197,7 +197,7 @@ test('Desktop counterparty evidence binds actual browser Windows cleanup and sou
       readFileSync(
         'docs/quality/evidence/us-047-desktop-counterparties-' +
           kind +
-          '-2026-10-18.json',
+          '-2026-10-20-us050-core.json',
       ),
     );
     assert.equal(validateDesktopCounterpartyEvidence(report).passed, true);

@@ -150,8 +150,8 @@ test('Existing movement IPC remains read only with 32 permissions and classifica
 test('Classification filter evidence requires every real browser and Windows gate and immutable source hashes', () => {
   const dir = 'docs/quality/evidence/';
   for (const file of [
-    'us-045-desktop-classification-filters-browser-2026-10-18-us047-desktop.json',
-    'us-045-desktop-classification-filters-windows-2026-10-18-us047-desktop.json',
+    'us-045-desktop-classification-filters-browser-2026-10-20-us050-core.json',
+    'us-045-desktop-classification-filters-windows-2026-10-20-us050-core.json',
   ]) {
     const raw = JSON.parse(readFileSync(dir + file));
     validateClassificationFilterEvidence(raw, { matchSources: true });

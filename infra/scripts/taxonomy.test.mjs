@@ -369,7 +369,7 @@ test('taxonomy data owners cannot cross into finance and other owners cannot imp
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-045-taxonomy-core-2026-10-18-us047-associations.json',
+      'docs/quality/evidence/us-045-taxonomy-core-2026-10-20-us050-core.json',
     ),
   );
 test('taxonomy evidence requires every real engine gate cleanup current sources and explicit pending integration', () => {

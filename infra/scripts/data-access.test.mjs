@@ -41,11 +41,20 @@ test('data modules cover each financial table once and current sources respect o
     ),
     'utf8',
   );
-  const physical = [...sql.matchAll(/CREATE TABLE fm\.([a-z_]+)/g)]
+  const imports = readFileSync(
+    new URL(
+      '../../apps/api/persistence/postgres/migrations/0003-import-ledger.up.sql',
+      import.meta.url,
+    ),
+    'utf8',
+  );
+  const physical = [
+    ...(sql + '\n' + imports).matchAll(/CREATE TABLE fm\.([a-z_]+)/g),
+  ]
     .map((m) => m[1])
     .filter((name) => name !== 'schema_migration')
     .sort();
-  assert.equal(tables.length, 12);
+  assert.equal(tables.length, 16);
   assert.deepEqual(tables, physical);
 });
 test('architecture rejects cross-module tables, runtime SQL, casts, dynamic tables and unapproved imports', () => {
@@ -73,8 +82,11 @@ test('architecture rejects cross-module tables, runtime SQL, casts, dynamic tabl
   );
 });
 test('architecture requires child reads to join the parent and restricts backend driver installation', () => {
-  const txPath = 'packages/persistence-postgres/src/modules/transactions.ts';
   for (const table of dataAccessPolicy.parent_scoped_tables) {
+    const txPath = table.startsWith('import_')
+      ? 'packages/persistence-postgres/src/modules/import-reads-writes.ts'
+      : 'packages/persistence-postgres/src/modules/transactions.ts';
+    const parent = dataAccessPolicy.parent_tables[table];
     assert.ok(
       validateDataAccessSource(txPath, `db.selectFrom('${table}').selectAll()`)
         .length,
@@ -82,13 +94,13 @@ test('architecture requires child reads to join the parent and restricts backend
     assert.ok(
       validateDataAccessSource(
         txPath,
-        `db.selectFrom('${table}').leftJoin('financial_transaction', 'id', 'id')`,
+        `db.selectFrom('${table}').leftJoin('${parent}', 'id', 'id')`,
       ).length,
     );
     assert.deepEqual(
       validateDataAccessSource(
         txPath,
-        `db.selectFrom('${table}').innerJoin('financial_transaction', 'id', 'id')`,
+        `db.selectFrom('${table}').innerJoin('${parent}', 'id', 'id')`,
       ),
       [],
     );
@@ -371,7 +383,7 @@ test('current repository evidence requires every real gate, source hash, cleanup
     JSON.parse(
       readFileSync(
         new URL(
-          '../../docs/quality/evidence/us-024-repositories-2026-10-18-us047-counterparties.json',
+          '../../docs/quality/evidence/us-024-repositories-2026-10-20-us050-core.json',
           import.meta.url,
         ),
         'utf8',

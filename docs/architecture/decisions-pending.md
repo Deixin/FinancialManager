@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-050 compartilhada: [ADR-0068](adr/0068-central-compartilhada-de-importacoes.md) define o ledger v3 opt-in e esclarece campos normalizados ausentes somente em itens INVALID/SKIPPED. O Desktop permanece na v2 até integrar UI/Rust e backup/restauração. DP-01 a DP-04 e homologações humanas pós-integração preservadas; entradas abaixo são históricas.
+
 US-047 Desktop: [ADR-0067](adr/0067-contrapartes-no-desktop.md) integra cadastro e associação versionada ao SQLCipher, com 32 comandos e paridade Rust/TypeScript. Sem migration/dependência nova ou resolução de DP-01 a DP-04. Versão/auditoria cadastral, recibos duráveis e integração cloud mantêm seus gates; homologações humanas pós-integração preservadas. Próximo incremento US-050; entradas abaixo são históricas.
 
 US-047, associação compartilhada: [ADR-0066](adr/0066-associacao-versionada-de-contrapartes.md) integra escolhas explícitas de contraparte às revisões, com projeção mínima na mesma transação e preservação financeira. Sem migration, dependência, alteração de backup ou resolução de DP-01 a DP-04. Desktop/paridade Rust é o próximo incremento; homologações humanas pós-integração preservadas. Entradas abaixo são históricas.

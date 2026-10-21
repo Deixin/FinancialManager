@@ -267,7 +267,7 @@ test('counterparty owners reject financial writes and unapproved cross owner imp
 const evidence = () =>
   JSON.parse(
     readFileSync(
-      'docs/quality/evidence/us-047-counterparties-core-2026-10-18-us047-associations.json',
+      'docs/quality/evidence/us-047-counterparties-core-2026-10-20-us050-core.json',
     ),
   );
 test('counterparty evidence requires every real engine gate current sources cleanup and integration pending', () => {

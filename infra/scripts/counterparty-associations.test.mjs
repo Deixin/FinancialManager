@@ -275,7 +275,7 @@ test('association evidence binds every real engine gate cleanup sources and pend
   const evidence = () =>
     JSON.parse(
       readFileSync(
-        'docs/quality/evidence/us-047-associations-core-2026-10-18.json',
+        'docs/quality/evidence/us-047-associations-core-2026-10-20-us050-core.json',
       ),
     );
   assert.equal(validateAssociationEvidence(evidence()).passed, true);

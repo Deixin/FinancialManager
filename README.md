@@ -1,5 +1,7 @@
 # Financial Manager
 
+A [US-050 compartilhada](docs/development/import-central.md) acrescenta preparação idempotente e histórico de lotes em PostgreSQL/SQLite, com contas autorizadas e contagens exatas. Schema v3 opt-in; próxima etapa: integração Desktop com Rust, backup e restauração. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 A [US-047 no Desktop](docs/development/desktop-counterparties.md) integra cadastro e associação versionada de contrapartes ao SQLCipher, preservando descrições originais e conteúdo financeiro, com paridade Rust/TypeScript e 32 comandos específicos. Próximo incremento: US-050, central de importações. Homologações humanas após integração completa; entradas abaixo são históricas.
 
 O núcleo compartilhado da US-047 integra [cadastro e associação versionada de contrapartes](docs/development/counterparty-associations.md), com descrições e valores preservados. Próximo incremento: integração Desktop e paridade Rust. Homologações humanas após integração completa.

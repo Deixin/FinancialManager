@@ -1,0 +1,12 @@
+LOCK TABLE fm.import_batch,fm.import_source,fm.import_item,fm.import_effect IN ACCESS EXCLUSIVE MODE;
+ALTER TABLE fm.import_batch NO FORCE ROW LEVEL SECURITY;
+ALTER TABLE fm.import_source NO FORCE ROW LEVEL SECURITY;
+ALTER TABLE fm.import_item NO FORCE ROW LEVEL SECURITY;
+ALTER TABLE fm.import_effect NO FORCE ROW LEVEL SECURITY;
+DO $$ BEGIN IF (SELECT count(*) FROM fm.import_batch)+(SELECT count(*) FROM fm.import_source)+(SELECT count(*) FROM fm.import_item)+(SELECT count(*) FROM fm.import_effect)>0 THEN RAISE EXCEPTION USING ERRCODE='23514',MESSAGE='FM_IMPORT_ROLLBACK_NOT_EMPTY'; END IF; END $$;
+DROP TABLE fm.import_effect;
+DROP TABLE fm.import_item;
+DROP TABLE fm.import_source;
+DROP TABLE fm.import_batch;
+DROP INDEX fm.revision_import_identity;
+DROP FUNCTION fm.reject_import_effect_mutation();

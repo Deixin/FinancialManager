@@ -10,12 +10,16 @@
       "transaction_revision"
     ],
     "categories": ["category", "subcategory", "tag"],
-    "counterparties": ["counterparty"]
+    "counterparties": ["counterparty"],
+    "imports": ["import_batch", "import_source", "import_item", "import_effect"]
   },
   "parent_scoped_tables": [
     "transaction_allocation",
     "transaction_tag",
-    "transaction_revision"
+    "transaction_revision",
+    "import_source",
+    "import_item",
+    "import_effect"
   ],
   "adapters": {
     "packages/persistence-postgres/src/modules/transaction-writes.ts": {
@@ -77,6 +81,36 @@
       "owner": "counterparties",
       "write": true,
       "syntax": "kysely"
+    },
+    "packages/storage-schema/src/revision-adapters/import-reads-writes.ts": {
+      "owner": "imports",
+      "write": true,
+      "syntax": "sqlite"
+    },
+    "packages/storage-schema/src/revision-adapters/import-account-projections.ts": {
+      "owner": "accounts",
+      "write": false,
+      "syntax": "sqlite"
+    },
+    "packages/storage-schema/src/revision-adapters/import-transaction-projections.ts": {
+      "owner": "transactions",
+      "write": false,
+      "syntax": "sqlite"
+    },
+    "packages/persistence-postgres/src/modules/import-reads-writes.ts": {
+      "owner": "imports",
+      "write": true,
+      "syntax": "kysely"
+    },
+    "packages/persistence-postgres/src/modules/import-account-projections.ts": {
+      "owner": "accounts",
+      "write": false,
+      "syntax": "kysely"
+    },
+    "packages/persistence-postgres/src/modules/import-transaction-projections.ts": {
+      "owner": "transactions",
+      "write": false,
+      "syntax": "kysely"
     }
   },
   "composition_imports": {
@@ -90,5 +124,13 @@
     "apps/worker/src/revision-model.ts",
     "apps/api/src/read-model.ts",
     "apps/worker/src/read-model.ts"
-  ]
+  ],
+  "parent_tables": {
+    "transaction_allocation": "financial_transaction",
+    "transaction_tag": "financial_transaction",
+    "transaction_revision": "financial_transaction",
+    "import_source": "import_batch",
+    "import_item": "import_batch",
+    "import_effect": "import_batch"
+  }
 }

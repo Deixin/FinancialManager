@@ -220,7 +220,7 @@ test('Desktop allocation evidence binds browser native cleanup permissions and e
     const file =
         'docs/quality/evidence/us-046-desktop-allocations-' +
         kind +
-        '-2026-10-18-us047-desktop.json',
+        '-2026-10-20-us050-core.json',
       report = JSON.parse(readFileSync(file));
     assert.equal(validateDesktopAllocationEvidence(report).passed, true);
     for (const name of kind === 'browser' ? browserChecks : nativeChecks) {

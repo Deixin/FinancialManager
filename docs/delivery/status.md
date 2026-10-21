@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## US-050 — Central compartilhada de importações — 2026-10-20
+
+Preparação idempotente e leitura de histórico por workspace/conta/estado implementadas em PostgreSQL/SQLite, com contagens derivadas, fontes e efeitos/revisões por lote, paginação e snapshot consistente. Schema v3 opt-in; Desktop continua na v2 até integrar Rust, interface, backup e restauração. Consulte [implementação e protocolo](../development/import-central.md) e [ADR-0068](../architecture/adr/0068-central-compartilhada-de-importacoes.md).
+
+Validação local concluída: `pnpm check` aprovado com 503 testes Node, sem falhas ou skips; formatação, lint, fronteiras, geração, tipos e build aprovados. O protocolo próprio passou em 60 gates PostgreSQL/SQLite, incluindo períodos preservados em quatro fusos e snapshots com writer concorrente nos dois bancos; os 12 testes próprios passaram. As 13 suítes de dados, dez Chromium e dez Windows afetadas passaram. Arquivadas 33 evidências renovadas e uma nova; auditoria de 51 relatórios atuais e 561 hashes de fontes, com 17 relatórios não afetados preservados. Recursos sintéticos próprios encerrados. Sem execução de CI remota ou homologação humana.
+
+Próximo incremento: integração Desktop da US-050. Sem dependência de produção nova, novos comandos Tauri ou resolução de DP-01 a DP-04. Sete documentos originais preservados byte a byte; homologações humanas após integração completa. Entradas abaixo são históricas.
+
 ## US-047 — Desktop e paridade Rust
 
 Cadastro e associação versionada integrados ao Desktop local: Configurações, detalhe financeiro, intenções congeladas, snapshot consistente e 32 comandos específicos. Rust reutiliza o gravador de revisões e valida grupos completos; não muda valores, descrições, parcelas ou tags. O corpus compartilhado contém 56 casos sintéticos. Consulte [integração e protocolo](../development/desktop-counterparties.md) e [ADR-0067](../architecture/adr/0067-contrapartes-no-desktop.md).
