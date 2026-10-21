@@ -1,5 +1,13 @@
 # Estado do projeto
 
+## US-050 — Desktop, paridade Rust e backup/restauração v3 — 2026-10-20
+
+Central local integrada à navegação, com filtros, detalhe, fontes, contagens, efeitos/revisões e preparação idempotente de cabeçalho. O Desktop adota schema v3 com 35 comandos específicos; restauração preserva o ledger completo em nova autoridade e migra backups antigos autenticados somente em staging. Consulte [implementação e protocolo](../development/desktop-imports.md) e [ADR-0069](../architecture/adr/0069-central-de-importacoes-no-desktop.md).
+
+Validação local concluída: `pnpm check` aprovado com 510 testes Node, sem falhas ou skips; formatação, lint, fronteiras, geração, tipos e build aprovados. O protocolo próprio passou nos sete testes SQLCipher, 102 vetores de paridade, comparação direta com o port compartilhado e fluxos Chromium/WebView2. Os 16 protocolos Windows e as 15 suítes Chromium anteriores afetadas passaram novamente. Arquivados 31 relatórios renovados e dois novos; auditoria de 53 relatórios atuais e 579 hashes de fontes, com 20 relatórios não afetados preservados. Recursos sintéticos próprios encerrados; sete documentos originais preservados byte a byte. A evidência é local; CI remota e homologação humana não são presumidas.
+
+Próximo incremento: US-051. Sem dependência de produção nova, execução de parsers, confirmação financeira ou resolução de DP-01 a DP-04. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 ## US-050 — Central compartilhada de importações — 2026-10-20
 
 Preparação idempotente e leitura de histórico por workspace/conta/estado implementadas em PostgreSQL/SQLite, com contagens derivadas, fontes e efeitos/revisões por lote, paginação e snapshot consistente. Schema v3 opt-in; Desktop continua na v2 até integrar Rust, interface, backup e restauração. Consulte [implementação e protocolo](../development/import-central.md) e [ADR-0068](../architecture/adr/0068-central-compartilhada-de-importacoes.md).

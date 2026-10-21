@@ -291,6 +291,9 @@ main:focus {
 .local-empty {
   max-width: 740px;
 }
+.local-imports {
+  overflow-wrap: anywhere;
+}
 .local-empty p {
   line-height: 1.65;
 }

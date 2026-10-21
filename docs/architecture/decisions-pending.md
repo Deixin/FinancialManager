@@ -1,5 +1,7 @@
 # Decisões pendentes
 
+US-050 Desktop: [ADR-0069](adr/0069-central-de-importacoes-no-desktop.md) ativa o ledger nativo v3 junto de UI/Rust e backup/restauração. Mantém catálogos compartilhados padrão v2, adoção explícita cloud/Mobile, 35 comandos e homologações humanas pós-integração. DP-01 a DP-04 preservadas; entradas abaixo são históricas.
+
 US-050 compartilhada: [ADR-0068](adr/0068-central-compartilhada-de-importacoes.md) define o ledger v3 opt-in e esclarece campos normalizados ausentes somente em itens INVALID/SKIPPED. O Desktop permanece na v2 até integrar UI/Rust e backup/restauração. DP-01 a DP-04 e homologações humanas pós-integração preservadas; entradas abaixo são históricas.
 
 US-047 Desktop: [ADR-0067](adr/0067-contrapartes-no-desktop.md) integra cadastro e associação versionada ao SQLCipher, com 32 comandos e paridade Rust/TypeScript. Sem migration/dependência nova ou resolução de DP-01 a DP-04. Versão/auditoria cadastral, recibos duráveis e integração cloud mantêm seus gates; homologações humanas pós-integração preservadas. Próximo incremento US-050; entradas abaixo são históricas.

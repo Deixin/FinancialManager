@@ -148,6 +148,9 @@ try {
         'allow-read-local-counterparties',
         'allow-apply-local-counterparty-change',
         'allow-apply-local-counterparty-association',
+        'allow-list-local-imports',
+        'allow-read-local-import',
+        'allow-prepare-local-import',
       ],
     );
     assert.equal(

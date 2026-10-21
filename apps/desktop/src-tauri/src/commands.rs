@@ -355,6 +355,39 @@ impl LocalState {
             })
         })
     }
+    pub fn list_imports(
+        &self,
+        workspace: &str,
+        input: serde_json::Value,
+    ) -> Result<serde_json::Value> {
+        self.with(|i| i.list_imports(workspace, input))
+    }
+    pub fn read_import(
+        &self,
+        workspace: &str,
+        input: serde_json::Value,
+    ) -> Result<serde_json::Value> {
+        self.with(|i| i.read_import(workspace, input))
+    }
+    pub fn prepare_import(
+        &self,
+        workspace: &str,
+        input: serde_json::Value,
+    ) -> Result<serde_json::Value> {
+        self.access(true, |s| {
+            if s.restore.prepared.is_some() {
+                return Err(LocalError::RequestConflict);
+            }
+            let protected = s.privacy.status(LocalLock::now()?)?.enabled;
+            s.installation.prepare_import(workspace, input, || {
+                if protected && self.force_locked.load(Ordering::SeqCst) {
+                    Err(LocalError::LocalLocked)
+                } else {
+                    Ok(())
+                }
+            })
+        })
+    }
     pub fn read_counterparties(
         &self,
         workspace: &str,
@@ -992,7 +1025,10 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             apply_local_allocation_change,
             read_local_counterparties,
             apply_local_counterparty_change,
-            apply_local_counterparty_association
+            apply_local_counterparty_association,
+            list_local_imports,
+            read_local_import,
+            prepare_local_import
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -1215,4 +1251,38 @@ pub async fn apply_local_counterparty_association(
     })
     .await
     .map_err(|_| LocalError::StorageUnavailable)?
+}
+
+#[tauri::command]
+pub async fn list_local_imports(
+    state: tauri::State<'_, std::sync::Arc<LocalState>>,
+    workspace_id: String,
+    input: serde_json::Value,
+) -> Result<serde_json::Value> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.list_imports(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn read_local_import(
+    state: tauri::State<'_, std::sync::Arc<LocalState>>,
+    workspace_id: String,
+    input: serde_json::Value,
+) -> Result<serde_json::Value> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.read_import(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
+}
+#[tauri::command]
+pub async fn prepare_local_import(
+    state: tauri::State<'_, std::sync::Arc<LocalState>>,
+    workspace_id: String,
+    input: serde_json::Value,
+) -> Result<serde_json::Value> {
+    let state = state.inner().clone();
+    tauri::async_runtime::spawn_blocking(move || state.prepare_import(&workspace_id, input))
+        .await
+        .map_err(|_| LocalError::StorageUnavailable)?
 }

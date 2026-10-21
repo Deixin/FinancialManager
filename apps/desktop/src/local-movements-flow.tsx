@@ -28,6 +28,7 @@ import {
 export interface MovementEntry {
   readonly mode: 'list' | 'create' | 'adjust' | 'cards' | 'payment';
   readonly accountId?: string;
+  readonly transactionId?: string;
 }
 type Mode =
   'list' | 'detail' | 'create' | 'edit' | 'delete' | 'restore' | 'adjust';
@@ -161,10 +162,17 @@ export function LocalMovementsFlow({
         setReason('');
         setSelected('');
         if (first.current) {
+          if (entry.transactionId) {
+            if (!next.transactions.some((t) => t.id === entry.transactionId))
+              throw new LocalMovementError('NOT_FOUND');
+            setSelected(entry.transactionId);
+          }
           setMode(
-            entry.mode === 'cards' || entry.mode === 'payment'
-              ? 'list'
-              : entry.mode,
+            entry.transactionId
+              ? 'detail'
+              : entry.mode === 'cards' || entry.mode === 'payment'
+                ? 'list'
+                : entry.mode,
           );
           setAccountId(entry.accountId ?? '');
           first.current = false;

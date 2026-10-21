@@ -15,6 +15,10 @@ export const restoreTables = [
   'transaction_allocation',
   'transaction_tag',
   'transaction_revision',
+  'import_batch',
+  'import_source',
+  'import_item',
+  'import_effect',
 ] as const;
 export type RestorePreview = Readonly<{
   restore_id: string;

@@ -95,7 +95,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
                 return Err("PARTIAL_MIGRATION_VISIBLE".into());
             }
             probe::migrate(&mut db).map_err(|_| "RECOVERY_FAILED")?;
-            if probe::version(&db).map_err(|_| "VERSION_FAILED")? != 2
+            if probe::version(&db).map_err(|_| "VERSION_FAILED")? != 3
                 || probe::snapshot(&db).map_err(|_| "SNAPSHOT_FAILED")? != baseline
             {
                 return Err("FINANCIAL_STATE_CHANGED".into());
@@ -118,7 +118,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         }
         "journal-recover" => {
             if probe::snapshot(&db).map_err(|_| "SNAPSHOT_FAILED")? != baseline
-                || probe::version(&db).map_err(|_| "VERSION_FAILED")? != 2
+                || probe::version(&db).map_err(|_| "VERSION_FAILED")? != 3
             {
                 return Err("UNCOMMITTED_DATA_VISIBLE".into());
             }

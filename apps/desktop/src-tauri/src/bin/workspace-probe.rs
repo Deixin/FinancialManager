@@ -116,9 +116,10 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         .ok()
             == Some(0)
     });
+    // Keep the historical gate identifier; assert the entire adopted v3 catalog.
     let migrations_v2 = db.query_row("SELECT count(*) FROM _schema_migration", [], |row| {
         row.get::<_, i64>(0)
-    })? == 2;
+    })? == 3;
     drop(db);
     keys.delete(installation_id, id)
         .map_err(|_| "DELETE_KEY_FAILED")?;

@@ -342,7 +342,8 @@ fn independent_installation_restores_full_state_with_new_ids_key_and_authority()
         preview.restore_id,
         vault_probe::dataset_workspace().to_string()
     );
-    assert_eq!(preview.record_counts.len(), 12);
+    assert_eq!(preview.record_counts.len(), 16);
+    assert!(matches!(f.state.prepare_import(&f.existing,serde_json::json!({"id":"0199d050-0000-7000-8000-000000009999","target_account_id":"0199d050-0000-7000-8000-000000009998"})),Err(LocalError::RequestConflict)));
     assert_eq!(f.state.list().unwrap().len(), 1);
     assert_eq!(f.stages(), 1);
     let workspace = f.state.confirm_restore(&preview.restore_id).unwrap();

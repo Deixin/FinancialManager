@@ -51,6 +51,9 @@ fn main() {
         ]
     };
     let mut commands = COMMANDS.to_vec();
+    if cfg!(feature = "imports-smoke") {
+        commands.push("finish_imports_smoke");
+    }
     commands.extend([
         "configure_local_hello",
         "unlock_local_hello",
@@ -76,6 +79,9 @@ fn main() {
         "read_local_counterparties",
         "apply_local_counterparty_change",
         "apply_local_counterparty_association",
+        "list_local_imports",
+        "read_local_import",
+        "prepare_local_import",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");

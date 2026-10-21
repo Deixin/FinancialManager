@@ -1,5 +1,7 @@
 # Financial Manager — índice da documentação
 
+A [central US-050 no Desktop](development/desktop-imports.md) integra interface, paridade Rust e ledger SQLCipher v3 com backup/restauração compatíveis. Consulte o [ADR-0069](architecture/adr/0069-central-de-importacoes-no-desktop.md). São 35 comandos específicos; próximo incremento US-051, validação defensiva de arquivos. Homologações humanas após integração completa; entradas abaixo são históricas.
+
 A [central compartilhada US-050](development/import-central.md) prepara cabeçalhos e consulta origem, conta, estado, contagens e efeitos por lote em PostgreSQL/SQLite. Consulte o [ADR-0068](architecture/adr/0068-central-compartilhada-de-importacoes.md). Schema v3 opt-in; próximo incremento integra Desktop/Rust junto de backup e restauração. Homologações humanas após integração completa; entradas abaixo são históricas.
 
 A [US-047 no Desktop](development/desktop-counterparties.md) integra cadastro e associação às movimentações, com paridade Rust/TypeScript, histórico e descrições preservadas. Consulte o [ADR-0067](architecture/adr/0067-contrapartes-no-desktop.md). Próximo incremento: US-050, central de importações. Homologações humanas após integração completa; entradas abaixo são históricas.

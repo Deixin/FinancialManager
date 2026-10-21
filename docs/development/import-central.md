@@ -24,6 +24,6 @@ O resultado próprio fica em `.tools/us050-import-central/imports.json`, com SHA
 
 Resultado local final: `pnpm check` aprovado com 503 testes Node, sem falhas ou skips; 60 gates no protocolo próprio e 12 testes próprios aprovados. As 13 suítes de dados, dez Chromium e dez Windows afetadas passaram novamente. Foram arquivadas 33 evidências renovadas e uma nova; 51 relatórios atuais conferem com 561 hashes únicos de fontes, incluindo os 17 relatórios não afetados. Os sete documentos originais permanecem byte a byte idênticos. Recursos sintéticos próprios encerrados; sem execução de CI remota ou homologação humana.
 
-## Próximo incremento
+## Continuidade
 
-Integrar a central ao Desktop, com paridade Rust, navegação, estados de interface e adoção conjunta da v3 no cofre, backup e restauração. O Desktop deste incremento continua com 32 comandos e schema v2. Parsers, validação defensiva, staging editável, confirmação atômica e processamento local pertencem às US-051–057. A reversão de lote não é habilitada por um simples link de histórico. Web/Mobile e sincronização mantêm seus gates. Homologações humanas permanecem após integração completa.
+A [integração Desktop](desktop-imports.md) e o [ADR-0069](../architecture/adr/0069-central-de-importacoes-no-desktop.md) adotam a v3 no cofre, backup e restauração, com interface, paridade Rust e 35 comandos específicos. Os catálogos padrão compartilhados continuam v2; a composição de importações mantém adoção explícita. Parsers, validação defensiva, staging editável, confirmação atômica e processamento local pertencem às US-051–057. A reversão de lote não é habilitada por um simples link de histórico. Web/Mobile e sincronização mantêm seus gates. Homologações humanas permanecem após integração completa.

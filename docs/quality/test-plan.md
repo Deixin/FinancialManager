@@ -1,5 +1,7 @@
 # Plano de testes
 
+US-050 Desktop: [protocolo](../development/desktop-imports.md) compara 102 vetores Rust/TypeScript e verifica SQLCipher, repetição após ACK perdido, filtros/páginas, metadados, revisão ligada à movimentação, rollback, isolamento, bloqueio, reabertura e restauração portátil sem a chave de origem. Backup v2 autenticado migra em staging; v3 restaura todas as quatro tabelas com novos IDs e valores exatos. Protocolos afetados são renovados antes de pnpm check. Homologações humanas seguem pós-integração.
+
 US-045 Desktop, catálogos: node infra/taxonomy-desktop/browser.mjs/native.mjs e pnpm check cobrem paridade, CRUD, busca/estado, ordem por pai, conflitos, ACK perdido, respostas tardias, isolamento, PIN, rollback/interrupções, preservação financeira e restauração portátil. [Reprodução](../development/desktop-taxonomy.md). Editor de classificação e filtros financeiros seguem no próximo incremento; homologações humanas após integração completa.
 
 US-045, associação: node infra/classification/run.mjs e pnpm check verificam bases/versões, preservação financeira e de origem, referências ativas, escopo econômico, grupos completos, rateios preservados, reversão, rollback da segunda revisão, concorrência e filtros deduplicados na mesma parcela. [Reprodução e limites](../development/classification.md). Integração Desktop, autorização/cobertura da leitura dos filtros e homologação humana integrada mantêm seus gates.

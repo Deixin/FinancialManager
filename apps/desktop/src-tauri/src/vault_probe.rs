@@ -225,7 +225,7 @@ pub fn migration_child(db: &mut Connection, phase: u8) -> Result<()> {
     Err(LocalError::IntegrityFailure)
 }
 pub fn journal_child(db: &Connection, path: &Path) -> Result<()> {
-    if version(db)? != 2 {
+    if version(db)? != 3 {
         return Err(LocalError::IntegrityFailure);
     }
     db.execute_batch("PRAGMA cache_size=1;PRAGMA cache_spill=ON;BEGIN IMMEDIATE;")?;

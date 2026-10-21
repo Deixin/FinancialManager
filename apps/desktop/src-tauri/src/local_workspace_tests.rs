@@ -83,7 +83,7 @@ fn creates_product_workspace_without_cloud_identity_and_reopens_exactly() {
             row.get(0)
         })
         .unwrap();
-    assert!(count == 2);
+    assert!(count == 3);
     drop(db);
     let bytes = fs::read(&path).unwrap();
     assert!(!bytes.starts_with(b"SQLite format 3"));

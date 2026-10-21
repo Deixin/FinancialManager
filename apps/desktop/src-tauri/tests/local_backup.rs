@@ -196,9 +196,9 @@ fn authenticated_manifest_and_independent_snapshot_preserve_every_financial_colu
     let key_reads = f.keys.reads.load(Ordering::SeqCst);
     let backup = read_verified(&path, PASSWORD).unwrap();
     assert_eq!(backup.manifest.format_version, 1);
-    assert_eq!(backup.manifest.schema_version, 2);
-    assert_eq!(backup.manifest.record_counts.len(), 15);
-    assert_eq!(backup.manifest.record_counts["_schema_migration"], "2");
+    assert_eq!(backup.manifest.schema_version, 3);
+    assert_eq!(backup.manifest.record_counts.len(), 19);
+    assert_eq!(backup.manifest.record_counts["_schema_migration"], "3");
     assert_eq!(
         backup.manifest.integrity_hashes["payload.enc"],
         format!("{:x}", Sha256::digest(&backup.snapshot))

@@ -15,7 +15,14 @@ pub(crate) fn current_version() -> i64 {
     CATALOG[CATALOG.len() - 1].version
 }
 pub(crate) fn verify_current(db: &Connection) -> Result<()> {
-    if schema(db)? != expected(CATALOG.len())? {
+    verify_version(db, current_version())
+}
+pub(crate) fn verify_version(db: &Connection, version: i64) -> Result<()> {
+    if !(1..=current_version()).contains(&version) {
+        return Err(LocalError::UnsupportedSchema);
+    }
+    let catalog = &CATALOG[..version as usize];
+    if schema(db)? != expected(catalog.len())? {
         return Err(LocalError::UnsupportedSchema);
     }
     let mut query =
@@ -23,10 +30,10 @@ pub(crate) fn verify_current(db: &Connection) -> Result<()> {
     let history = query
         .query_map([], |r| Ok((r.get::<_, i64>(0)?, r.get::<_, String>(1)?)))?
         .collect::<std::result::Result<Vec<_>, _>>()?;
-    if history.len() != CATALOG.len()
+    if history.len() != catalog.len()
         || history
             .iter()
-            .zip(CATALOG.iter())
+            .zip(catalog.iter())
             .any(|(row, item)| row.0 != item.version || row.1 != item.checksum)
     {
         return Err(LocalError::UnsupportedSchema);
@@ -120,6 +127,9 @@ pub fn migrate(db: &mut Connection) -> Result<()> {
         return Err(LocalError::UnsupportedSchema);
     }
     verify_integrity(&tx)?;
+    if tx.query_row("PRAGMA user_version", [], |r| r.get::<_, i64>(0))? != current_version() {
+        tx.pragma_update(None, "user_version", current_version())?;
+    }
     tx.commit()?;
     Ok(())
 }

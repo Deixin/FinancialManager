@@ -180,7 +180,7 @@ const evidence = (kind) =>
       new URL(
         '../../docs/quality/evidence/us-040-desktop-accounts-' +
           kind +
-          '-2026-10-20-us050-core.json',
+          '-2026-10-20-us050-desktop.json',
         import.meta.url,
       ),
     ),

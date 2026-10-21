@@ -1,0 +1,1750 @@
+[
+  {
+    "kind": "prepare",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010"
+    },
+    "valid": true
+  },
+  {
+    "kind": "prepare",
+    "name": "missing_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "target_account_id": "0199d050-0000-7000-8000-000000000010" },
+    "valid": false
+  },
+  {
+    "kind": "prepare",
+    "name": "missing_target_account_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "id": "0199d050-0000-7000-8000-000000000100" },
+    "valid": false
+  },
+  {
+    "kind": "prepare",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "account_id": null, "cursor": null, "limit": 2 },
+    "valid": true
+  },
+  {
+    "kind": "query",
+    "name": "missing_statuses",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "account_id": null, "cursor": null, "limit": 2 },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "missing_account_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "cursor": null, "limit": 2 },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "missing_cursor",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "account_id": null, "limit": 2 },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "missing_limit",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "account_id": null, "cursor": null },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": [],
+      "account_id": null,
+      "cursor": null,
+      "limit": 2,
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 2
+    },
+    "valid": true
+  },
+  {
+    "kind": "detail",
+    "name": "missing_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "effect_after": null, "effect_limit": 2 },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "missing_effect_after",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_limit": 2
+    },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "missing_effect_limit",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 2,
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "missing_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_workspace_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_target_account_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_batch_kind",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_status",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_reverses_batch_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_created_by_member_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_created_at",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_committed_at",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_version",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "missing_failure_code",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1"
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null,
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "source",
+    "name": "missing_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_workspace_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_batch_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_file_name",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_file_hash",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_format",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_parser_name",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_parser_version",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_detected_currency",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_period_start",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_period_end",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "missing_imported_at",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z",
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "valid",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "missing_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_workspace_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_batch_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_import_item_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_transaction_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_action",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_before_revision_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_after_revision_id",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "missing_created_at",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "extra",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "extra": true
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "invalid_instant_2026-02-29T11:00:00.000Z",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-02-29T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "invalid_instant_2026-10-20T11:00:00Z",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "invalid_instant_2026-10-20T11:00:00.000+00:00",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000+00:00",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "status_PREPARING",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_REVIEW",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "REVIEW",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_CONFIRMING",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "CONFIRMING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_COMMITTED",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "COMMITTED",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": "2026-10-20T11:00:00.000Z",
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_FAILED",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "FAILED",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "1",
+      "failure_code": "SYNTHETIC_FAILURE"
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_REVERSED",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "REVERSED",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": "2026-10-20T11:00:00.000Z",
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "status_PARTIALLY_REVERSED",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PARTIALLY_REVERSED",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": "2026-10-20T11:00:00.000Z",
+      "version": "1",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "version_0",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "0",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "version_01",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "01",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "version_-1",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "-1",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "version_9223372036854775807",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "9223372036854775807",
+      "failure_code": null
+    },
+    "valid": true
+  },
+  {
+    "kind": "batch",
+    "name": "version_9223372036854775808",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "9223372036854775808",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "batch",
+    "name": "version_9999999999999999999999",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010",
+      "batch_kind": "IMPORT",
+      "status": "PREPARING",
+      "reverses_batch_id": null,
+      "created_by_member_id": null,
+      "created_at": "2026-10-20T11:00:00.000Z",
+      "committed_at": null,
+      "version": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+      "failure_code": null
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_..",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "..",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_../a",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "../a",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_a:b",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "a:b",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_ a",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": " a",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_a\u0000b",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "a\u0000b",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_😀😀😀😀😀",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "name_SYNTHETIC ",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC 😀.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "source",
+    "name": "invalid_format",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "A-B",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "source",
+    "name": "invalid_format",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "-A",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "invalid_format",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "é",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "invalid_parser_name",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": "SYNTHETIC",
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "invalid_period_start",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": "2025-02-29",
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "invalid_detected_currency",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": "brl",
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "source",
+    "name": "invalid_file_hash",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000200",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "file_name": "SYNTHETIC-extrato.ofx",
+      "file_hash": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "format": "OFX",
+      "parser_name": null,
+      "parser_version": null,
+      "detected_currency": null,
+      "period_start": null,
+      "period_end": null,
+      "imported_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": false
+  },
+  {
+    "kind": "effect",
+    "name": "action_CREATE",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "CREATE",
+      "before_revision_id": null,
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "action_UPDATE",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "UPDATE",
+      "before_revision_id": "0199d050-0000-7000-8000-000000000041",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "action_LINK",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "LINK",
+      "before_revision_id": "0199d050-0000-7000-8000-000000000041",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "action_UNLINK",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "UNLINK",
+      "before_revision_id": "0199d050-0000-7000-8000-000000000041",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "action_RESTORE",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "RESTORE",
+      "before_revision_id": "0199d050-0000-7000-8000-000000000041",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "effect",
+    "name": "action_DELETE",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000400",
+      "workspace_id": "0199d050-0000-7000-8000-000000000001",
+      "batch_id": "0199d050-0000-7000-8000-000000000100",
+      "import_item_id": "0199d050-0000-7000-8000-000000000300",
+      "transaction_id": "0199d050-0000-7000-8000-000000000030",
+      "action": "DELETE",
+      "before_revision_id": "0199d050-0000-7000-8000-000000000041",
+      "after_revision_id": "0199d050-0000-7000-8000-000000000040",
+      "created_at": "2026-10-20T11:00:00.000Z"
+    },
+    "valid": true
+  },
+  {
+    "kind": "query",
+    "name": "limit_0",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "account_id": null, "cursor": null, "limit": 0 },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "limit_0",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 0
+    },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "limit_1",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": { "statuses": [], "account_id": null, "cursor": null, "limit": 1 },
+    "valid": true
+  },
+  {
+    "kind": "detail",
+    "name": "limit_1",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 1
+    },
+    "valid": true
+  },
+  {
+    "kind": "query",
+    "name": "limit_100",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": [],
+      "account_id": null,
+      "cursor": null,
+      "limit": 100
+    },
+    "valid": true
+  },
+  {
+    "kind": "detail",
+    "name": "limit_100",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 100
+    },
+    "valid": true
+  },
+  {
+    "kind": "query",
+    "name": "limit_101",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": [],
+      "account_id": null,
+      "cursor": null,
+      "limit": 101
+    },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "limit_101",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 101
+    },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "limit_1.5",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": [],
+      "account_id": null,
+      "cursor": null,
+      "limit": 1.5
+    },
+    "valid": false
+  },
+  {
+    "kind": "detail",
+    "name": "limit_1.5",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-7000-8000-000000000100",
+      "effect_after": null,
+      "effect_limit": 1.5
+    },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "duplicate_status",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": ["FAILED", "FAILED"],
+      "account_id": null,
+      "cursor": null,
+      "limit": 2
+    },
+    "valid": false
+  },
+  {
+    "kind": "query",
+    "name": "cursor",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "statuses": [],
+      "account_id": null,
+      "cursor": {
+        "id": "0199d050-0000-7000-8000-000000000100",
+        "created_at": "2026-10-20T11:00:00.000Z"
+      },
+      "limit": 2
+    },
+    "valid": true
+  },
+  {
+    "kind": "prepare",
+    "name": "v4",
+    "workspace_id": "0199d050-0000-7000-8000-000000000001",
+    "batch_id": "0199d050-0000-7000-8000-000000000100",
+    "input": {
+      "id": "0199d050-0000-4000-8000-000000000100",
+      "target_account_id": "0199d050-0000-7000-8000-000000000010"
+    },
+    "valid": false
+  }
+]

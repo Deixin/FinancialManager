@@ -16,6 +16,11 @@ pub mod counterparty_probe;
 #[cfg(all(test, feature = "counterparties-smoke"))]
 mod counterparty_tests;
 pub mod identity;
+pub mod import_model;
+#[cfg(feature = "imports-smoke")]
+pub mod import_probe;
+#[cfg(all(test, feature = "imports-smoke"))]
+mod import_tests;
 pub mod keys;
 pub mod local_accounts;
 pub mod local_allocations;
@@ -25,6 +30,7 @@ pub mod local_categories;
 pub mod local_classification;
 pub mod local_classification_filters;
 pub mod local_counterparties;
+pub mod local_imports;
 pub mod local_lock;
 pub mod local_movements;
 pub mod local_restore;
@@ -135,6 +141,12 @@ pub enum LocalError {
     ClassificationAmountUnsupported,
     ClassificationDeleted,
     MovementLimit,
+    InvalidImportRequest,
+    InvalidImportState,
+    ImportLimit,
+    ImportNotFound,
+    ImportBaseConflict,
+    ImportAccountUnavailable,
 }
 impl From<std::io::Error> for LocalError {
     fn from(_: std::io::Error) -> Self {

@@ -175,7 +175,7 @@ test('category product handler exposes exactly the 25 narrow capability commands
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 32);
+  assert.equal(capability.permissions.length, 35);
   const handler = readFileSync('apps/desktop/src-tauri/src/commands.rs', 'utf8')
     .split('pub fn production_builder()')[1]
     .match(/generate_handler!\[([\s\S]*?)\]/)[1]
@@ -195,7 +195,7 @@ const evidence = (kind) =>
     readFileSync(
       'docs/quality/evidence/us-044-desktop-categories-' +
         kind +
-        '-2026-10-20-us050-core.json',
+        '-2026-10-20-us050-desktop.json',
     ),
   );
 test('category Desktop evidence requires all UI SQLCipher interruption portability and cleanup gates', () => {

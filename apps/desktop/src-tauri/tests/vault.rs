@@ -214,7 +214,7 @@ fn complete_fixture_is_preserved_by_native_upgrade_and_key_is_absent_from_files(
     let before = probe::snapshot(&db).unwrap();
     assert!(probe::version(&db).unwrap() == 1);
     probe::migrate(&mut db).unwrap();
-    assert!(probe::version(&db).unwrap() == 2);
+    assert!(probe::version(&db).unwrap() == 3);
     assert!(probe::snapshot(&db).unwrap() == before);
     let (id, _) = installation.probe_details();
     let secret = keys.get(id, probe::dataset_workspace()).unwrap();

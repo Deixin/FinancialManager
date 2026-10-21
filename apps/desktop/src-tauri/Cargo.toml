@@ -14,6 +14,7 @@ vault-smoke = ["rusqlite/trace"]
 lock-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 backup-smoke = ["tauri/dynamic-acl", "vault-smoke"]
 restore-smoke = ["backup-smoke"]
+imports-smoke = ["restore-smoke"]
 manager-smoke = ["workspace-smoke", "vault-smoke"]
 accounts-smoke = ["workspace-smoke", "restore-smoke"]
 movements-smoke = ["accounts-smoke"]
@@ -209,6 +210,16 @@ required-features=["allocations-smoke"]
 name="counterparties-probe"
 path="src/bin/counterparties-probe.rs"
 required-features=["counterparties-smoke"]
+
+[[bin]]
+name="imports-probe"
+path="src/bin/imports-probe.rs"
+required-features=["imports-smoke"]
+
+[[bin]]
+name="imports-smoke"
+path="src/bin/imports-smoke.rs"
+required-features=["imports-smoke"]
 
 [[bin]]
 name="counterparties-smoke"

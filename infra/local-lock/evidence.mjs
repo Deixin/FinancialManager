@@ -66,6 +66,9 @@ export const permissions = Object.freeze([
   'allow-read-local-counterparties',
   'allow-apply-local-counterparty-change',
   'allow-apply-local-counterparty-association',
+  'allow-list-local-imports',
+  'allow-read-local-import',
+  'allow-prepare-local-import',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',

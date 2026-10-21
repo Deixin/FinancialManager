@@ -118,7 +118,10 @@ pub(crate) fn record_counts(db: &Connection) -> Result<BTreeMap<String, String>>
     Ok(counts)
 }
 pub(crate) fn validate_snapshot(db: &Connection, manifest: &BackupManifest) -> Result<()> {
-    migrations::verify_current(db)?;
+    migrations::verify_version(db, manifest.schema_version)?;
+    if manifest.schema_version >= 3 {
+        crate::local_imports::validate_ledger(db, &manifest.workspace_id)?;
+    }
     if db.query_row("PRAGMA integrity_check", [], |r| r.get::<_, String>(0))? != "ok"
         || db.query_row("PRAGMA user_version", [], |r| r.get::<_, i64>(0))?
             != manifest.schema_version
@@ -287,7 +290,7 @@ fn decode(bytes: &[u8], password: &str) -> Result<VerifiedBackup> {
     let snapshot = Zeroizing::new(payload[4 + json_len + 32..].to_vec());
     if snapshot.len() > MAX_SNAPSHOT
         || manifest.format_version != 1
-        || manifest.schema_version != migrations::current_version()
+        || !(1..=migrations::current_version()).contains(&manifest.schema_version)
         || identity::resource_id(&manifest.workspace_id).is_err()
         || identity::utc_instant(&manifest.created_at).is_err()
         || manifest.app_version.is_empty()

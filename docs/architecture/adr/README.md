@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0069 — Central de importações no Desktop](0069-central-de-importacoes-no-desktop.md): três comandos específicos, paridade Rust, adoção nativa da v3 e restauração com remapeamento completo do ledger; backups antigos autenticados migram somente em staging.
+
 [0068 — Central compartilhada de importações](0068-central-compartilhada-de-importacoes.md): preparação idempotente, leitura consistente por lote, contas autorizadas e ledger v3 opt-in com downgrade vazio. Ativação Desktop junto de backup/restauração no próximo incremento.
 
 [0067 — Contrapartes no Desktop](0067-contrapartes-no-desktop.md): cadastro e associação explícita ao SQLCipher, projeção mínima na transação, paridade Rust/TypeScript, grupos completos e intenções congeladas. Próximo incremento US-050.

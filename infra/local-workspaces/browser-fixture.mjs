@@ -77,6 +77,21 @@ export function installSyntheticWorkspaceBridge(options = {}) {
         if (reply.error) throw reply.error;
         return reply.value;
       }
+      if (
+        [
+          'list_local_imports',
+          'read_local_import',
+          'prepare_local_import',
+        ].includes(command)
+      ) {
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (command === 'prepare_local_import' && state.restorePrepared)
+          throw 'REQUEST_CONFLICT';
+        const reply = await globalThis.__syntheticImportHost(command, args);
+        if (state.pin && state.locked) throw 'LOCAL_LOCKED';
+        if (reply.error) throw reply.error;
+        return reply.value;
+      }
       if (command === 'local_lock_status') return status();
       if (command === 'lock_local_session') {
         state.generation++;
@@ -196,6 +211,10 @@ export function installSyntheticWorkspaceBridge(options = {}) {
             transaction_allocation: '3',
             transaction_tag: '1',
             transaction_revision: '1',
+            import_batch: '0',
+            import_source: '0',
+            import_item: '0',
+            import_effect: '0',
           },
         };
       }

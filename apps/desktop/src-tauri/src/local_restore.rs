@@ -19,7 +19,7 @@ use std::{
 use uuid::Uuid;
 use zeroize::Zeroize;
 
-pub const TABLES: [&str; 12] = [
+pub const TABLES: [&str; 16] = [
     "workspace",
     "financial_account",
     "balance_reference",
@@ -32,6 +32,10 @@ pub const TABLES: [&str; 12] = [
     "transaction_allocation",
     "transaction_tag",
     "transaction_revision",
+    "import_batch",
+    "import_source",
+    "import_item",
+    "import_effect",
 ];
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -293,6 +297,7 @@ fn copy_records(
         }
     }
     let tx = target.transaction_with_behavior(rusqlite::TransactionBehavior::Immediate)?;
+    tx.execute_batch("PRAGMA defer_foreign_keys=ON")?;
     for table in TABLES {
         let mut q = source.prepare(&format!(
             "SELECT * FROM {} ORDER BY rowid",
@@ -402,8 +407,11 @@ pub fn prepare(installation: &Installation, backup: VerifiedBackup) -> Result<Pr
         f.write_all(&backup.snapshot)?;
         f.sync_all()?;
         drop(f);
-        let source = open_database(&input, &backup.snapshot_key)?;
+        let mut source = open_database(&input, &backup.snapshot_key)?;
         local_backup::validate_snapshot(&source, &backup.manifest)?;
+        // Authenticate and verify the old schema before upgrading only the staging copy.
+        migrations::migrate(&mut source)?;
+        let normalized_counts = local_backup::record_counts(&source)?;
         let (source_name, purpose): (String, String) = source.query_row(
             "SELECT display_name,purpose FROM workspace WHERE id=?",
             [&backup.manifest.workspace_id],
@@ -457,6 +465,8 @@ pub fn prepare(installation: &Installation, backup: VerifiedBackup) -> Result<Pr
         target.pragma_update(None, "user_version", migrations::current_version())?;
         let mut expected = backup.manifest.clone();
         expected.workspace_id = id.to_string();
+        expected.schema_version = migrations::current_version();
+        expected.record_counts = normalized_counts.clone();
         local_backup::validate_snapshot(&target, &expected)?;
         drop(target);
         drop(source);
@@ -479,16 +489,14 @@ pub fn prepare(installation: &Installation, backup: VerifiedBackup) -> Result<Pr
                 display_name: name,
                 purpose,
                 backup_created_at: backup.manifest.created_at.clone(),
-                record_counts: backup
-                    .manifest
-                    .record_counts
+                record_counts: normalized_counts
                     .iter()
                     .filter(|(t, _)| TABLES.contains(&t.as_str()))
                     .map(|(k, v)| (k.clone(), v.clone()))
                     .collect(),
             },
             digest: digest(&path)?,
-            counts: backup.manifest.record_counts.clone(),
+            counts: normalized_counts,
         })
     })();
     if result.is_err() {

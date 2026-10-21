@@ -332,7 +332,7 @@ test('Native classification is a specific 28th command and composes the existing
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 32);
+  assert.equal(capability.permissions.length, 35);
   assert.equal(
     capability.permissions[27],
     'allow-apply-local-classification-change',
@@ -364,7 +364,7 @@ test('Desktop classification evidence requires every actual browser Windows faul
       readFileSync(
         'docs/quality/evidence/us-045-desktop-classification-' +
           kind +
-          '-2026-10-20-us050-core.json',
+          '-2026-10-20-us050-desktop.json',
       ),
     );
     assert.equal(

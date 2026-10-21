@@ -41,8 +41,8 @@ fn unchanged(root: &Path) -> std::result::Result<(), Box<dyn std::error::Error>>
 fn inspect(root: &Path, path: &Path) -> std::result::Result<(), Box<dyn std::error::Error>> {
     // This branch never opens the source key store/database. Only the recovery secret is used.
     let backup = local_backup::read_verified(path, PASSWORD).map_err(|_| "PACKAGE_FAILED")?;
-    if backup.manifest.schema_version != 2
-        || backup.manifest.record_counts.len() != 15
+    if backup.manifest.schema_version != 3
+        || backup.manifest.record_counts.len() != 19
         || backup.manifest.format_version != 1
     {
         return Err("MANIFEST_FAILED".into());

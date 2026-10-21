@@ -15,6 +15,10 @@ const labels: Record<(typeof restoreTables)[number], string> = {
   transaction_allocation: 'Rateios',
   transaction_tag: 'Vínculos de marcadores',
   transaction_revision: 'Revisões históricas',
+  import_batch: 'Lotes de importação',
+  import_source: 'Fontes de importação',
+  import_item: 'Itens de importação',
+  import_effect: 'Efeitos de importação',
 };
 export function LocalRestoreFlow({
   preview,

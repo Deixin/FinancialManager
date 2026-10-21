@@ -1,3 +1,4 @@
+import { LocalImportsFlow } from './local-imports-flow.js';
 import { LocalCounterpartiesFlow } from './local-counterparties-flow.js';
 import { LocalTaxonomyFlow } from './local-taxonomy-flow.js';
 import { LocalCategoriesFlow } from './local-categories-flow.js';
@@ -42,7 +43,7 @@ export function LocalWorkspaceFlow({
     mode: 'list',
   });
   const [route, setRoute] = useState<
-    'overview' | 'accounts' | 'movements' | 'settings'
+    'overview' | 'accounts' | 'movements' | 'imports' | 'settings'
   >('overview');
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const [counterpartiesOpen, setCounterpartiesOpen] = useState(false);
@@ -222,7 +223,13 @@ export function LocalWorkspaceFlow({
           },
           route,
           state: 'ready',
-          sections: ['overview', 'accounts', 'movements', 'settings'],
+          sections: [
+            'overview',
+            'accounts',
+            'movements',
+            'imports',
+            'settings',
+          ],
         })}
         workspaces={summaries}
         workspaceActions={
@@ -242,7 +249,10 @@ export function LocalWorkspaceFlow({
           setTaxonomyOpen(false);
           setMovementEntry({ mode: 'list' });
           setRoute(
-            next === 'settings' || next === 'accounts' || next === 'movements'
+            next === 'settings' ||
+              next === 'accounts' ||
+              next === 'movements' ||
+              next === 'imports'
               ? next
               : 'overview',
           );
@@ -260,11 +270,23 @@ export function LocalWorkspaceFlow({
               ':' +
               movementEntry.mode +
               ':' +
-              (movementEntry.accountId ?? '')
+              (movementEntry.accountId ?? '') +
+              ':' +
+              (movementEntry.transactionId ?? '')
             }
             workspaceId={current.id}
             entry={movementEntry}
             onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+          />
+        ) : route === 'imports' ? (
+          <LocalImportsFlow
+            key={current.id}
+            workspaceId={current.id}
+            onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}
+            onMovement={(transactionId) => {
+              setMovementEntry({ mode: 'list', transactionId });
+              setRoute('movements');
+            }}
           />
         ) : route === 'accounts' ? (
           <LocalAccountsFlow
