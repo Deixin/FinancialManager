@@ -202,11 +202,11 @@ test('Desktop taxonomy exact CREATE replay accepts a lost acknowledgement withou
     { code: 'INVALID_RESPONSE' },
   );
 });
-test('Desktop taxonomy production exposes exactly thirty-two narrow commands and excludes default probes', () => {
+test('Desktop taxonomy production exposes exactly thirty-six narrow commands and excludes default probes', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 35);
+  assert.equal(capability.permissions.length, 36);
   const handler = readFileSync('apps/desktop/src-tauri/src/commands.rs', 'utf8')
     .split('pub fn production_builder()')[1]
     .match(/generate_handler!\[([\s\S]*?)\]/)[1]

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import type { FileTarget } from './local-import-file.js';
 import { createCryptoIdentity } from '@financial-manager/contracts';
 import {
   defaultImportQuery,
@@ -25,10 +26,12 @@ export function LocalImportsFlow({
   workspaceId,
   onLocked,
   onMovement,
+  onInspectImport,
 }: {
   workspaceId: string;
   onLocked: () => void;
   onMovement: (id: string) => void;
+  onInspectImport?: (target: FileTarget) => void;
 }) {
   const [gateway] = useState(createLocalImportsGateway),
     [accountsGateway] = useState(createLocalAccountsGateway);
@@ -210,6 +213,22 @@ export function LocalImportsFlow({
             </button>
           )}
           <h3>Fontes</h3>
+          {onInspectImport &&
+            detail.batch.batch_kind === 'IMPORT' &&
+            detail.batch.status === 'PREPARING' && (
+              <button
+                type="button"
+                disabled={busy}
+                onClick={() =>
+                  onInspectImport({
+                    workspace_id: workspaceId,
+                    batch_id: detail.batch.id,
+                  })
+                }
+              >
+                Selecionar arquivo para validar
+              </button>
+            )}
           {!detail.sources.length ? (
             <p>Arquivo ainda não selecionado.</p>
           ) : (
@@ -377,8 +396,9 @@ export function LocalImportsFlow({
           )}
           <h3>Preparar importação</h3>
           <p>
-            Escolha a conta de destino. A seleção e a revisão de arquivos serão
-            disponibilizadas na próxima etapa.
+            Escolha a conta de destino para preparar um lote e validar um
+            arquivo. A leitura dos lançamentos e a revisão serão
+            disponibilizadas nas próximas etapas.
           </p>
           <label htmlFor="import-target-account">Conta de destino</label>
           <select

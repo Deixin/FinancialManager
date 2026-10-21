@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0072 — Validação defensiva no Desktop e Rust](0072-validacao-defensiva-no-desktop-e-rust.md): seleção opaca por workspace/lote, desbloqueio antes da leitura, scanners equivalentes, leitura limitada e resposta sem conteúdo/caminho.
+
 [0071 — Validação defensiva compartilhada de arquivos](0071-validacao-defensiva-compartilhada-de-arquivos.md): gate portátil CSV/OFX, limites e erros seguros, corpus hostil e recusa de contêineres/PDF/XML fiscal até leitores limitados.
 
 [0070 — Validação incremental e evidências imutáveis](0070-validacao-incremental-e-evidencias-imutaveis.md): catálogo único, fontes funcionais, guardas críticos, retomada e gate final obrigatório.

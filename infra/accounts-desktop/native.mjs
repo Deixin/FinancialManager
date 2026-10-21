@@ -144,7 +144,7 @@ try {
       ).permissions,
       permissions,
     );
-    assert.equal(permissions.length, 35);
+    assert.equal(permissions.length, 36);
     // Tauri retains generated permission descriptions across feature builds. Those
     // descriptions grant nothing: verify the actual production handler and grants.
     const handler = readFileSync(path.join(crate, 'src/commands.rs'), 'utf8')

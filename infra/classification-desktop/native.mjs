@@ -145,7 +145,7 @@ try {
     );
   });
   step('thirty_two_permissions_real_handler_and_no_probe', () => {
-    assert.equal(permissions.length, 35);
+    assert.equal(permissions.length, 36);
     assert.deepEqual(
       JSON.parse(readFileSync(path.join(crate, 'capabilities/entry-main.json')))
         .permissions,

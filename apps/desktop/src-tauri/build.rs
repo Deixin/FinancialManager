@@ -53,6 +53,7 @@ fn main() {
     let mut commands = COMMANDS.to_vec();
     if cfg!(feature = "imports-smoke") {
         commands.push("finish_imports_smoke");
+        commands.push("finish_file_smoke");
     }
     commands.extend([
         "configure_local_hello",
@@ -82,6 +83,7 @@ fn main() {
         "list_local_imports",
         "read_local_import",
         "prepare_local_import",
+        "local_import_file",
     ]);
     if cfg!(feature = "lock-smoke") {
         commands.push("finish_lock_smoke");

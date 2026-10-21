@@ -1,4 +1,4 @@
-name: Desktop import central
+name: Desktop import central and defensive files
 on:
   workflow_dispatch:
   push:
@@ -6,6 +6,9 @@ on:
     paths:
       - 'apps/desktop/**'
       - 'infra/imports-desktop/**'
+      - 'infra/import-files-desktop/**'
+      - 'infra/import-file-validation/**'
+      - 'packages/importers/src/**'
       - '.github/workflows/desktop-imports.yml'
 jobs:
   browser:
@@ -25,5 +28,5 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: us050-desktop-browser
+          name: us050-us051-desktop-browser
           path: .tools/us050-desktop-imports/browser.json

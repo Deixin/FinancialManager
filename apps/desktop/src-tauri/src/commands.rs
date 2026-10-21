@@ -31,6 +31,7 @@ pub struct LocalState {
     backup_active: Arc<AtomicBool>,
     backup_destination: Arc<dyn BackupDestination>,
     restore_source: Arc<dyn RestoreSource>,
+    import_files: crate::local_import_file::Controller,
 }
 pub struct BackupJob {
     sealed: SealedBackup,
@@ -112,6 +113,7 @@ impl LocalState {
             backup_active: Arc::new(AtomicBool::new(false)),
             backup_destination,
             restore_source: Arc::new(WindowsRestoreSource),
+            import_files: crate::local_import_file::Controller::default(),
         }
     }
     pub fn with_restore_source(
@@ -125,10 +127,14 @@ impl LocalState {
         state
     }
     pub fn force_lock(&self) {
+        self.import_files.invalidate();
         self.generation.fetch_add(1, Ordering::SeqCst);
         self.on_focus_lost();
     }
     pub fn on_focus_lost(&self) {
+        if !self.hello_pending.load(Ordering::SeqCst) {
+            self.import_files.blur();
+        }
         // An owned OS consent prompt also blurs the main window. It starts locked;
         // only fresh OS verification plus foreground ownership may reopen it.
         self.force_locked.store(true, Ordering::SeqCst);
@@ -184,6 +190,7 @@ impl LocalState {
         })
     }
     pub fn open(&self, id: &str) -> Result<Workspace> {
+        self.import_files.invalidate();
         self.with(|i| i.open_workspace(id))
     }
     pub fn read_accounts(
@@ -551,7 +558,7 @@ impl LocalState {
         self.status()
     }
     pub fn unlock(&self, input: PinInput) -> Result<LockStatus> {
-        self.force_lock();
+        self.prepare_file_resume_unlock();
         self.access(false, |s| s.privacy.unlock(&input, LocalLock::now()?))?;
         self.status()
     }
@@ -606,7 +613,11 @@ impl LocalState {
             }
         }
         let _pending = Pending(&self.hello_pending);
-        self.force_lock();
+        if enabling.is_none() {
+            self.prepare_file_resume_unlock();
+        } else {
+            self.force_lock();
+        }
         let generation = self.generation.load(Ordering::SeqCst);
         let is_enabling = enabling.is_some();
         self.access(false, |s| {
@@ -1028,7 +1039,8 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             apply_local_counterparty_association,
             list_local_imports,
             read_local_import,
-            prepare_local_import
+            prepare_local_import,
+            local_import_file
         ])
         .on_window_event(|window, event| {
             if matches!(event, tauri::WindowEvent::Focused(false))
@@ -1049,6 +1061,228 @@ pub fn production_builder() -> tauri::Builder<tauri::Wry> {
             }
             Ok(())
         })
+}
+
+impl LocalState {
+    pub fn with_import_source(mut self, source: Arc<dyn RestoreSource>) -> Self {
+        self.import_files = crate::local_import_file::Controller::with_source(source);
+        self
+    }
+    fn prepare_file_resume_unlock(&self) {
+        // Only an opaque, expiring OS selection survives fresh authentication.
+        // Financial access and every older job remain closed.
+        self.generation.fetch_add(1, Ordering::SeqCst);
+        self.force_locked.store(true, Ordering::SeqCst);
+    }
+    fn require_import_destination(s: &Session, workspace: &str, batch: &str) -> Result<()> {
+        identity_for_import(workspace)?;
+        identity_for_import(batch)?;
+        let detail = s.installation.read_import(
+            workspace,
+            serde_json::json!({"id":batch,"effect_after":null,"effect_limit":1}),
+        )?;
+        if detail["batch"]["batch_kind"] != "IMPORT"
+            || detail["batch"]["status"] != "PREPARING"
+            || s.restore.prepared.is_some()
+        {
+            return Err(LocalError::InvalidImportRequest);
+        }
+        let account = detail["batch"]["target_account_id"]
+            .as_str()
+            .ok_or(LocalError::InvalidImportRequest)?;
+        if !s
+            .installation
+            .read_accounts(workspace)?
+            .accounts
+            .iter()
+            .any(|a| a.account.id == account && a.account.status == "ACTIVE")
+        {
+            return Err(LocalError::ImportAccountUnavailable);
+        }
+        Ok(())
+    }
+    pub fn begin_import_file(
+        &self,
+        workspace: &str,
+        batch: &str,
+    ) -> Result<crate::local_import_file::Job> {
+        self.access(true, |s| {
+            Self::require_import_destination(s, workspace, batch)?;
+            self.import_files.begin(
+                workspace,
+                batch,
+                self.generation.load(Ordering::SeqCst),
+                s.installation.id(),
+                self.backup_active.clone(),
+            )
+        })
+    }
+    pub fn choose_import_file(
+        &self,
+        job: &crate::local_import_file::Job,
+        window: isize,
+    ) -> Result<Option<PathBuf>> {
+        self.access(true, |s| {
+            if !self.import_files.valid(job)
+                || self.generation.load(Ordering::SeqCst) != job.generation
+                || s.installation.id() != job.installation
+            {
+                return Err(LocalError::LocalLocked);
+            }
+            Self::require_import_destination(s, &job.workspace, &job.batch)
+        })?;
+        self.on_focus_lost();
+        self.import_files.choose(window)
+    }
+    pub fn finish_import_file_selection(
+        &self,
+        job: crate::local_import_file::Job,
+        path: Option<PathBuf>,
+    ) -> Result<serde_json::Value> {
+        self.access(false, |s| {
+            if self.generation.load(Ordering::SeqCst) != job.generation
+                || s.installation.id() != job.installation
+            {
+                return Err(LocalError::LocalLocked);
+            }
+            self.import_files.finish(job, path)
+        })
+    }
+    pub fn cancel_import_file(&self, workspace: &str) -> Result<()> {
+        identity_for_import(workspace)?;
+        self.import_files.cancel_for(workspace)
+    }
+    pub fn validate_import_file(
+        &self,
+        workspace: &str,
+        batch: &str,
+        selection: &str,
+        encoding: &str,
+        delimiter: Option<&str>,
+    ) -> Result<serde_json::Value> {
+        if !["utf-8", "windows-1252"].contains(&encoding)
+            || delimiter.is_some_and(|s| ![",", ";", "\t"].contains(&s))
+        {
+            return Err(LocalError::InvalidImportRequest);
+        }
+        identity_for_import(selection)?;
+        let generation = self.generation.load(Ordering::SeqCst);
+        let (path, epoch) = self.access(true, |s| {
+            Self::require_import_destination(s, workspace, batch)?;
+            self.import_files.take(workspace, batch, selection)
+        })?;
+        let result = crate::local_import_file::read_file(&path, encoding, delimiter, || {
+            self.import_files.current(epoch) && self.generation.load(Ordering::SeqCst) == generation
+        });
+        self.access(true, |s| {
+            if !self.import_files.current(epoch)
+                || self.generation.load(Ordering::SeqCst) != generation
+            {
+                return Err(LocalError::LocalLocked);
+            }
+            Self::require_import_destination(s, workspace, batch)?;
+            Ok(serde_json::json!({"workspace_id":workspace,"batch_id":batch,"selection_id":selection,"result":result}))
+        })
+    }
+}
+fn identity_for_import(id: &str) -> Result<()> {
+    crate::identity::resource_id(id)
+        .map(|_| ())
+        .map_err(|_| LocalError::InvalidImportRequest)
+}
+#[tauri::command]
+pub async fn local_import_file(
+    state: State<'_, Arc<LocalState>>,
+    window: tauri::WebviewWindow,
+    workspace_id: String,
+    input: serde_json::Value,
+) -> Result<serde_json::Value> {
+    use crate::local_import_file::request;
+    identity_for_import(&workspace_id)?;
+    let state = state.inner().clone();
+    match input["action"].as_str() {
+        Some("CANCEL") => {
+            request(&input, "CANCEL", &["action"])?;
+            state.cancel_import_file(&workspace_id)?;
+            Ok(serde_json::json!({"cancelled":true}))
+        }
+        Some("VALIDATE") => {
+            request(
+                &input,
+                "VALIDATE",
+                &[
+                    "action",
+                    "batch_id",
+                    "selection_id",
+                    "encoding",
+                    "delimiter",
+                ],
+            )?;
+            let batch = input["batch_id"]
+                .as_str()
+                .ok_or(LocalError::InvalidImportRequest)?
+                .to_owned();
+            let selection = input["selection_id"]
+                .as_str()
+                .ok_or(LocalError::InvalidImportRequest)?
+                .to_owned();
+            let encoding = input["encoding"]
+                .as_str()
+                .ok_or(LocalError::InvalidImportRequest)?
+                .to_owned();
+            if !input["delimiter"].is_null() && !input["delimiter"].is_string() {
+                return Err(LocalError::InvalidImportRequest);
+            }
+            let delimiter = input["delimiter"].as_str().map(str::to_owned);
+            tauri::async_runtime::spawn_blocking(move || {
+                state.validate_import_file(
+                    &workspace_id,
+                    &batch,
+                    &selection,
+                    &encoding,
+                    delimiter.as_deref(),
+                )
+            })
+            .await
+            .map_err(|_| LocalError::StorageUnavailable)?
+        }
+        Some("SELECT") => {
+            request(&input, "SELECT", &["action", "batch_id"])?;
+            let batch = input["batch_id"]
+                .as_str()
+                .ok_or(LocalError::InvalidImportRequest)?
+                .to_owned();
+            let worker = state.clone();
+            let job = tauri::async_runtime::spawn_blocking(move || {
+                worker.begin_import_file(&workspace_id, &batch)
+            })
+            .await
+            .map_err(|_| LocalError::StorageUnavailable)??;
+            #[cfg(windows)]
+            let handle = window.hwnd().map_err(|_| LocalError::StorageUnavailable)?.0 as isize;
+            #[cfg(not(windows))]
+            let handle = 0;
+            let (send, receive) = std::sync::mpsc::channel();
+            let chooser = state.clone();
+            window
+                .run_on_main_thread(move || {
+                    let result = chooser.choose_import_file(&job, handle);
+                    let _ = send.send((job, result));
+                })
+                .map_err(|_| LocalError::StorageUnavailable)?;
+            let (job, path) = tauri::async_runtime::spawn_blocking(move || receive.recv())
+                .await
+                .map_err(|_| LocalError::StorageUnavailable)?
+                .map_err(|_| LocalError::StorageUnavailable)?;
+            let path = path?;
+            tauri::async_runtime::spawn_blocking(move || {
+                state.finish_import_file_selection(job, path)
+            })
+            .await
+            .map_err(|_| LocalError::StorageUnavailable)?
+        }
+        _ => Err(LocalError::InvalidImportRequest),
+    }
 }
 #[tauri::command]
 pub async fn read_local_accounts(

@@ -69,6 +69,7 @@ export const permissions = Object.freeze([
   'allow-list-local-imports',
   'allow-read-local-import',
   'allow-prepare-local-import',
+  'allow-local-import-file',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',

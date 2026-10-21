@@ -177,7 +177,7 @@ test('Desktop imports share 102 real policy vectors and expose only 35 narrow co
   const p = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   ).permissions;
-  assert.equal(p.length, 35);
+  assert.equal(p.length, 36);
   assert.ok(p.includes('allow-prepare-local-import'));
   assert.ok(!p.some((k) => /sql|filesystem|finish-imports/.test(k)));
 });

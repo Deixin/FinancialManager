@@ -19,6 +19,7 @@ import {
 import { defaultImportQuery } from '../../packages/domain/dist/imports.js';
 import { decodeMovementsSnapshot } from '../../apps/desktop/dist/local-movements.js';
 import { verifyNativeParity } from './parity.mjs';
+import { verifyFileParity } from '../import-files-desktop/parity.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url)),
   directory = path.join(root, '.tools/us050-desktop-imports'),
   crate = path.join(root, 'apps/desktop/src-tauri'),
@@ -133,7 +134,7 @@ try {
     const p = JSON.parse(
       readFileSync(path.join(crate, 'capabilities/entry-main.json')),
     ).permissions;
-    assert.equal(p.length, 35);
+    assert.equal(p.length, 36);
     for (const c of [
       'list_local_imports',
       'read_local_import',
@@ -202,6 +203,74 @@ try {
     delete after.balance.read_at;
     assert.deepEqual(after, financialBefore);
   });
+  step('file_gate_seven_native_tests_and_shared_rust_parity', () => {
+    run(
+      process.execPath,
+      ['infra/import-files-desktop/generate.mjs', '--check'],
+      root,
+    );
+    const tests = run('cargo', [
+      'test',
+      '--locked',
+      '--lib',
+      '--features',
+      'imports-smoke',
+      'file_tests',
+      '--',
+      '--test-threads=1',
+    ]);
+    assert.match(tests.stdout, /7 passed; 0 failed; 0 ignored/);
+    run('cargo', [
+      'build',
+      '--locked',
+      '--features',
+      'imports-smoke',
+      '--bin',
+      'file-probe',
+      '--bin',
+      'file-smoke',
+    ]);
+    const count = verifyFileParity(
+      path.join(target, 'debug/file-probe.exe'),
+      own,
+    );
+    assert.ok(count >= 357);
+    report.versions.file_parity_vectors = String(count);
+    const binary = readFileSync(
+      path.join(target, 'debug/financial-manager.exe'),
+    );
+    // Tauri embeds permission metadata for generated smoke commands even when
+    // their handlers are absent. Check executable-only canaries with a positive
+    // control; the production handler/capability equality is checked above.
+    const smokeBinary = readFileSync(path.join(target, 'debug/file-smoke.exe'));
+    for (const marker of ['FILE_SMOKE_FAILED', 'FIN-002 synthetic driver.']) {
+      assert.ok(
+        ['utf8', 'utf16le'].some((encoding) =>
+          smokeBinary.includes(Buffer.from(marker, encoding)),
+        ),
+      );
+      for (const encoding of ['utf8', 'utf16le'])
+        assert.ok(!binary.includes(Buffer.from(marker, encoding)));
+    }
+  });
+  step('file_webview_real_ipc_selection_unlock_and_validation', () => {
+    const selected = path.join(own, 'SYNTHETIC-selected.csv'),
+      output = path.join(own, 'file-webview.json');
+    writeFileSync(selected, 'a,b\n1,SYNTHETIC private row');
+    const original = readFileSync(selected);
+    run(
+      path.join(target, 'debug/file-smoke.exe'),
+      [output, path.join(own, 'file-profile'), store, selected],
+      root,
+    );
+    const result = JSON.parse(readFileSync(output));
+    assert.equal(result.passed, true);
+    assert.equal(Object.values(result.checks).filter(Boolean).length, 5);
+    assert.deepEqual(readFileSync(selected), original);
+    const after = probe('movements').snapshot;
+    delete after.balance.read_at;
+    assert.deepEqual(after, financialBefore);
+  });
   step('portable_restore_without_source_credentials', () => {
     const before = probe('read').detail;
     probe('backup');
@@ -236,6 +305,11 @@ try {
     writeFileSync(
       path.join(directory, 'webview-diagnostic.json'),
       readFileSync(path.join(own, 'webview.json')),
+    );
+  if (own && existsSync(path.join(own, 'file-webview.json')))
+    writeFileSync(
+      path.join(directory, 'file-webview-diagnostic.json'),
+      readFileSync(path.join(own, 'file-webview.json')),
     );
   let clean = true;
   for (const s of stores) {

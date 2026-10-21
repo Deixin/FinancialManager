@@ -94,7 +94,9 @@ try {
       '--features',
       'workspace-smoke',
     ]);
-    assert.match(tests.stdout, /6 passed; 0 failed; 0 ignored/);
+    // Historical gate name is preserved: six workspace tests plus the shared
+    // deadline and expiring-selection regressions introduced by US-051.
+    assert.match(tests.stdout, /8 passed; 0 failed; 0 ignored/);
     run('cargo', ['build', '--locked', '--bin', 'financial-manager']);
     run('cargo', [
       'build',
@@ -151,6 +153,7 @@ try {
         'allow-list-local-imports',
         'allow-read-local-import',
         'allow-prepare-local-import',
+        'allow-local-import-file',
       ],
     );
     assert.equal(

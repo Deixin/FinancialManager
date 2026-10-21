@@ -1,6 +1,6 @@
 # US-051 — Barreira compartilhada de arquivos
 
-Este incremento implementa a validação estrutural em `@financial-manager/importers`, conforme [ADR-0071](../architecture/adr/0071-validacao-defensiva-compartilhada-de-arquivos.md). A história permanece em andamento até integrar Desktop e paridade Rust. A tela de importações atual continua preparando lotes sem selecionar arquivos.
+Este incremento implementa a validação estrutural em `@financial-manager/importers`, conforme [ADR-0071](../architecture/adr/0071-validacao-defensiva-compartilhada-de-arquivos.md). A integração de seleção/leitura Desktop e paridade Rust está descrita na [US-051 Desktop](desktop-import-files.md) e no [ADR-0072](../architecture/adr/0072-validacao-defensiva-no-desktop-e-rust.md). Os resultados abaixo preservam a entrega compartilhada anterior.
 
 `validateImportFile({ file_name, mime, encoding, delimiter, bytes }, signal?)` devolve metadados congelados ou `ImportFileError` com código fixo. Encoding aceita `utf-8` ou `windows-1252`; CSV exige delimitador `,`, `;` ou tab, OFX exige `null`. Não há detecção silenciosa de encoding/delimitador nem garantia semântica baseada na extensão/MIME.
 
@@ -27,6 +27,6 @@ Em Windows com o browser já instalado pelo projeto, use `PLAYWRIGHT_BROWSERS_PA
 
 O corpus FIN-002 é sintético e gerado em memória, incluindo texto com aparência de fórmula, assinatura binária disfarçada, XXE local/remoto, entidades recursivas, truncamento, limites exatos/excedidos, UTF-8 inválido, MIME/encoding divergentes e cancelamento/prazo determinísticos. O subprocesso Node tem heap limitado a 128 MiB, prazo externo de 35 segundos e gate de RSS de pico até 256 MiB. Chromium executa o mesmo corpus, tem rede interceptada e verifica armazenamento vazio; sua métrica de heap é observada ao final, não um limite de memória do processo do browser. Oráculos `csv-parse` e `sax` são os já fixados no spike, usados somente nos testes deste gate.
 
-As evidências comprovam a biblioteca e o protocolo nos ambientes registrados. Seleção nativa, limite de leitura de disco, processamento fora da UI, validação Rust, layouts bancários reais, parsers financeiros, cloud/Mobile e homologação humana permanecem pendentes.
+As evidências desta entrega compartilhada comprovam a biblioteca e seu protocolo nos ambientes registrados. A integração Desktop/Rust possui gates próprios. Layouts bancários reais, parsers financeiros, cloud/Mobile e homologação humana permanecem pendentes.
 
 Resultado local em 2026-10-21: `pnpm check` aprovado com 523 testes, sem falhas ou skips. O [relatório imutável](../quality/evidence/runs/7bb73d75b9cd6295ea0e1ae9296a2838a394273b8c82997ee3c058bae33f0b4a.json) registra 95 casos Node e o corpus correspondente Chromium (memória compartilhada disponível somente no Node deste ambiente), RSS de pico Node de 170.520.576 bytes e duração do corpus Node de 1.373 ms. O runner executou novamente o protocolo após a revisão da fronteira de registro CSV e reutilizou os 53 relatórios anteriores; o catálogo agora contém 54 entradas. Os sete documentos originais permanecem inalterados. O workflow de CI foi adicionado, sem presumir sua execução remota.

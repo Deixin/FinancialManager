@@ -540,6 +540,16 @@ export function executeCorpus(api, cases) {
   );
   expect('no-array-coercion', { ...base, bytes: [1, 2, 3] }, 'INVALID_REQUEST');
   expect('no-null-request', null, 'INVALID_REQUEST');
+  expect(
+    'unpaired-filename-rejected',
+    { ...base, file_name: 'SYNTHETIC\ud800.csv' },
+    'INVALID_REQUEST',
+  );
+  expect(
+    'unpaired-mime-rejected',
+    { ...base, mime: 'text/csv\udc00' },
+    'INVALID_REQUEST',
+  );
   expect('no-extension', { ...base, file_name: 'csv' }, 'UNSUPPORTED_FORMAT');
   const controller = new globalThis.AbortController();
   controller.abort();

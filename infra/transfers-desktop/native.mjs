@@ -140,7 +140,7 @@ try {
         .permissions,
       permissions,
     );
-    assert.equal(permissions.length, 35);
+    assert.equal(permissions.length, 36);
     const handler = readFileSync(path.join(crate, 'src/commands.rs'), 'utf8')
       .split('pub fn production_builder()')[1]
       .match(/generate_handler!\[([\s\S]*?)\]/)[1]

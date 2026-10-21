@@ -79,6 +79,7 @@ test('Desktop host grants only twenty-nine narrow workspace/privacy/backup/accou
     'allow-list-local-imports',
     'allow-read-local-import',
     'allow-prepare-local-import',
+    'allow-local-import-file',
   ]);
   assert.equal(config.app.withGlobalTauri, false);
   assert.equal(config.build.devUrl, undefined);

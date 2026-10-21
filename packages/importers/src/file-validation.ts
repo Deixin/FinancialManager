@@ -41,10 +41,11 @@ export function validateImportFile(
     request.file_name.length > 255 ||
     !request.file_name ||
     request.file_name.trim() !== request.file_name ||
-    /[\p{Cc}\p{Cf}\\/:]/u.test(request.file_name) ||
+    /[\p{Cc}\p{Cf}\p{Cs}\\/:]/u.test(request.file_name) ||
     /[. ]$/.test(request.file_name) ||
     typeof request.mime !== 'string' ||
     request.mime.length > 128 ||
+    /\p{Cs}/u.test(request.mime) ||
     !['utf-8', 'windows-1252'].includes(request.encoding) ||
     ![null, ',', ';', '\t'].includes(request.delimiter)
   )

@@ -1,6 +1,6 @@
 # Financial Manager — documentação atual
 
-Estado de produto: US-051 com barreira compartilhada de arquivos; próximo incremento: **integração Desktop e paridade Rust da US-051**. Consulte o [contrato e protocolo](development/import-file-validation.md). A central US-050 está integrada ao Desktop. A validação segue o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
+Estado de produto: **US-051 integrada ao Desktop, com paridade Rust**; próximo incremento: **US-052 — parser OFX normalizado**. Consulte o [fluxo e protocolo Desktop](development/desktop-import-files.md) e o [contrato compartilhado](development/import-file-validation.md). A central US-050 permanece integrada, incluindo backup e restauração. A validação segue o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
 
 ## Leitura por tarefa
 

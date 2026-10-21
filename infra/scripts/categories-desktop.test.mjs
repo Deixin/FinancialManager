@@ -180,11 +180,11 @@ test('category native corpus is reproducible from the current shared service wit
     f.vectors.some((v) => v.expected.error === 'CATEGORY_NAME_CONFLICT'),
   );
 });
-test('category product handler exposes exactly the 25 narrow capability commands and excludes finish probes', () => {
+test('category product handler exposes exactly the 36 narrow capability commands and excludes finish probes', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 35);
+  assert.equal(capability.permissions.length, 36);
   const handler = readFileSync('apps/desktop/src-tauri/src/commands.rs', 'utf8')
     .split('pub fn production_builder()')[1]
     .match(/generate_handler!\[([\s\S]*?)\]/)[1]

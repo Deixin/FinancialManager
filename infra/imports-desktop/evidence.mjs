@@ -1,12 +1,16 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { desktopCounterpartyHashes } from '../counterparties-desktop/evidence.mjs';
+import { sourceHashes as fileHashes } from '../import-file-validation/evidence.mjs';
 export const browserChecks = Object.freeze([
   'filters_detail_and_history_links',
   'lost_ack_and_malformed_ack_keep_frozen_intent',
   'workspace_switch_discards_late_write',
   'lock_discards_late_write_and_private_tree',
   'accessibility_reflow_no_storage_egress_or_errors',
+  'file_picker_unlock_validation_and_safe_rejection',
+  'file_cancel_discards_late_result_and_preserves_ledger',
+  'file_validation_accessible_private_and_no_storage',
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_seven_sqlcipher_tests_and_102_shared_vectors',
@@ -16,6 +20,8 @@ export const nativeChecks = Object.freeze([
   'webview_real_commands_and_frozen_retry',
   'portable_restore_without_source_credentials',
   'owned_keys_profiles_files_removed',
+  'file_gate_seven_native_tests_and_shared_rust_parity',
+  'file_webview_real_ipc_selection_unlock_and_validation',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',
@@ -25,8 +31,23 @@ export const pending = Object.freeze([
 export function hashes() {
   return {
     ...desktopCounterpartyHashes(),
+    ...fileHashes(),
     ...Object.fromEntries(
       [
+        'apps/desktop/src/local-import-file.ts',
+        'apps/desktop/src/local-import-file-flow.tsx',
+        'apps/desktop/src-tauri/src/file_model.rs',
+        'apps/desktop/src-tauri/src/file_csv.rs',
+        'apps/desktop/src-tauri/src/file_ofx.rs',
+        'apps/desktop/src-tauri/src/file_unicode.rs',
+        'apps/desktop/src-tauri/src/file_tests.rs',
+        'apps/desktop/src-tauri/src/import_file_source.rs',
+        'apps/desktop/src-tauri/src/local_import_file.rs',
+        'apps/desktop/src-tauri/src/bin/file-probe.rs',
+        'apps/desktop/src-tauri/src/bin/file-smoke.rs',
+        'apps/desktop/src-tauri/file-smoke.js',
+        'infra/import-files-desktop/generate.mjs',
+        'infra/import-files-desktop/parity.mjs',
         'packages/domain/src/imports.ts',
         'packages/finance-ports/src/imports.ts',
         'apps/desktop/src/local-imports.ts',

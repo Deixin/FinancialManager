@@ -13,10 +13,24 @@ import { createBackupGateway, backupMessage } from './local-backup.js';
 import { createRestoreGateway, restoreMessage } from './local-restore.js';
 import type { RestorePreview } from './local-restore.js';
 import { LocalRestoreFlow } from './local-restore-flow.js';
+import { createImportFileGateway, fileMessage } from './local-import-file.js';
+import type {
+  FileTarget,
+  FileOptions,
+  InspectedFile,
+} from './local-import-file.js';
+import { LocalImportFileFlow } from './local-import-file-flow.js';
 export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
   const [gateway] = useState(createPrivacyGateway);
   const [backups] = useState(createBackupGateway);
   const [restores] = useState(createRestoreGateway);
+  const [files] = useState(createImportFileGateway);
+  const [fileTarget, setFileTarget] = useState<FileTarget | null>(null),
+    [fileSelection, setFileSelection] = useState<string | null>(null),
+    [fileResult, setFileResult] = useState<InspectedFile | null>(null),
+    [fileBusy, setFileBusy] = useState<'selecting' | 'validating' | null>(null);
+  const filePending = useRef(false),
+    filePickerPending = useRef(false);
   const [restoredWorkspaceId, setRestoredWorkspaceId] = useState<string | null>(
     null,
   );
@@ -81,7 +95,8 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
       !current.current ||
       (!current.current.enabled &&
         !backupPending.current &&
-        !restorePending.current)
+        !restorePending.current &&
+        !filePending.current)
     )
       return;
     const token = ++epoch.current;
@@ -90,6 +105,12 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
     backupPending.current = false;
     restorePickerPending.current = false;
     restorePending.current = false;
+    filePending.current = false;
+    filePickerPending.current = false;
+    setFileTarget(null);
+    setFileSelection(null);
+    setFileResult(null);
+    setFileBusy(null);
     setRestoreSelection(null);
     setRestorePreview(null);
     setRestoreBusy(null);
@@ -132,7 +153,8 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
       if (
         !helloPending.current &&
         !backupPending.current &&
-        !restorePickerPending.current
+        !restorePickerPending.current &&
+        !filePickerPending.current
       )
         lockNow();
     };
@@ -414,7 +436,92 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
       if (alive.current && epoch.current === token) setBusy(false);
     }
   }
+  async function fileOperation(target: FileTarget, options?: FileOptions) {
+    if (!gateway || !files || pending.current || !current.current) return;
+    const token = ++epoch.current;
+    pending.current = true;
+    filePending.current = true;
+    filePickerPending.current = !options;
+    setFileTarget(target);
+    setFileResult(null);
+    setFileBusy(options ? 'validating' : 'selecting');
+    setBusy(true);
+    setError('');
+    setNotice('');
+    clearPins();
+    try {
+      if (options && fileSelection) {
+        const result = await files.validate(target, fileSelection, options);
+        if (alive.current && epoch.current === token) {
+          setFileResult(result);
+          setFileSelection(null);
+        }
+      } else if (!options) {
+        setFileSelection(null);
+        const selection = await files.select(target);
+        if (alive.current && epoch.current === token)
+          setFileSelection(selection);
+      }
+    } catch (reason) {
+      if (alive.current && epoch.current === token) {
+        setFileSelection(null);
+        setError(fileMessage(reason));
+      }
+    } finally {
+      if (alive.current && epoch.current === token) {
+        try {
+          const next = await gateway.status();
+          if (alive.current && epoch.current === token) {
+            accept(next);
+            if (next.locked && options) {
+              setFileResult(null);
+              setFileSelection(null);
+            }
+          }
+        } catch {
+          if (alive.current && epoch.current === token) setStatus(null);
+        }
+      }
+      if (epoch.current === token) {
+        pending.current = false;
+        filePending.current = false;
+        filePickerPending.current = false;
+        if (alive.current) {
+          setFileBusy(null);
+          setBusy(false);
+        }
+      }
+    }
+  }
+  function cancelFile() {
+    const target = fileTarget;
+    ++epoch.current;
+    pending.current = false;
+    filePending.current = false;
+    filePickerPending.current = false;
+    setFileTarget(null);
+    setFileSelection(null);
+    setFileResult(null);
+    setFileBusy(null);
+    setBusy(false);
+    setError('');
+    if (target) {
+      setRestoredWorkspaceId(target.workspace_id);
+      void files?.cancel(target).catch(() => {});
+    }
+  }
   if (!gateway) return <LocalWorkspaceFlow onExit={onExit} />;
+  if (fileBusy)
+    return (
+      <LocalImportFileFlow
+        busy={fileBusy}
+        selected={false}
+        result={null}
+        error=""
+        onValidate={() => {}}
+        onCancel={cancelFile}
+      />
+    );
   if (backupPending.current) return <LocalBackupPending onCancel={lockNow} />;
   if (restoreBusy)
     return (
@@ -444,6 +551,10 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
                   .catch((reason) => setError(restoreMessage(reason)));
               setRestoreSelection(null);
               setRestorePreview(null);
+              if (fileTarget) void files?.cancel(fileTarget).catch(() => {});
+              setFileTarget(null);
+              setFileSelection(null);
+              setFileResult(null);
             }}
           >
             Privacidade local
@@ -459,12 +570,21 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
             {notice}
           </p>
         )}
-        {error && (
+        {error && !fileTarget && (
           <p className="backup-feedback" role="alert">
             {error}
           </p>
         )}
-        {restoreSelection || restorePreview ? (
+        {fileTarget ? (
+          <LocalImportFileFlow
+            busy={null}
+            selected={!!fileSelection}
+            result={fileResult}
+            error={error}
+            onValidate={(options) => void fileOperation(fileTarget, options)}
+            onCancel={cancelFile}
+          />
+        ) : restoreSelection || restorePreview ? (
           <LocalRestoreFlow
             key={restorePreview ? 'preview' : 'password'}
             preview={restorePreview}
@@ -492,6 +612,8 @@ export function LocalPrivacyFlow({ onExit }: { onExit: () => void }) {
               ? {}
               : {
                   onRestore: () => void restoreOperation('selecting'),
+                  onInspectImport: (target: FileTarget) =>
+                    void fileOperation(target),
                   onBackup: (workspace: LocalWorkspace) => {
                     setRestoredWorkspaceId(null);
                     setError('');

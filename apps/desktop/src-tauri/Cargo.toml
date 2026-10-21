@@ -217,6 +217,16 @@ path="src/bin/imports-probe.rs"
 required-features=["imports-smoke"]
 
 [[bin]]
+name="file-probe"
+path="src/bin/file-probe.rs"
+required-features=["imports-smoke"]
+
+[[bin]]
+name="file-smoke"
+path="src/bin/file-smoke.rs"
+required-features=["imports-smoke"]
+
+[[bin]]
 name="imports-smoke"
 path="src/bin/imports-smoke.rs"
 required-features=["imports-smoke"]

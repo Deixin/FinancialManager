@@ -135,11 +135,11 @@ test('Complete snapshot bounds refuse instead of truncating, including UTF16 gro
     code: 'INVALID_RESPONSE',
   });
 });
-test('Existing movement IPC remains read only with 35 permissions and classification is an explicit snapshot option', () => {
+test('Existing movement IPC remains read only with 36 permissions and classification is an explicit snapshot option', () => {
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 35);
+  assert.equal(capability.permissions.length, 36);
   const source = readFileSync(
     'apps/desktop/src-tauri/src/local_classification_filters.rs',
     'utf8',

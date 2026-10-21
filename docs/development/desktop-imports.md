@@ -1,5 +1,7 @@
 # US-050 — Central de importações no Desktop
 
+A [US-051 Desktop](desktop-import-files.md) amplia esta entrega com seleção e validação defensiva, 36 permissões e paridade Rust. Os detalhes e resultados US-050 abaixo preservam o escopo histórico; parsing, revisão e confirmação financeira continuam nos incrementos posteriores.
+
 A navegação Importações consulta lotes do workspace local com filtros de conta/estado, paginação, fontes, período, contagens e efeitos ligados ao detalhe/histórico das movimentações. Preparar lote registra somente IMPORT/PREPARING em conta ativa. A seleção e revisão de arquivos entram nos próximos incrementos. Decisão: [ADR-0069](../architecture/adr/0069-central-de-importacoes-no-desktop.md); base compartilhada: [central US-050](import-central.md).
 
 ## Implementação

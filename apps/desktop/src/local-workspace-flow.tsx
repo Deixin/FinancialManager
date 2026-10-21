@@ -1,4 +1,5 @@
 import { LocalImportsFlow } from './local-imports-flow.js';
+import type { FileTarget } from './local-import-file.js';
 import { LocalCounterpartiesFlow } from './local-counterparties-flow.js';
 import { LocalTaxonomyFlow } from './local-taxonomy-flow.js';
 import { LocalCategoriesFlow } from './local-categories-flow.js';
@@ -26,12 +27,14 @@ export function LocalWorkspaceFlow({
   onExit,
   onBackup,
   onRestore,
+  onInspectImport,
   initialWorkspaceId,
   onLocked,
 }: {
   onExit: () => void;
   onBackup?: (workspace: LocalWorkspace) => void;
   onRestore?: () => void;
+  onInspectImport?: (target: FileTarget) => void;
   initialWorkspaceId?: string | null;
   onLocked?: () => void;
 }) {
@@ -280,6 +283,7 @@ export function LocalWorkspaceFlow({
           />
         ) : route === 'imports' ? (
           <LocalImportsFlow
+            {...(onInspectImport ? { onInspectImport } : {})}
             key={current.id}
             workspaceId={current.id}
             onLocked={() => failure(new LocalWorkspaceError('LOCAL_LOCKED'))}

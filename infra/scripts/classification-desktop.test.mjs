@@ -341,7 +341,7 @@ test('Native classification is a specific 28th command and composes the existing
   const capability = JSON.parse(
     readFileSync('apps/desktop/src-tauri/capabilities/entry-main.json'),
   );
-  assert.equal(capability.permissions.length, 35);
+  assert.equal(capability.permissions.length, 36);
   assert.equal(
     capability.permissions[27],
     'allow-apply-local-classification-change',

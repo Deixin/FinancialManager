@@ -224,6 +224,7 @@ try {
         'allow-list-local-imports',
         'allow-read-local-import',
         'allow-prepare-local-import',
+        'allow-local-import-file',
       ],
     );
   });

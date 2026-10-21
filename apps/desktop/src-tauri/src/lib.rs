@@ -15,7 +15,14 @@ pub mod counterparty_model;
 pub mod counterparty_probe;
 #[cfg(all(test, feature = "counterparties-smoke"))]
 mod counterparty_tests;
+mod file_csv;
+pub mod file_model;
+mod file_ofx;
+#[cfg(all(test, feature = "imports-smoke"))]
+mod file_tests;
+mod file_unicode;
 pub mod identity;
+pub mod import_file_source;
 pub mod import_model;
 #[cfg(feature = "imports-smoke")]
 pub mod import_probe;
@@ -30,6 +37,7 @@ pub mod local_categories;
 pub mod local_classification;
 pub mod local_classification_filters;
 pub mod local_counterparties;
+pub mod local_import_file;
 pub mod local_imports;
 pub mod local_lock;
 pub mod local_movements;
