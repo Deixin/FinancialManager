@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   captureLocalTaxonomy,
@@ -22,8 +26,13 @@ import {
 import {
   browserChecks,
   nativeChecks,
-  validateDesktopTaxonomyEvidence,
+  validateDesktopTaxonomyEvidence as rawValidateDesktopTaxonomyEvidence,
 } from '../taxonomy-desktop/evidence.mjs';
+
+const validateDesktopTaxonomyEvidence = currentEvidenceValidator(
+  rawValidateDesktopTaxonomyEvidence,
+);
+
 const command = () => ({
   kind: 'CREATE',
   item: {

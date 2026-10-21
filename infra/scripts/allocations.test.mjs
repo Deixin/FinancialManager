@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureAllocation,
   allocationChange,
@@ -28,8 +32,13 @@ import {
 } from '../allocations/protocol.mjs';
 import {
   allocationChecks,
-  validateAllocationEvidence,
+  validateAllocationEvidence as rawValidateAllocationEvidence,
 } from '../allocations/evidence.mjs';
+
+const validateAllocationEvidence = currentEvidenceValidator(
+  rawValidateAllocationEvidence,
+);
+
 const w = ids.a;
 const base = (patch) => {
   const r = initialState(ids.expense);

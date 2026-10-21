@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import { createHash } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
@@ -15,11 +19,14 @@ import {
 } from '../../packages/storage-schema/dist/synthetic-probe.js';
 import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
 import {
-  validateDualEvidence,
+  validateDualEvidence as rawValidateDualEvidence,
   validateNativeEvidence,
   caseNames,
   dualChecks,
 } from '../schema/dual-evidence.mjs';
+
+const validateDualEvidence = currentEvidenceValidator(rawValidateDualEvidence);
+
 const fixture = (name) =>
   JSON.parse(
     readFileSync(

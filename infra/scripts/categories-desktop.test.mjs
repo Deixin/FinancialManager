@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   captureLocalCategory,
@@ -18,8 +22,13 @@ import {
 import {
   browserChecks,
   nativeChecks,
-  validateDesktopCategoryEvidence,
+  validateDesktopCategoryEvidence as rawValidateDesktopCategoryEvidence,
 } from '../categories-desktop/evidence.mjs';
+
+const validateDesktopCategoryEvidence = currentEvidenceValidator(
+  rawValidateDesktopCategoryEvidence,
+);
+
 const id = (n) => '0199d244-0000-7000-8000-' + String(n).padStart(12, '0'),
   w = id(1),
   empty = { workspace_id: w, purpose: 'PERSONAL', categories: [] },

@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureCounterpartyAssociation,
   counterpartyAssociationChange,
@@ -34,8 +38,13 @@ import {
 } from '../counterparty-associations/protocol.mjs';
 import {
   associationChecks,
-  validateAssociationEvidence,
+  validateAssociationEvidence as rawValidateAssociationEvidence,
 } from '../counterparty-associations/evidence.mjs';
+
+const validateAssociationEvidence = currentEvidenceValidator(
+  rawValidateAssociationEvidence,
+);
+
 const w = ids.a;
 const base = (patch = {}) => {
   const b = initialState(ids.expense);

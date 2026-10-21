@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   categoryDefaults,
   categoryNameKey,
@@ -30,9 +34,14 @@ import {
 } from '../categories/protocol.mjs';
 import {
   categoryChecks,
-  validateCategoryEvidence,
+  validateCategoryEvidence as rawValidateCategoryEvidence,
 } from '../categories/evidence.mjs';
 import { validateDataAccessSource } from './check-data-access.mjs';
+
+const validateCategoryEvidence = currentEvidenceValidator(
+  rawValidateCategoryEvidence,
+);
+
 const w = tenants.personal;
 const create = () => ({
   kind: 'CREATE',

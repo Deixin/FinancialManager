@@ -7,7 +7,7 @@ Comece pelo [índice da documentação](docs/00-index.md) e pelo [estado do proj
 1. Parta de main e crie uma branch curta, por exemplo feat/us-001-desktop-storage.
 2. Leia a documentação da história e registre decisões técnicas relevantes em um ADR.
 3. Implemente apenas o escopo acordado, incluindo testes de comportamento quando aplicável.
-4. Execute pnpm check e revise a alteração, incluindo dados e arquivos adicionados.
+4. Siga o [processo incremental](docs/development/validation-workflow.md): planeje as regressões, execute o runner e seu `pnpm check` final; revise a alteração, incluindo dados e arquivos adicionados.
 5. Abra um pull request com problema, resultado, histórias e evidência de validação.
 
 Os comandos e o ambiente estão no [README](README.md). O lockfile deve acompanhar mudanças de dependências. Os limites de importação e dependência são verificados por pnpm check:repo.

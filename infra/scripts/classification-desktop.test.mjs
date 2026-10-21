@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   captureLocalClassification,
@@ -19,10 +23,15 @@ import {
   id,
 } from '../classification-desktop/fixture.mjs';
 import {
-  validateDesktopClassificationEvidence,
+  validateDesktopClassificationEvidence as rawValidateDesktopClassificationEvidence,
   browserChecks,
   nativeChecks,
 } from '../classification-desktop/evidence.mjs';
+
+const validateDesktopClassificationEvidence = currentEvidenceValidator(
+  rawValidateDesktopClassificationEvidence,
+);
+
 const command = (n = 102) => {
     const base = editorSnapshot().transactions.find((r) => r.id === id(n));
     return {

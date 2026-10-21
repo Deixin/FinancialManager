@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureLocalCounterparty,
   captureLocalAssociations,
@@ -21,10 +25,15 @@ import {
   id,
 } from '../counterparties-desktop/fixture.mjs';
 import {
-  validateDesktopCounterpartyEvidence,
+  validateDesktopCounterpartyEvidence as rawValidateDesktopCounterpartyEvidence,
   browserChecks,
   nativeChecks,
 } from '../counterparties-desktop/evidence.mjs';
+
+const validateDesktopCounterpartyEvidence = currentEvidenceValidator(
+  rawValidateDesktopCounterpartyEvidence,
+);
+
 const snapshot = () => decodeCounterpartySnapshot(editorSnapshot(), w, true);
 test('Desktop counterparty inputs preserve immutable full bases and explicit nulls', () => {
   const raw = structuredClone({

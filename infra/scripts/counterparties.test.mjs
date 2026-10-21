@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   CounterpartyError,
   captureCounterparty,
@@ -34,9 +38,14 @@ import {
 } from '../counterparties/protocol.mjs';
 import {
   counterpartiesChecks,
-  validateCounterpartyEvidence,
+  validateCounterpartyEvidence as rawValidateCounterpartyEvidence,
 } from '../counterparties/evidence.mjs';
 import { validateDataAccessSource } from './check-data-access.mjs';
+
+const validateCounterpartyEvidence = currentEvidenceValidator(
+  rawValidateCounterpartyEvidence,
+);
+
 const w = tenants.personal;
 test('counterparties capture detached immutable records commands and exact replay', () => {
   const raw = create(47001),

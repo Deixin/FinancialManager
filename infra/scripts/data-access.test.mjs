@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   checkDataAccess,
@@ -16,8 +20,13 @@ import { createPostgresReadUnit } from '../../packages/persistence-postgres/dist
 import { readAccountActivity } from '../../packages/finance-ports/dist/index.js';
 import {
   repositoryChecks,
-  validateRepositoryEvidence,
+  validateRepositoryEvidence as rawValidateRepositoryEvidence,
 } from '../query/evidence.mjs';
+
+const validateRepositoryEvidence = currentEvidenceValidator(
+  rawValidateRepositoryEvidence,
+);
+
 const workspace = '0199d021-0000-7000-8000-000000000001';
 const account = '0199d021-0000-7000-8000-00000000000b';
 const other = '0199d021-0000-7000-8000-000000000002';

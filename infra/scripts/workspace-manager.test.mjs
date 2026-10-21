@@ -1,11 +1,20 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   browserChecks,
   nativeChecks,
-  validateManagerEvidence,
+  validateManagerEvidence as rawValidateManagerEvidence,
 } from '../workspace-manager/evidence.mjs';
+
+const validateManagerEvidence = currentEvidenceValidator(
+  rawValidateManagerEvidence,
+);
+
 const load = (kind) =>
   JSON.parse(
     readFileSync(

@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0070 — Validação incremental e evidências imutáveis](0070-validacao-incremental-e-evidencias-imutaveis.md): catálogo único, fontes funcionais, guardas críticos, retomada e gate final obrigatório.
+
 [0069 — Central de importações no Desktop](0069-central-de-importacoes-no-desktop.md): três comandos específicos, paridade Rust, adoção nativa da v3 e restauração com remapeamento completo do ledger; backups antigos autenticados migram somente em staging.
 
 [0068 — Central compartilhada de importações](0068-central-compartilhada-de-importacoes.md): preparação idempotente, leitura consistente por lote, contas autorizadas e ledger v3 opt-in com downgrade vazio. Ativação Desktop junto de backup/restauração no próximo incremento.

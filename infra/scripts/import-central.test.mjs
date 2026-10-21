@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   importCount,
@@ -18,9 +22,14 @@ import { createSqliteImportCentralService } from '../../packages/storage-schema/
 import { createPostgresImportCentralService } from '../../packages/persistence-postgres/dist/import-central.js';
 import { id, at, grant, request } from '../import-central/harness.mjs';
 import {
-  validateImportEvidence,
+  validateImportEvidence as rawValidateImportEvidence,
   importChecks,
 } from '../import-central/evidence.mjs';
+
+const validateImportEvidence = currentEvidenceValidator(
+  rawValidateImportEvidence,
+);
+
 const w = id(1),
   account = id(2),
   base = () => ({

@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   TaxonomyError,
   captureTaxonomyCatalog,
@@ -31,9 +35,14 @@ import {
 import { runTaxonomyCases, taxonomyCases } from '../taxonomy/protocol.mjs';
 import {
   taxonomyChecks,
-  validateTaxonomyEvidence,
+  validateTaxonomyEvidence as rawValidateTaxonomyEvidence,
 } from '../taxonomy/evidence.mjs';
 import { validateDataAccessSource } from './check-data-access.mjs';
+
+const validateTaxonomyEvidence = currentEvidenceValidator(
+  rawValidateTaxonomyEvidence,
+);
+
 const w = tenants.personal;
 const category = {
   id: id(100),

@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   migrateSqliteTo,
@@ -14,8 +18,13 @@ import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
 import { sha256, migratePostgresTo } from '../schema/postgres-migrations.mjs';
 import {
   migrationGates,
-  validateMigrationEvidence,
+  validateMigrationEvidence as rawValidateMigrationEvidence,
 } from '../schema/migration-evidence.mjs';
+
+const validateMigrationEvidence = currentEvidenceValidator(
+  rawValidateMigrationEvidence,
+);
+
 test('migration catalog verifies both directions, ordering and safety classification', async () => {
   assert.equal((await verifyMigrations(sqliteCatalog, sha256)).length, 2);
   for (const change of [

@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   decodeLockStatus,
@@ -11,8 +15,11 @@ import {
 import {
   browserChecks,
   nativeChecks,
-  validateLockEvidence,
+  validateLockEvidence as rawValidateLockEvidence,
 } from '../local-lock/evidence.mjs';
+
+const validateLockEvidence = currentEvidenceValidator(rawValidateLockEvidence);
+
 const load = (kind) =>
   JSON.parse(
     readFileSync(

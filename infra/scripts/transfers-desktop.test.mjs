@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   syntheticTransferHost,
@@ -22,8 +26,13 @@ import { accountRows } from '../../apps/desktop/dist/local-accounts.js';
 import {
   browserChecks,
   nativeChecks,
-  validateDesktopTransferEvidence,
+  validateDesktopTransferEvidence as rawValidateDesktopTransferEvidence,
 } from '../transfers-desktop/evidence.mjs';
+
+const validateDesktopTransferEvidence = currentEvidenceValidator(
+  rawValidateDesktopTransferEvidence,
+);
+
 const input = (h) => ({
   kind: 'CREATE',
   id: id(10),

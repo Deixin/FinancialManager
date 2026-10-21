@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureLocalImportPrepare,
   captureLocalImportQuery,
@@ -20,10 +24,13 @@ import {
 } from '../imports-desktop/fixture.mjs';
 import { defaultImportQuery } from '../../packages/domain/dist/imports.js';
 import {
-  validateEvidence,
+  validateEvidence as rawValidateEvidence,
   browserChecks,
   nativeChecks,
 } from '../imports-desktop/evidence.mjs';
+
+const validateEvidence = currentEvidenceValidator(rawValidateEvidence);
+
 test('Desktop import inputs capture intent and reject extensions malformed IDs omitted nulls and invalid limits', () => {
   const raw = { ...defaultImportQuery, statuses: ['FAILED'] },
     q = captureLocalImportQuery(raw);

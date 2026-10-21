@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import {
@@ -11,9 +15,14 @@ import {
 import {
   browserChecks,
   nativeChecks,
-  validateWorkspaceEvidence,
+  validateWorkspaceEvidence as rawValidateWorkspaceEvidence,
 } from '../local-workspaces/evidence.mjs';
 import { sqliteCatalog } from '../../packages/storage-schema/dist/migrations.js';
+
+const validateWorkspaceEvidence = currentEvidenceValidator(
+  rawValidateWorkspaceEvidence,
+);
+
 const row = {
   id: '0199d031-0000-7000-8000-000000000001',
   display_name: 'SYNTHETIC WORKSPACE',

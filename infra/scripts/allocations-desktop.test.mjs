@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureLocalAllocations,
   allocationEdit,
@@ -18,10 +22,15 @@ import {
   id,
 } from '../allocations-desktop/fixture.mjs';
 import {
-  validateDesktopAllocationEvidence,
+  validateDesktopAllocationEvidence as rawValidateDesktopAllocationEvidence,
   browserChecks,
   nativeChecks,
 } from '../allocations-desktop/evidence.mjs';
+
+const validateDesktopAllocationEvidence = currentEvidenceValidator(
+  rawValidateDesktopAllocationEvidence,
+);
+
 const snapshot = () => decodeClassificationSnapshot(editorSnapshot(), w);
 const replace = () =>
   allocationEdit(snapshot(), id(102), {

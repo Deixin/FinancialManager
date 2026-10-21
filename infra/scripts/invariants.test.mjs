@@ -1,6 +1,10 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import { expectedSnapshot, fixture } from '../fixtures/loader.mjs';
 import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
@@ -26,8 +30,13 @@ import {
 } from '../invariants/protocol.mjs';
 import {
   invariantChecks,
-  validateInvariantEvidence,
+  validateInvariantEvidence as rawValidateInvariantEvidence,
 } from '../invariants/evidence.mjs';
+
+const validateInvariantEvidence = currentEvidenceValidator(
+  rawValidateInvariantEvidence,
+);
+
 test('independent invariant oracle matches literal goldens and exact signed i64 cancellation', () => {
   const a = expectedSnapshot(fixture.workspace_a),
     b = expectedSnapshot(fixture.workspace_b),

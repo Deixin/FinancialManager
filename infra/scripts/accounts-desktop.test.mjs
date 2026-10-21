@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+
 import { canonicalFixture as fixture } from '../../packages/test-fixtures/dist/canonical.js';
 import {
   decodeAccountsSnapshot,
@@ -18,8 +22,13 @@ import { syntheticSnapshot } from '../accounts-desktop/fixture.mjs';
 import {
   browserChecks,
   nativeChecks,
-  validateDesktopAccountEvidence,
+  validateDesktopAccountEvidence as rawValidateDesktopAccountEvidence,
 } from '../accounts-desktop/evidence.mjs';
+
+const validateDesktopAccountEvidence = currentEvidenceValidator(
+  rawValidateDesktopAccountEvidence,
+);
+
 const workspace = fixture.workspace_a;
 const id = (n) => '0199d040-0000-7000-8000-' + String(n).padStart(12, '0');
 test('Desktop account gateway requires Tauri and monetary fields preserve i64 precision through BRL input and presentation', () => {

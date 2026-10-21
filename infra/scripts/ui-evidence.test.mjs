@@ -1,7 +1,17 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
-import { validateUiEvidence, validateFlagEvidence } from '../ui/evidence.mjs';
+import {
+  validateUiEvidence as rawValidateUiEvidence,
+  validateFlagEvidence as rawValidateFlagEvidence,
+} from '../ui/evidence.mjs';
+
+const validateUiEvidence = currentEvidenceValidator(rawValidateUiEvidence);
+const validateFlagEvidence = currentEvidenceValidator(rawValidateFlagEvidence);
 
 const fixture = (filename = 'us-016-dom-2026-10-18-us041-desktop.json') =>
   JSON.parse(

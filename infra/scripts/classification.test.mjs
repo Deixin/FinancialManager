@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureClassification,
   classificationChange,
@@ -27,8 +31,13 @@ import {
 } from '../classification/protocol.mjs';
 import {
   classificationChecks,
-  validateClassificationEvidence,
+  validateClassificationEvidence as rawValidateClassificationEvidence,
 } from '../classification/evidence.mjs';
+
+const validateClassificationEvidence = currentEvidenceValidator(
+  rawValidateClassificationEvidence,
+);
+
 const w = ids.a;
 const base = () => {
   const r = initialState(ids.expense);

@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import { syntheticHost, workspace, id } from '../movements-desktop/fixture.mjs';
 import {
@@ -20,8 +24,13 @@ import { accountRows } from '../../apps/desktop/dist/local-accounts.js';
 import {
   browserChecks,
   nativeChecks,
-  validateMovementEvidence,
+  validateMovementEvidence as rawValidateMovementEvidence,
 } from '../movements-desktop/evidence.mjs';
+
+const validateMovementEvidence = currentEvidenceValidator(
+  rawValidateMovementEvidence,
+);
+
 const input = (h) => ({
   kind: 'CREATE',
   id: id(10),

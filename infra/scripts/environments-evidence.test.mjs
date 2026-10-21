@@ -1,13 +1,21 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import {
   requiredProfileChecks,
   requiredEnvironmentChecks,
-  validateEnvironmentEvidence,
+  validateEnvironmentEvidence as rawValidateEnvironmentEvidence,
 } from './environments-evidence.mjs';
 import { manifest, sourceHashes } from '../environments/runtime.mjs';
 import { profileNames } from '../environments/model.mjs';
+
+const validateEnvironmentEvidence = currentEvidenceValidator(
+  rawValidateEnvironmentEvidence,
+);
 
 const fixture = () => ({
   format_version: 1,

@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureManualMovement,
   manualMovementChange,
@@ -14,12 +18,17 @@ import { createRevisionHarness } from '../revisions/harness.mjs';
 import { runManualCases, manualCases } from '../manual-movements/protocol.mjs';
 import {
   manualChecks,
-  validateManualEvidence,
+  validateManualEvidence as rawValidateManualEvidence,
 } from '../manual-movements/evidence.mjs';
 import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
 import { migrateSqliteTo } from '../../packages/storage-schema/dist/migrations.js';
 import { fixture, loadFixture } from '../fixtures/loader.mjs';
 import { sha256 } from '../schema/postgres-migrations.mjs';
+
+const validateManualEvidence = currentEvidenceValidator(
+  rawValidateManualEvidence,
+);
+
 const id = (n) => '0199d041-0000-7000-8000-' + String(n).padStart(12, '0'),
   w = id(1),
   at = '2026-10-18T00:00:00.000Z';

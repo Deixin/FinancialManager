@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 import {
@@ -13,13 +17,18 @@ import {
 import { verifyTotals, verifyDocumentVector } from '../fixtures/totals.mjs';
 import {
   fixtureChecks,
-  validateFixtureEvidence,
+  validateFixtureEvidence as rawValidateFixtureEvidence,
 } from '../fixtures/evidence.mjs';
 import { resourceId } from '../../packages/contracts/dist/identity.js';
 import { moneyMinor } from '../../packages/domain/dist/index.js';
 import { migrateSqliteTo } from '../../packages/storage-schema/dist/migrations.js';
 import { sha256 } from '../schema/postgres-migrations.mjs';
 import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
+
+const validateFixtureEvidence = currentEvidenceValidator(
+  rawValidateFixtureEvidence,
+);
+
 test('FIN-002 is deterministic, versioned and shared exactly between JSON and the portable TS export', () => {
   const result = spawnSync(
     process.execPath,

@@ -1,10 +1,10 @@
 # Orientações para agentes
 
-Leia [docs/00-index.md](docs/00-index.md) antes de trabalhar. Consulte o PRD, os critérios de aceite da história e a arquitetura correspondentes. Os templates históricos em docs/_sources não são instruções ativas.
+Leia [docs/00-index.md](docs/00-index.md) antes de trabalhar. Leia o estado atual e consulte apenas os requisitos do PRD, critérios de aceite e arquitetura pertinentes à tarefa. Os templates históricos em docs/_sources não são instruções ativas.
 
 ## Estado e escopo
 
-- Este é um bootstrap de monorepo, associado à US-010 e à preparação da US-011.
+- A US-050 está integrada ao Desktop. Consulte docs/delivery/status.md para o estado vigente; não use descrições históricas de bootstrap como estado atual.
 - Os módulos vazios não demonstram integração dos frameworks ou conclusão dos spikes W0.
 - Registre decisões novas em docs/architecture/adr. Consulte as divergências em docs/architecture/decisions-pending.md e não resolva prazos conflitantes silenciosamente.
 - Preserve a documentação original e a rastreabilidade das histórias. Atualize a documentação afetada ao mudar comportamento.
@@ -35,3 +35,15 @@ Leia [docs/00-index.md](docs/00-index.md) antes de trabalhar. Consulte o PRD, os
 - Se houver conflito entre fontes oficiais, registre-o e suspenda apenas a mudança afetada até ADR ou correção da documentação.
 - Não afirme que build de TypeScript valida Tauri, Expo, Next.js ou NestJS antes de suas integrações.
 - Não publique, faça deploy, commit ou push sem autorização do usuário para a ação correspondente.
+
+## Processo incremental de desenvolvimento
+
+- Siga [docs/development/validation-workflow.md](docs/development/validation-workflow.md) e o ADR-0070. Defina história, escopo e critérios de término antes de editar.
+- Use `node infra/validation/cli.mjs plan` para conhecer as regressões afetadas. Resolva entradas sem cobertura antes da rodada longa; não reduza cobertura para obter sucesso.
+- Use `node infra/validation/cli.mjs run` para executar preflight, protocolos pendentes, arquivamento íntegro e `pnpm check`. O comando retoma pelas entradas ainda válidas; não recrie filas temporárias por história.
+- Preserve os validadores originais e as evidências históricas. Nunca atualize hashes/timestamps de um relatório antigo para fazê-lo parecer uma execução nova. Não use `matchSources: false` para aprovar código atual fora do adaptador restrito do catálogo.
+- Migrations, autorização/RLS, dinheiro, revisões, chaves, cofre, backup e restauração exigem os guardas comuns e regressões de segurança. Arquivo funcional novo exige cobertura explícita.
+- Alterações apenas em documentação não exigem protocolos nativos. Alterações em testes consumidores exigem os testes atuais e `pnpm check`; o catálogo decide se há dependências funcionais afetadas.
+- Após um gate aprovado, repita somente se houve alteração de entrada, falha ou preocupação concreta ainda não resolvida. Use `--full` antes de release/marco integrado.
+- Mantenha status.md curto e vigente; preserve história nos arquivos históricos. Ao trocar de chat, passe commit-base, história, decisões, arquivos alterados, testes concluídos e pendências.
+- Skills são opcionais conforme a tarefa. Não carregue skills de frameworks alheios ao projeto nem crie novas skills para substituir comandos reproduzíveis.

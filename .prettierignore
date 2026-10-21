@@ -13,6 +13,7 @@ coverage/
 pnpm-lock.yaml
 docs/_exports/
 docs/_sources/
+docs/quality/evidence/runs/
 docs/product/01-prd.md
 docs/product/02-screens-flows.md
 docs/architecture/03-data-model.md

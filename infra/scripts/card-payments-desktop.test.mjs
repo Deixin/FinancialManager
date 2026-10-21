@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import { spawnSync } from 'node:child_process';
 import {
   syntheticCardPaymentHost,
@@ -22,8 +26,13 @@ import { accountRows } from '../../apps/desktop/dist/local-accounts.js';
 import {
   browserChecks,
   nativeChecks,
-  validateDesktopCardPaymentEvidence,
+  validateDesktopCardPaymentEvidence as rawValidateDesktopCardPaymentEvidence,
 } from '../card-payments-desktop/evidence.mjs';
+
+const validateDesktopCardPaymentEvidence = currentEvidenceValidator(
+  rawValidateDesktopCardPaymentEvidence,
+);
+
 const input = (h) => ({
   kind: 'CREATE',
   id: id(10),

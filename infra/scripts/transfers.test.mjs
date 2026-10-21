@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureTransfer,
   transferChanges,
@@ -18,8 +22,13 @@ import { createRevisionHarness } from '../revisions/harness.mjs';
 import { runTransferCases, transferCases, id } from '../transfers/protocol.mjs';
 import {
   transferChecks,
-  validateTransferEvidence,
+  validateTransferEvidence as rawValidateTransferEvidence,
 } from '../transfers/evidence.mjs';
+
+const validateTransferEvidence = currentEvidenceValidator(
+  rawValidateTransferEvidence,
+);
+
 const w = id(1),
   now = '2026-10-18T12:00:00.000Z',
   a = {

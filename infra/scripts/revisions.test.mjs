@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   revisionVersion,
@@ -28,9 +32,14 @@ import {
 import { createRevisionHarness } from '../revisions/harness.mjs';
 import {
   revisionChecks,
-  validateRevisionEvidence,
+  validateRevisionEvidence as rawValidateRevisionEvidence,
 } from '../revisions/evidence.mjs';
 import { validateDataAccessSource } from './check-data-access.mjs';
+
+const validateRevisionEvidence = currentEvidenceValidator(
+  rawValidateRevisionEvidence,
+);
+
 const at = '2026-10-17T00:00:00.000Z';
 const base = initialState(ids.expense);
 const identity = () => ({ ...createApiIdentity(), nowInstant: () => at });

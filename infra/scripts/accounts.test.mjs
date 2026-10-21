@@ -1,9 +1,13 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   accountChecks,
-  validateAccountEvidence,
+  validateAccountEvidence as rawValidateAccountEvidence,
 } from '../accounts/evidence.mjs';
 import {
   AccountChangeError,
@@ -21,6 +25,11 @@ import { createSqliteAccountService } from '../../packages/storage-schema/dist/i
 import { migrateSqliteTo } from '../../packages/storage-schema/dist/migrations.js';
 import { openProbeDatabase } from '../schema/sqlite-adapter.mjs';
 import { sha256 } from '../schema/postgres-migrations.mjs';
+
+const validateAccountEvidence = currentEvidenceValidator(
+  rawValidateAccountEvidence,
+);
+
 const id = (n) => '0199d040-0000-7000-8000-' + String(n).padStart(12, '0'),
   workspace = id(1),
   now = '2026-10-17T12:00:00.000Z';

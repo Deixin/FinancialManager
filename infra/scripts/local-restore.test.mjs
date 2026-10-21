@@ -1,5 +1,9 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
 import {
   decodeSelection,
@@ -12,8 +16,13 @@ import {
 import {
   browserChecks,
   nativeChecks,
-  validateRestoreEvidence,
+  validateRestoreEvidence as rawValidateRestoreEvidence,
 } from '../local-restore/evidence.mjs';
+
+const validateRestoreEvidence = currentEvidenceValidator(
+  rawValidateRestoreEvidence,
+);
+
 const load = (kind) =>
   JSON.parse(
     readFileSync(

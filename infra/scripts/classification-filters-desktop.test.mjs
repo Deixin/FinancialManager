@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   decodeClassificationSnapshot,
   classificationRows,
@@ -15,10 +19,15 @@ import {
   id,
 } from '../classification-filters-desktop/fixture.mjs';
 import {
-  validateClassificationFilterEvidence,
+  validateClassificationFilterEvidence as rawValidateClassificationFilterEvidence,
   browserChecks,
   nativeChecks,
 } from '../classification-filters-desktop/evidence.mjs';
+
+const validateClassificationFilterEvidence = currentEvidenceValidator(
+  rawValidateClassificationFilterEvidence,
+);
+
 const rows = (q) =>
   classificationRows(
     w,

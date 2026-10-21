@@ -1,7 +1,19 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+
 import test from 'node:test';
-import { validateVaultEvidence, vaultChecks } from '../vault/evidence.mjs';
+import {
+  validateVaultEvidence as rawValidateVaultEvidence,
+  vaultChecks,
+} from '../vault/evidence.mjs';
+
+const validateVaultEvidence = currentEvidenceValidator(
+  rawValidateVaultEvidence,
+);
+
 const load = () =>
   JSON.parse(
     readFileSync(

@@ -1,7 +1,11 @@
+import {
+  readEvidenceFile as readFileSync,
+  currentEvidenceValidator,
+} from '../validation/evidence.mjs';
 /* global structuredClone */
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
+
 import {
   captureCardPayment,
   cardPaymentChanges,
@@ -22,8 +26,13 @@ import {
 } from '../card-payments/protocol.mjs';
 import {
   cardPaymentChecks,
-  validateCardPaymentEvidence,
+  validateCardPaymentEvidence as rawValidateCardPaymentEvidence,
 } from '../card-payments/evidence.mjs';
+
+const validateCardPaymentEvidence = currentEvidenceValidator(
+  rawValidateCardPaymentEvidence,
+);
+
 const w = id(1),
   now = '2026-10-18T12:00:00.000Z',
   a = {
