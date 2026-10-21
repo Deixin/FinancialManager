@@ -2,7 +2,7 @@
 
 Parsers e normalização de entradas. Staging, revisão, deduplicação e limites seguem a documentação.
 
-Estado: módulo TypeScript público ainda vazio; instrumento experimental OFX/CSV em spikes/us-006, sem integração de framework. Leitores versionados normalizam para staging e não escrevem no livro financeiro.
+Estado: US-051 entrega `validateImportFile`, barreira compartilhada de CSV/OFX com limites, encoding explícito, inspeção estrutural e erros seguros. [Contrato e protocolo](../../docs/development/import-file-validation.md), [ADR-0071](../../docs/architecture/adr/0071-validacao-defensiva-compartilhada-de-arquivos.md). Integração Desktop/Rust e parsers financeiros continuam pendentes. O instrumento experimental OFX/CSV permanece em spikes/us-006.
 
 Referência: [arquitetura](../../docs/architecture/04-technical-architecture.md). Execute pnpm --filter @financial-manager/importers typecheck ou build para verificar o módulo isoladamente.
 

@@ -1,6 +1,6 @@
 # Financial Manager — documentação atual
 
-Estado de produto: US-050 integrada ao Desktop; próximo incremento funcional: **US-051**, ainda não iniciado. O processo de validação passa a seguir o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
+Estado de produto: US-051 com barreira compartilhada de arquivos; próximo incremento: **integração Desktop e paridade Rust da US-051**. Consulte o [contrato e protocolo](development/import-file-validation.md). A central US-050 está integrada ao Desktop. A validação segue o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
 
 ## Leitura por tarefa
 

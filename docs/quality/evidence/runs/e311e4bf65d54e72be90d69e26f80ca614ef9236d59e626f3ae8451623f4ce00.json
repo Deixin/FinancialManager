@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "scope": "us051-defensive-files",
+  "synthetic_only": true,
+  "passed": true,
+  "checks": {
+    "node_hostile_corpus": true,
+    "chromium_same_corpus": true,
+    "csv_independent_oracle": true,
+    "xml_independent_oracle": true,
+    "size_rows_fields_columns_depth_nodes_bounds": true,
+    "isolated_node_deadline_memory": true,
+    "no_browser_egress_storage_execution": true,
+    "safe_errors_metadata_only": true,
+    "no_input_mutation": true,
+    "no_archive_expansion": true
+  },
+  "pending": [
+    "desktop-file-picker-native-integration-and-rust-parity",
+    "xlsx-pdf-fiscal-xml-bounded-readers",
+    "parser-normalization-staging-review-and-financial-commit",
+    "cloud-mobile-runtime-integration-and-human-homologation"
+  ],
+  "resources_closed": true,
+  "source_sha256": {
+    ".github/workflows/import-file-validation.yml": "a89ce22d635e3f18e519c0b5fcf74971272c3e137993efad306230642797ca06",
+    "packages/importers/src/index.ts": "6f8e366786aeb49d3f44c9a67c455f3045a440235d1841b990b05d3326433852",
+    "packages/importers/src/file-validation.ts": "700370f81933eb814f64f4596f43fd23c03d8dacda07b89fb1e8a92a44918b1a",
+    "packages/importers/src/file-validation-policy.ts": "28ee7761bdbc7fcecdd7f8894de25faffebf0c8a5be575e13e76f51119e0365c",
+    "packages/importers/src/file-validation-csv.ts": "fcba5658604a6d0da95863c7e9621f8ec7a750224400ba4ec570f00c67e333c3",
+    "packages/importers/src/file-validation-ofx.ts": "5be338e3d0c04a6d763db459a1b9d240e9ac86cdda2090a597e32981c093feb0",
+    "packages/importers/package.json": "079e1005a6946421ea7ce53fed5bd624eb45281f23fcfdc23cf08e0a9b4d4d98",
+    "packages/importers/README.md": "982ee5edcd74c360db2e421aa90536c1ac5f57dacef14387d61c499b74ffd209",
+    "packages/importers/tsconfig.json": "b4f0f0a5951f131998a9463d4f438a3bea94b0ff60dc2ae8608ccf1fd20789be",
+    "infra/import-file-validation/corpus.mjs": "00a2d4c10810fc77a2aad4eb5d0eee8425b59c7240e2b31a9b9523e06d30f23c",
+    "infra/import-file-validation/probe.mjs": "45440a05ed7f662494f0030fe3cb89e3a421f71b364f117728c636c1442e68f3",
+    "infra/import-file-validation/run.mjs": "c9ffaef093abfb12f5e8e7f888fcb5e98e8a65f39370d317a57ba5d495e8ae1e",
+    "infra/import-file-validation/evidence.mjs": "220825d4b5c4b4bebc06ac29d6a2d56627b65ef5edb445fafaece9047e9091f3",
+    "infra/import-file-validation/oracle.mjs": "822aeb600f58ba65cafc12dd473889995063aa32cfd07a1476ac804dd28475b7",
+    "infra/scripts/import-file-validation.test.mjs": "39e2ec87d4e604d3dfa57c6d00ee325b9a7b1b4eef23a4d903e5667a20889822"
+  },
+  "completed_at_utc": "2026-10-21T12:07:03.575Z",
+  "versions": {
+    "node": "24.19.0",
+    "chromium": "156.0.8078.4"
+  },
+  "cases": 92,
+  "metrics": {
+    "node_duration_ms": 1275.8558,
+    "peak_rss_bytes": 169697280,
+    "browser_heap_bytes": 2359840
+  }
+}

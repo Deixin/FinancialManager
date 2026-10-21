@@ -16,4 +16,6 @@ O [ADR-0070](../architecture/adr/0070-validacao-incremental-e-evidencias-imutave
 
 O [catálogo ativo](../../infra/validation/catalog.json) identifica 53 protocolos herdados, seus validadores, comandos e relatórios. Importações do catálogo conservam o commit de origem e os timestamps reais. Novas execuções são arquivadas pelo hash dos bytes. A consulta do catálogo distingue entradas reutilizáveis, pendentes e arquivos sem cobertura; apenas o executor completo, seguido de `pnpm check`, permite declarar o incremento validado.
 
+A US-051 acrescenta o protocolo [de arquivos defensivos](../development/import-file-validation.md), com corpus hostil em Node isolado e Chromium, comparação com parsers independentes, limites exatos/excedidos e erros sem conteúdo recebido. As 53 entradas herdadas preservam suas execuções reais; o protocolo novo não presume integração Desktop/Rust.
+
 Não confundir testes TypeScript com integração Tauri/Expo/Next/Nest; Chromium com WebView2; evidência Windows com Android/iOS; execução local com CI remota; testes sintéticos com homologação humana. As pendências do PRD, das histórias e dos ADRs continuam aplicáveis.

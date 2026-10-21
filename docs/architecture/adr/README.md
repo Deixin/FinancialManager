@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0071 — Validação defensiva compartilhada de arquivos](0071-validacao-defensiva-compartilhada-de-arquivos.md): gate portátil CSV/OFX, limites e erros seguros, corpus hostil e recusa de contêineres/PDF/XML fiscal até leitores limitados.
+
 [0070 — Validação incremental e evidências imutáveis](0070-validacao-incremental-e-evidencias-imutaveis.md): catálogo único, fontes funcionais, guardas críticos, retomada e gate final obrigatório.
 
 [0069 — Central de importações no Desktop](0069-central-de-importacoes-no-desktop.md): três comandos específicos, paridade Rust, adoção nativa da v3 e restauração com remapeamento completo do ledger; backups antigos autenticados migram somente em staging.

@@ -1062,6 +1062,27 @@
         "revision": "acf51ca6322bfc6f753d3fe87370a4f54eaef4dd"
       },
       "safety_digest": "94c34edee54e274486abfa313439348fb88c3395b62784c529598c760aeefd7d"
+    },
+    {
+      "scope": "us051-defensive-files",
+      "kind": "data",
+      "module": "infra/import-file-validation/evidence.mjs",
+      "validator": "validateFileEvidence",
+      "hashes": "sourceHashes",
+      "sourceBase": "",
+      "sourceArgs": [],
+      "command": ["infra/import-file-validation/run.mjs"],
+      "output": ".tools/us051-defensive-files/latest.json",
+      "alias": "us-051-defensive-files-2026-10-21.json",
+      "report": "docs/quality/evidence/runs/7bb73d75b9cd6295ea0e1ae9296a2838a394273b8c82997ee3c058bae33f0b4a.json",
+      "sha256": "7bb73d75b9cd6295ea0e1ae9296a2838a394273b8c82997ee3c058bae33f0b4a",
+      "content_sha256": "5202a336f0da2c00f6d661fa236b0b4e39679c0b5875fc2b4be115e608513c19",
+      "safety_digest": "7b52b4c8dd80463ba196910fe3975d9207a9f7325bc70a3158b427dae6293e37",
+      "origin": {
+        "kind": "executed",
+        "started_at_utc": "2026-10-21T12:10:41.256Z",
+        "completed_at_utc": "2026-10-21T12:10:45.112Z"
+      }
     }
   ],
   "inventory": {
