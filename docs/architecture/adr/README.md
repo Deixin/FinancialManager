@@ -1,5 +1,9 @@
 # Registros de decisão de arquitetura
 
+[0074 — Parser OFX normalizado compartilhado](0074-parser-ofx-normalizado-compartilhado.md): snapshot validado, dinheiro i64, proveniência determinística, linhas inválidas explícitas e paridade Node/Chromium; adaptação Desktop/Rust pendente.
+
+[0073 — Atualização de ESLint e Turborepo](0073-atualizacao-eslint-turborepo.md): manutenção das US-010/011 em `dev`, versões exatas e revalidação integral dos protocolos afetados pelo lockfile.
+
 [0072 — Validação defensiva no Desktop e Rust](0072-validacao-defensiva-no-desktop-e-rust.md): seleção opaca por workspace/lote, desbloqueio antes da leitura, scanners equivalentes, leitura limitada e resposta sem conteúdo/caminho.
 
 [0071 — Validação defensiva compartilhada de arquivos](0071-validacao-defensiva-compartilhada-de-arquivos.md): gate portátil CSV/OFX, limites e erros seguros, corpus hostil e recusa de contêineres/PDF/XML fiscal até leitores limitados.

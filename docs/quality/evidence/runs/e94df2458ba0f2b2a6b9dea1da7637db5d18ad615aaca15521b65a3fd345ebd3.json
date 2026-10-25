@@ -1,0 +1,63 @@
+{
+  "format_version": 2,
+  "scope": "us051-defensive-files",
+  "synthetic_only": true,
+  "passed": true,
+  "checks": {
+    "node_hostile_corpus": true,
+    "chromium_same_corpus": true,
+    "csv_independent_oracle": true,
+    "xml_independent_oracle": true,
+    "size_rows_fields_columns_depth_nodes_bounds": true,
+    "isolated_node_deadline_memory": true,
+    "no_browser_egress_storage_execution": true,
+    "safe_errors_metadata_only": true,
+    "no_input_mutation": true,
+    "no_archive_expansion": true,
+    "ofx_normalization_node_chromium_parity": true,
+    "ofx_independent_xml_hash_and_golden_oracles": true,
+    "ofx_10000_rows_and_invalid_rows_retained": true
+  },
+  "pending": [
+    "desktop-ofx-normalization-native-integration-and-rust-parity",
+    "xlsx-pdf-fiscal-xml-bounded-readers",
+    "other-parsers-staging-review-and-financial-commit",
+    "cloud-mobile-runtime-integration-and-human-homologation"
+  ],
+  "resources_closed": true,
+  "source_sha256": {
+    ".github/workflows/import-file-validation.yml": "02870070a893e1e3553bf8bd08dd7f022bfc606afb2d79e7e17bdaf2d632eabf",
+    "packages/importers/src/index.ts": "56a3e786c1f15c21b7d9c2a400665cfbcd6b54020a1cf9c5530e7a2e0bda1f59",
+    "packages/importers/src/file-validation.ts": "4ccc4a431e26e72822517e5a822a26e80b1feff24fd0d3e2c6cc7694b24d2dc1",
+    "packages/importers/src/file-validation-policy.ts": "28ee7761bdbc7fcecdd7f8894de25faffebf0c8a5be575e13e76f51119e0365c",
+    "packages/importers/src/file-validation-csv.ts": "61a08095aaa76921c4e95fb9e794c762b5f6d485478a11b698dd061c82200313",
+    "packages/importers/src/file-validation-ofx.ts": "22e3cb2a5f52f596b54825aef28340835df33b0518de6925ebdfd5728f932ce1",
+    "packages/importers/src/ofx-parser.ts": "3d319833ffb0917bddeb88c10f1381e511498cc7f646278edc14fd163fba80c6",
+    "packages/importers/src/ofx-contract.ts": "b912e25cdcc917cee268f590210fe7781714109acd8b36f703757f7073c61e1e",
+    "packages/importers/src/ofx-reader.ts": "6f4a685c38fb7672f9d68479ae0cf16a3110f02e8dc5300dc6b7498f54e93aec",
+    "packages/importers/src/ofx-normalization.ts": "4ba26d37efb257b4ab04ff1c78fa3c1ecb2f6840428130a24b35bb57f165c1ad",
+    "infra/ofx-parser/corpus.mjs": "252b95cb9d6072d0deddf12ca24cb15d99a65aac54a93f69f1d48821ee8b0d3b",
+    "infra/ofx-parser/oracle.mjs": "a729b05174d3dc617656e89ee4f63a8607b7a3816ae0690b1edfc26314f0a8df",
+    "packages/importers/package.json": "079e1005a6946421ea7ce53fed5bd624eb45281f23fcfdc23cf08e0a9b4d4d98",
+    "packages/importers/README.md": "c5af0abfd0443157c4d2d8150d09a5fb855b4ac57cdc6cb3d1a2dee1007032fe",
+    "packages/importers/tsconfig.json": "b4f0f0a5951f131998a9463d4f438a3bea94b0ff60dc2ae8608ccf1fd20789be",
+    "infra/import-file-validation/corpus.mjs": "e2ed3816ca5ed067902cacbef12f9bc7bb496eca51d9e569043f0d938db17923",
+    "infra/import-file-validation/probe.mjs": "ce8b4d00a90bba8dc392ad4c8b98c12215f7a0a58d4fd41066472d3f681f0574",
+    "infra/import-file-validation/run.mjs": "a4f32bc5ca924745e27b4a18b2562372a87a3f866db57a5aa4c4b36e3bf6d5c5",
+    "infra/import-file-validation/evidence.mjs": "c902f4d1290df832d0a997dbffeebc8c6327e8b05bfec15aceddcfe83ab334aa",
+    "infra/import-file-validation/oracle.mjs": "822aeb600f58ba65cafc12dd473889995063aa32cfd07a1476ac804dd28475b7"
+  },
+  "completed_at_utc": "2026-10-25T20:14:13.149Z",
+  "versions": {
+    "node": "24.19.0",
+    "chromium": "156.0.8078.4"
+  },
+  "cases": 97,
+  "ofx_cases": 70,
+  "metrics": {
+    "node_duration_ms": 1874.5578,
+    "ofx_duration_ms": 662.9182000000001,
+    "peak_rss_bytes": 170516480,
+    "browser_heap_bytes": 23336256
+  }
+}

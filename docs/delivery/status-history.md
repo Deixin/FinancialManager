@@ -532,3 +532,18 @@ O roteiro continua sendo o [plano original](06-implementation-plan.md). Antes da
    A US-003 possui instrumento local; concluir a homologação de identidade com os conectores e runtimes pendentes antes de declará-la encerrada.
 3. Executar G07-IDS/TIME/VAULT/QUERY antes das implementações de persistência afetadas; G07-JOBS/PDF antes das respectivas integrações cloud/documentais. Integrar os frameworks conforme as dependências das histórias.
 4. Expandir CI com os testes financeiros, de integração e das plataformas.
+
+## Snapshot anterior ao núcleo US-052 — arquivado em 2026-10-25
+
+Snapshot histórico substituído pelo resumo atual; não representa o estado vigente.
+
+Atualizado em 2026-10-21. Este arquivo contém o estado vigente; o [histórico de entregas](status-history.md) preserva o conteúdo anterior.
+
+- **Manutenção em validação:** ESLint 10.13.0 e Turborepo 2.11.9 incorporados localmente a `dev` sobre `0bed20d2a986b19a284892c065957e955a43735c`, preservando os demais pacotes. A mudança de lockfile exige reexecutar os 54 protocolos e `pnpm check`; resultados anteriores abaixo descrevem a US-051, não aprovam esta atualização. [ADR-0073](../architecture/adr/0073-atualizacao-eslint-turborepo.md).
+- **Incremento entregue:** US-051 integrada ao Desktop sobre o commit-base 29988f4f947b5dcb24eb369d7c67f438a5c55cc0. Seleção nativa, leitura limitada e inspeção CSV/OFX Rust, com paridade compartilhada, seleção temporária por workspace/lote, desbloqueio após o seletor, cancelamento e erros seguros. [Fluxo e protocolo](../development/desktop-import-files.md), [ADR-0072](../architecture/adr/0072-validacao-defensiva-no-desktop-e-rust.md). A central US-050 e o backup/restauração permanecem integrados.
+- **Validação:** `pnpm check` aprovado com 527 testes, sem falhas ou skips; 54 protocolos atuais, revalidados neste incremento e reutilizados pelo gate final. Chromium aprovou oito gates; Windows aprovou nove, incluindo sete testes nativos de arquivos, 357 vetores TypeScript/Rust, WebView2 e restauração portátil sem credenciais de origem. O corpus compartilhado passou com 97 casos Node e correspondente Chromium. Evidências: [Desktop Windows](../quality/evidence/runs/61e0652cbe8f9a59e40691f4159d49d945271259829145f3bf636cebcd1becc5.json), [Desktop Chromium](../quality/evidence/runs/82677d28d6740f3ac626d0d28e6defcb05eafd4388ad807fc4d5aa8d37cd70dc.json), [barreira compartilhada](../quality/evidence/runs/e12c5ac85e3248286df26f1e181ed9e28930dff51730016a6e02498b989dd5ce.json).
+- **Próximo incremento:** US-052 — parser OFX normalizado, com itens determinísticos e provenance. Staging, revisão e commit financeiro seguem US-052–057; esta validação não cria lançamentos.
+- **Limites:** sem mudança de schema, regras monetárias, RLS, criptografia, formato de backup/restauração ou dependências de produção. Contêineres, PDF e XML fiscal continuam recusados até leitores limitados.
+- **Pendências:** homologação humana após integração completa ([ADR-0044](../architecture/adr/0044-homologacao-humana-apos-integracao.md)); decisões DP-01 a DP-04 e gates cloud/Mobile permanecem como descritos nas [decisões pendentes](../architecture/decisions-pending.md). Execução local não presume CI remota, assinatura ou homologação humana.
+
+Para continuar, leia os critérios da US-052 no [backlog](05-backlog.md), o contrato compartilhado da US-051, o fluxo Desktop e o [processo de validação](../development/validation-workflow.md). Registre escopo, arquivos de entrada e critérios de término antes da execução longa.

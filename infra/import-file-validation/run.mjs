@@ -12,6 +12,7 @@ import {
   validateFileEvidence,
 } from './evidence.mjs';
 import { verifyOracles } from './oracle.mjs';
+import { verifyOfxOracle } from '../ofx-parser/oracle.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const child = spawnSync(
@@ -38,10 +39,11 @@ assert.ok(
     node.peak_rss_bytes <= 256 * 1024 * 1024,
 );
 assert.equal(verifyOracles(), true);
+assert.equal(await verifyOfxOracle(), true);
 const bundle = await build({
   stdin: {
     contents:
-      "import * as api from './packages/importers/src/index.ts'; import {corpus,executeCorpus} from './infra/import-file-validation/corpus.mjs'; export function run(){return executeCorpus(api,corpus());}",
+      "import * as api from './packages/importers/src/index.ts'; import {corpus,executeCorpus} from './infra/import-file-validation/corpus.mjs'; import {executeOfxCorpus} from './infra/ofx-parser/corpus.mjs'; export async function run(){return {files:executeCorpus(api,corpus()),ofx:await executeOfxCorpus(api)};}",
     resolveDir: root,
   },
   bundle: true,
@@ -69,8 +71,8 @@ try {
   const cdp = await context.newCDPSession(page);
   await page.goto('https://us051.synthetic.invalid/');
   await page.addScriptTag({ content: bundle.outputFiles[0].text });
-  browserResults = await page.evaluate(() => {
-    const results = globalThis.SyntheticFileValidation.run();
+  browserResults = await page.evaluate(async () => {
+    const results = await globalThis.SyntheticFileValidation.run();
     if (
       globalThis.executed !== undefined ||
       globalThis.document.cookie ||
@@ -83,9 +85,10 @@ try {
   heap = (await cdp.send('Runtime.getHeapUsage')).usedSize;
   // SharedArrayBuffer is available in Node and only in isolated browser contexts.
   assert.deepEqual(
-    browserResults,
+    browserResults.files,
     node.results.filter((item) => item.name !== 'shared-memory-rejected'),
   );
+  assert.deepEqual(browserResults.ofx, node.ofx_results);
   assert.equal(egress, 0);
   assert.deepEqual(await context.cookies(), []);
   assert.equal(bundle.outputFiles[0].text.includes('node:fs'), false);
@@ -94,7 +97,7 @@ try {
   await browser.close();
 }
 const report = {
-  format_version: 1,
+  format_version: 2,
   scope,
   synthetic_only: true,
   passed: true,
@@ -105,8 +108,10 @@ const report = {
   completed_at_utc: new Date().toISOString(),
   versions: { node: process.versions.node, chromium: version },
   cases: node.results.length,
+  ofx_cases: node.ofx_results.length,
   metrics: {
     node_duration_ms: node.duration_ms,
+    ofx_duration_ms: node.ofx_duration_ms,
     peak_rss_bytes: node.peak_rss_bytes,
     browser_heap_bytes: heap,
   },
@@ -124,6 +129,7 @@ console.log(
     scope,
     passed: true,
     cases: report.cases,
+    ofx_cases: report.ofx_cases,
     metrics: report.metrics,
   }),
 );

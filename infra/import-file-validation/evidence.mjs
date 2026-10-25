@@ -13,11 +13,14 @@ export const checks = Object.freeze([
   'safe_errors_metadata_only',
   'no_input_mutation',
   'no_archive_expansion',
+  'ofx_normalization_node_chromium_parity',
+  'ofx_independent_xml_hash_and_golden_oracles',
+  'ofx_10000_rows_and_invalid_rows_retained',
 ]);
 export const pending = Object.freeze([
-  'desktop-file-picker-native-integration-and-rust-parity',
+  'desktop-ofx-normalization-native-integration-and-rust-parity',
   'xlsx-pdf-fiscal-xml-bounded-readers',
-  'parser-normalization-staging-review-and-financial-commit',
+  'other-parsers-staging-review-and-financial-commit',
   'cloud-mobile-runtime-integration-and-human-homologation',
 ]);
 export function sourceHashes() {
@@ -29,6 +32,12 @@ export function sourceHashes() {
       'packages/importers/src/file-validation-policy.ts',
       'packages/importers/src/file-validation-csv.ts',
       'packages/importers/src/file-validation-ofx.ts',
+      'packages/importers/src/ofx-parser.ts',
+      'packages/importers/src/ofx-contract.ts',
+      'packages/importers/src/ofx-reader.ts',
+      'packages/importers/src/ofx-normalization.ts',
+      'infra/ofx-parser/corpus.mjs',
+      'infra/ofx-parser/oracle.mjs',
       'packages/importers/package.json',
       'packages/importers/README.md',
       'packages/importers/tsconfig.json',
@@ -66,9 +75,10 @@ export function validateFileEvidence(report, { matchSources = true } = {}) {
       'completed_at_utc',
       'versions',
       'cases',
+      'ofx_cases',
       'metrics',
     ]) ||
-    report.format_version !== 1 ||
+    report.format_version !== 2 ||
     report.scope !== scope ||
     report.synthetic_only !== true ||
     report.passed !== true ||
@@ -81,14 +91,20 @@ export function validateFileEvidence(report, { matchSources = true } = {}) {
     !/^\d+\.\d+\.\d+\.\d+$/.test(report.versions.chromium) ||
     !Number.isSafeInteger(report.cases) ||
     report.cases < 80 ||
+    !Number.isSafeInteger(report.ofx_cases) ||
+    report.ofx_cases < 65 ||
     !exact(report.metrics, [
       'node_duration_ms',
+      'ofx_duration_ms',
       'peak_rss_bytes',
       'browser_heap_bytes',
     ]) ||
     !Number.isFinite(report.metrics.node_duration_ms) ||
     report.metrics.node_duration_ms < 0 ||
     report.metrics.node_duration_ms > 30000 ||
+    !Number.isFinite(report.metrics.ofx_duration_ms) ||
+    report.metrics.ofx_duration_ms <= 0 ||
+    report.metrics.ofx_duration_ms > 30000 ||
     !Number.isSafeInteger(report.metrics.peak_rss_bytes) ||
     report.metrics.peak_rss_bytes <= 0 ||
     report.metrics.peak_rss_bytes > 256 * 1024 * 1024 ||

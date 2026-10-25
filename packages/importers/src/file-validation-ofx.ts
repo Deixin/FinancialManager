@@ -55,7 +55,7 @@ const scalars = new Set([
   'DTASOF',
 ]);
 
-function sourceBody(text: string, encoding: string) {
+export function sourceBody(text: string, encoding: string) {
   const start = text.indexOf('<OFX>');
   if (start < 0 || start > limits.record_chars) rejectFile('INVALID_OFX');
   const prefix = text.slice(0, start).trim();

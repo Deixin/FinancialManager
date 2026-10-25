@@ -1,5 +1,7 @@
 # US-051 — Barreira compartilhada de arquivos
 
+Continuidade em 2026-10-25: a [US-052](ofx-parser.md) amplia este protocolo com normalização OFX e proveniência, além dos gates defensivos preservados. A evidência atual usa formato 2 e registra 97 casos defensivos e 70 casos OFX; os resultados históricos abaixo mantêm seus números e datas originais.
+
 Este incremento implementa a validação estrutural em `@financial-manager/importers`, conforme [ADR-0071](../architecture/adr/0071-validacao-defensiva-compartilhada-de-arquivos.md). A integração de seleção/leitura Desktop e paridade Rust está descrita na [US-051 Desktop](desktop-import-files.md) e no [ADR-0072](../architecture/adr/0072-validacao-defensiva-no-desktop-e-rust.md). Os resultados abaixo preservam a entrega compartilhada anterior.
 
 `validateImportFile({ file_name, mime, encoding, delimiter, bytes }, signal?)` devolve metadados congelados ou `ImportFileError` com código fixo. Encoding aceita `utf-8` ou `windows-1252`; CSV exige delimitador `,`, `;` ou tab, OFX exige `null`. Não há detecção silenciosa de encoding/delimitador nem garantia semântica baseada na extensão/MIME.

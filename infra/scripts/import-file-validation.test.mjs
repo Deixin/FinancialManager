@@ -47,9 +47,16 @@ test('US-051 evidence requires fresh current sources and all behavior/resource g
   for (const change of [
     { resources_closed: false },
     { cases: 0 },
+    { ofx_cases: 0 },
+    { format_version: 1 },
     { passed: false },
     { pending: [] },
   ]) {
     assert.throws(() => validateFileEvidence({ ...report, ...change }));
+  }
+  for (const value of [-1, Number.NaN, 30001]) {
+    const invalid = globalThis.structuredClone(report);
+    invalid.metrics.ofx_duration_ms = value;
+    assert.throws(() => validateFileEvidence(invalid));
   }
 });
