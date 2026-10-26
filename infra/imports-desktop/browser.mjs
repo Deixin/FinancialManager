@@ -7,7 +7,14 @@ import { serveDesktopEntry } from '../entry/host.mjs';
 import { installSyntheticWorkspaceBridge } from '../local-workspaces/browser-fixture.mjs';
 import { syntheticImportHost, workspace, other, now } from './fixture.mjs';
 import { hashes, pending, validateEvidence } from './evidence.mjs';
-import { validateImportFile } from '../../packages/importers/dist/index.js';
+import {
+  validateImportFile,
+  parseOfx,
+} from '../../packages/importers/dist/index.js';
+import {
+  statement as ofxStatement,
+  transaction as ofxTransaction,
+} from '../ofx-parser/corpus.mjs';
 import { xmlHeader } from '../import-file-validation/corpus.mjs';
 const directory = new URL(
     '../../.tools/us050-desktop-imports/',
@@ -101,6 +108,7 @@ try {
     holdFile = false,
     fileReached,
     fileRelease;
+  let badOfxAck = false;
   const fileSelection = '0199d051-0000-7000-8000-000000009000';
   await page.exposeFunction('__syntheticFileHost', async (a) => {
     const input = a.input;
@@ -141,6 +149,30 @@ try {
           bytes: new globalThis.TextEncoder().encode(fileText),
         }),
       };
+      if (result.inspection.format === 'OFX') {
+        const model = await parseOfx(
+          {
+            file_name: fileName,
+            mime: '',
+            encoding: input.encoding,
+            delimiter: null,
+            bytes: new globalThis.TextEncoder().encode(fileText),
+          },
+          {
+            workspace_id: a.workspaceId,
+            account_id: batch.target_account_id,
+            balance_nature: 'ASSET',
+            currency: 'BRL',
+          },
+        );
+        result.file_hash = model.source.file_hash;
+        result.normalization = badOfxAck
+          ? {
+              ...model,
+              destination: { ...model.destination, account_id: other },
+            }
+          : model;
+      }
     } catch (e) {
       result = { outcome: 'REJECTED', code: e.code };
     }
@@ -368,6 +400,106 @@ try {
       );
       assert.deepEqual(h.financial.read(workspace), financialBeforeFiles);
       await click('Importações');
+    },
+  );
+  await step('ofx_preview_bound_items_pages_and_errors', async () => {
+    fileName = 'SYNTHETIC-ofx.ofx';
+    fileText = ofxStatement(
+      Array.from({ length: 25 }, (_, i) =>
+        ofxTransaction({
+          FITID: 'SYNTHETIC-' + i,
+          TRNAMT: i === 0 ? 'invalid' : '-1.23',
+          TRNTYPE: i === 1 ? 'XFER' : 'OTHER',
+          MEMO: 'SYNTHETIC OFX private ' + i,
+        }),
+      ).join(''),
+    );
+    await prepareFile();
+    await page
+      .getByLabel('Formato exportado', { exact: true })
+      .selectOption('OFX');
+    await click('Validar arquivo');
+    await heading('Prévia OFX');
+    assert.ok(
+      (await page.locator('body').textContent()).includes(
+        '24 válidos e 1 inválidos',
+      ),
+    );
+    assert.equal(await page.locator('article').count(), 20);
+    assert.ok(
+      (await page.locator('body').textContent()).includes(
+        'Revisar transferência ou pagamento',
+      ),
+    );
+    await click('Próximos itens');
+    assert.equal(await page.locator('article').count(), 5);
+    await page
+      .getByRole('heading', { name: 'Item 25 — Válido', exact: true })
+      .waitFor();
+    assert.deepEqual((await new AxeBuilder({ page }).analyze()).violations, []);
+    assert.equal(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= window.innerWidth,
+      ),
+      true,
+    );
+    await click('Bloquear agora');
+    await page.getByLabel('PIN do aplicativo', { exact: true }).waitFor();
+    assert.equal(
+      (await page.locator('body').textContent()).includes(
+        'SYNTHETIC OFX private',
+      ),
+      false,
+    );
+    await page.getByLabel('PIN do aplicativo', { exact: true }).fill(PIN);
+    await click('Desbloquear');
+    await page
+      .getByRole('button', { name: /SYNTHETIC IMPORT SPACE 0/ })
+      .click();
+    await click('Importações');
+    assert.deepEqual(h.financial.read(workspace), financialBeforeFiles);
+  });
+  await step(
+    'ofx_malformed_ack_and_late_cancel_discard_private_rows',
+    async () => {
+      badOfxAck = true;
+      await prepareFile();
+      await page
+        .getByLabel('Formato exportado', { exact: true })
+        .selectOption('OFX');
+      await click('Validar arquivo');
+      await page.getByRole('alert').waitFor();
+      assert.equal(
+        (await page.locator('body').textContent()).includes(
+          'SYNTHETIC OFX private',
+        ),
+        false,
+      );
+      await returnToImports();
+      badOfxAck = false;
+      await prepareFile();
+      await page
+        .getByLabel('Formato exportado', { exact: true })
+        .selectOption('OFX');
+      holdFile = true;
+      const waiting = new Promise((resolve) => {
+        fileReached = resolve;
+      });
+      await click('Validar arquivo');
+      await waiting;
+      await click('Cancelar validação');
+      fileRelease();
+      await heading('Seu espaço local está pronto');
+      assert.equal(
+        (await page.locator('body').textContent()).includes(
+          'SYNTHETIC OFX private',
+        ),
+        false,
+      );
+      await click('Importações');
+      assert.deepEqual(h.financial.read(workspace), financialBeforeFiles);
+      fileName = 'SYNTHETIC-selected.csv';
+      fileText = 'a,b\n1,SYNTHETIC private row';
     },
   );
   await step('file_validation_accessible_private_and_no_storage', async () => {

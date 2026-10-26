@@ -49,7 +49,7 @@ impl restore_source::RestoreSource for Source {
         Ok(self.0.clone())
     }
 }
-fn setup() -> (
+pub(super) fn setup() -> (
     tempfile::TempDir,
     LocalState,
     String,
@@ -85,7 +85,7 @@ fn setup() -> (
         .with_import_source(Arc::new(Source(Some(file.clone()))));
     (temp, state, w, batch, file, bytes)
 }
-fn select(state: &LocalState, w: &str, b: &str) -> String {
+pub(super) fn select(state: &LocalState, w: &str, b: &str) -> String {
     let job = state.begin_import_file(w, b).unwrap();
     let path = state.choose_import_file(&job, 1).unwrap();
     state.finish_import_file_selection(job, path).unwrap()["selection_id"]

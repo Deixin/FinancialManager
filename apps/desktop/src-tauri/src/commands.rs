@@ -1074,7 +1074,11 @@ impl LocalState {
         self.generation.fetch_add(1, Ordering::SeqCst);
         self.force_locked.store(true, Ordering::SeqCst);
     }
-    fn require_import_destination(s: &Session, workspace: &str, batch: &str) -> Result<()> {
+    fn require_import_destination(
+        s: &Session,
+        workspace: &str,
+        batch: &str,
+    ) -> Result<crate::ofx_model::Destination> {
         identity_for_import(workspace)?;
         identity_for_import(batch)?;
         let detail = s.installation.read_import(
@@ -1090,16 +1094,18 @@ impl LocalState {
         let account = detail["batch"]["target_account_id"]
             .as_str()
             .ok_or(LocalError::InvalidImportRequest)?;
-        if !s
-            .installation
-            .read_accounts(workspace)?
+        let accounts = s.installation.read_accounts(workspace)?;
+        let account = accounts
             .accounts
             .iter()
-            .any(|a| a.account.id == account && a.account.status == "ACTIVE")
-        {
-            return Err(LocalError::ImportAccountUnavailable);
-        }
-        Ok(())
+            .find(|a| a.account.id == account && a.account.status == "ACTIVE")
+            .ok_or(LocalError::ImportAccountUnavailable)?;
+        Ok(crate::ofx_model::Destination {
+            workspace_id: workspace.to_owned(),
+            account_id: account.account.id.clone(),
+            balance_nature: account.account.balance_nature.clone(),
+            currency: account.account.currency_code.clone(),
+        })
     }
     pub fn begin_import_file(
         &self,
@@ -1167,20 +1173,28 @@ impl LocalState {
         }
         identity_for_import(selection)?;
         let generation = self.generation.load(Ordering::SeqCst);
-        let (path, epoch) = self.access(true, |s| {
-            Self::require_import_destination(s, workspace, batch)?;
-            self.import_files.take(workspace, batch, selection)
+        let (path, epoch, destination) = self.access(true, |s| {
+            let destination = Self::require_import_destination(s, workspace, batch)?;
+            let (path, epoch) = self.import_files.take(workspace, batch, selection)?;
+            Ok((path, epoch, destination))
         })?;
-        let result = crate::local_import_file::read_file(&path, encoding, delimiter, || {
-            self.import_files.current(epoch) && self.generation.load(Ordering::SeqCst) == generation
-        });
+        let result = crate::local_import_file::read_for_destination(
+            &path,
+            encoding,
+            delimiter,
+            &destination,
+            || {
+                self.import_files.current(epoch)
+                    && self.generation.load(Ordering::SeqCst) == generation
+            },
+        );
         self.access(true, |s| {
             if !self.import_files.current(epoch)
                 || self.generation.load(Ordering::SeqCst) != generation
             {
                 return Err(LocalError::LocalLocked);
             }
-            Self::require_import_destination(s, workspace, batch)?;
+            if Self::require_import_destination(s, workspace, batch)? != destination { return Err(LocalError::InvalidImportRequest); }
             Ok(serde_json::json!({"workspace_id":workspace,"batch_id":batch,"selection_id":selection,"result":result}))
         })
     }

@@ -66,7 +66,7 @@ pub fn valid_name(name: &str) -> bool {
             .chars()
             .any(|c| c.is_control() || crate::file_unicode::is_format(c) || "\\/:".contains(c))
 }
-fn decode(bytes: &[u8], encoding: &str) -> Check<Zeroizing<String>> {
+pub(crate) fn decode(bytes: &[u8], encoding: &str) -> Check<Zeroizing<String>> {
     if encoding == "utf-8" {
         let text = std::str::from_utf8(bytes).map_err(|_| "INVALID_ENCODING")?;
         return Ok(Zeroizing::new(

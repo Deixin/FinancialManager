@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FileOptions, InspectedFile } from './local-import-file.js';
+import { LocalOfxPreviewFlow } from './local-ofx-preview-flow.js';
 export function LocalImportFileFlow({
   busy,
   selected,
@@ -49,6 +50,9 @@ export function LocalImportFileFlow({
               <dt>Tamanho em bytes</dt>
               <dd>{result.inspection.byte_length}</dd>
             </dl>
+            {result.normalization && (
+              <LocalOfxPreviewFlow preview={result.normalization} />
+            )}
             <p>
               O arquivo ainda não foi importado. Nenhum lançamento foi criado.
             </p>

@@ -48,6 +48,12 @@ pub mod local_workspaces;
 pub mod lock_store;
 mod migrations;
 pub mod movement_model;
+pub mod ofx_model;
+mod ofx_normalization;
+mod ofx_reader;
+mod ofx_schema;
+#[cfg(all(test, feature = "imports-smoke"))]
+mod ofx_tests;
 pub mod restore_source;
 pub mod taxonomy_model;
 pub mod transfer_model;

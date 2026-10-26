@@ -1,5 +1,7 @@
 # Registros de decisão de arquitetura
 
+[0075 — Normalização OFX no Desktop e Rust](0075-normalizacao-ofx-no-desktop-e-rust.md): destino derivado da conta autorizada, mesmo snapshot, paridade integral e prévia privada paginada sem persistência financeira.
+
 [0074 — Parser OFX normalizado compartilhado](0074-parser-ofx-normalizado-compartilhado.md): snapshot validado, dinheiro i64, proveniência determinística, linhas inválidas explícitas e paridade Node/Chromium; adaptação Desktop/Rust pendente.
 
 [0073 — Atualização de ESLint e Turborepo](0073-atualizacao-eslint-turborepo.md): manutenção das US-010/011 em `dev`, versões exatas e revalidação integral dos protocolos afetados pelo lockfile.

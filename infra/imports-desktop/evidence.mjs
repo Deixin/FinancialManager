@@ -11,6 +11,8 @@ export const browserChecks = Object.freeze([
   'file_picker_unlock_validation_and_safe_rejection',
   'file_cancel_discards_late_result_and_preserves_ledger',
   'file_validation_accessible_private_and_no_storage',
+  'ofx_preview_bound_items_pages_and_errors',
+  'ofx_malformed_ack_and_late_cancel_discard_private_rows',
 ]);
 export const nativeChecks = Object.freeze([
   'locked_clippy_seven_sqlcipher_tests_and_102_shared_vectors',
@@ -22,6 +24,8 @@ export const nativeChecks = Object.freeze([
   'owned_keys_profiles_files_removed',
   'file_gate_seven_native_tests_and_shared_rust_parity',
   'file_webview_real_ipc_selection_unlock_and_validation',
+  'ofx_native_tests_and_full_shared_parity',
+  'ofx_webview_real_ipc_private_paginated_preview',
 ]);
 export const pending = Object.freeze([
   'human-homologations-after-complete-system-integration',
@@ -35,6 +39,17 @@ export function hashes() {
     ...Object.fromEntries(
       [
         'apps/desktop/src/local-import-file.ts',
+        'apps/desktop/src/local-ofx-preview.ts',
+        'apps/desktop/src/local-ofx-preview-flow.tsx',
+        'apps/desktop/src-tauri/src/ofx_model.rs',
+        'apps/desktop/src-tauri/src/ofx_normalization.rs',
+        'apps/desktop/src-tauri/src/ofx_reader.rs',
+        'apps/desktop/src-tauri/src/ofx_schema.rs',
+        'apps/desktop/src-tauri/src/ofx_tests.rs',
+        'apps/desktop/src-tauri/ofx-smoke.js',
+        'infra/ofx-desktop/generate.mjs',
+        'infra/ofx-desktop/parity.mjs',
+        'infra/scripts/ofx-desktop.test.mjs',
         'apps/desktop/src/local-import-file-flow.tsx',
         'apps/desktop/src-tauri/src/file_model.rs',
         'apps/desktop/src-tauri/src/file_csv.rs',

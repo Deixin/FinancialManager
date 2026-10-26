@@ -20,6 +20,11 @@ import { defaultImportQuery } from '../../packages/domain/dist/imports.js';
 import { decodeMovementsSnapshot } from '../../apps/desktop/dist/local-movements.js';
 import { verifyNativeParity } from './parity.mjs';
 import { verifyFileParity } from '../import-files-desktop/parity.mjs';
+import { verifyOfxParity } from '../ofx-desktop/parity.mjs';
+import {
+  statement as ofxStatement,
+  transaction as ofxTransaction,
+} from '../ofx-parser/corpus.mjs';
 const root = fileURLToPath(new URL('../../', import.meta.url)),
   directory = path.join(root, '.tools/us050-desktop-imports'),
   crate = path.join(root, 'apps/desktop/src-tauri'),
@@ -77,6 +82,56 @@ function step(name, fn) {
   fn();
   report.checks[name] = true;
   console.log('US050 native: ' + name);
+}
+async function ofxGates() {
+  stage = 'ofx_native_tests_and_full_shared_parity';
+  run(process.execPath, ['infra/ofx-desktop/generate.mjs', '--check'], root);
+  const tests = run('cargo', [
+    'test',
+    '--locked',
+    '--lib',
+    '--features',
+    'imports-smoke',
+    'ofx_tests',
+    '--',
+    '--test-threads=1',
+  ]);
+  assert.match(tests.stdout, /6 passed; 0 failed; 0 ignored/);
+  const count = await verifyOfxParity(
+    path.join(target, 'debug/file-probe.exe'),
+    own,
+  );
+  report.versions.ofx_parity_vectors = String(count);
+  report.checks[stage] = true;
+  console.log('US052 native: ' + stage);
+  step('ofx_webview_real_ipc_private_paginated_preview', () => {
+    const selected = path.join(own, 'SYNTHETIC-ofx.ofx'),
+      output = path.join(own, 'ofx-webview.json');
+    const text = ofxStatement(
+      Array.from({ length: 25 }, (_, i) =>
+        ofxTransaction({
+          FITID: 'SYNTHETIC-' + i,
+          TRNAMT: i === 0 ? 'invalid' : '-1.23',
+          TRNTYPE: i === 1 ? 'XFER' : 'OTHER',
+          MEMO: 'SYNTHETIC OFX private ' + i,
+        }),
+      ).join(''),
+    );
+    writeFileSync(selected, text);
+    const before = readFileSync(selected);
+    run(
+      path.join(target, 'debug/file-smoke.exe'),
+      [output, path.join(own, 'ofx-profile'), store, selected, 'OFX'],
+      root,
+    );
+    const result = JSON.parse(readFileSync(output));
+    assert.equal(result.passed, true);
+    assert.equal(Object.values(result.checks).filter(Boolean).length, 5);
+    assert.deepEqual(readFileSync(selected), before);
+    const after = probe('movements').snapshot;
+    delete after.balance.read_at;
+    assert.deepEqual(after, financialBefore);
+  });
 }
 try {
   mkdirSync(directory, { recursive: true });
@@ -271,6 +326,7 @@ try {
     delete after.balance.read_at;
     assert.deepEqual(after, financialBefore);
   });
+  await ofxGates();
   step('portable_restore_without_source_credentials', () => {
     const before = probe('read').detail;
     probe('backup');
@@ -301,6 +357,11 @@ try {
   report.failure_stage = stage;
   process.exitCode = 1;
 } finally {
+  if (own && existsSync(path.join(own, 'ofx-webview.json')))
+    writeFileSync(
+      path.join(directory, 'ofx-webview-diagnostic.json'),
+      readFileSync(path.join(own, 'ofx-webview.json')),
+    );
   if (own && existsSync(path.join(own, 'webview.json')))
     writeFileSync(
       path.join(directory, 'webview-diagnostic.json'),

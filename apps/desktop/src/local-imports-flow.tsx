@@ -215,7 +215,8 @@ export function LocalImportsFlow({
           <h3>Fontes</h3>
           {onInspectImport &&
             detail.batch.batch_kind === 'IMPORT' &&
-            detail.batch.status === 'PREPARING' && (
+            detail.batch.status === 'PREPARING' &&
+            detail.batch.target_account_id !== null && (
               <button
                 type="button"
                 disabled={busy}
@@ -223,6 +224,7 @@ export function LocalImportsFlow({
                   onInspectImport({
                     workspace_id: workspaceId,
                     batch_id: detail.batch.id,
+                    account_id: detail.batch.target_account_id!,
                   })
                 }
               >

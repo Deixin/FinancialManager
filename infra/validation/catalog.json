@@ -160,15 +160,15 @@
       "command": ["infra/local-workspaces/browser.mjs"],
       "output": ".tools/us031-workspaces/browser.json",
       "alias": "us-031-workspaces-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/087ab4a8428543ef91f047e68779c3789387895b9eefb46ba136f32d4f5bf383.json",
-      "sha256": "087ab4a8428543ef91f047e68779c3789387895b9eefb46ba136f32d4f5bf383",
-      "content_sha256": "6321a627019bb0727e95fd8b3ffb8e2776ac9725660eff263a89f5c9c69c5567",
+      "report": "docs/quality/evidence/runs/ce55e30f4daa5b4cde1217c32b43713bd071eb68d8a6a0d8157d9c0faf76dc9e.json",
+      "sha256": "ce55e30f4daa5b4cde1217c32b43713bd071eb68d8a6a0d8157d9c0faf76dc9e",
+      "content_sha256": "1c02894cb9c3e5659fd07894b0c66e76ab5cf9f14f7bdf4e4625ac3ab3c65a92",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:29:13.787Z",
-        "completed_at_utc": "2026-10-22T00:29:16.866Z"
+        "started_at_utc": "2026-10-25T23:28:27.518Z",
+        "completed_at_utc": "2026-10-25T23:28:31.289Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us031-local-workspace-windows",
@@ -181,15 +181,15 @@
       "command": ["infra/local-workspaces/native.mjs"],
       "output": ".tools/us031-workspaces/windows.json",
       "alias": "us-031-workspaces-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/b4b3cc527e5e32942fcf9b1dc9b7141b8cc20f83efeb19a730ce95378f5287bb.json",
-      "sha256": "b4b3cc527e5e32942fcf9b1dc9b7141b8cc20f83efeb19a730ce95378f5287bb",
-      "content_sha256": "59f5a82fcc06c746b90818f4e89e9d81e299f05393cfd58ef10b03060e9c1dc0",
+      "report": "docs/quality/evidence/runs/9853352d16fc41b846378bee8adbfdded5567e56f380b8b65648089634a6779b.json",
+      "sha256": "9853352d16fc41b846378bee8adbfdded5567e56f380b8b65648089634a6779b",
+      "content_sha256": "8e0f2725fa4760c9df4c81c83dfdecd592e6203c8ed22dcc3c664dcb657e0744",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:29:19.963Z",
-        "completed_at_utc": "2026-10-22T00:30:57.249Z"
+        "started_at_utc": "2026-10-25T23:28:34.458Z",
+        "completed_at_utc": "2026-10-25T23:31:48.734Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us032-product-vault-windows",
@@ -202,15 +202,15 @@
       "command": ["infra/vault/native.mjs"],
       "output": ".tools/us032-vault/windows.json",
       "alias": "us-032-vault-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/6e6e2fcc48e74c1f06924128b17ffae1dade3435657a811bf406fd3b4cf82218.json",
-      "sha256": "6e6e2fcc48e74c1f06924128b17ffae1dade3435657a811bf406fd3b4cf82218",
-      "content_sha256": "5c16cf76565b54f7aa0a821a20c9dacd767cc6af4e87a93bae898ae59bd4c78b",
+      "report": "docs/quality/evidence/runs/02c71543f1fcb49ce442f457202ab08765613ecc5dcfd39a9a699874bd688dcd.json",
+      "sha256": "02c71543f1fcb49ce442f457202ab08765613ecc5dcfd39a9a699874bd688dcd",
+      "content_sha256": "027932cdb1a70aa28827925ebdfdcf1ed0e2476f4509c69a864a27b0110918a5",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:31:01.039Z",
-        "completed_at_utc": "2026-10-22T00:31:46.604Z"
+        "started_at_utc": "2026-10-25T23:31:51.788Z",
+        "completed_at_utc": "2026-10-25T23:33:39.060Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us033-local-lock-browser",
@@ -223,15 +223,15 @@
       "command": ["infra/local-lock/browser.mjs"],
       "output": ".tools/us033-lock/browser.json",
       "alias": "us-033-lock-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/6b668aa30de88d2777010741ccaceb71316dc79600f140fad864f89782bdedab.json",
-      "sha256": "6b668aa30de88d2777010741ccaceb71316dc79600f140fad864f89782bdedab",
-      "content_sha256": "6dafbdf532edeb9f5ff6ce0e74379f4aeabb78375db70feb3146ad6e9d70d56b",
+      "report": "docs/quality/evidence/runs/46fdb6cd897f8c8e448f7fc7b3f730ea75d083495baecdd5d5acc694ccbc9d79.json",
+      "sha256": "46fdb6cd897f8c8e448f7fc7b3f730ea75d083495baecdd5d5acc694ccbc9d79",
+      "content_sha256": "49609c21634e6535791875dda27e8c9ec50f15b354744d7d11b34755fa0aae59",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:31:49.787Z",
-        "completed_at_utc": "2026-10-22T00:31:57.022Z"
+        "started_at_utc": "2026-10-25T23:33:42.072Z",
+        "completed_at_utc": "2026-10-25T23:33:48.470Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us033-local-lock-windows",
@@ -244,15 +244,15 @@
       "command": ["infra/local-lock/native.mjs"],
       "output": ".tools/us033-lock/windows.json",
       "alias": "us-033-lock-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/9cef675b8435db4e137c9dddd745c3cb6fd2098df4b20c60f029fad841270e53.json",
-      "sha256": "9cef675b8435db4e137c9dddd745c3cb6fd2098df4b20c60f029fad841270e53",
-      "content_sha256": "1a1dc9e0bed69704bb455340732ae5c7d709dc5badd16d57a532d4219b3ebd7f",
+      "report": "docs/quality/evidence/runs/4d2c90731ae27f7db039a2148340da51ad908be8d5c8c5c5d716d0fe05091a41.json",
+      "sha256": "4d2c90731ae27f7db039a2148340da51ad908be8d5c8c5c5d716d0fe05091a41",
+      "content_sha256": "2c6597b33983e685620f1a33f228eb0b53c4fb94e747dfadddae588b8b9ff4fd",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:32:00.166Z",
-        "completed_at_utc": "2026-10-22T00:34:14.568Z"
+        "started_at_utc": "2026-10-25T23:33:51.515Z",
+        "completed_at_utc": "2026-10-25T23:37:21.898Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us034-backup-browser",
@@ -265,15 +265,15 @@
       "command": ["infra/local-backup/browser.mjs"],
       "output": ".tools/us034-backup/browser.json",
       "alias": "us-034-backup-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/ffa00a429a2fa55449ce8f92d82b75392f4e4ffbc569af4f050acc094b9972f8.json",
-      "sha256": "ffa00a429a2fa55449ce8f92d82b75392f4e4ffbc569af4f050acc094b9972f8",
-      "content_sha256": "d1b7f2e402a0e0b53c11a98f4d3634a50a484b2d79d53b1765a7c1a7d47424ed",
+      "report": "docs/quality/evidence/runs/6e9947ba161b43348823157a3f9cd8815e37b5de95ae7254186c714cc5252b17.json",
+      "sha256": "6e9947ba161b43348823157a3f9cd8815e37b5de95ae7254186c714cc5252b17",
+      "content_sha256": "a28a01433687b2c148fd52f100903728dc6274ed80077f2cf50cc9f025de3578",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:34:18.400Z",
-        "completed_at_utc": "2026-10-22T00:34:24.720Z"
+        "started_at_utc": "2026-10-25T23:37:25.167Z",
+        "completed_at_utc": "2026-10-25T23:37:29.469Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us034-backup-windows",
@@ -286,15 +286,15 @@
       "command": ["infra/local-backup/native.mjs"],
       "output": ".tools/us034-backup/windows.json",
       "alias": "us-034-backup-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/66bf391d883331694ac74349c0cf23820b0362544f7508f1b631bfda519e4409.json",
-      "sha256": "66bf391d883331694ac74349c0cf23820b0362544f7508f1b631bfda519e4409",
-      "content_sha256": "8906166dc02a33fcb1a0bcca87bc80ec79f2f7285781791d74a28899066d1154",
+      "report": "docs/quality/evidence/runs/2d6c90c0c9119e12bf73009559fde5fb5e62b92f3a6085dc75bf8644a188aeb5.json",
+      "sha256": "2d6c90c0c9119e12bf73009559fde5fb5e62b92f3a6085dc75bf8644a188aeb5",
+      "content_sha256": "fea22d7f91f60313d2d637cd37d7eb1b819fda70f1099320a0587a363c9a9cad",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:34:28.063Z",
-        "completed_at_utc": "2026-10-22T00:38:05.623Z"
+        "started_at_utc": "2026-10-25T23:37:32.464Z",
+        "completed_at_utc": "2026-10-25T23:41:19.061Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us035-restore-browser",
@@ -307,15 +307,15 @@
       "command": ["infra/local-restore/browser.mjs"],
       "output": ".tools/us035-restore/browser.json",
       "alias": "us-035-restore-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/a3c05884b3fa521e028861d564bdc8be22f21dcab716e707a3a384ec3092e9d4.json",
-      "sha256": "a3c05884b3fa521e028861d564bdc8be22f21dcab716e707a3a384ec3092e9d4",
-      "content_sha256": "35fcf605312c0d112cc089055df3b429caafaa00459b85804cb0bef30f0ac6cd",
+      "report": "docs/quality/evidence/runs/b3dada71069dc8d6f4abf7025c76a01e3efbe5f193e307bf0ee5f96dfb624078.json",
+      "sha256": "b3dada71069dc8d6f4abf7025c76a01e3efbe5f193e307bf0ee5f96dfb624078",
+      "content_sha256": "ab807d05d6f853ac4b276ab67fb8d5130b46f653ea5507782360ead5c48c3e68",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:38:10.129Z",
-        "completed_at_utc": "2026-10-22T00:38:16.403Z"
+        "started_at_utc": "2026-10-25T23:41:22.122Z",
+        "completed_at_utc": "2026-10-25T23:41:25.829Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us035-restore-windows",
@@ -328,15 +328,15 @@
       "command": ["infra/local-restore/native.mjs"],
       "output": ".tools/us035-restore/windows.json",
       "alias": "us-035-restore-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/c757aa98409eeffaad74f68f7c23b548c80d098b130dfaf53663a0b2272d1179.json",
-      "sha256": "c757aa98409eeffaad74f68f7c23b548c80d098b130dfaf53663a0b2272d1179",
-      "content_sha256": "b3bfdac049551565e5f50ae8d7a99394cfbab3b6bab22b14f0ddd19af3b53522",
+      "report": "docs/quality/evidence/runs/b09e9bcd03fee1d9cfd93db2af0b1f61a064c84ffb15892c1204cd711381ec2e.json",
+      "sha256": "b09e9bcd03fee1d9cfd93db2af0b1f61a064c84ffb15892c1204cd711381ec2e",
+      "content_sha256": "352df6266c52d952eeb403689909d4f4d0a76e3136aba6f1c35cd61f93598e41",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T00:55:36.083Z",
-        "completed_at_utc": "2026-10-22T01:00:57.532Z"
+        "started_at_utc": "2026-10-25T23:41:28.835Z",
+        "completed_at_utc": "2026-10-25T23:47:46.194Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us036-workspace-manager-browser",
@@ -349,15 +349,15 @@
       "command": ["infra/workspace-manager/browser.mjs"],
       "output": ".tools/us036-workspace-manager/browser.json",
       "alias": "us-036-workspace-manager-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/50b4cddaa5b964c72562564d787b4895222c97d6ef7fc13ab9f3c7cba258e9fe.json",
-      "sha256": "50b4cddaa5b964c72562564d787b4895222c97d6ef7fc13ab9f3c7cba258e9fe",
-      "content_sha256": "41fdfff98a90f5602c1dfad5ad5e6990c1c95e79303797ca30276fc4965ecd0e",
+      "report": "docs/quality/evidence/runs/7024763a536de3e59dcb8f93f5f2e4868bf4cae4f761854190eb65d7da285c85.json",
+      "sha256": "7024763a536de3e59dcb8f93f5f2e4868bf4cae4f761854190eb65d7da285c85",
+      "content_sha256": "8cf16a5b87b7f8eb651433b24bc1531e9f3a85cb999c58304e615abe0a27b381",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T01:01:07.842Z",
-        "completed_at_utc": "2026-10-22T01:01:18.506Z"
+        "started_at_utc": "2026-10-25T23:47:49.398Z",
+        "completed_at_utc": "2026-10-25T23:47:53.546Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us036-workspace-manager-windows",
@@ -370,15 +370,15 @@
       "command": ["infra/workspace-manager/native.mjs"],
       "output": ".tools/us036-workspace-manager/windows.json",
       "alias": "us-036-workspace-manager-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/88acebd3d8533b123d8901f87dca943a195df280f26432f50f1a584e4517eb8d.json",
-      "sha256": "88acebd3d8533b123d8901f87dca943a195df280f26432f50f1a584e4517eb8d",
-      "content_sha256": "6b1eea2bbb5579b4c5ea1ba722a77c75e8c802b451488eced7bfedc634afd1bd",
+      "report": "docs/quality/evidence/runs/0ba0fb34f805a204ec788da8322b1c79cc860ba80813581e2cfdc76e865e9921.json",
+      "sha256": "0ba0fb34f805a204ec788da8322b1c79cc860ba80813581e2cfdc76e865e9921",
+      "content_sha256": "20940dcaf7ed43d7c66359b18649001bf0aff223d65bb6ad8bd52165ebe17ebb",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T01:01:21.970Z",
-        "completed_at_utc": "2026-10-22T01:03:59.423Z"
+        "started_at_utc": "2026-10-25T23:47:56.552Z",
+        "completed_at_utc": "2026-10-25T23:50:40.185Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us040-shared-accounts",
@@ -412,15 +412,15 @@
       "command": ["infra/accounts-desktop/browser.mjs"],
       "output": ".tools/us040-desktop-accounts/browser.json",
       "alias": "us-040-desktop-accounts-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/d75e48a63c8550b518e7e42c5ea7ed36de2fe9383141979b44fc21ec8d6e8e8f.json",
-      "sha256": "d75e48a63c8550b518e7e42c5ea7ed36de2fe9383141979b44fc21ec8d6e8e8f",
-      "content_sha256": "3ed1662a9f8b9ac84e5a392b38e06f9f55b3b71113db72da1867f65fd3fcd1e2",
+      "report": "docs/quality/evidence/runs/970961c34793fa3ab7784af24b610c0c9eff45ed34280cb845d6ac759571253a.json",
+      "sha256": "970961c34793fa3ab7784af24b610c0c9eff45ed34280cb845d6ac759571253a",
+      "content_sha256": "645f0dc78e11cf247cbce7936c413ba206e242df15f8f2d864b30a543d205052",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T01:04:44.158Z",
-        "completed_at_utc": "2026-10-22T01:04:51.771Z"
+        "started_at_utc": "2026-10-25T23:50:43.202Z",
+        "completed_at_utc": "2026-10-25T23:50:48.777Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us040-desktop-accounts-windows",
@@ -433,15 +433,15 @@
       "command": ["infra/accounts-desktop/native.mjs"],
       "output": ".tools/us040-desktop-accounts/windows.json",
       "alias": "us-040-desktop-accounts-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/e5f43b13c01309de22d0b1cb6bea268ea788101af2f941e28d3194ac0f65b625.json",
-      "sha256": "e5f43b13c01309de22d0b1cb6bea268ea788101af2f941e28d3194ac0f65b625",
-      "content_sha256": "1df9e10ab7dea3f998d8589dcd0654fbf728e2c453f021cea58b107f05b1f21d",
+      "report": "docs/quality/evidence/runs/3611fae71a491734a0d86bad7253cbab5d0688bcae0652274680f76858cd3055.json",
+      "sha256": "3611fae71a491734a0d86bad7253cbab5d0688bcae0652274680f76858cd3055",
+      "content_sha256": "0028ab34ccbd7004901cdd68a962b782954350be9c53f4ff9bfd378805345581",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T02:20:39.713Z",
-        "completed_at_utc": "2026-10-22T02:23:31.607Z"
+        "started_at_utc": "2026-10-25T23:50:51.863Z",
+        "completed_at_utc": "2026-10-25T23:56:49.949Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us041-manual-movements",
@@ -475,15 +475,15 @@
       "command": ["infra/movements-desktop/browser.mjs"],
       "output": ".tools/us041-desktop-movements/browser.json",
       "alias": "us-041-desktop-movements-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/c6848230dc3011f8f4cd4f1a669c027bdb3c73753a79b958e09b0175b98c4776.json",
-      "sha256": "c6848230dc3011f8f4cd4f1a669c027bdb3c73753a79b958e09b0175b98c4776",
-      "content_sha256": "c4a82f6cfbeb30eee400c89c3d5e2cce97a06ed9d7d18bea1509b838d60c5179",
+      "report": "docs/quality/evidence/runs/31ce01c12a51605fecc02cd294508a3917190c97657a9d7f29340997b85b5364.json",
+      "sha256": "31ce01c12a51605fecc02cd294508a3917190c97657a9d7f29340997b85b5364",
+      "content_sha256": "c759d2d82f3ca4139edd0b6fcea94bf16a2590148f9ab59679a4d58fba486e35",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-22T02:24:17.189Z",
-        "completed_at_utc": "2026-10-22T02:24:27.333Z"
+        "started_at_utc": "2026-10-25T23:56:52.983Z",
+        "completed_at_utc": "2026-10-25T23:56:58.183Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us041-desktop-movements-windows",
@@ -496,15 +496,15 @@
       "command": ["infra/movements-desktop/native.mjs"],
       "output": ".tools/us041-desktop-movements/windows.json",
       "alias": "us-041-desktop-movements-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/845db4efdd4b6e947755fde41ad61270388e7d1ea94c7223917eec85bd3926b1.json",
-      "sha256": "845db4efdd4b6e947755fde41ad61270388e7d1ea94c7223917eec85bd3926b1",
-      "content_sha256": "2ce314cf5b63ca105df20c2d26207527bf2f1cfe737c48ca388e8e0865041893",
+      "report": "docs/quality/evidence/runs/847d32fea833f1098ffb87527d5f9105611648f8d91448aefe46b7b69bb4bbd2.json",
+      "sha256": "847d32fea833f1098ffb87527d5f9105611648f8d91448aefe46b7b69bb4bbd2",
+      "content_sha256": "3748190cd31d6481a503c6fd0211c37d2fc234bd01c12719dcbc87c214890abe",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:24:28.473Z",
-        "completed_at_utc": "2026-10-25T19:28:08.062Z"
+        "started_at_utc": "2026-10-25T23:57:01.252Z",
+        "completed_at_utc": "2026-10-26T00:04:11.167Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us021-postgresql-sqlite-equivalence",
@@ -580,15 +580,15 @@
       "command": ["infra/transfers-desktop/browser.mjs"],
       "output": ".tools/us042-desktop-transfers/browser.json",
       "alias": "us-042-desktop-transfers-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/765e9fc8855febee1b2f02ad584f8a0058df747f2c946319c9ef776051762102.json",
-      "sha256": "765e9fc8855febee1b2f02ad584f8a0058df747f2c946319c9ef776051762102",
-      "content_sha256": "843f1f7041a2e1cf3c771cd517f50c2b9cced3dc24177b9949843a1fe9ef0a8b",
+      "report": "docs/quality/evidence/runs/c62d4bac78e68f194b07c7bbee0ee55b0c3a0ff8a87b5d9faa676b0376f1c3ce.json",
+      "sha256": "c62d4bac78e68f194b07c7bbee0ee55b0c3a0ff8a87b5d9faa676b0376f1c3ce",
+      "content_sha256": "8ebabcc419abe0722a09a0f4f1bac42a8dc554c8b77ce3ce04210c39d8f69bc1",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:31:43.290Z",
-        "completed_at_utc": "2026-10-25T19:31:49.598Z"
+        "started_at_utc": "2026-10-26T00:04:14.665Z",
+        "completed_at_utc": "2026-10-26T00:04:21.119Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us042-desktop-transfers-windows",
@@ -601,15 +601,15 @@
       "command": ["infra/transfers-desktop/native.mjs"],
       "output": ".tools/us042-desktop-transfers/windows.json",
       "alias": "us-042-desktop-transfers-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/126541da70df5fa02dde0ea05403000bb838c64642353ba36e0d66ef3212fb17.json",
-      "sha256": "126541da70df5fa02dde0ea05403000bb838c64642353ba36e0d66ef3212fb17",
-      "content_sha256": "ad910a2be03843d2e03cd042ee1634fb8bcf51adb36a42068fa6eca6d43e3638",
+      "report": "docs/quality/evidence/runs/07af464e44a4bc29833cd52ef2c8e01176a39ceda3768d6c6a8b93a877f7b5f2.json",
+      "sha256": "07af464e44a4bc29833cd52ef2c8e01176a39ceda3768d6c6a8b93a877f7b5f2",
+      "content_sha256": "ad1c47bda8e36b0e8038c0bcb5f7f537aa9c99a557d4c393f360360a2fe80a48",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:31:52.811Z",
-        "completed_at_utc": "2026-10-25T19:35:10.140Z"
+        "started_at_utc": "2026-10-26T00:04:24.247Z",
+        "completed_at_utc": "2026-10-26T00:08:52.916Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us043-card-payments",
@@ -643,15 +643,15 @@
       "command": ["infra/card-payments-desktop/browser.mjs"],
       "output": ".tools/us043-desktop-card-payments/browser.json",
       "alias": "us-043-desktop-card-payments-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/b87166e1e9d1495fb34ff0c286776330534a0bd2727d36c6b1de573f23df29d7.json",
-      "sha256": "b87166e1e9d1495fb34ff0c286776330534a0bd2727d36c6b1de573f23df29d7",
-      "content_sha256": "df0c7c7b09a6f019fa3d58f72fdb5603c33f18ae41950f3f018538213627c7fb",
+      "report": "docs/quality/evidence/runs/934a6891c6a772224de5899275941dfcc1ffdba1d705b2b9a17d11956d5bc52a.json",
+      "sha256": "934a6891c6a772224de5899275941dfcc1ffdba1d705b2b9a17d11956d5bc52a",
+      "content_sha256": "9c46eee03623d407ee9586995086d7459c428eefd370157a47c14c96f97d21e3",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:35:27.765Z",
-        "completed_at_utc": "2026-10-25T19:35:33.466Z"
+        "started_at_utc": "2026-10-26T00:08:56.114Z",
+        "completed_at_utc": "2026-10-26T00:09:01.619Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us043-desktop-card-payments-windows",
@@ -664,15 +664,15 @@
       "command": ["infra/card-payments-desktop/native.mjs"],
       "output": ".tools/us043-desktop-card-payments/windows.json",
       "alias": "us-043-desktop-card-payments-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/5b91b8dd80c178e50eab5e47062f4bc35cad5bc3186298bf8b5e850811c76a85.json",
-      "sha256": "5b91b8dd80c178e50eab5e47062f4bc35cad5bc3186298bf8b5e850811c76a85",
-      "content_sha256": "7aeedc8c3abc5f5e7c0cc9cdfd8544a8c7e8bcec3f82366484cb0d093e8c5d31",
+      "report": "docs/quality/evidence/runs/4cdb396ec586b562c33b8a2fa491e1f9a0120ab045156535292c810a2a09189f.json",
+      "sha256": "4cdb396ec586b562c33b8a2fa491e1f9a0120ab045156535292c810a2a09189f",
+      "content_sha256": "872ff2a0b9005794536b77ee62779c05a54b821ca6059d3ba37b05e56d8214fe",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:35:36.602Z",
-        "completed_at_utc": "2026-10-25T19:39:08.807Z"
+        "started_at_utc": "2026-10-26T00:09:04.730Z",
+        "completed_at_utc": "2026-10-26T00:13:51.397Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us044-categories",
@@ -706,15 +706,15 @@
       "command": ["infra/categories-desktop/browser.mjs"],
       "output": ".tools/us044-desktop-categories/browser.json",
       "alias": "us-044-desktop-categories-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/c3fbd2a4ef145a1cde95a2dec421bade8252851db71e2f5afb60c000638c5cb9.json",
-      "sha256": "c3fbd2a4ef145a1cde95a2dec421bade8252851db71e2f5afb60c000638c5cb9",
-      "content_sha256": "37785e37e24b0875031545dc133a9b057b978b8fcb4c07cffb4ce9e4c90880d7",
+      "report": "docs/quality/evidence/runs/2bf8f15489ced8d9b8839ecb491f54b233f8b8aa401d7d0b4983700a63e354b4.json",
+      "sha256": "2bf8f15489ced8d9b8839ecb491f54b233f8b8aa401d7d0b4983700a63e354b4",
+      "content_sha256": "f21a74d06b71bb6f5ef08f9b58f367d095a8e090944616cf24854dfe07222112",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:39:24.377Z",
-        "completed_at_utc": "2026-10-25T19:39:28.840Z"
+        "started_at_utc": "2026-10-26T00:13:54.566Z",
+        "completed_at_utc": "2026-10-26T00:13:58.923Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us044-desktop-categories-windows",
@@ -727,15 +727,15 @@
       "command": ["infra/categories-desktop/native.mjs"],
       "output": ".tools/us044-desktop-categories/windows.json",
       "alias": "us-044-desktop-categories-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/3725e0be682d91e44a119f8b030ae157331e7aefdb77b8ce68172f24becf27c8.json",
-      "sha256": "3725e0be682d91e44a119f8b030ae157331e7aefdb77b8ce68172f24becf27c8",
-      "content_sha256": "be9f13ace35c1960c2ffdbae61e433798785bc572294bed81881335443d72dff",
+      "report": "docs/quality/evidence/runs/27ff954c62fbb1434429b0bdba019844d28e61537494775ddf05b85cbdbe7b40.json",
+      "sha256": "27ff954c62fbb1434429b0bdba019844d28e61537494775ddf05b85cbdbe7b40",
+      "content_sha256": "4fccc6309a81bcb9298226f99c37e9405626486e58d8c67405c9cb06076474e1",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:39:31.964Z",
-        "completed_at_utc": "2026-10-25T19:41:32.684Z"
+        "started_at_utc": "2026-10-26T00:14:02.022Z",
+        "completed_at_utc": "2026-10-26T00:17:19.021Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-taxonomy",
@@ -790,15 +790,15 @@
       "command": ["infra/taxonomy-desktop/browser.mjs"],
       "output": ".tools/us045-desktop-taxonomy/browser.json",
       "alias": "us-045-desktop-taxonomy-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/440a7349823887a0c8af2eefff0907f1d980058cc542ed08f3bcaa1e54a113bd.json",
-      "sha256": "440a7349823887a0c8af2eefff0907f1d980058cc542ed08f3bcaa1e54a113bd",
-      "content_sha256": "cf754f958b0217f0be6941fda7f37787d05eea41803d53768b3705a902cf33c5",
+      "report": "docs/quality/evidence/runs/3ec06fdb3b1948c3b31930f5bea08eb1e66442d21a35a92bdf662fd65bb958b9.json",
+      "sha256": "3ec06fdb3b1948c3b31930f5bea08eb1e66442d21a35a92bdf662fd65bb958b9",
+      "content_sha256": "261d4a4fd33bff3f2a783843b933abc04e4d389ce2e26c217bec461d55f1c0ca",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:42:05.150Z",
-        "completed_at_utc": "2026-10-25T19:42:09.861Z"
+        "started_at_utc": "2026-10-26T00:17:22.087Z",
+        "completed_at_utc": "2026-10-26T00:17:26.684Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-desktop-taxonomy-windows",
@@ -811,15 +811,15 @@
       "command": ["infra/taxonomy-desktop/native.mjs"],
       "output": ".tools/us045-desktop-taxonomy/windows.json",
       "alias": "us-045-desktop-taxonomy-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/cc8bffb7aaeb24221cd9a8daf06986a8d82349e397fd1c1703bcaff1a8639d8b.json",
-      "sha256": "cc8bffb7aaeb24221cd9a8daf06986a8d82349e397fd1c1703bcaff1a8639d8b",
-      "content_sha256": "7043907330747e60de78b0afe63cfcc387c56053e1e721638c530a1ee933d45a",
+      "report": "docs/quality/evidence/runs/c37e1d8fd111598ce9b2ae233f602f707c746c9f8a9678d3e7cd7238d3891c47.json",
+      "sha256": "c37e1d8fd111598ce9b2ae233f602f707c746c9f8a9678d3e7cd7238d3891c47",
+      "content_sha256": "77d00d61594c0e1b242d9006df97ea1f734b20f6ac1f8f5e9c185a9ded4501a2",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:42:13.022Z",
-        "completed_at_utc": "2026-10-25T19:44:53.500Z"
+        "started_at_utc": "2026-10-26T00:17:29.854Z",
+        "completed_at_utc": "2026-10-26T00:21:08.332Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-desktop-classification-filters-browser",
@@ -832,15 +832,15 @@
       "command": ["infra/classification-filters-desktop/browser.mjs"],
       "output": ".tools/us045-desktop-classification-filters/browser.json",
       "alias": "us-045-desktop-classification-filters-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/334a30a1592cc433b93bc048177d186d8e9282943c38cabd8df713b41ed5b7b3.json",
-      "sha256": "334a30a1592cc433b93bc048177d186d8e9282943c38cabd8df713b41ed5b7b3",
-      "content_sha256": "813feb8a6e660fcea43480e1a5a5f63388427e681b6aab3330a0f18337262f94",
+      "report": "docs/quality/evidence/runs/49d6c4ef67c39c7d5283dd1ed092340f5d7a09b34d515f26204e796357c2528e.json",
+      "sha256": "49d6c4ef67c39c7d5283dd1ed092340f5d7a09b34d515f26204e796357c2528e",
+      "content_sha256": "0e277b5470e86c818cbd71051c40fa76431a62e947eab66585108829ce25db09",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:44:56.732Z",
-        "completed_at_utc": "2026-10-25T19:45:00.971Z"
+        "started_at_utc": "2026-10-26T00:21:11.505Z",
+        "completed_at_utc": "2026-10-26T00:21:15.633Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-desktop-classification-filters-windows",
@@ -853,15 +853,15 @@
       "command": ["infra/classification-filters-desktop/native.mjs"],
       "output": ".tools/us045-desktop-classification-filters/windows.json",
       "alias": "us-045-desktop-classification-filters-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/4e094910666e0499923b90681136c54efd16c22c1ec3d7cb5b437599915d5fef.json",
-      "sha256": "4e094910666e0499923b90681136c54efd16c22c1ec3d7cb5b437599915d5fef",
-      "content_sha256": "7deb249bad535ed3dc0dcad7b7370bf005000d1f8fa8b8585b78398a3f8a611c",
+      "report": "docs/quality/evidence/runs/d024bc28cab2fa0f5455b917065c028a59c0cf59ef4f0dd301d86f08018d7b27.json",
+      "sha256": "d024bc28cab2fa0f5455b917065c028a59c0cf59ef4f0dd301d86f08018d7b27",
+      "content_sha256": "3891ab0512cb3cac74d6576cd26d7f2f2737ee75660886687addb04035a631ef",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:45:04.148Z",
-        "completed_at_utc": "2026-10-25T19:46:10.206Z"
+        "started_at_utc": "2026-10-26T00:21:18.805Z",
+        "completed_at_utc": "2026-10-26T00:22:40.319Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-desktop-classification-browser",
@@ -874,15 +874,15 @@
       "command": ["infra/classification-desktop/browser.mjs"],
       "output": ".tools/us045-desktop-classification/browser.json",
       "alias": "us-045-desktop-classification-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/d1dc137cba69eeffbbe39771e5b8f520e2fd27c4fc98cacc8372b49d12e56ef7.json",
-      "sha256": "d1dc137cba69eeffbbe39771e5b8f520e2fd27c4fc98cacc8372b49d12e56ef7",
-      "content_sha256": "3d08b73d6013447e3f5deae1c29da4d0dad50f7c0908ad29690a2c06b8f53d29",
+      "report": "docs/quality/evidence/runs/3e8d6ddf227f4619455529cf2a20a74387e79928b70584708d2c42ff7a01f439.json",
+      "sha256": "3e8d6ddf227f4619455529cf2a20a74387e79928b70584708d2c42ff7a01f439",
+      "content_sha256": "801e18dd636218966e0d446cba07a2b305ace209a2eec21afe0a0daeb192d558",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:46:13.442Z",
-        "completed_at_utc": "2026-10-25T19:46:19.349Z"
+        "started_at_utc": "2026-10-26T00:22:43.704Z",
+        "completed_at_utc": "2026-10-26T00:22:49.478Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us045-desktop-classification-windows",
@@ -895,15 +895,15 @@
       "command": ["infra/classification-desktop/native.mjs"],
       "output": ".tools/us045-desktop-classification/windows.json",
       "alias": "us-045-desktop-classification-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/88399f5cf9bbaf107eda882d4865393c6a6e21759067f9cb4e057787290e9c62.json",
-      "sha256": "88399f5cf9bbaf107eda882d4865393c6a6e21759067f9cb4e057787290e9c62",
-      "content_sha256": "4559d2a101e78ce02c8ca2266915d2df55a6e64a864de21b27723c0e37fca4cf",
+      "report": "docs/quality/evidence/runs/ece379bc5cd749627f3cf30197490e8ef0f52f304fc619acf4976953d1a1b1b0.json",
+      "sha256": "ece379bc5cd749627f3cf30197490e8ef0f52f304fc619acf4976953d1a1b1b0",
+      "content_sha256": "20847048829dbad05ba677f4c0c33fb829f7a712d2d24a4e7e59a9c8b70f030a",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:46:22.560Z",
-        "completed_at_utc": "2026-10-25T19:51:08.049Z"
+        "started_at_utc": "2026-10-26T00:22:52.730Z",
+        "completed_at_utc": "2026-10-26T00:28:58.505Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us046-allocations",
@@ -937,15 +937,15 @@
       "command": ["infra/allocations-desktop/browser.mjs"],
       "output": ".tools/us046-desktop-allocations/browser.json",
       "alias": "us-046-desktop-allocations-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/aae1d64a727750db3da2efa917c40598b50300091fe008235b86cdbdaff1eda2.json",
-      "sha256": "aae1d64a727750db3da2efa917c40598b50300091fe008235b86cdbdaff1eda2",
-      "content_sha256": "34bc1161dc36c5773d8247d97628ded99661d59d1d34326a4b690d6d839d5761",
+      "report": "docs/quality/evidence/runs/efb5a5e96ab25e2ce3ddb51caa829eff74d3fbcdb056892eddd41763249e49a8.json",
+      "sha256": "efb5a5e96ab25e2ce3ddb51caa829eff74d3fbcdb056892eddd41763249e49a8",
+      "content_sha256": "b759b27c171eb9c2a31f599766a6822ff0e0a59c0e11c20e202f69c4f0202296",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:51:37.637Z",
-        "completed_at_utc": "2026-10-25T19:51:44.609Z"
+        "started_at_utc": "2026-10-26T00:29:01.770Z",
+        "completed_at_utc": "2026-10-26T00:29:08.596Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us046-desktop-allocations-windows",
@@ -958,15 +958,15 @@
       "command": ["infra/allocations-desktop/native.mjs"],
       "output": ".tools/us046-desktop-allocations/windows.json",
       "alias": "us-046-desktop-allocations-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/a9c246f98a01001a58f89e5ede55c9b654fd753db593b84a67e4c7242e0174c7.json",
-      "sha256": "a9c246f98a01001a58f89e5ede55c9b654fd753db593b84a67e4c7242e0174c7",
-      "content_sha256": "e6ac1eb708877c62035f01b1fe94a3a9efc8de0f70079fcbce7f2571462788a6",
+      "report": "docs/quality/evidence/runs/85e663dd84099e1618658ca94f800fe6c766c3e9f52978bef08b551882ba5cd5.json",
+      "sha256": "85e663dd84099e1618658ca94f800fe6c766c3e9f52978bef08b551882ba5cd5",
+      "content_sha256": "1205436346e3a93f27afdd9432c44c86a8658e782661ae4485bedc139af6b46d",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:51:47.934Z",
-        "completed_at_utc": "2026-10-25T19:57:29.670Z"
+        "started_at_utc": "2026-10-26T00:29:11.775Z",
+        "completed_at_utc": "2026-10-26T00:36:10.592Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us047-counterparties",
@@ -1021,15 +1021,15 @@
       "command": ["infra/counterparties-desktop/browser.mjs"],
       "output": ".tools/us047-desktop-counterparties/browser.json",
       "alias": "us-047-desktop-counterparties-browser-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/5f7a69fa3dfc4ddd33a4e2528ab0963aa63fed8a5da56ac742cf0d9de87f11f0.json",
-      "sha256": "5f7a69fa3dfc4ddd33a4e2528ab0963aa63fed8a5da56ac742cf0d9de87f11f0",
-      "content_sha256": "981a13700a9e8d732988294c42f0bdce5cda5d2bb7d947a0ed1a39ed31c20fdd",
+      "report": "docs/quality/evidence/runs/685e9e2068bb7b957df3eef18fcefc847ea88646994fe862bbfa79229604f003.json",
+      "sha256": "685e9e2068bb7b957df3eef18fcefc847ea88646994fe862bbfa79229604f003",
+      "content_sha256": "3348681712e5483b9a509543b9673502cca69734d5c74a93edc626196eade3f5",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:58:10.195Z",
-        "completed_at_utc": "2026-10-25T19:58:15.443Z"
+        "started_at_utc": "2026-10-26T00:36:13.805Z",
+        "completed_at_utc": "2026-10-26T00:36:19.058Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us047-desktop-counterparties-windows",
@@ -1042,15 +1042,15 @@
       "command": ["infra/counterparties-desktop/native.mjs"],
       "output": ".tools/us047-desktop-counterparties/windows.json",
       "alias": "us-047-desktop-counterparties-windows-2026-10-20-us050-desktop.json",
-      "report": "docs/quality/evidence/runs/68a87c3c0946d9368f5d1e66ff5a8545db6cfcc4c90ee8666662783b84533aa6.json",
-      "sha256": "68a87c3c0946d9368f5d1e66ff5a8545db6cfcc4c90ee8666662783b84533aa6",
-      "content_sha256": "791d365dc7863f161d86a5f205c34cd28a89e21ce015c304c7c83fdbf647e81c",
+      "report": "docs/quality/evidence/runs/dfd7bbcdeb05c48892034bdcb8872295352730a1947580c40f8edf1a497ce2b0.json",
+      "sha256": "dfd7bbcdeb05c48892034bdcb8872295352730a1947580c40f8edf1a497ce2b0",
+      "content_sha256": "d68592382fc2902970c2293a953d616e804b3abaf99beaaeb8571c652158a2ff",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T19:58:18.719Z",
-        "completed_at_utc": "2026-10-25T20:02:37.424Z"
+        "started_at_utc": "2026-10-26T00:36:22.274Z",
+        "completed_at_utc": "2026-10-26T00:41:50.813Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us050-import-central",
@@ -1084,15 +1084,15 @@
       "command": ["infra/imports-desktop/browser.mjs"],
       "output": ".tools/us050-desktop-imports/browser.json",
       "alias": "us-050-desktop-imports-browser-2026-10-20.json",
-      "report": "docs/quality/evidence/runs/f4efc387427bdd660608a30919ede373c69f3b0ea26ea9b843fd433e1257286f.json",
-      "sha256": "f4efc387427bdd660608a30919ede373c69f3b0ea26ea9b843fd433e1257286f",
-      "content_sha256": "36fa3d291726b57313cf192da04fc23fd8e069cd12c223bbaa8db2a8b3c1f018",
+      "report": "docs/quality/evidence/runs/85ca99af378fd57002912ab9c01d5be2ecb70fa992af7e7a9a3b10fc9f8dc931.json",
+      "sha256": "85ca99af378fd57002912ab9c01d5be2ecb70fa992af7e7a9a3b10fc9f8dc931",
+      "content_sha256": "d107c8b71ac0e18e89d2251779d1cbbe1b5ed2f5209be4795753f19ce508c736",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T20:10:51.815Z",
-        "completed_at_utc": "2026-10-25T20:10:56.954Z"
+        "started_at_utc": "2026-10-26T00:41:54.505Z",
+        "completed_at_utc": "2026-10-26T00:42:01.963Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us050-desktop-imports-windows",
@@ -1105,15 +1105,15 @@
       "command": ["infra/imports-desktop/native.mjs"],
       "output": ".tools/us050-desktop-imports/windows.json",
       "alias": "us-050-desktop-imports-windows-2026-10-20.json",
-      "report": "docs/quality/evidence/runs/1217cd4ae21ecf1b8b91b3247d1bbef580a8bb92812ef492d27733fb66433c76.json",
-      "sha256": "1217cd4ae21ecf1b8b91b3247d1bbef580a8bb92812ef492d27733fb66433c76",
-      "content_sha256": "507957e40899cbdc7ba225825d53d77a5d80e8d5a5be6117fde7142b47cff19c",
+      "report": "docs/quality/evidence/runs/c44c04b3e6a25e23c33a5f6e37551f1967173891e0002ff3800106d47ceae777.json",
+      "sha256": "c44c04b3e6a25e23c33a5f6e37551f1967173891e0002ff3800106d47ceae777",
+      "content_sha256": "2e068f5ae6705fac25ddb9e4c2843c4bf2048fc5567e431b918d09d5feaf5dd3",
       "origin": {
         "kind": "executed",
-        "started_at_utc": "2026-10-25T20:11:00.281Z",
-        "completed_at_utc": "2026-10-25T20:14:05.587Z"
+        "started_at_utc": "2026-10-26T00:42:05.082Z",
+        "completed_at_utc": "2026-10-26T00:46:56.639Z"
       },
-      "safety_digest": "db884f2025c51577a857a266c39e54ac5744814573cd3e56eddf9fadf5948461"
+      "safety_digest": "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167"
     },
     {
       "scope": "us051-defensive-files",
@@ -2292,6 +2292,87 @@
       "apps/desktop/src-tauri/src/migrations.rs": "aa40c01a1c1219ef6b54c2ccec98926375dcb077702ef0cc59d95df358e5f90a",
       "apps/desktop/src-tauri/src/migration_catalog.rs": "01da8db5c774e05d13ee025e8eb6eb60bcd5f2519d2c6eec2b7bad2b1ca9f692",
       "apps/desktop/src-tauri/src/commands.rs": "face44f23b960e659f3ab16a9f2ccc6e7ffddbd33e768005b737c8ca9a33f3b2",
+      "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.up.sql": "73660ad3988a4f56bd434fd9ee168576881e0a235bacb4bd3f909b26a073b6c2",
+      "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.down.sql": "c8da2d985f70ea4215d480bffe801cc13b8714bd6d141d105fe0746f0f526c6c",
+      "apps/desktop/src-tauri/src/vault_probe.rs": "d9790e1d3d22397919321ee193eee7ab46424b7bee4b3fe3dda197b0659ca6cf",
+      "apps/desktop/src-tauri/src/bin/vault-probe.rs": "313220e0fdc4ed609e0c881640fca5b8f6b4f90fc25a1de08e9291708f8361c1",
+      "apps/desktop/src-tauri/tests/vault.rs": "ac8c0e7f8d4fd4d5e2c903d9b50a7ae6fcf3a50853f795d02ff493ac90eb1403",
+      "infra/vault/native.mjs": "51142f7587ed93e4109623b6653c53f06104c37bce989fa5bbd567fd1052c06b",
+      "infra/vault/evidence.mjs": "7d736bd727a4daec4081199a2953c6376bbeb31f6395abedfe88fc2efe81b758",
+      "apps/desktop/src-tauri/src/local_lock.rs": "22c8ba322e2687537229912e74b9a9cffd9bfb6203f5b2067b982800e2b480cf",
+      "apps/desktop/src-tauri/tests/local_lock.rs": "228d7193f20a23dd74149a27ab343837b2fd88a24ba758a85a32825d5129d6e0",
+      "apps/desktop/src-tauri/src/local_backup.rs": "55eb0ee0709f0791d49a63e297db9dd78c5a6f7ce56d16bbeee87cec6bbe4273",
+      "apps/desktop/src-tauri/tests/local_backup.rs": "4d362bab873b39a9abc22856c9a4205c2b3ef3cf05cf2bad2b46bd8f51cd831e",
+      "apps/desktop/src-tauri/src/local_restore.rs": "39df4b2f8855dfb1a2349112ed48b2ce6f5df0cc651fef97100f27cd0e5dd541",
+      "apps/desktop/src-tauri/tests/local_restore.rs": "45502b7b1a06b8c1c946ffaee71cba66d055491e30f481c5720d5e9ad356d171",
+      "packages/storage-schema/src/account-changes.ts": "f4ec636d319b1105f2f8e26099e25644dfae2ca14d7f3e06d971054481863929",
+      "packages/storage-schema/src/revision-adapters/account-writes.ts": "6e4fb16d30818cc20623ab7c2720d55a3b9729f2f6ceed8732aceef602470542",
+      "packages/storage-schema/fixtures/us021.json": "02898628ac606d6a240ff67b840bd037a55ff9d552fc4d59b995847c6cff3ad4",
+      "packages/storage-schema/src/generated.ts": "353b1cd72eac2a7a4bd07aa4020f54e64cb76c95a1f0f42cc3f13fb5d49af0fd",
+      "infra/schema/migration-worker.mjs": "d77a416266dee596e02e31bdcd05cb8e8b111bfab63d3988030845ca40edf295",
+      "infra/schema/migrations.mjs": "46917afc25c28adb09e938aa76aa426a4b60c7f78ca7d430e8bff27a1b0b8fd6",
+      "infra/schema/migrations-compose.yaml": "f0e87d3ae9a771da48d400fb799da5621c0924b669a5146f593f6ba2ba4526bb",
+      "infra/schema/migration-evidence.mjs": "1e83d779c11bdf4e1b1e98396f5f2e1847210415bc36076686bf3c8606e520ea",
+      "packages/storage-schema/src/category-changes.ts": "f1e55c9595508ee936dbfaa567aff7610d93bf2266c0f613af95621bbbb35a9f",
+      "packages/storage-schema/src/revision-adapters/category-writes.ts": "52d0fc47e59e6249a3a4d3ae8d04ec3d5e23dd6e9fd5acb2ba9862d31f14ab9a",
+      "packages/storage-schema/src/taxonomy-changes.ts": "8ff8dde16d9e304280ea9c54c35ffbc688d7442f74ac7e26e301e569f36a33e6",
+      "packages/storage-schema/src/revision-adapters/taxonomy-writes.ts": "5db2806866e431dfc0222f62bb98f89e9817698361d8926e598d09e96df63e8b",
+      "packages/storage-schema/src/counterparty-changes.ts": "e6d09be579a5cc5bc3bbc6e60affc535c87a705abeae669832d9cd234c1f4646",
+      "packages/storage-schema/src/revision-adapters/counterparty-writes.ts": "72c20b2d7d0d6967ed16ecbd0ee9153af05e5724aabbcd07530ecffc09e4c244",
+      "infra/import-central/migrations.mjs": "564995b5b7873102f59e1b08627cba7ae700232bac82a14f34d908002287ca72",
+      "packages/storage-schema/src/import-central.ts": "1c8f1130aa51f1ed3ea5190eb71078b0ce020a2e3d16d9e194af9ef1a7da801a",
+      "packages/storage-schema/src/import-migrations.ts": "984ff4c8b5b390ecfa7cc12854572fadf3603c54ddb1e89844bcc98d59c8ccc7",
+      "packages/storage-schema/src/generated-import-migration.ts": "6ded410d5dc96b24e1380df030c06ab1d67b4f9e75422f5652402ccd5b2fe118",
+      "packages/storage-schema/src/revision-adapters/import-reads-writes.ts": "9ccc228754d7d894c2ac2985f87c9e283ad4b98d142af848d4c545969636ad75",
+      "packages/storage-schema/src/revision-adapters/import-account-projections.ts": "e3a97a512f67997ffcc8e6268ac10bdafaa7be153f7d694e25c2f8eb0b3f9aea",
+      "packages/storage-schema/src/revision-adapters/import-transaction-projections.ts": "a42b8f9104a0450674c8b1f70abac3812163a5c0de05e1e01372db94a1519913",
+      "packages/storage-schema/sqlite/migrations/0003-import-ledger.up.sql": "69b3c8c8984f5f2031ebf636d1474f0ed653a2981177559bdcbf87c6a68b25bb",
+      "packages/storage-schema/sqlite/migrations/0003-import-ledger.down.sql": "398419a9295de9dc08c7049273416d1ffd754f1c94403189b070dbf37f333006",
+      "apps/api/persistence/postgres/migrations/0003-import-ledger.up.sql": "8babbb35b32150e8204ab02dd223041de529232410be76d53d3ca33c5201fc07",
+      "apps/api/persistence/postgres/migrations/0003-import-ledger.down.sql": "a9319b118d47d24d4f84e3731b5d920a2bd2037f175ec9000ae03c97dccad47f"
+    },
+    "ee0ca532525d98ab6af325a0280e098491e74be42611c270f187efc0820de167": {
+      "pnpm-lock.yaml": "3822c21b590dbc28bf5ca3a062e35425891562f809e118b0fc7c28ef87902cbb",
+      "packages/config/workspace-boundaries.json": "cf58fdf24c3b391d050283d72e5d1a3c1a99ae3d75604c3cf71a952cc646b25b",
+      "packages/config/data-access-boundaries.json": "df8b0c2fc458f3cdbf639932a8f21fb06ae9527f04ed1aed52259727620d48b8",
+      "packages/persistence-postgres/src/internal/scope.ts": "2b9e8a5b18147b405e051937a89b25f5fe8b9723106039e552904ff5e2e6a46a",
+      "apps/api/persistence/postgres/migrate.mjs": "b48c2fe61fa7998f77e69fdb12a3cd8a15734e4d80d40dfc817260945a7a90cd",
+      "packages/storage-schema/src/migration-plan.ts": "fec49e32641789f3f65a07ac09be738cdad4790a773cc799d47e6cf776e6e2e7",
+      "packages/storage-schema/src/migrations.ts": "4c0572b06a9fdd8dea424d3c09439e68ac213676a6ce66708ae2f87cd12db4a3",
+      "apps/api/persistence/postgres/migrations/0001-financial-core.sql": "6af5a8ffcbd71fe0704dd93c7eb00d24f0549ce71e4e1f03f57848d4a100c196",
+      "apps/api/persistence/postgres/migrations/0002-balance-reference-lookup.up.sql": "9956e997e03ca149750829dd122f408989fd6aad88f3502ea1d4cc411eeb0a4f",
+      "apps/api/persistence/postgres/migrations/0002-balance-reference-lookup.down.sql": "5eca69b12a6eb6a0027b03ae668c2befe90c220a9dd5d082383c0bd591c204d6",
+      "packages/storage-schema/sqlite/migrations/0001-financial-core.sql": "2bda88a05a988952abe11591b02648a097cbc532eced750367d33c0b417f37b8",
+      "packages/storage-schema/src/generated-migrations.ts": "f1aea0ea4f8a77fb03c108c0ca7450a94e48007481227bc0501c09b31e51e1a5",
+      "packages/storage-schema/src/index.ts": "97f20f8529d7cf77eda7c3bf96170a69397e952be5ee079764415805bbbf6434",
+      "packages/domain/src/money.ts": "8064b32741652ed01f8764b446fb5f1343dde3d6f47cc10ba9590cb87009df97",
+      "packages/domain/src/revisions.ts": "cd03419ae2becf8882575fea683a5300186c729fe075743767252dc6093e7040",
+      "packages/finance-ports/src/revisions.ts": "3087177bb561e6636a3cc40ecd1155685a1c40b286ce793a6b202b9c24a8ba64",
+      "packages/persistence-postgres/src/revisions.ts": "d9057b544bc2b43349eddc5b526ec773ffedd3efb0975feb7f440bb79e0f3719",
+      "packages/persistence-postgres/src/internal/unit-scope.ts": "5a368e607f4fe76de566a642518179203518d90f16225b04532779a8cba274b3",
+      "packages/storage-schema/package.json": "10d252069f67a62dfe15e25a0b18f03a64c15f89bf3ba36a3f5e92f0137e6de1",
+      "packages/storage-schema/src/revisions.ts": "0cc61687b4a38e1003bd63a9be37e2e681702b1a072fa1d5519d60ffbc73cba4",
+      "packages/storage-schema/src/revision-adapters/accounts.ts": "561ffa3d22756d17cc2d3af1157ad20b881790c165aefaca68e0aa9f0ed65026",
+      "packages/storage-schema/src/revision-adapters/workspaces.ts": "1aa5de7a2f96f3ff87e96ce5a829af89b513733cc84fb3b998b873843b4edf47",
+      "packages/storage-schema/src/revision-adapters/transactions.ts": "be98a50f779e9ba2b51fcc7e6ada3b06ff673137a69359ef27bf6a76f79b5867",
+      "infra/revisions/scenarios.mjs": "4f7ea153fa70f8fc1f21ed96849989846b3173d20e40a1013482c076dde13679",
+      "infra/revisions/harness.mjs": "8fc1836024ef2e4914a45ec6bc22e39cfec00767eabebb9c7802b80df547c158",
+      "infra/revisions/protocol.mjs": "24f8b3c11324e8e45264e854d598762b8ec2d8e597eb9ed189cf3ba5b63073c5",
+      "infra/revisions/run.mjs": "3d32b038f0ea71b108036f0a5f6c25803e74f0c5d02b40a753b3c5ae7e678903",
+      "infra/revisions/compose.yaml": "d0c8f5ac8fd015c3a7ededb0f7a56e2e8a8f37e599142ec516dfa18e51048283",
+      "infra/revisions/types.ts": "524d4bd6c7af51bb649b325b52db6e43565748ae57b8b6e4b69def21e3d9140c",
+      "infra/revisions/tsconfig.json": "6bb83688cedef4bf376945709742a08057d3a371794daf9f2d1919ac5c774d3e",
+      "infra/revisions/evidence.mjs": "71d8faf30863755b6dba42fcb1522ffb58c41a75bb22b85354161d2f89df5122",
+      "infra/revisions/clean.mjs": "526da04d5038097981159f775c3fbf7a97ae5c1567b0d219da335ec1a2fe1612",
+      "packages/storage-schema/src/synthetic-probe.ts": "dc13b80045451c5316dc392af725e012965dc8ddf7f9b1cfadb2a72355207295",
+      "packages/storage-schema/src/generated-probe.ts": "16dbfbbdaba3b7200899d735ecc573926773d576629f3dc3c8a2f7ac98e76950",
+      "apps/desktop/src-tauri/src/lib.rs": "9d9fdd2404f0030ddac868798088eb4aa65b394312d0a33febbccc6f2bf33cd7",
+      "apps/desktop/src-tauri/src/identity.rs": "18e1d8cd615cd70424051f67a5b2e4b458713f9b5cf7284741c1be4f6648478a",
+      "apps/desktop/src-tauri/src/keys.rs": "d3b59619ff55e403f24197cd9cb05c9aa021c831c87fa71658906e6aaca3949d",
+      "apps/desktop/src-tauri/src/local_workspaces.rs": "42f5768d6682d8e28307888d2ee10f9ea8455293d30fe7de4c152bac8eb0d790",
+      "apps/desktop/src-tauri/src/migrations.rs": "aa40c01a1c1219ef6b54c2ccec98926375dcb077702ef0cc59d95df358e5f90a",
+      "apps/desktop/src-tauri/src/migration_catalog.rs": "01da8db5c774e05d13ee025e8eb6eb60bcd5f2519d2c6eec2b7bad2b1ca9f692",
+      "apps/desktop/src-tauri/src/commands.rs": "8ef4b4b98129f08cb1984e888d6d5ff1e5a77601aa8ce3d525d29013995a5716",
       "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.up.sql": "73660ad3988a4f56bd434fd9ee168576881e0a235bacb4bd3f909b26a073b6c2",
       "packages/storage-schema/sqlite/migrations/0002-balance-reference-lookup.down.sql": "c8da2d985f70ea4215d480bffe801cc13b8714bd6d141d105fe0746f0f526c6c",
       "apps/desktop/src-tauri/src/vault_probe.rs": "d9790e1d3d22397919321ee193eee7ab46424b7bee4b3fe3dda197b0659ca6cf",

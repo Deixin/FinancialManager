@@ -13,19 +13,29 @@ impl RestoreSource for Source {
         Ok(Some(self.0.clone()))
     }
 }
-struct Output(PathBuf);
+struct Output(PathBuf, bool);
 #[tauri::command]
 fn finish_file_smoke(
     app: tauri::AppHandle,
     report: serde_json::Value,
 ) -> std::result::Result<(), &'static str> {
-    let checks = [
-        "gui_picker_unlock_validate",
-        "locked_no_validation",
-        "scoped_one_shot_selection",
-        "cancel_preserves_ledger",
-        "no_storage_or_egress",
-    ];
+    let checks = if app.state::<Output>().1 {
+        [
+            "ofx_gui_pages_and_invalid_rows",
+            "ofx_source_scope_and_provenance",
+            "ofx_one_shot_and_cancel",
+            "ofx_locked_private_tree",
+            "ofx_no_storage_egress",
+        ]
+    } else {
+        [
+            "gui_picker_unlock_validate",
+            "locked_no_validation",
+            "scoped_one_shot_selection",
+            "cancel_preserves_ledger",
+            "no_storage_or_egress",
+        ]
+    };
     let passed = report["passed"] == true
         && report["checks"].as_object().is_some_and(|m| {
             m.len() == checks.len()
@@ -43,7 +53,7 @@ fn finish_file_smoke(
 }
 fn main() {
     let args = std::env::args().skip(1).collect::<Vec<_>>();
-    if args.len() != 4 {
+    if args.len() != 4 && args.len() != 5 {
         std::process::exit(1);
     }
     let mut context = tauri::generate_context!();
@@ -52,7 +62,10 @@ fn main() {
     let state = LocalState::new(PathBuf::from(&args[2]), Arc::new(WindowsKeyStore))
         .with_import_source(Arc::new(Source(PathBuf::from(&args[3]))));
     let run = tauri::Builder::default()
-        .manage(Output(PathBuf::from(&args[0])))
+        .manage(Output(
+            PathBuf::from(&args[0]),
+            args.get(4).is_some_and(|s| s == "OFX"),
+        ))
         .manage(Arc::new(state))
         .invoke_handler(tauri::generate_handler![
             commands::list_local_workspaces,
@@ -83,7 +96,11 @@ fn main() {
             )?;
             tauri::WebviewWindowBuilder::from_config(app, &window)?
                 .data_directory(PathBuf::from(&args[1]))
-                .initialization_script(include_str!("../../file-smoke.js"))
+                .initialization_script(if args.get(4).is_some_and(|s| s == "OFX") {
+                    include_str!("../../ofx-smoke.js")
+                } else {
+                    include_str!("../../file-smoke.js")
+                })
                 .build()?;
             Ok(())
         })

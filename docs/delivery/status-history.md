@@ -547,3 +547,18 @@ Atualizado em 2026-10-21. Este arquivo contém o estado vigente; o [histórico d
 - **Pendências:** homologação humana após integração completa ([ADR-0044](../architecture/adr/0044-homologacao-humana-apos-integracao.md)); decisões DP-01 a DP-04 e gates cloud/Mobile permanecem como descritos nas [decisões pendentes](../architecture/decisions-pending.md). Execução local não presume CI remota, assinatura ou homologação humana.
 
 Para continuar, leia os critérios da US-052 no [backlog](05-backlog.md), o contrato compartilhado da US-051, o fluxo Desktop e o [processo de validação](../development/validation-workflow.md). Registre escopo, arquivos de entrada e critérios de término antes da execução longa.
+
+## Snapshot anterior à integração Desktop da US-052 — arquivado em 2026-10-25
+
+Snapshot histórico substituído pelo resumo atual; não representa o estado vigente.
+
+Atualizado em 2026-10-25. Este arquivo contém o estado vigente; o [histórico de entregas](status-history.md) preserva o conteúdo anterior.
+
+- **Incremento entregue:** núcleo compartilhado da US-052 sobre `0bed20d2a986b19a284892c065957e955a43735c`. OFX bancário/cartão BRL produz itens determinísticos com i64 canônico, datas sem mudança de dia por fuso, tipo original, erros/avisos por linha e proveniência por hash/leitor/versão/caminho. [Contrato e protocolo](../development/ofx-parser.md), [ADR-0074](../architecture/adr/0074-parser-ofx-normalizado-compartilhado.md). As US-050/051 permanecem integradas ao Desktop.
+- **Validação:** `pnpm check` aprovado com 533 testes, sem falhas ou skips; 54 protocolos atuais. A última rodada reexecutou três protocolos afetados e reutilizou 51. O protocolo compartilhado aprovou 97 casos defensivos e 70 casos OFX Node/Chromium, incluindo dez mil registros, oráculos XML/SHA-256, limites, cancelamento e prazo. [Relatório compartilhado](../quality/evidence/runs/e94df2458ba0f2b2a6b9dea1da7637db5d18ad615aaca15521b65a3fd345ebd3.json). Regressões da central, seleção e backup/restauração: [Windows](../quality/evidence/runs/1217cd4ae21ecf1b8b91b3247d1bbef580a8bb92812ef492d27733fb66433c76.json), [Chromium](../quality/evidence/runs/f4efc387427bdd660608a30919ede373c69f3b0ea26ea9b843fd433e1257286f.json).
+- **Manutenção concluída:** atualização já iniciada de ESLint 10.13.0/Turborepo 2.11.9, com instalação congelada confirmada e revalidação pendente retomada até aprovação. Demais dependências preservadas. [ADR-0073](../architecture/adr/0073-atualizacao-eslint-turborepo.md).
+- **Próximo incremento:** integração Desktop e paridade Rust da normalização US-052. Persistência/revisão de staging, regras, deduplicação e confirmação financeira permanecem nos incrementos seguintes; o núcleo não cria lançamentos.
+- **Limites:** sem mudança de schema, permissões, RLS, criptografia, formato de backup/restauração ou dependências de produção. Contêineres, PDF e XML fiscal continuam recusados até leitores limitados.
+- **Pendências:** homologação humana após integração completa ([ADR-0044](../architecture/adr/0044-homologacao-humana-apos-integracao.md)); decisões DP-01 a DP-04 e gates cloud/Mobile permanecem como descritos nas [decisões pendentes](../architecture/decisions-pending.md). Execução local não presume CI remota, assinatura ou homologação humana.
+
+Para continuar, leia o contrato OFX, os critérios da US-052 no [backlog](05-backlog.md), o fluxo Desktop da US-051 e o [processo de validação](../development/validation-workflow.md). Registre escopo, arquivos de entrada e critérios de término antes da execução longa.

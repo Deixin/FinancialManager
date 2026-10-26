@@ -7,6 +7,7 @@ on:
       - 'apps/desktop/**'
       - 'infra/imports-desktop/**'
       - 'infra/import-files-desktop/**'
+      - 'infra/ofx-desktop/**'
       - 'infra/import-file-validation/**'
       - 'packages/importers/src/**'
       - '.github/workflows/desktop-imports.yml'

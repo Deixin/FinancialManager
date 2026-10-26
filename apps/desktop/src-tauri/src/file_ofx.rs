@@ -53,7 +53,7 @@ const SCALARS: &[&str] = &[
     "BALAMT",
     "DTASOF",
 ];
-fn body(text: &str, encoding: &str) -> Check<(usize, bool)> {
+pub(crate) fn body(text: &str, encoding: &str) -> Check<(usize, bool)> {
     let start = text.find("<OFX>").ok_or("INVALID_OFX")?;
     if units(&text[..start]) > MAX_RECORD {
         return Err("INVALID_OFX");

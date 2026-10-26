@@ -1,8 +1,11 @@
 import { invoke, isTauri } from '@tauri-apps/api/core';
 import { resourceId } from '@financial-manager/contracts';
+import { decodeOfxPreview } from './local-ofx-preview.js';
+import type { OfxPreview } from './local-ofx-preview.js';
 export interface FileTarget {
   readonly workspace_id: string;
   readonly batch_id: string;
+  readonly account_id: string;
 }
 export interface FileOptions {
   readonly encoding: 'utf-8' | 'windows-1252';
@@ -21,6 +24,7 @@ export interface InspectedFile {
   readonly file_name: string;
   readonly file_hash: string;
   readonly inspection: FileInspection;
+  readonly normalization?: OfxPreview;
 }
 const codes = [
   'INVALID_REQUEST',
@@ -44,6 +48,15 @@ const codes = [
   'NODE_LIMIT',
   'TIME_LIMIT',
   'CANCELLED',
+  'INVALID_DESTINATION',
+  'INVALID_OFX_STRUCTURE',
+  'OFX_SOURCE_ERROR',
+  'INVALID_SOURCE_ACCOUNT',
+  'ACCOUNT_KIND_MISMATCH',
+  'CURRENCY_MISMATCH',
+  'INVALID_PERIOD',
+  'EMPTY_STATEMENT',
+  'HASH_UNAVAILABLE',
   'FILE_UNAVAILABLE',
   'LOCAL_LOCKED',
   'INVALID_IMPORT_REQUEST',
@@ -75,10 +88,11 @@ function exact(
 }
 export function captureFileTarget(target: FileTarget): FileTarget {
   try {
-    exact(target, ['workspace_id', 'batch_id']);
+    exact(target, ['workspace_id', 'batch_id', 'account_id']);
     return Object.freeze({
       workspace_id: resourceId(target.workspace_id),
       batch_id: resourceId(target.batch_id),
+      account_id: resourceId(target.account_id),
     });
   } catch {
     throw new LocalFileError('INVALID_REQUEST');
@@ -100,9 +114,18 @@ export function captureFileOptions(options: FileOptions): FileOptions {
 export function decodeInspectedFile(
   raw: unknown,
   options: FileOptions,
+  target?: FileTarget,
 ): InspectedFile {
   try {
-    exact(raw, ['outcome', 'file_name', 'file_hash', 'inspection']);
+    exact(raw, [
+      'outcome',
+      'file_name',
+      'file_hash',
+      'inspection',
+      ...(raw && typeof raw === 'object' && 'normalization' in raw
+        ? ['normalization']
+        : []),
+    ]);
     if (
       raw.outcome !== 'VALIDATED' ||
       typeof raw.file_name !== 'string' ||
@@ -137,6 +160,7 @@ export function decodeInspectedFile(
       throw Error();
     if (i.format === 'CSV') {
       if (
+        'normalization' in raw ||
         options.delimiter === null ||
         !bound(i.records, 1, 10000) ||
         i.depth !== null ||
@@ -153,9 +177,20 @@ export function decodeInspectedFile(
       )
         throw Error();
     } else throw Error();
+    const normalization =
+      i.format === 'OFX'
+        ? decodeOfxPreview(raw.normalization, {
+            workspace_id: target?.workspace_id ?? '',
+            account_id: target?.account_id ?? '',
+            file_name: raw.file_name,
+            file_hash: raw.file_hash,
+            records: i.records as number,
+          })
+        : undefined;
     return Object.freeze({
       file_name: raw.file_name,
       file_hash: raw.file_hash,
+      ...(normalization ? { normalization } : {}),
       inspection: Object.freeze({ ...i }) as unknown as FileInspection,
     });
   } catch {
@@ -226,7 +261,7 @@ export function createImportFileGateway(call: typeof invoke = invoke) {
           throw new LocalFileError('INVALID_RESPONSE');
         throw new LocalFileError(rejected);
       }
-      return decodeInspectedFile(result, captured);
+      return decodeInspectedFile(result, captured, target);
     },
     async cancel(value: FileTarget) {
       const target = captureFileTarget(value);
@@ -241,6 +276,8 @@ export function fileMessage(error: unknown): string {
     error instanceof LocalFileError ? error.code : 'STORAGE_UNAVAILABLE';
   if (code === 'LOCAL_LOCKED')
     return 'Desbloqueie o aplicativo para validar o arquivo.';
+  if (code === 'CURRENCY_MISMATCH' || code === 'ACCOUNT_KIND_MISMATCH')
+    return 'O extrato não corresponde à moeda ou ao tipo da conta de destino. Selecione a conta correta e uma nova exportação.';
   if (code === 'CANCELLED')
     return 'Validação cancelada. Nenhum lançamento foi criado.';
   if (code === 'UNSUPPORTED_FORMAT' || code === 'UNSUPPORTED_LAYOUT')

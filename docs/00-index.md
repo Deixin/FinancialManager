@@ -1,6 +1,6 @@
 # Financial Manager — documentação atual
 
-Estado de produto: **núcleo compartilhado da US-052 entregue**, com OFX normalizado e proveniência determinística. Próximo incremento: **integração Desktop e paridade Rust da US-052**. Consulte o [contrato OFX](development/ofx-parser.md). A US-051 de seleção/leitura/inspeção e a central US-050 permanecem integradas ao Desktop, incluindo backup e restauração. A validação segue o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
+Estado de produto: **US-052 integrada ao Desktop**, com normalização OFX Rust, paridade do modelo compartilhado e prévia privada paginada. Próximo incremento: **US-053 — normalização CSV com mapeamento de colunas**. Consulte o [fluxo OFX Desktop](development/desktop-ofx.md) e o [contrato compartilhado](development/ofx-parser.md). As US-050/051 e o backup/restauração permanecem integrados. A validação segue o [ADR-0070](architecture/adr/0070-validacao-incremental-e-evidencias-imutaveis.md).
 
 ## Leitura por tarefa
 

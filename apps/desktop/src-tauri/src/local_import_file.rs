@@ -195,7 +195,19 @@ pub fn read_file(
     delimiter: Option<&str>,
     valid: impl Fn() -> bool,
 ) -> Value {
-    match inspect_file(path, encoding, delimiter, valid) {
+    match inspect_file(path, encoding, delimiter, None, valid) {
+        Ok(v) => v,
+        Err(code) => json!({"outcome":"REJECTED","code":code}),
+    }
+}
+pub fn read_for_destination(
+    path: &Path,
+    encoding: &str,
+    delimiter: Option<&str>,
+    destination: &crate::ofx_model::Destination,
+    valid: impl Fn() -> bool,
+) -> Value {
+    match inspect_file(path, encoding, delimiter, Some(destination), valid) {
         Ok(v) => v,
         Err(code) => json!({"outcome":"REJECTED","code":code}),
     }
@@ -204,6 +216,7 @@ fn inspect_file(
     path: &Path,
     encoding: &str,
     delimiter: Option<&str>,
+    destination: Option<&crate::ofx_model::Destination>,
     valid: impl Fn() -> bool,
 ) -> file_model::Check<Value> {
     let name = path
@@ -276,7 +289,19 @@ fn inspect_file(
     budget.check()?;
     let hash = format!("{:x}", Sha256::digest(bytes.as_slice()));
     budget.check()?;
-    Ok(json!({"outcome":"VALIDATED","file_name":name,"file_hash":hash,"inspection":inspection}))
+    let mut result =
+        json!({"outcome":"VALIDATED","file_name":name,"file_hash":hash,"inspection":inspection});
+    if inspection.format == "OFX"
+        && let Some(destination) = destination
+    {
+        let normalized = crate::ofx_model::parse(&metadata, &bytes, destination, || {
+            valid() && budget.check().is_ok()
+        });
+        budget.check()?;
+        result["normalization"] = normalized?;
+    }
+    budget.check()?;
+    Ok(result)
 }
 
 #[cfg(test)]

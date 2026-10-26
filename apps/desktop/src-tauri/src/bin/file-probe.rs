@@ -20,6 +20,16 @@ fn run() -> Result<(), ()> {
             let result = || -> file_model::Check<_> {
                 let metadata: Metadata =
                     serde_json::from_value(v["request"].clone()).map_err(|_| "INVALID_REQUEST")?;
+                let destination = if v["mode"] == "OFX_NORMALIZE" {
+                    Some(
+                            serde_json::from_value::<
+                                financial_manager_desktop::ofx_model::Destination,
+                            >(v["destination"].clone())
+                            .map_err(|_| "INVALID_DESTINATION")?,
+                        )
+                } else {
+                    None
+                };
                 let bytes = if v["recipe"] == "CSV_16MIB" {
                     let row = [
                         "x".repeat(1023),
@@ -56,7 +66,17 @@ fn run() -> Result<(), ()> {
                     serde_json::from_value::<Vec<u8>>(v["bytes"].clone())
                         .map_err(|_| "INVALID_REQUEST")?
                 };
-                file_model::validate(&metadata, &bytes, || v["cancelled"] != true)
+                if let Some(destination) = destination {
+                    financial_manager_desktop::ofx_model::parse(
+                        &metadata,
+                        &bytes,
+                        &destination,
+                        || v["cancelled"] != true,
+                    )
+                } else {
+                    file_model::validate(&metadata, &bytes, || v["cancelled"] != true)
+                        .map(|v| serde_json::to_value(v).expect("INSPECTION_SERIALIZE"))
+                }
             };
             match result() {
                 Ok(inspection) => json!({"name":v["name"],"result":inspection}),

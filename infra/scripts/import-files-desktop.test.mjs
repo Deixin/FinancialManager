@@ -9,6 +9,7 @@ import {
 const target = {
     workspace_id: '0199d051-0000-7000-8000-000000000001',
     batch_id: '0199d051-0000-7000-8000-000000000002',
+    account_id: '0199d051-0000-7000-8000-000000000004',
   },
   selection = '0199d051-0000-7000-8000-000000000003',
   options = { encoding: 'utf-8', delimiter: ',' };
@@ -56,7 +57,12 @@ test('US-051 Desktop binds validation acknowledgement to captured workspace batc
     await new Promise((resolve) => {
       complete = resolve;
     });
-    return { ...target, selection_id: selection, result };
+    return {
+      workspace_id: target.workspace_id,
+      batch_id: target.batch_id,
+      selection_id: selection,
+      result,
+    };
   });
   const pending = gateway.validate(request, selection, config);
   request.workspace_id = selection;
@@ -73,7 +79,8 @@ test('US-051 Desktop binds validation acknowledgement to captured workspace batc
     { selection_id: target.workspace_id },
   ]) {
     const invalid = createImportFileGateway(async () => ({
-      ...target,
+      workspace_id: target.workspace_id,
+      batch_id: target.batch_id,
       selection_id: selection,
       result,
       ...change,
@@ -112,7 +119,8 @@ test('US-051 Desktop validates rejection and cancellation contracts', async () =
       : args.input.action === 'SELECT'
         ? { selection_id: null }
         : {
-            ...target,
+            workspace_id: target.workspace_id,
+            batch_id: target.batch_id,
             selection_id: selection,
             result: { outcome: 'REJECTED', code: 'ACTIVE_CONTENT' },
           },
